@@ -1,0 +1,84 @@
+---
+import { hero } from "../data/hero";
+import { socials } from "../data/socials";
+---
+
+<section class="pb-10">
+  <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2" style={`color: var(--text-primary);`}>
+    Hi, there! <span class="inline-block animate-[wave_2.5s_ease-in-out_infinite]">👋</span>
+  </h1>
+
+  <p class="text-base font-medium mb-6 gradient-text">
+    {hero.tagline}
+  </p>
+
+  <!-- Intro line -->
+  <p class="text-[13px] leading-[1.75] mb-3" style={`color: var(--text-secondary);`}
+     set:html={hero.bio[0]
+       .replace(/\*\*(.*?)\*\*/g, '<strong style="color: var(--text-primary); font-weight: 600;">$1</strong>')
+     }
+  />
+
+  <!-- List items -->
+  <ul class="space-y-2 text-[13px] leading-[1.75] list-none pl-0" style={`color: var(--text-secondary);`}>
+    {
+      hero.bio.slice(1).map((line) => {
+        const content = line.replace(/^- /, "");
+        return (
+          <li set:html={content
+            .replace(/\*\*(.*?)\*\*/g, '<strong style="color: var(--text-primary); font-weight: 600;">$1</strong>')
+            .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" style="color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px;">$1</a>')
+          } />
+        );
+      })
+    }
+  </ul>
+
+  <!-- Social icons -->
+  <div class="flex items-center gap-3 mt-6">
+    {
+      socials.filter(s => s.showInSidebar).map((social) => (
+        social.icon === "wechat" ? (
+          <button
+            class="wechat-trigger p-2 rounded-xl transition-all duration-200 hover:scale-110 cursor-pointer"
+            style={`color: var(--text-secondary); background: var(--bg-secondary); border: none;`}
+            title={social.name}
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.492.492 0 01.177-.554C23.028 18.553 24 16.803 24 14.861c0-3.089-2.757-5.9-7.062-6.003zm-2.745 2.254c.534 0 .967.44.967.982a.975.975 0 01-.967.981.975.975 0 01-.967-.981c0-.542.433-.982.967-.982zm4.842 0c.534 0 .967.44.967.982a.975.975 0 01-.967.981.975.975 0 01-.967-.981c0-.542.433-.982.967-.982z"/></svg>
+          </button>
+        ) : (
+          <a
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-2 rounded-xl transition-all duration-200 hover:scale-110"
+            style={`color: var(--text-secondary); background: var(--bg-secondary);`}
+            title={social.name}
+          >
+            {social.icon === "github" && (
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            )}
+            {social.icon === "twitter" && (
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            )}
+            {social.icon === "email" && (
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            )}
+          </a>
+        )
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  @keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    10% { transform: rotate(14deg); }
+    20% { transform: rotate(-8deg); }
+    30% { transform: rotate(14deg); }
+    40% { transform: rotate(-4deg); }
+    50% { transform: rotate(10deg); }
+    60% { transform: rotate(0deg); }
+  }
+</style>

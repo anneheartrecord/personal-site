@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { socials } from "../data/socials";
+---
+
+<Layout title="Social Media — Charles">
+  <h1 class="text-2xl font-bold tracking-tight mb-8" style={`color: var(--text-primary);`}>Social Media</h1>
+
+  <div class="space-y-0 card overflow-hidden">
+    {socials.map((social, i) => (
+      <a
+        href={social.icon === "wechat" ? social.url : social.url}
+        target={social.icon === "wechat" ? undefined : "_blank"}
+        rel={social.icon === "wechat" ? undefined : "noopener noreferrer"}
+        class="flex items-center justify-between px-5 py-4 transition-all duration-200 hover:bg-[var(--bg-tertiary)]"
+        style={`${i > 0 ? `border-top: 1px solid var(--border-color);` : ""} color: var(--text-primary);`}
+      >
+        <span class="text-sm font-medium">{social.name}</span>
+        <span class="text-xs font-medium" style={`color: var(--color-accent);`}>
+          {social.icon === "wechat" ? "QR Code" : "Link →"}
+        </span>
+      </a>
+    ))}
+  </div>
+</Layout>

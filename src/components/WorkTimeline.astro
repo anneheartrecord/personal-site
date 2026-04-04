@@ -1,0 +1,68 @@
+---
+import { works } from "../data/works";
+---
+
+<section class="py-10">
+  <h2 class="text-lg font-bold tracking-tight mb-8" style={`color: var(--text-primary);`}>
+    Experience
+  </h2>
+
+  <div class="space-y-12">
+    {
+      works.map((work) => (
+        <div>
+          <!-- Company header with logo -->
+          <div class="flex items-center justify-between mb-5">
+            <a
+              href={work.companyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-3 group"
+            >
+              {/* Company Logo */}
+              <img
+                src={`/images/${work.logo}-logo.${work.logo === "tme" ? "webp" : "png"}`}
+                alt={work.company}
+                class="w-8 h-8 rounded-lg object-contain"
+              />
+              <span class="text-sm font-semibold group-hover:text-[var(--color-accent)] transition-colors" style={`color: var(--text-primary);`}>
+                {work.company}
+              </span>
+            </a>
+            <span class="text-[11px] font-mono hidden sm:block" style={`color: var(--text-tertiary);`}>{work.period}</span>
+          </div>
+          {/* Period for mobile */}
+          <div class="sm:hidden mb-3">
+            <span class="text-[11px] font-mono" style={`color: var(--text-tertiary);`}>{work.period}</span>
+          </div>
+
+          <!-- Roles -->
+          <div class="space-y-3">
+            {work.roles.map((role) => (
+              <div class="card p-5">
+                <h3 class="text-[13px] font-semibold mb-2" style={`color: var(--text-primary);`}>
+                  {role.title}
+                </h3>
+                <p class="text-xs leading-[1.8]" style={`color: var(--text-secondary);`}>
+                  {role.description}
+                </p>
+                {role.url && (
+                  <a
+                    href={role.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 mt-3 text-[11px] font-medium transition-opacity hover:opacity-70"
+                    style={`color: var(--color-accent);`}
+                  >
+                    View project
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

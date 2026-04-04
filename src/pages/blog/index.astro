@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog", ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title="Blog — Charles">
+  <h1 class="text-2xl font-bold tracking-tight mb-2" style={`color: var(--text-primary);`}>Blog</h1>
+  <p class="text-sm mb-8" style={`color: var(--text-secondary);`}>Technical thoughts and practice notes</p>
+  <div class="space-y-3">
+    {posts.map((post) => (
+      <BlogCard title={post.data.title} date={post.data.date.toISOString().split("T")[0]} description={post.data.description} slug={post.id} />
+    ))}
+  </div>
+</Layout>

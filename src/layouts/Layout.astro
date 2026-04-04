@@ -1,0 +1,66 @@
+---
+import Sidebar from "../components/Sidebar.astro";
+import TopBar from "../components/TopBar.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Charles — Developer" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>{title}</title>
+    <script is:inline>
+      const theme = localStorage.getItem("theme");
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+  </head>
+  <body class="min-h-screen antialiased">
+    <div class="flex">
+      <Sidebar />
+
+      <main class="flex-1 min-h-screen ml-0 lg:ml-64">
+        <TopBar />
+
+        <div class="max-w-4xl mx-auto px-6 py-6 lg:py-10">
+          <slot />
+        </div>
+
+        <footer class="max-w-4xl mx-auto px-6 pb-8">
+          <div class="section-divider mb-6"></div>
+          <p class="text-[11px]" style={`color: var(--text-tertiary); opacity: 0.5;`}>
+            Built with
+            <a href="https://astro.build" target="_blank" rel="noopener" class="underline underline-offset-2">Astro</a>
+            &amp;
+            <a href="https://tailwindcss.com" target="_blank" rel="noopener" class="underline underline-offset-2">Tailwind</a>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      const menuBtn = document.getElementById("mobile-menu-btn");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebar-overlay");
+      function toggleSidebar() {
+        sidebar?.classList.toggle("-translate-x-full");
+        overlay?.classList.toggle("hidden");
+      }
+      menuBtn?.addEventListener("click", toggleSidebar);
+      overlay?.addEventListener("click", toggleSidebar);
+    </script>
+  </body>
+</html>

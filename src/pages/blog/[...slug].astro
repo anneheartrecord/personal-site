@@ -1,0 +1,43 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} — Blog`} description={post.data.description}>
+  <article>
+    <a href="/blog" class="inline-flex items-center text-xs font-medium mb-6 transition-opacity hover:opacity-70" style={`color: var(--text-tertiary);`}>
+      ← Back to blog
+    </a>
+
+    <header class="mb-8">
+      <h1 class="text-2xl sm:text-3xl font-bold tracking-tight mb-3" style={`color: var(--text-primary);`}>
+        {post.data.title}
+      </h1>
+      <div class="flex items-center gap-3">
+        <time class="text-xs font-mono" style={`color: var(--text-tertiary);`}>
+          {post.data.date.toISOString().split("T")[0]}
+        </time>
+        <div class="flex gap-1.5">
+          {post.data.tags.map((tag: string) => <span class="tag-pill">{tag}</span>)}
+        </div>
+      </div>
+    </header>
+
+    <div class="prose"><Content /></div>
+
+    <div class="mt-12 pt-6" style={`border-top: 1px solid var(--border-color);`}>
+      <a href="/blog" class="text-xs font-medium transition-opacity hover:opacity-70" style={`color: var(--color-accent);`}>← Back to blog</a>
+    </div>
+  </article>
+</Layout>

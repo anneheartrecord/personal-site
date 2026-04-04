@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import WorkTimeline from "../components/WorkTimeline.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import BlogCard from "../components/BlogCard.astro";
+import { projects } from "../data/projects";
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog", ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title="Charles — Developer">
+  <!-- Hero / Intro -->
+  <Hero />
+
+  <div class="section-divider my-6"></div>
+
+  <!-- Work Experience -->
+  <WorkTimeline />
+
+  <div class="section-divider my-6"></div>
+
+  <!-- Projects — show ALL -->
+  <section class="py-10">
+    <h2 class="text-lg font-bold tracking-tight mb-8" style={`color: var(--text-primary);`}>
+      Projects
+    </h2>
+    <div class="space-y-3">
+      {projects.map((p) => (
+        <ProjectCard name={p.name} description={p.description} url={p.url} github={p.github} tags={p.tags} />
+      ))}
+    </div>
+  </section>
+
+  <div class="section-divider my-6"></div>
+
+  <!-- Blog — show ALL -->
+  <section class="py-10">
+    <h2 class="text-lg font-bold tracking-tight mb-8" style={`color: var(--text-primary);`}>
+      Blog
+    </h2>
+    <div class="space-y-3">
+      {posts.map((post) => (
+        <BlogCard title={post.data.title} date={post.data.date.toISOString().split("T")[0]} description={post.data.description} slug={post.id} />
+      ))}
+    </div>
+  </section>
+
+  <div class="section-divider my-6"></div>
+
+  <!-- Contact / WeChat -->
+  <section class="py-10">
+    <h2 class="text-lg font-bold tracking-tight mb-4" style={`color: var(--text-primary);`}>
+      Get in touch
+    </h2>
+    <p class="text-sm leading-relaxed mb-6" style={`color: var(--text-secondary);`}>
+      Open for Ask Me Anything, job referrals, or just a friendly chat. Feel free to reach out via any channel.
+    </p>
+    <div class="card p-6 inline-flex flex-col items-center">
+      <img
+        src="/images/wechat.jpg"
+        alt="WeChat QR Code"
+        class="w-44 h-44 rounded-xl object-cover mb-3"
+        style={`border: 1px solid var(--border-color);`}
+      />
+      <p class="text-xs font-medium" style={`color: var(--text-tertiary);`}>Scan to add me on WeChat</p>
+    </div>
+  </section>
+</Layout>
