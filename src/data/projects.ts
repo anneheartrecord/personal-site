@@ -8,6 +8,14 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: "talk-mbti",
+    description:
+      "对话式 MBTI 人格分析 —— 没有一道选择题，打开就是聊天。心理学里的社会期许偏差（Social Desirability Bias）告诉我们，人填问卷时会无意识地美化自己。talk-mbti 换了个思路：通过自然对话，从你的措辞、第一反应、决策逻辑里提取真实的行为信号，聊完直接生成四维度百分比、认知功能栈、超能力和成长盲区的完整报告。基于 Gemini 2.0 Flash 驱动，Cloudflare AI Gateway 代理，国内无需梯子可用。",
+    url: "https://mbti.charles-cheng.com",
+    github: "https://github.com/annesheartrecord/talk-mbti",
+    tags: ["AI", "MBTI", "Vue 3"],
+  },
+  {
     name: "claude-code-docs",
     description:
       "Claude Code 源码解剖 —— 2026 年 3 月 Anthropic 意外泄露了 Claude Code 的完整 TypeScript 源码（51.5 万行）。我对这份源码做了系统化的技术分析，逐模块拆解，写了 13 篇技术文档（中英双语）。从架构设计到 Agent 循环的六阶段实现，从三层消息压缩体系到 6,300 行的权限系统，从五层记忆加载到 40+ 工具的执行流水线。同时从 82 个 feature flag 里挖出了 Anthropic 尚未发布的功能蓝图。",
