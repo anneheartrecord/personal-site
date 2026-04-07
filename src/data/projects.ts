@@ -12,8 +12,8 @@ export const projects: Project[] = [
     description:
       "对话式 MBTI 人格分析 —— 没有一道选择题，打开就是聊天。心理学里的社会期许偏差（Social Desirability Bias）告诉我们，人填问卷时会无意识地美化自己。talk-mbti 换了个思路：通过自然对话，从你的措辞、第一反应、决策逻辑里提取真实的行为信号，聊完直接生成四维度百分比、认知功能栈、超能力和成长盲区的完整报告。基于 Gemini 2.0 Flash 驱动，Cloudflare AI Gateway 代理，国内无需梯子可用。",
     url: "https://mbti.charles-cheng.com",
-    github: "https://github.com/annesheartrecord/talk-mbti",
-    tags: ["AI", "MBTI", "Vue 3"],
+    github: "https://github.com/anneheartrecord/talk-mbti",
+    tags: ["AI", "MBTI", "Prompt"],
   },
   {
     name: "claude-code-docs",
