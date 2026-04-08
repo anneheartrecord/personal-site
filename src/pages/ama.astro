@@ -1,0 +1,240 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Ask Me Anything — Charles">
+  <h1 class="text-2xl font-bold tracking-tight mb-2" style={`color: var(--text-primary);`}>Ask Me Anything</h1>
+  <p class="text-sm mb-10" style={`color: var(--text-secondary);`}>一对一付费咨询。经验换时间，帮你把问题看清楚。</p>
+
+  <!-- 背景介绍 -->
+  <section class="mb-10">
+    <h2 class="text-lg font-bold mb-4" style={`color: var(--text-primary);`}>关于我</h2>
+    <div class="card p-6 space-y-4 text-sm leading-relaxed" style={`color: var(--text-secondary);`}>
+      <p>
+        在职大厂工程师。实习、校招、社招全流程走过来，累计面试<strong style={`color: var(--text-primary);`}>上百场</strong>，校招多个大厂 offer，近期社招通过率超过 <strong style={`color: var(--text-primary);`}>90%</strong>。牛客搜<strong style={`color: var(--text-primary);`}>安妮的心动录</strong>能找到我。
+      </p>
+      <p>
+        从本科开始就在做这件事了。在学校工作室带学弟学妹时积累了第一批辅导经验，后来他们在秋招拿了不少好 offer。毕业后陆续辅导了<strong style={`color: var(--text-primary);`}>数十位不同背景的同学</strong>，覆盖暑期实习、秋招春招、社招跳槽、技术转型、发展路线规划，从二本到 985、从应届到工作三五年的都聊过。
+      </p>
+      <p>
+        这些经验有一个共性：<strong style={`color: var(--text-primary);`}>大部分人卡住的地方其实就那几个</strong>。简历不会写重点，面试不知道怎么展示自己，手里有 offer 但不知道怎么选，想跳槽但看不清方向。同样的问题我回答了太多遍，每次都是私聊从头讲一遍，效率太低。不如系统地开放出来，把方法论交付给真正需要的人。
+      </p>
+    </div>
+  </section>
+
+  <!-- 我对咨询的看法 -->
+  <section class="mb-10">
+    <h2 class="text-lg font-bold mb-4" style={`color: var(--text-primary);`}>我对咨询的理解</h2>
+    <div class="card p-6 space-y-4 text-sm leading-relaxed" style={`color: var(--text-secondary);`}>
+      <p>
+        <strong style={`color: var(--text-primary);`}>咨询解决的是信息差，不是执行力。</strong>你该刷的题还是得自己刷，该写的项目还是得自己写。我能帮你的是，在你做决策之前，多一个经历过这些阶段的人帮你看一眼全局。
+      </p>
+      <p>
+        很多时候你觉得纠结，不是因为选项本身有多复杂，而是缺少一个<strong style={`color: var(--text-primary);`}>局外人的视角</strong>。我辅导过的同学里，有些人问题很具体，聊半小时就够了；有些人需要从头梳理整条路线，这种就适合深度聊。无论哪种，我的原则是只聊我有把握的东西，不确定的会直说。
+      </p>
+      <p>
+        另外，付费咨询的好处是双方都认真。你带着准备好的问题来，我给你<strong style={`color: var(--text-primary);`}>经过思考的、针对你个人情况的反馈</strong>，而不是群里那种泛泛的建议。
+      </p>
+    </div>
+  </section>
+
+  <!-- 我能提供的服务 -->
+  <section class="mb-10">
+    <h2 class="text-lg font-bold mb-4" style={`color: var(--text-primary);`}>我能帮你什么</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div class="card p-5">
+        <div class="flex items-center gap-2 mb-2">
+          <svg class="w-4 h-4 shrink-0" style={`color: var(--color-accent);`} fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          </svg>
+          <h3 class="text-sm font-semibold" style={`color: var(--text-primary);`}>简历修改建议</h3>
+        </div>
+        <p class="text-xs" style={`color: var(--text-tertiary);`}>逐条拆解你的简历，找出表述模糊、重点缺失和可以强化的地方。</p>
+      </div>
+      <div class="card p-5">
+        <div class="flex items-center gap-2 mb-2">
+          <svg class="w-4 h-4 shrink-0" style={`color: var(--color-accent);`} fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+          </svg>
+          <h3 class="text-sm font-semibold" style={`color: var(--text-primary);`}>模拟面试</h3>
+        </div>
+        <p class="text-xs" style={`color: var(--text-tertiary);`}>还原真实面试节奏，结束后给出逐题反馈和改进方向。</p>
+      </div>
+      <div class="card p-5">
+        <div class="flex items-center gap-2 mb-2">
+          <svg class="w-4 h-4 shrink-0" style={`color: var(--color-accent);`} fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
+          </svg>
+          <h3 class="text-sm font-semibold" style={`color: var(--text-primary);`}>职业发展选择</h3>
+        </div>
+        <p class="text-xs" style={`color: var(--text-tertiary);`}>大厂 vs 创业、留下 vs 跳槽、技术 vs 管理，帮你拆解每条路的真实利弊。</p>
+      </div>
+      <div class="card p-5">
+        <div class="flex items-center gap-2 mb-2">
+          <svg class="w-4 h-4 shrink-0" style={`color: var(--color-accent);`} fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.159.69.159 1.006 0z" />
+          </svg>
+          <h3 class="text-sm font-semibold" style={`color: var(--text-primary);`}>路线决策</h3>
+        </div>
+        <p class="text-xs" style={`color: var(--text-tertiary);`}>技术栈选型、学习路径规划、能力培养方向，帮你减少无效试错。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 咨询前须知 -->
+  <section class="mb-10">
+    <h2 class="text-lg font-bold mb-4" style={`color: var(--text-primary);`}>咨询前须知</h2>
+    <div class="card p-6 space-y-3 text-sm" style={`color: var(--text-secondary);`}>
+      <div class="flex items-start gap-3">
+        <span class="text-xs mt-0.5 shrink-0" style={`color: var(--color-accent);`}>01</span>
+        <p>尽可能在咨询前发给我一份<strong style={`color: var(--text-primary);`}>个人简历或自我介绍</strong>，外加你想聊的<strong style={`color: var(--text-primary);`}>问题列表</strong>。信息越充分，我能给到的东西越具体。</p>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="text-xs mt-0.5 shrink-0" style={`color: var(--color-accent);`}>02</span>
+        <p>提前至少<strong style={`color: var(--text-primary);`}>一个工作日</strong>预付款并发送问题列表，我需要时间做针对性准备。实际咨询不受列表限制，可以自由延伸。</p>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="text-xs mt-0.5 shrink-0" style={`color: var(--color-accent);`}>03</span>
+        <p>这是<strong style={`color: var(--text-primary);`}>经验分享和方向建议</strong>，不是培训课程。我不会手把手教你刷题或写项目，但会告诉你坑在哪、应该往哪个方向使劲。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 定价 -->
+  <section class="mb-10">
+    <h2 class="text-lg font-bold mb-4" style={`color: var(--text-primary);`}>定价</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div class="card p-5 text-center">
+        <p class="text-2xl font-bold mb-1" style={`color: var(--text-primary);`}>¥150</p>
+        <p class="text-xs font-medium mb-3" style={`color: var(--color-accent);`}>30 分钟</p>
+        <p class="text-xs" style={`color: var(--text-tertiary);`}>单个明确问题，快速聊透</p>
+      </div>
+      <div class="card p-5 text-center">
+        <p class="text-2xl font-bold mb-1" style={`color: var(--text-primary);`}>¥288</p>
+        <p class="text-xs font-medium mb-3" style={`color: var(--color-accent);`}>60 分钟</p>
+        <p class="text-xs" style={`color: var(--text-tertiary);`}>求职规划、多问题深度讨论</p>
+      </div>
+      <div class="card p-5 text-center">
+        <p class="text-2xl font-bold mb-1" style={`color: var(--text-primary);`}>¥488</p>
+        <p class="text-xs font-medium mb-3" style={`color: var(--color-accent);`}>一场电影的时间</p>
+        <p class="text-xs" style={`color: var(--text-tertiary);`}>Coffee Chat，职业路线、长期规划</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系方式 -->
+  <section class="mb-10">
+    <h2 class="text-lg font-bold mb-4" style={`color: var(--text-primary);`}>预约咨询</h2>
+    <div class="card p-6 text-center">
+      <p class="text-sm mb-4" style={`color: var(--text-secondary);`}>
+        添加微信预约和付款，备注<strong style={`color: var(--text-primary);`}>咨询</strong>。
+      </p>
+      <button
+        class="wechat-trigger inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium cursor-pointer transition-all duration-200 hover:scale-105"
+        style={`background-color: var(--color-accent); color: white; border: none;`}
+      >
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.492.492 0 01.177-.554C23.028 18.553 24 16.803 24 14.861c0-3.089-2.757-5.9-7.062-6.003zm-2.745 2.254c.534 0 .967.44.967.982a.975.975 0 01-.967.981.975.975 0 01-.967-.981c0-.542.433-.982.967-.982zm4.842 0c.534 0 .967.44.967.982a.975.975 0 01-.967.981.975.975 0 01-.967-.981c0-.542.433-.982.967-.982z"/></svg>
+        添加微信预约
+      </button>
+    </div>
+  </section>
+
+  <!-- 咨询资料归档 -->
+  <section class="mb-10">
+    <h2 class="text-lg font-bold mb-4" style={`color: var(--text-primary);`}>咨询资料</h2>
+    <div class="card p-6">
+      <p class="text-sm mb-5" style={`color: var(--text-secondary);`}>
+        咨询过的朋友可以在这里查阅我整理的资料。共性问题会持续沉淀更新，尽可能长期帮到大家。
+      </p>
+
+      <!-- 密码输入区 -->
+      <div id="ama-password-gate">
+        <div class="flex items-center gap-2">
+          <input
+            id="ama-password-input"
+            type="password"
+            placeholder="输入访问密码"
+            class="flex-1 px-4 py-2.5 rounded-xl text-sm outline-none transition-all duration-200"
+            style={`background-color: var(--bg-tertiary); border: 1px solid var(--border-color); color: var(--text-primary);`}
+          />
+          <button
+            id="ama-password-submit"
+            class="px-5 py-2.5 rounded-xl text-sm font-medium cursor-pointer transition-all duration-200 hover:scale-105 shrink-0"
+            style={`background-color: var(--color-accent); color: white; border: none;`}
+          >
+            验证
+          </button>
+        </div>
+        <p id="ama-password-error" class="text-xs mt-2 hidden" style="color: #ef4444;">
+          密码不正确，请重新输入。
+        </p>
+      </div>
+
+      <!-- 资料内容（默认隐藏） -->
+      <div id="ama-resources" class="hidden">
+        <div class="section-divider my-4"></div>
+        <p class="text-xs" style={`color: var(--text-tertiary);`}>
+          资料整理中，敬请期待...
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // SHA-256 哈希比对，不在源码中存储明文密码
+  const PASSWORD_HASH = "9f1901c450c608493fa9735646b091ab55f2fd247bf02c31326c14046b14649f";
+  const STORAGE_KEY = "ama_resources_unlocked";
+
+  const gate = document.getElementById("ama-password-gate")!;
+  const resources = document.getElementById("ama-resources")!;
+  const input = document.getElementById("ama-password-input") as HTMLInputElement;
+  const submit = document.getElementById("ama-password-submit")!;
+  const error = document.getElementById("ama-password-error")!;
+
+  async function sha256(message: string): Promise<string> {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+  }
+
+  function unlock() {
+    gate.classList.add("hidden");
+    resources.classList.remove("hidden");
+    sessionStorage.setItem(STORAGE_KEY, "true");
+  }
+
+  // 如果本次会话已验证过，直接展示
+  if (sessionStorage.getItem(STORAGE_KEY) === "true") {
+    unlock();
+  }
+
+  submit.addEventListener("click", async () => {
+    const hash = await sha256(input.value);
+    if (hash === PASSWORD_HASH) {
+      unlock();
+    } else {
+      error.classList.remove("hidden");
+      input.style.borderColor = "#ef4444";
+      setTimeout(() => {
+        error.classList.add("hidden");
+        input.style.borderColor = "";
+      }, 2000);
+    }
+  });
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      submit.click();
+    }
+  });
+
+  input.addEventListener("focus", () => {
+    input.style.borderColor = "var(--color-accent)";
+  });
+
+  input.addEventListener("blur", () => {
+    input.style.borderColor = "";
+  });
+</script>
