@@ -173,13 +173,232 @@ import Layout from "../layouts/Layout.astro";
       <!-- 资料内容（默认隐藏） -->
       <div id="ama-resources" class="hidden">
         <div class="section-divider my-4"></div>
-        <p class="text-xs" style={`color: var(--text-tertiary);`}>
-          资料整理中，敬请期待...
-        </p>
+
+        <!-- 资料卡片列表 -->
+        <div class="space-y-3">
+
+          <!-- 卡片 1: 华南理工 -->
+          <button class="ama-card card p-5 w-full text-left cursor-pointer flex items-center justify-between group" data-dialog="dialog-huanan">
+            <div>
+              <h3 class="text-sm font-semibold group-hover:text-[var(--color-accent)] transition-colors" style={`color: var(--text-primary);`}>华南理工 · 985 大三择路</h3>
+              <p class="text-xs mt-1" style={`color: var(--text-tertiary);`}>考研 vs 就业的概率计算，本科直接就业的可行性分析</p>
+            </div>
+            <svg class="w-4 h-4 shrink-0 ml-4" style={`color: var(--text-tertiary);`} fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+          </button>
+
+          <!-- 卡片 2: 中南民族 -->
+          <button class="ama-card card p-5 w-full text-left cursor-pointer flex items-center justify-between group" data-dialog="dialog-wuhan">
+            <div>
+              <h3 class="text-sm font-semibold group-hover:text-[var(--color-accent)] transition-colors" style={`color: var(--text-primary);`}>中南民族大学 · 双非前端方向</h3>
+              <p class="text-xs mt-1" style={`color: var(--text-tertiary);`}>学历劣势下的破局路径，前端学习路线，竞争力构建框架</p>
+            </div>
+            <svg class="w-4 h-4 shrink-0 ml-4" style={`color: var(--text-tertiary);`} fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+          </button>
+
+          <!-- 卡片 3: 西安邮电 -->
+          <button class="ama-card card p-5 w-full text-left cursor-pointer flex items-center justify-between group" data-dialog="dialog-xian">
+            <div>
+              <h3 class="text-sm font-semibold group-hover:text-[var(--color-accent)] transition-colors" style={`color: var(--text-primary);`}>西安邮电 · 实习转正策略</h3>
+              <p class="text-xs mt-1" style={`color: var(--text-tertiary);`}>字节实习期间的时间分配，转正优先级，云原生 vs 业务方向</p>
+            </div>
+            <svg class="w-4 h-4 shrink-0 ml-4" style={`color: var(--text-tertiary);`} fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+          </button>
+
+          <!-- 卡片 4: 简历修改-安全 -->
+          <button class="ama-card card p-5 w-full text-left cursor-pointer flex items-center justify-between group" data-dialog="dialog-resume">
+            <div>
+              <h3 class="text-sm font-semibold group-hover:text-[var(--color-accent)] transition-colors" style={`color: var(--text-primary);`}>简历修改 · 安全方向</h3>
+              <p class="text-xs mt-1" style={`color: var(--text-tertiary);`}>实习经历量化、专业技能表述优化、奖项筛选策略</p>
+            </div>
+            <svg class="w-4 h-4 shrink-0 ml-4" style={`color: var(--text-tertiary);`} fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+          </button>
+
+          <!-- 卡片 5: 简历修改-综合 -->
+          <button class="ama-card card p-5 w-full text-left cursor-pointer flex items-center justify-between group" data-dialog="dialog-zixun">
+            <div>
+              <h3 class="text-sm font-semibold group-hover:text-[var(--color-accent)] transition-colors" style={`color: var(--text-primary);`}>简历修改 · 综合建议</h3>
+              <p class="text-xs mt-1" style={`color: var(--text-tertiary);`}>简历照片、项目包装、面试准备方法论、先小后大策略</p>
+            </div>
+            <svg class="w-4 h-4 shrink-0 ml-4" style={`color: var(--text-tertiary);`} fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+          </button>
+
+        </div>
       </div>
     </div>
   </section>
 </Layout>
+
+<!-- ============ Dialog 弹窗 ============ -->
+
+<!-- 华南理工 Dialog -->
+<div id="dialog-huanan" class="ama-dialog fixed inset-0 z-[100] hidden items-center justify-center" style="background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);">
+  <div class="card mx-4 my-8 w-full max-w-2xl max-h-[85vh] overflow-y-auto animate-[fadeIn_0.2s_ease]">
+    <div class="sticky top-0 z-10 flex items-center justify-between p-5 pb-3" style={`background-color: var(--card-bg); border-bottom: 1px solid var(--border-color);`}>
+      <h3 class="text-base font-bold" style={`color: var(--text-primary);`}>华南理工 · 985 大三择路</h3>
+      <button class="ama-dialog-close p-1.5 rounded-lg cursor-pointer transition-colors hover:bg-[var(--bg-tertiary)]" style={`color: var(--text-tertiary);`}>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="p-5 space-y-4 text-sm leading-relaxed" style={`color: var(--text-secondary);`}>
+      <img src="/images/ama/huanan-bg.png" alt="咨询背景" class="w-full rounded-xl" style={`border: 1px solid var(--border-color);`} />
+
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>背景</h4>
+      <p>985 本科，大三上学期开始意识到该选一条路了。纠结考研还是找工作。</p>
+
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>分析</h4>
+      <p>先说结论：<strong style={`color: var(--text-primary);`}>更推荐本科直接就业</strong>。</p>
+      <p>985 本科这张牌本身就很硬。你去看看你们学校每年有多少人能进券商、进互联网大厂，再比一比每年升学到 985 硕士及以上的人数。学历够好的时候，校招对能力的要求会<strong style={`color: var(--text-primary);`}>适当放低</strong>，这个信息差很多人不知道。你的学校水平摆在这里，只要简历不是很离谱，大厂都会给面试机会。</p>
+      <p>大三才开始准备，晚吗？说实话我见过的咨询者里，一半以上都是这个时间节点才醒过来的。考研那边，觉得自己能过初试的概率不超过 30%，这是多数人的真实评估。从大三开始准备找工作的，基本都能找到比较满意的工作。<strong style={`color: var(--text-primary);`}>这是一个大样本下的趋势，不是个例。</strong></p>
+      <p>另外一个细节：你对整个招聘期的流程和时间节点掌握得比大部分咨询者都清楚。很多已经在大厂实习的同学都不知道暑期招聘、秋招的具体时间线。信息搜集能力本身就是一种竞争力，别小看这件事。</p>
+
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>执行建议</h4>
+      <p>找到实习这件事，对自己够狠的话，<strong style={`color: var(--text-primary);`}>四五个月</strong>足够了，比准备考研要短得多。具体节奏：</p>
+      <p>1. 现在选定一个方向开始学。到了暑期先投一两家试水，给面试就面，看看自己水平。万一没过就收手，别坏了其他公司的面评。</p>
+      <p>2. 五六月接着投暑期实习。拿到实习后转正+秋招双线并行。你大厂实习+985 本科这个组合，<strong style={`color: var(--text-primary);`}>绝对是秋招里的头部选手</strong>。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 中南民族 Dialog -->
+<div id="dialog-wuhan" class="ama-dialog fixed inset-0 z-[100] hidden items-center justify-center" style="background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);">
+  <div class="card mx-4 my-8 w-full max-w-2xl max-h-[85vh] overflow-y-auto animate-[fadeIn_0.2s_ease]">
+    <div class="sticky top-0 z-10 flex items-center justify-between p-5 pb-3" style={`background-color: var(--card-bg); border-bottom: 1px solid var(--border-color);`}>
+      <h3 class="text-base font-bold" style={`color: var(--text-primary);`}>中南民族大学 · 双非前端方向</h3>
+      <button class="ama-dialog-close p-1.5 rounded-lg cursor-pointer transition-colors hover:bg-[var(--bg-tertiary)]" style={`color: var(--text-tertiary);`}>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="p-5 space-y-4 text-sm leading-relaxed" style={`color: var(--text-secondary);`}>
+      <img src="/images/ama/wuhan-bg.jpeg" alt="咨询背景" class="w-full rounded-xl" style={`border: 1px solid var(--border-color);`} />
+
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>背景</h4>
+      <p>双非院校，非工科学校，学历劣势明显。前端方向，Vue 还没学完。纠结考研还是就业。</p>
+
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>考研 vs 就业</h4>
+      <p>先问自己三个问题：你对技术有没有自驱力？你对自己的期望是稳一点还是拼一把长期？家里需要你赚钱吗？</p>
+      <p>如果想稳，<strong style={`color: var(--text-primary);`}>建议就业</strong>。大三开始准备，到毕业还有一年多。前端方向本身门槛比后端低，学习路径也更短。现在努力点，找到一个中厂、年薪 25W+ 的工作没有很大问题。前提是自己够努力够卷。</p>
+      <p>大部分人美化了读研这条路。考研很辛苦，考完研更辛苦。基本要给导师打 2-3 年黑工，碰到不好的导师可能还不放你实习。本质上就是<strong style={`color: var(--text-primary);`}>用 2-3 年的辛苦换一张几年后行情未知的硕士学位证</strong>。你高考考了多少分？评估过上 985 的难度吗？那个难度大概率比你现在找一份工作还大。</p>
+      <p>算一笔账：一般的 211 硕士，真的不一定有中厂三年工作经历好使。中厂工作三年，税前怎么也有个 <strong style={`color: var(--text-primary);`}>80W+</strong>。</p>
+
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>前端学习路线</h4>
+      <p>路径很清晰：<code style={`background: var(--bg-tertiary); padding: 0.15em 0.4em; border-radius: 6px; font-size: 0.88em;`}>HTML → CSS → JS → 网络/AJAX → 前端工程化 → Webpack → 框架</code>。东西不多，没必要跟着割韭菜的课学，B 站 + GitHub + 官方文档基本够用。</p>
+      <p>然后不断刷实习。实习最难的是<strong style={`color: var(--text-primary);`}>从 0 到 1</strong>，找到第一份。简历上需要有：前端技术栈、计算机基础、两三个项目（最好有一个是造轮子级别的）、奖项奖学金。<strong style={`color: var(--text-primary);`}>永远不要等觉得自己准备好了再投</strong>，通过面试反向 Push 自己学习，这是最高效的方式。</p>
+
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>竞争力怎么构建</h4>
+      <p><strong style={`color: var(--text-primary);`}>硬实力</strong>的核心就一个词：解决问题。代码编写能力、计算机基础、语言框架熟练度，加上博客输出和开源参与，这些都是解决问题能力的外在体现。</p>
+      <p><strong style={`color: var(--text-primary);`}>软实力</strong>分两层：工作层面的沟通、汇报、理解需求能力；认知层面的阅读、写作、运动习惯。后者看似和找工作无关，但长期来看是底层竞争力的放大器。</p>
+
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>最后建议</h4>
+      <p>综合家庭条件和学历背景，推荐本科就业。选定一条路，然后一直走下去，不要在犹豫中消耗时间。你现在可能还在抄代码的阶段，但等你什么时候能自己动手写项目了，编程的乐趣就来了。寒假多泡图书馆，制定合理的计划，到了投简历之前可以再来找我看看。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 西安邮电 Dialog -->
+<div id="dialog-xian" class="ama-dialog fixed inset-0 z-[100] hidden items-center justify-center" style="background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);">
+  <div class="card mx-4 my-8 w-full max-w-2xl max-h-[85vh] overflow-y-auto animate-[fadeIn_0.2s_ease]">
+    <div class="sticky top-0 z-10 flex items-center justify-between p-5 pb-3" style={`background-color: var(--card-bg); border-bottom: 1px solid var(--border-color);`}>
+      <h3 class="text-base font-bold" style={`color: var(--text-primary);`}>西安邮电 · 实习转正策略</h3>
+      <button class="ama-dialog-close p-1.5 rounded-lg cursor-pointer transition-colors hover:bg-[var(--bg-tertiary)]" style={`color: var(--text-tertiary);`}>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="p-5 space-y-4 text-sm leading-relaxed" style={`color: var(--text-secondary);`}>
+      <img src="/images/ama/xian-bg.jpeg" alt="咨询背景" class="w-full rounded-xl" style={`border: 1px solid var(--border-color);`} />
+
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>背景</h4>
+      <p>双非本科，后端 Go 方向，正在字节实习。纠结要不要花时间做自己的项目、怎么争取转正、云原生方向是否适合校招。</p>
+
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>核心判断</h4>
+      <p>学历不够的情况下，后端想进大厂<strong style={`color: var(--text-primary);`}>几乎只能靠实习转正</strong>。所以你现在最重要的事只有一件：把这段实习做到极致。</p>
+      <p>需求比较小是吧？那就主动找事做。多和 mentor、leader 沟通，在小任务上表现出超预期的执行力，让他们愿意把更大更重要的任务交给你。这件事有两个回报：<strong style={`color: var(--text-primary);`}>增加转正概率</strong>，同时<strong style={`color: var(--text-primary);`}>丰富简历</strong>。实习项目的含金量不是你自己的玩具项目能比的，这一点切记切记。</p>
+
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>时间怎么分配</h4>
+      <p>别在自己的 side project 上花太多时间了。MIT 的课如果春节有空可以抽空看看，但那个玩具项目真的没必要。有这个时间不如多加加班、多表现自己，争取一个转正机会。</p>
+      <p><strong style={`color: var(--text-primary);`}>不要小看保底的重要性。</strong>有一个大厂保底 offer 在手，后续面试其他公司的心态完全不一样，和 HR 谈薪的底气也不一样。时间优先级排序：</p>
+      <p><strong style={`color: var(--text-primary);`}>实习工作（干活、总结、汇报、沟通）> 底层知识学习 > 八股文和算法 > 自己捣鼓项目</strong></p>
+
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>方向和秋招</h4>
+      <p>Go 的业务岗位比云原生多得多，云原生很少招校招生，硕士机会才多一些。秋招进面这件事要有心理预期：经济下行期，企业给双非同学面试机会确实在缩减。秋招可以试试不卡学历的公司，但<strong style={`color: var(--text-primary);`}>重心一定放在当前实习和暑期实习招聘上</strong>。转正能拿下就是最大的胜利。</p>
+
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>关于云原生和开源</h4>
+      <p>K8s 的范围很大，etcd 也是 K8s 的一部分。云原生本质上就是 CNCF 基金会下的那些产品，首先要会用，其次要会<strong style={`color: var(--text-primary);`}>二开</strong>（基于源码开发闭源版本），这是我接触到的云原生开发的核心定义。</p>
+      <p>开源没有那么神秘，就是把你写的东西公开，或者参与到开源项目的开发中。校招生完全可以做。不过国内面试对开源的认可度没有那么高，<strong style={`color: var(--text-primary);`}>阅读源码不算贡献，提 PR 才算</strong>。有个叫 GSoC（Google Summer of Code）的活动，专门帮助大学生参与开源，可以了解一下。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 简历修改-安全 Dialog -->
+<div id="dialog-resume" class="ama-dialog fixed inset-0 z-[100] hidden items-center justify-center" style="background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);">
+  <div class="card mx-4 my-8 w-full max-w-2xl max-h-[85vh] overflow-y-auto animate-[fadeIn_0.2s_ease]">
+    <div class="sticky top-0 z-10 flex items-center justify-between p-5 pb-3" style={`background-color: var(--card-bg); border-bottom: 1px solid var(--border-color);`}>
+      <h3 class="text-base font-bold" style={`color: var(--text-primary);`}>简历修改 · 安全方向</h3>
+      <button class="ama-dialog-close p-1.5 rounded-lg cursor-pointer transition-colors hover:bg-[var(--bg-tertiary)]" style={`color: var(--text-tertiary);`}>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="p-5 space-y-5 text-sm leading-relaxed" style={`color: var(--text-secondary);`}>
+      <!-- 先集中展示简历截图 -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>简历原文</h4>
+        <img src="/images/ama/resume-intern.png" alt="实习经历部分" class="w-full rounded-xl" style={`border: 1px solid var(--border-color);`} />
+        <img src="/images/ama/resume-skills.png" alt="专业技能部分" class="w-full rounded-xl" style={`border: 1px solid var(--border-color);`} />
+        <img src="/images/ama/resume-awards.png" alt="奖项部分" class="w-full rounded-xl" style={`border: 1px solid var(--border-color);`} />
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- 集中给建议 -->
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>修改建议</h4>
+
+      <p><strong style={`color: var(--text-primary);`}>实习经历：缺数据和产出。</strong>整体写的还行，但面试官想看到的是你做了什么、效果如何。每段实习经历至少应该有一个可量化的产出，比如扫描了多少台主机、发现了多少个漏洞、修复周期缩短了百分之多少。没有数据的实习经历，在面试官眼里就是一段描述，而不是一个成果。</p>
+
+      <p><strong style={`color: var(--text-primary);`}>专业技能：列了一堆语言，面试官不知道该问你哪一门。</strong>你得想清楚自己最强的是什么，把它放在第一行。简历上列出来的东西都是在邀请面试官来问你，如果你 Python 最强，那 Python 就放最前面，其他的适当弱化。列一堆不分主次，等于告诉面试官你哪个都不精通。</p>
+
+      <p>第二句话的表述也有问题，读起来很绕。直接改成：<strong style={`color: var(--text-primary);`}>熟悉常见的 Web 安全漏洞原理及测试方法：SQL 注入、XSS、CSRF、SSRF、XXE、文件上传、文件包含。</strong>简洁、明确、一目了然。</p>
+
+      <p>还有一个问题：计算机基础四大件（操作系统、网络、数据结构、数据库）以及 Linux、Git 这些日常必备技能，怎么没写？安全方向也得用这些东西，不写的话面试官可能默认你不会。</p>
+
+      <p><strong style={`color: var(--text-primary);`}>奖项：格式没对齐，而且堆太多了。</strong>美亚杯的排版和其他奖项没对齐，这种低级错误会影响整体印象。面试官看奖项的时候其实不太清楚每个奖的含金量，写三四个就够了，主要作用是填充篇幅、证明你学习期间没有躺平。英语证书也可以放在这个板块，不用单独列。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 简历修改-综合 Dialog -->
+<div id="dialog-zixun" class="ama-dialog fixed inset-0 z-[100] hidden items-center justify-center" style="background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);">
+  <div class="card mx-4 my-8 w-full max-w-2xl max-h-[85vh] overflow-y-auto animate-[fadeIn_0.2s_ease]">
+    <div class="sticky top-0 z-10 flex items-center justify-between p-5 pb-3" style={`background-color: var(--card-bg); border-bottom: 1px solid var(--border-color);`}>
+      <h3 class="text-base font-bold" style={`color: var(--text-primary);`}>简历修改 · 综合建议</h3>
+      <button class="ama-dialog-close p-1.5 rounded-lg cursor-pointer transition-colors hover:bg-[var(--bg-tertiary)]" style={`color: var(--text-tertiary);`}>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="p-5 space-y-5 text-sm leading-relaxed" style={`color: var(--text-secondary);`}>
+      <!-- 先展示简历 -->
+      <div>
+        <h4 class="text-xs font-bold mb-3" style={`color: var(--text-primary);`}>简历原文</h4>
+        <img src="/images/ama/zixun-resume.png" alt="简历截图" class="w-full rounded-xl" style={`border: 1px solid var(--border-color);`} />
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- 集中给建议 -->
+      <h4 class="text-xs font-bold" style={`color: var(--text-primary);`}>修改建议</h4>
+
+      <p><strong style={`color: var(--text-primary);`}>照片：换一张正式的。</strong>简历照片是面试官对你的第一印象，用非正式或者不协调的照片，等于还没开口就扣了分。去拍一张职业照，纯色背景，表情自然就行。这个投入产出比极高，花半小时搞定，但影响每一个看到你简历的人。</p>
+
+      <p><strong style={`color: var(--text-primary);`}>去掉形式化的东西。</strong>什么技术架构图、系统设计图，这些放在简历里非常违和。简历的核心目标只有一个：让面试官看完觉得<strong style={`color: var(--text-primary);`}>这个人有东西</strong>。每一行都应该服务于这个目标。如果一段描述删掉之后简历并不会变差，那它就不应该存在。不要为了凑内容把一个项目拆成好几点来写，面试官阅读简历的时间平均就十几秒，拆得越碎越没有冲击力。</p>
+
+      <p><strong style={`color: var(--text-primary);`}>面试准备的方法论。</strong>很多人准备面试就是背八股，背完上场一问就卡。问题出在哪？你从来没有练习过<strong style={`color: var(--text-primary);`}>输出</strong>。建议用录音的方式模拟面试，回放听自己说了什么，找到表述不清楚的地方反复优化。面试官看的不是你知道多少，而是你能不能一次性把一件事讲清楚。能做到这一点的候选人，不超过 20%。</p>
+
+      <p><strong style={`color: var(--text-primary);`}>先小厂后大厂的策略。</strong>面试是一个需要热手的过程。你上来就面字节、面阿里，大概率被秒。先从小厂开始投，拿几个 offer 练手，积累实战经验和面试信心。小厂的 offer 也不是没用，它既是简历上的加分项，也是后续面大厂时的心理安全网。有保底和没保底，面试时的状态完全不一样。</p>
+
+      <p><strong style={`color: var(--text-primary);`}>项目得是真的做过的。</strong>网上抄一个 CRUD 项目写上去，面试官两个问题就能把你问穿。选那些你真正花了时间、遇到过问题并且解决了问题的项目。哪怕是学校联培的项目，只要你实际投入了时间，就值得写进去。<strong style={`color: var(--text-primary);`}>投入时间本身就是价值</strong>，关键是你要能说清楚这个过程。</p>
+
+      <p><strong style={`color: var(--text-primary);`}>面试中遇到困难怎么说。</strong>项目里遇到的困难，比如数据获取有问题、技术方案选错了，这些面试官一定会问。你的回答必须体现<strong style={`color: var(--text-primary);`}>主动解决</strong>的态度：我试了什么方法、为什么选了这个方案、最后效果怎样。最忌讳的回答是「这个不是我负责的」或者「后来别人帮忙解决了」。面试官要的不是完美答案，是你面对问题时的思考过程和行动力。</p>
+    </div>
+  </div>
+</div>
 
 <script>
   // SHA-256 哈希比对，不在源码中存储明文密码
@@ -205,7 +424,6 @@ import Layout from "../layouts/Layout.astro";
     sessionStorage.setItem(STORAGE_KEY, "true");
   }
 
-  // 如果本次会话已验证过，直接展示
   if (sessionStorage.getItem(STORAGE_KEY) === "true") {
     unlock();
   }
@@ -236,5 +454,57 @@ import Layout from "../layouts/Layout.astro";
 
   input.addEventListener("blur", () => {
     input.style.borderColor = "";
+  });
+
+  // Dialog 打开/关闭逻辑
+  function openDialog(id: string) {
+    const dialog = document.getElementById(id);
+    if (dialog) {
+      dialog.classList.remove("hidden");
+      dialog.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  function closeDialog(dialog: HTMLElement) {
+    dialog.classList.add("hidden");
+    dialog.classList.remove("flex");
+    document.body.style.overflow = "";
+  }
+
+  // 卡片点击打开 dialog
+  document.querySelectorAll(".ama-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const dialogId = card.getAttribute("data-dialog")!;
+      openDialog(dialogId);
+    });
+  });
+
+  // 关闭按钮
+  document.querySelectorAll(".ama-dialog-close").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const dialog = btn.closest(".ama-dialog") as HTMLElement;
+      if (dialog) closeDialog(dialog);
+    });
+  });
+
+  // 点击遮罩关闭
+  document.querySelectorAll(".ama-dialog").forEach((dialog) => {
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) {
+        closeDialog(dialog as HTMLElement);
+      }
+    });
+  });
+
+  // ESC 关闭
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      document.querySelectorAll(".ama-dialog").forEach((dialog) => {
+        if (!dialog.classList.contains("hidden")) {
+          closeDialog(dialog as HTMLElement);
+        }
+      });
+    }
   });
 </script>
