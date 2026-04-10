@@ -16,6 +16,14 @@ export const projects: Project[] = [
     tags: ["AI", "MBTI", "Prompt"],
   },
   {
+    name: "hermes-agent-anatomy",
+    description:
+      "Hermes Agent 源码解剖 —— NousResearch/hermes-agent 是一个 33 万行 Python 代码的开源 AI Agent 框架，从 CLI 交互到 11 平台消息网关到 RL 训练数据采集，全部内置在一个单体仓库里。这个项目是对其源码的系统化技术分析，逐模块拆解，写了 8 篇技术文档，配有大量手绘风格技术插图。从 Agent 核心循环、Tool Registry、多 Provider 适配到上下文压缩、消息网关、Memory 与 RL 训练。最后一篇将 Hermes Agent、OpenClaw、Claude Code 三个框架放在一起做了 13 个维度的对比。",
+    url: "https://anneheartrecord.github.io/hermes-agent-anatomy/",
+    github: "https://github.com/anneheartrecord/hermes-agent-anatomy",
+    tags: ["AI Agent", "源码解析", "Hermes"],
+  },
+  {
     name: "claude-code-docs",
     description:
       "Claude Code 源码解剖 —— 2026 年 3 月 Anthropic 意外泄露了 Claude Code 的完整 TypeScript 源码（51.5 万行）。我对这份源码做了系统化的技术分析，逐模块拆解，写了 13 篇技术文档（中英双语）。从架构设计到 Agent 循环的六阶段实现，从三层消息压缩体系到 6,300 行的权限系统，从五层记忆加载到 40+ 工具的执行流水线。同时从 82 个 feature flag 里挖出了 Anthropic 尚未发布的功能蓝图。",
