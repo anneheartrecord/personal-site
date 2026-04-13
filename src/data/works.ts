@@ -60,4 +60,17 @@ export const works: WorkItem[] = [
       },
     ],
   },
+  {
+    company: "PANDAG (食铁兽科技)",
+    companyUrl: "https://www.douyin.com/user/MS4wLjABAAAAZKvns92hhdeSuxyyitgClpco86s2ruypJEYdMEN3bw7U09gZdMFcR3FXyGESDV68?from_tab_name=main&showTab=post",
+    logo: "pandag",
+    period: "2022.03 — 2022.09",
+    roles: [
+      {
+        title: "Co-founder / Early Team Member",
+        description:
+          "Joined as an early team member during sophomore year, working alongside senior schoolmates to build the company from the ground up. PANDAG has since secured investments from Jack Li (李泽湘), Miracle Plus (奇绩创坛) and other notable investors, successfully closing its Series A round and growing to nearly 100 employees.",
+      },
+    ],
+  },
 ];
