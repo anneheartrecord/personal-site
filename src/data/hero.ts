@@ -2,7 +2,7 @@ export const hero = {
   name: "Charles",
   nameCN: "安妮的心动录",
   avatar: "/images/avatar.jpg",
-  tagline: "Tinkerer. Builder. First-principles thinker.",
+  tagline: "Gen-Z developer who loves thinking deeply.",
   bio: [
     "I'm **Charles** (aka 安妮的心动录), an **Operations & Development Engineer** at **Tencent Music Entertainment** with **3 years of Kubernetes/DevOps** experience.",
     "- 🛠️ A restless tinkerer — co-founded a startup in college, worked at both early-stage companies and big tech. Currently building **cloud-native infrastructure** and **AI platforms** that make complex things invisible.",
