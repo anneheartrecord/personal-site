@@ -34,6 +34,79 @@ import { socials } from "../data/socials";
     }
   </ul>
 
+  <!-- Hobbies -->
+  <div class="mt-6">
+    <h3 class="text-xs font-semibold uppercase tracking-wider mb-2" style={`color: var(--text-tertiary);`}>
+      🎯 Hobbies
+    </h3>
+    <p class="text-[13px] leading-[1.75]" style={`color: var(--text-secondary);`}>
+      {hero.hobbies}
+    </p>
+  </div>
+
+  <!-- Life -->
+  <div class="mt-5">
+    <h3 class="text-xs font-semibold uppercase tracking-wider mb-2" style={`color: var(--text-tertiary);`}>
+      🏠 Life
+    </h3>
+    <p class="text-[13px] leading-[1.75]" style={`color: var(--text-secondary);`}
+       set:html={hero.life
+         .replace(/\*\*(.*?)\*\*/g, '<strong style="color: var(--text-primary); font-weight: 600;">$1</strong>')
+       }
+    />
+
+    <!-- Cat photo toggle -->
+    <button
+      id="nuomi-toggle"
+      class="mt-2 inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all duration-200 hover:scale-105 cursor-pointer"
+      style={`color: var(--color-accent); background: var(--bg-secondary); border: 1px solid var(--border-color);`}
+    >
+      <span>🐱</span>
+      <span id="nuomi-toggle-text">Meet Nuomi</span>
+    </button>
+
+    <!-- Cat photo gallery (hidden by default) -->
+    <div id="nuomi-gallery" class="mt-3 hidden">
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        {
+          hero.catPhotos.map((photo) => (
+            <div class="relative group overflow-hidden rounded-lg" style={`border: 1px solid var(--border-color);`}>
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                class="w-full aspect-[4/3.6] object-cover transition-transform duration-300 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="absolute bottom-0 left-0 right-0 px-2 py-1 text-[10px] font-medium text-white bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                {photo.alt}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Countries visited -->
+  <div class="mt-5">
+    <h3 class="text-xs font-semibold uppercase tracking-wider mb-2" style={`color: var(--text-tertiary);`}>
+      🌏 Visited
+    </h3>
+    <div class="flex flex-wrap gap-2">
+      {
+        hero.countries.map((c) => (
+          <span
+            class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg"
+            style={`color: var(--text-secondary); background: var(--bg-secondary); border: 1px solid var(--border-color);`}
+          >
+            <span class="text-sm">{c.flag}</span>
+            {c.name}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+
   <!-- Social icons -->
   <div class="flex items-center gap-3 mt-6">
     {
@@ -70,6 +143,35 @@ import { socials } from "../data/socials";
     }
   </div>
 </section>
+
+<script>
+  function initNuomiGallery() {
+    const toggle = document.getElementById('nuomi-toggle');
+    const gallery = document.getElementById('nuomi-gallery');
+    const toggleText = document.getElementById('nuomi-toggle-text');
+
+    if (!toggle || !gallery || !toggleText) return;
+
+    // Ensure hidden on init
+    gallery.classList.add('hidden');
+    toggleText.textContent = 'Meet Nuomi';
+
+    toggle.addEventListener('click', () => {
+      const isHidden = gallery.classList.contains('hidden');
+      if (isHidden) {
+        gallery.classList.remove('hidden');
+        toggleText.textContent = 'Hide Nuomi';
+      } else {
+        gallery.classList.add('hidden');
+        toggleText.textContent = 'Meet Nuomi';
+      }
+    });
+  }
+
+  // Run on initial load and after Astro page transitions
+  initNuomiGallery();
+  document.addEventListener('astro:page-load', initNuomiGallery);
+</script>
 
 <style>
   @keyframes wave {
