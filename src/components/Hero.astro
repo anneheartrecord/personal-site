@@ -74,7 +74,7 @@ import { socials } from "../data/socials";
               <img
                 src={photo.src}
                 alt={photo.alt}
-                class="w-full aspect-[4/3.6] object-cover transition-transform duration-300 group-hover:scale-110"
+                class="w-full aspect-[4/4] object-cover transition-transform duration-300 group-hover:scale-110"
                 loading="lazy"
               />
               <div class="absolute bottom-0 left-0 right-0 px-2 py-1 text-[10px] font-medium text-white bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -94,17 +94,43 @@ import { socials } from "../data/socials";
     </h3>
     <div class="flex flex-wrap gap-2">
       {
-        hero.countries.map((c) => (
-          <span
-            class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg"
+        hero.countries.map((c, i) => (
+          <button
+            class="country-toggle inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all duration-200 hover:scale-105 cursor-pointer"
             style={`color: var(--text-secondary); background: var(--bg-secondary); border: 1px solid var(--border-color);`}
+            data-country={i}
           >
             <span class="text-sm">{c.flag}</span>
             {c.name}
-          </span>
+          </button>
         ))
       }
     </div>
+
+    <!-- Travel photo galleries (hidden by default) -->
+    {
+      hero.countries.map((c, i) => (
+        <div id={`travel-gallery-${i}`} class="mt-3 hidden">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            {
+              c.photos.map((photo) => (
+                <div class="relative group overflow-hidden rounded-lg" style={`border: 1px solid var(--border-color);`}>
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    class="w-full aspect-[4/4] object-cover transition-transform duration-300 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div class="absolute bottom-0 left-0 right-0 px-2 py-1 text-[10px] font-medium text-white bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    {photo.alt}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      ))
+    }
   </div>
 
   <!-- Social icons -->
@@ -145,32 +171,64 @@ import { socials } from "../data/socials";
 </section>
 
 <script>
-  function initNuomiGallery() {
-    const toggle = document.getElementById('nuomi-toggle');
-    const gallery = document.getElementById('nuomi-gallery');
-    const toggleText = document.getElementById('nuomi-toggle-text');
+  function initGalleries() {
+    // Nuomi gallery
+    const nuomiToggle = document.getElementById('nuomi-toggle');
+    const nuomiGallery = document.getElementById('nuomi-gallery');
+    const nuomiText = document.getElementById('nuomi-toggle-text');
 
-    if (!toggle || !gallery || !toggleText) return;
+    if (nuomiToggle && nuomiGallery && nuomiText) {
+      nuomiGallery.classList.add('hidden');
+      nuomiText.textContent = 'Meet Nuomi';
 
-    // Ensure hidden on init
-    gallery.classList.add('hidden');
-    toggleText.textContent = 'Meet Nuomi';
+      nuomiToggle.addEventListener('click', () => {
+        const isHidden = nuomiGallery.classList.contains('hidden');
+        if (isHidden) {
+          nuomiGallery.classList.remove('hidden');
+          nuomiText.textContent = 'Hide Nuomi';
+        } else {
+          nuomiGallery.classList.add('hidden');
+          nuomiText.textContent = 'Meet Nuomi';
+        }
+      });
+    }
 
-    toggle.addEventListener('click', () => {
-      const isHidden = gallery.classList.contains('hidden');
-      if (isHidden) {
-        gallery.classList.remove('hidden');
-        toggleText.textContent = 'Hide Nuomi';
-      } else {
-        gallery.classList.add('hidden');
-        toggleText.textContent = 'Meet Nuomi';
-      }
+    // Travel galleries
+    document.querySelectorAll('.country-toggle').forEach((btn) => {
+      const idx = btn.getAttribute('data-country');
+      const gallery = document.getElementById(`travel-gallery-${idx}`);
+      if (!gallery) return;
+
+      gallery.classList.add('hidden');
+
+      btn.addEventListener('click', () => {
+        // Close all other travel galleries
+        document.querySelectorAll('[id^="travel-gallery-"]').forEach((g) => {
+          if (g !== gallery) {
+            g.classList.add('hidden');
+          }
+        });
+        // Reset all button styles
+        document.querySelectorAll('.country-toggle').forEach((b) => {
+          b.style.color = 'var(--text-secondary)';
+          b.style.background = 'var(--bg-secondary)';
+          b.style.borderColor = 'var(--border-color)';
+        });
+
+        const isHidden = gallery.classList.contains('hidden');
+        if (isHidden) {
+          gallery.classList.remove('hidden');
+          btn.style.color = 'var(--color-accent)';
+          btn.style.borderColor = 'var(--color-accent)';
+        } else {
+          gallery.classList.add('hidden');
+        }
+      });
     });
   }
 
-  // Run on initial load and after Astro page transitions
-  initNuomiGallery();
-  document.addEventListener('astro:page-load', initNuomiGallery);
+  initGalleries();
+  document.addEventListener('astro:page-load', initGalleries);
 </script>
 
 <style>
