@@ -15,7 +15,7 @@ export const works: WorkItem[] = [
     company: "Tencent Music Entertainment",
     companyUrl: "https://www.tencentmusic.com",
     logo: "tme",
-    period: "2023.05 — Present",
+    period: "2023.05 — 2026.05",
     roles: [
       {
         title: "AI Platform Engineering",
