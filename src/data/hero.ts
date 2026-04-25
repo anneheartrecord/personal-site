@@ -4,8 +4,7 @@ export const hero = {
   avatar: "/images/avatar.jpg",
   tagline: "Gen-Z developer who loves thinking deeply.",
   bio: [
-    "I'm **Charles** (aka 安妮的心动录), an **Operations & Development Engineer** at **Tencent Music Entertainment** with **3 years of Kubernetes/DevOps** experience.",
-    "- 🛠️ A restless tinkerer — co-founded a startup in college, worked at both early-stage companies and big tech. Currently building **cloud-native infrastructure** and **AI platforms** that make complex things invisible.",
+    "I'm **Charles** (aka 安妮的心动录). Full-stack engineer with a focus on Kubernetes, cloud-native infrastructure, and AI tooling. I like working end-to-end — from backend and DevOps to frontend and product experience.",
     "- ✍️ Writing is how I think. I run a **~2K-follower X account** where I share engineering insights, first-principles breakdowns, and the occasional hot take.",
     "- 📚 Deep user of **Claude Code**, **AI productivity explorer**, and someone who'd rather build the tool than complain about the problem.",
     "- 💬 Open for **Ask Me Anything** or **job referrals** — add me on [WeChat](/social#wechat).",
