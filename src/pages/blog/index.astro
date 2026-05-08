@@ -1,18 +1,223 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import BlogCard from "../../components/BlogCard.astro";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog", ({ data }) => !data.draft);
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const featuredIds = [
+  "natural-language-is-new-programming-language",
+  "investment-eight-lessons",
+  "seven-reasons-to-start-output",
+];
+
+const featuredPosts = featuredIds
+  .map((id) => posts.find((post) => post.id === id))
+  .filter((post) => post !== undefined);
+
+const topicDefinitions = [
+  {
+    id: "ai-agent",
+    name: "AI & Agent",
+    description: "AI tools, agent frameworks, Claude Code, OpenClaw, and engineering productivity.",
+    tags: ["AI", "Claude Code", "OpenClaw", "Harness Engineering", "工程效率"],
+    keywords: ["ai-first", "agent", "claude code", "openclaw", "模型"],
+  },
+  {
+    id: "investing-business",
+    name: "Investing & Business",
+    description: "Investing mindset, markets, global accounts, business judgment, and decision-making.",
+    tags: ["投资", "美股", "Crypto", "商业", "港卡", "资产配置", "全球支付", "交易系统"],
+    keywords: ["投资", "美股", "crypto", "交易", "港卡", "海外银行卡", "资产配置"],
+  },
+  {
+    id: "career-growth",
+    name: "Career & Growth",
+    description: "Job hunting, career choices, work quality, output, visibility, and personal growth.",
+    tags: ["求职", "职场", "职业发展", "成长", "个人成长", "面试", "管理", "做事方法"],
+    keywords: ["求职", "实习", "面试", "职场", "晋升", "绩效", "主业", "做事"],
+  },
+  {
+    id: "technical-deep-dives",
+    name: "Technical Deep Dives",
+    description: "Kubernetes, cloud native, backend systems, Go, Python, databases, and infrastructure notes.",
+    tags: [
+      "Kubernetes",
+      "K8S",
+      "Docker",
+      "云原生",
+      "Go",
+      "Python",
+      "JavaScript",
+      "前端",
+      "数据库",
+      "网络",
+      "Git",
+      "Django",
+      "Prometheus",
+      "DevOps",
+      "容器",
+      "微服务",
+      "分布式",
+      "并发",
+      "区块链",
+      "监控",
+      "技术",
+    ],
+    keywords: ["k8s", "kubernetes", "pod", "container", "python", "mysql", "redis", "http", "tcp", "django", "prometheus", "git"],
+  },
+  {
+    id: "thinking-writing",
+    name: "Thinking & Writing",
+    description: "Writing, cognition, content, first-principles thinking, and personal observations.",
+    tags: ["写作", "认知", "思考", "内容", "内容创作", "个人品牌", "自媒体", "流量", "生产力"],
+    keywords: ["写作", "认知", "思考", "输出", "流量", "曝光", "不公平", "努力"],
+  },
+];
+
+const fallbackTopic = {
+  id: "other-notes",
+  name: "Other Notes",
+  description: "Essays and notes that do not fit neatly into one major bucket.",
+  tags: [],
+  keywords: [],
+};
+
+const topics = [...topicDefinitions, fallbackTopic];
+
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+const matchesKeyword = (value: string, keyword: string) => {
+  const normalized = value.toLowerCase();
+  const normalizedKeyword = keyword.toLowerCase();
+
+  if (/^[a-z0-9+#.\s-]+$/.test(normalizedKeyword)) {
+    return new RegExp(`(^|[^a-z0-9+#.])${escapeRegExp(normalizedKeyword)}([^a-z0-9+#.]|$)`).test(normalized);
+  }
+
+  return normalized.includes(normalizedKeyword);
+};
+
+const includesAny = (value: string, keywords: string[]) => {
+  return keywords.some((keyword) => matchesKeyword(value, keyword));
+};
+
+const getTopicScore = (post: (typeof posts)[number], topic: (typeof topicDefinitions)[number]) => {
+  const tags = post.data.tags.map((tag) => tag.toLowerCase());
+  const haystack = `${post.data.title} ${post.data.description} ${post.data.tags.join(" ")}`;
+  const tagScore = topic.tags.filter((tag) => tags.includes(tag.toLowerCase())).length * 20;
+  const keywordScore = includesAny(haystack, topic.keywords) ? 1 : 0;
+
+  return tagScore + keywordScore;
+};
+
+const getPrimaryTopic = (post: (typeof posts)[number]) => {
+  const bestMatch = topicDefinitions
+    .map((topic) => ({ topic, score: getTopicScore(post, topic) }))
+    .sort((a, b) => b.score - a.score)[0];
+
+  return bestMatch.score > 0 ? bestMatch : { topic: fallbackTopic, score: 1 };
+};
+
+const topicSections = topics
+  .map((topic) => ({
+    ...topic,
+    posts: posts.filter((post) => getPrimaryTopic(post).topic.id === topic.id),
+  }))
+  .filter((topic) => topic.posts.length > 0);
 ---
 
 <Layout title="Blog — Charles">
   <h1 class="text-2xl font-bold tracking-tight mb-2" style={`color: var(--text-primary);`}>Blog</h1>
-  <p class="text-sm mb-8" style={`color: var(--text-secondary);`}>Technical thoughts and practice notes</p>
-  <div class="space-y-3">
-    {posts.map((post) => (
-      <BlogCard title={post.data.title} date={post.data.date.toISOString().split("T")[0]} description={post.data.description} slug={post.id} />
-    ))}
+  <p class="text-sm leading-relaxed mb-8 max-w-2xl" style={`color: var(--text-secondary);`}>
+    Writing is where I clarify ideas. Start with the selected essays, or browse by topic if you already know what you are looking for.
+  </p>
+
+  <section class="mb-10">
+    <div class="flex items-end justify-between gap-4 mb-5">
+      <div>
+        <p class="text-[11px] font-semibold uppercase mb-2" style={`color: var(--text-tertiary); letter-spacing: 0;`}>
+          Selected Essays
+        </p>
+        <h2 class="text-lg font-bold tracking-tight" style={`color: var(--text-primary);`}>
+          Start here
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      {
+        featuredPosts.map((post) => (
+          <a href={`/blog/${post.id}`} class="group card p-5 flex flex-col min-h-[230px]">
+            <time class="text-[10px] font-mono mb-4" style={`color: var(--text-tertiary);`}>
+              {post.data.date.toISOString().split("T")[0]}
+            </time>
+            <h3 class="text-sm font-semibold leading-relaxed mb-3 group-hover:text-[var(--color-accent)] transition-colors" style={`color: var(--text-primary);`}>
+              {post.data.title}
+            </h3>
+            <p class="text-xs leading-[1.8] line-clamp-4 mb-5" style={`color: var(--text-secondary);`}>
+              {post.data.description}
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-auto">
+              {post.data.tags.slice(0, 3).map((tag) => <span class="tag-pill">{tag}</span>)}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <div class="section-divider my-6"></div>
+
+  <section class="py-10">
+    <p class="text-[11px] font-semibold uppercase mb-3" style={`color: var(--text-tertiary); letter-spacing: 0;`}>
+      Browse by Topic
+    </p>
+    <div class="flex flex-wrap gap-2">
+      {topicSections.map((topic) => (
+        <a href={`#${topic.id}`} class="tag-pill hover:text-[var(--color-accent)]">
+          {topic.name} · {topic.posts.length}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <div class="space-y-12">
+    {
+      topicSections.map((topic) => (
+        <section id={topic.id} class="scroll-mt-8">
+          <div class="mb-5">
+            <h2 class="text-lg font-bold tracking-tight mb-2" style={`color: var(--text-primary);`}>
+              {topic.name}
+            </h2>
+            <p class="text-xs leading-[1.8] max-w-2xl" style={`color: var(--text-secondary);`}>
+              {topic.description}
+            </p>
+          </div>
+          <div class="space-y-3">
+            {topic.posts.map((post) => (
+              <a href={`/blog/${post.id}`} class="group card block p-5">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-3">
+                  <div class="min-w-0">
+                    <h3 class="text-sm font-semibold mb-1.5 group-hover:text-[var(--color-accent)] transition-colors" style={`color: var(--text-primary);`}>
+                      {post.data.title}
+                    </h3>
+                    <p class="text-xs leading-relaxed line-clamp-2" style={`color: var(--text-secondary);`}>
+                      {post.data.description}
+                    </p>
+                  </div>
+                  <time class="text-[10px] font-mono whitespace-nowrap pt-0.5 shrink-0" style={`color: var(--text-tertiary);`}>
+                    {post.data.date.toISOString().split("T")[0]}
+                  </time>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                  {post.data.tags.slice(0, 4).map((tag) => <span class="tag-pill">{tag}</span>)}
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))
+    }
   </div>
 </Layout>

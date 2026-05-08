@@ -9,6 +9,18 @@ import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog", ({ data }) => !data.draft);
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const homeBlogIds = [
+  "natural-language-is-new-programming-language",
+  "investment-eight-lessons",
+  "seven-reasons-to-start-output",
+  "work-quality-is-character",
+  "traffic-and-exposure-reflection",
+  "openclaw-analysis",
+];
+const selectedHomePosts = homeBlogIds
+  .map((id) => posts.find((post) => post.id === id))
+  .filter((post) => post !== undefined);
+const homePosts = selectedHomePosts.length > 0 ? selectedHomePosts : posts.slice(0, 6);
 ---
 
 <Layout title="Charles — Developer">
@@ -18,12 +30,14 @@ const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueO
   <div class="section-divider my-6"></div>
 
   <!-- Work Experience -->
-  <WorkTimeline />
+  <div id="experience">
+    <WorkTimeline />
+  </div>
 
   <div class="section-divider my-6"></div>
 
   <!-- Projects — show ALL -->
-  <section class="py-10">
+  <section id="projects" class="py-10">
     <h2 class="text-lg font-bold tracking-tight mb-8" style={`color: var(--text-primary);`}>
       Projects
     </h2>
@@ -36,36 +50,25 @@ const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueO
 
   <div class="section-divider my-6"></div>
 
-  <!-- Blog — show ALL -->
-  <section class="py-10">
-    <h2 class="text-lg font-bold tracking-tight mb-8" style={`color: var(--text-primary);`}>
-      Blog
-    </h2>
+  <!-- Blog -->
+  <section id="blog" class="py-10">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
+      <div>
+        <h2 class="text-lg font-bold tracking-tight mb-2" style={`color: var(--text-primary);`}>
+          Blog
+        </h2>
+        <p class="text-xs leading-[1.8] max-w-xl" style={`color: var(--text-secondary);`}>
+          Selected writing on AI tooling, investing, career growth, and engineering practice.
+        </p>
+      </div>
+      <a href="/blog" class="tag-pill hover:text-[var(--color-accent)] w-fit">
+        Browse all posts
+      </a>
+    </div>
     <div class="space-y-3">
-      {posts.map((post) => (
+      {homePosts.map((post) => (
         <BlogCard title={post.data.title} date={post.data.date.toISOString().split("T")[0]} description={post.data.description} slug={post.id} />
       ))}
-    </div>
-  </section>
-
-  <div class="section-divider my-6"></div>
-
-  <!-- Contact / WeChat -->
-  <section class="py-10">
-    <h2 class="text-lg font-bold tracking-tight mb-4" style={`color: var(--text-primary);`}>
-      Get in touch
-    </h2>
-    <p class="text-sm leading-relaxed mb-6" style={`color: var(--text-secondary);`}>
-      Open for Ask Me Anything, job referrals, or just a friendly chat. Feel free to reach out via any channel.
-    </p>
-    <div class="card p-6 inline-flex flex-col items-center">
-      <img
-        src="/images/wechat.jpg"
-        alt="WeChat QR Code"
-        class="w-44 h-44 rounded-xl object-cover mb-3"
-        style={`border: 1px solid var(--border-color);`}
-      />
-      <p class="text-xs font-medium" style={`color: var(--text-tertiary);`}>Scan to add me on WeChat</p>
     </div>
   </section>
 </Layout>
