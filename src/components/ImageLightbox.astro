@@ -1,0 +1,196 @@
+<div id="image-lightbox" class="image-lightbox" aria-hidden="true">
+  <button class="image-lightbox__backdrop" type="button" aria-label="Close image preview"></button>
+  <figure class="image-lightbox__content" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="image-lightbox__close" type="button" aria-label="Close image preview">&times;</button>
+    <img id="image-lightbox-img" src="" alt="" />
+    <figcaption id="image-lightbox-caption"></figcaption>
+  </figure>
+</div>
+
+<script>
+  function initImageLightbox() {
+    const lightbox = document.getElementById("image-lightbox");
+    const lightboxImage = document.getElementById("image-lightbox-img");
+    const caption = document.getElementById("image-lightbox-caption");
+    const closeButton = lightbox?.querySelector(".image-lightbox__close");
+    const backdrop = lightbox?.querySelector(".image-lightbox__backdrop");
+
+    if (!lightbox || !(lightboxImage instanceof HTMLImageElement) || !caption || !closeButton || !backdrop) {
+      return;
+    }
+
+    const openLightbox = (image) => {
+      const source = image.currentSrc || image.src;
+      if (!source) return;
+
+      lightboxImage.src = source;
+      lightboxImage.alt = image.alt || "";
+      caption.textContent = image.alt || "";
+      caption.hidden = !image.alt;
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+      closeButton.focus();
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("lightbox-open");
+      lightboxImage.removeAttribute("src");
+      lightboxImage.alt = "";
+      caption.textContent = "";
+      caption.hidden = true;
+    };
+
+    if (!document.documentElement.dataset.lightboxBound) {
+      document.documentElement.dataset.lightboxBound = "true";
+
+      document.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+
+        const image = target.closest("body img:not([data-no-lightbox]):not(#image-lightbox-img)");
+        if (!(image instanceof HTMLImageElement)) return;
+        if (image.closest("a, button")) return;
+        if (image.closest("#image-lightbox")) return;
+
+        event.preventDefault();
+        openLightbox(image);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+          event.stopImmediatePropagation();
+          closeLightbox();
+        }
+      });
+    }
+
+    closeButton.addEventListener("click", closeLightbox);
+    backdrop.addEventListener("click", closeLightbox);
+  }
+
+  initImageLightbox();
+  document.addEventListener("astro:page-load", initImageLightbox);
+</script>
+
+<style>
+  :global(body img:not([data-no-lightbox]):not(#image-lightbox-img)) {
+    cursor: zoom-in;
+  }
+
+  :global(body.lightbox-open) {
+    overflow: hidden;
+  }
+
+  .image-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 180ms ease;
+  }
+
+  .image-lightbox.is-open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .image-lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    cursor: zoom-out;
+    border: 0;
+    background: rgba(15, 23, 42, 0.72);
+    backdrop-filter: blur(10px);
+  }
+
+  .image-lightbox__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: min(1120px, 94vw);
+    max-height: 90vh;
+    margin: 0;
+    transform: translateY(8px) scale(0.98);
+    transition: transform 180ms ease;
+  }
+
+  .image-lightbox.is-open .image-lightbox__content {
+    transform: translateY(0) scale(1);
+  }
+
+  .image-lightbox__content img {
+    display: block;
+    max-width: min(1120px, 94vw);
+    max-height: 82vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 14px;
+    background: var(--bg-secondary);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+    cursor: zoom-out;
+  }
+
+  .image-lightbox__close {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.86);
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+  }
+
+  .image-lightbox__close:hover {
+    background: rgba(15, 23, 42, 1);
+  }
+
+  .image-lightbox__close:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+
+  .image-lightbox__content figcaption {
+    max-width: min(720px, 90vw);
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.78);
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .image-lightbox {
+      padding: 16px;
+    }
+
+    .image-lightbox__content img {
+      max-width: 94vw;
+      max-height: 78vh;
+      border-radius: 12px;
+    }
+
+    .image-lightbox__close {
+      top: -12px;
+      right: -8px;
+    }
+  }
+</style>

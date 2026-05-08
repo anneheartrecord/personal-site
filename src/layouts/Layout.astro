@@ -1,5 +1,6 @@
 ---
 import Sidebar from "../components/Sidebar.astro";
+import ImageLightbox from "../components/ImageLightbox.astro";
 import TopBar from "../components/TopBar.astro";
 import "../styles/global.css";
 
@@ -50,6 +51,8 @@ const { title, description = "Charles — Developer" } = Astro.props;
         </footer>
       </main>
     </div>
+
+    <ImageLightbox />
 
     <script>
       const menuBtn = document.getElementById("mobile-menu-btn");
