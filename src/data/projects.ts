@@ -8,14 +8,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    name: "job-hunting-guide",
-    description:
-      "求职系列 —— 大厂工程师的求职方法论。累计面试上百场、辅导数十位不同背景同学后总结出来的方法论，从简历准备到面试策略全流程拆解。简历的本质是销售文案不是信息登记表，每轮面试考察的能力完全不同，面试能力只能通过模拟来练。不是泛泛的鸡汤，是可以直接拿去用的操作指南。",
-    url: "https://anneheartrecord.github.io/job-hunting-guide/",
-    github: "https://github.com/anneheartrecord/job-hunting-guide",
-    tags: ["求职", "面试", "方法论"],
-  },
-  {
     name: "talk-mbti",
     description:
       "对话式 MBTI 人格分析 —— 没有一道选择题，打开就是聊天。心理学里的社会期许偏差（Social Desirability Bias）告诉我们，人填问卷时会无意识地美化自己。talk-mbti 换了个思路：通过自然对话，从你的措辞、第一反应、决策逻辑里提取真实的行为信号，聊完直接生成四维度百分比、认知功能栈、超能力和成长盲区的完整报告。基于 Gemini 2.0 Flash 驱动，Cloudflare AI Gateway 代理，国内无需梯子可用。",
@@ -46,37 +38,5 @@ export const projects: Project[] = [
     url: "https://github.com/anneheartrecord/claude-code-config",
     github: "https://github.com/anneheartrecord/claude-code-config",
     tags: ["Claude Code", "配置", "最佳实践"],
-  },
-  {
-    name: "weekly-report-generator",
-    description:
-      "AI Skill 周报生成器 —— 根据 Git 提交记录和手动输入，自动生成按模块归类的周报。支持多项目目录聚合、可配置时间范围（本周/近两周/本月/自定义）、三种输出模板（开发周报/管理者周报/项目周报）。适用于 Claude Code、OpenClaw 等支持 Skill 调用的 AI Agent。把每周最痛苦的周报环节变成一条命令。",
-    url: "https://github.com/anneheartrecord/weekly-report-generator",
-    github: "https://github.com/anneheartrecord/weekly-report-generator",
-    tags: ["AI Skill", "效率工具", "Shell"],
-  },
-  {
-    name: "doc-memory-extractor",
-    description:
-      "写作风格 DNA 提取器 —— 当你积累了大量文章、笔记、博客时，这些内容蕴含着你独特的写作风格和思维模式。这个 Claude Code Skill 能读取你的文档集合（Markdown/TXT/PDF），分析你的写作模式（结构、语气、用词、修辞偏好、思维框架），生成一份精炼的「写作风格 DNA」文件，存储到 ~/.claude/writing-style.md 供后续写作时调用。让 AI 写出你的风格。",
-    url: "https://github.com/anneheartrecord/doc-memory-extractor",
-    github: "https://github.com/anneheartrecord/doc-memory-extractor",
-    tags: ["AI", "写作风格", "Claude Code Skill"],
-  },
-  {
-    name: "lakebook-converter",
-    description:
-      "语雀 Lakebook 转 Markdown 工具 —— 语雀的知识库导出格式为 .lakebook，本质是一个 tar 归档包，内含 JSON 格式的文档数据，正文以 HTML 存储。本工具将其解析并批量转换为干净的 Markdown 文件，处理嵌入图片、嵌套页面结构和元数据提取。诞生于将大型知识库从语雀迁出的实际需求。",
-    url: "https://github.com/anneheartrecord/lakebook-converter",
-    github: "https://github.com/anneheartrecord/lakebook-converter",
-    tags: ["Python", "Markdown", "迁移工具"],
-  },
-  {
-    name: "In-depth-learning-kubernetes",
-    description:
-      "深入学习 Kubernetes —— 由浅入深的 K8s 学习笔记，覆盖架构基础、调度机制、网络（CNI/Service/Ingress）、存储（PV/PVC/CSI）、Operator 模式、生产排障等。对出现的技术和专业词汇用更简单易懂的语言描述，部分深入到源码级别讲解，demo 例子都可直接运行。文章同步到掘金专栏。",
-    url: "https://github.com/anneheartrecord/In-depth-learing-kubernetes",
-    github: "https://github.com/anneheartrecord/In-depth-learing-kubernetes",
-    tags: ["Kubernetes", "云原生", "学习笔记"],
   },
 ];

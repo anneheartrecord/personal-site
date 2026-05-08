@@ -67,7 +67,7 @@ export const works: WorkItem[] = [
     period: "2022.03 — 2022.09",
     roles: [
       {
-        title: "Co-founder / Early Team Member",
+        title: "Early Team Member",
         description:
           "Joined as an early team member during sophomore year, working alongside senior schoolmates to build the company from the ground up. PANDAG has since secured investments from Jack Li (李泽湘), Miracle Plus (奇绩创坛) and other notable investors, successfully closing its Series A round and growing to nearly 100 employees.",
       },
