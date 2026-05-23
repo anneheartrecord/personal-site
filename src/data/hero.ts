@@ -65,5 +65,29 @@ export const hero = {
         { src: "/images/travel/malaysia/婷.清真版.jpg", alt: "Mosque Style" },
       ],
     },
+    {
+      name: "Indonesia", flag: "🇮🇩",
+      photos: [
+        { src: "/images/travel/indonesia/indonesia-01.jpg", alt: "Indonesia trip photo 1" },
+        { src: "/images/travel/indonesia/indonesia-02.jpg", alt: "Indonesia trip photo 2" },
+        { src: "/images/travel/indonesia/indonesia-03.jpg", alt: "Indonesia trip photo 3" },
+        { src: "/images/travel/indonesia/indonesia-04.jpg", alt: "Indonesia trip photo 4" },
+        { src: "/images/travel/indonesia/indonesia-05.jpg", alt: "Indonesia trip photo 5" },
+        { src: "/images/travel/indonesia/indonesia-06.jpg", alt: "Indonesia trip photo 6" },
+        { src: "/images/travel/indonesia/indonesia-07.jpg", alt: "Indonesia trip photo 7" },
+        { src: "/images/travel/indonesia/indonesia-08.jpg", alt: "Indonesia trip photo 8" },
+        { src: "/images/travel/indonesia/indonesia-09.jpg", alt: "Indonesia trip photo 9" },
+      ],
+    },
+    {
+      name: "Singapore", flag: "🇸🇬",
+      photos: [
+        { src: "/images/travel/singapore/singapore-01.jpg", alt: "Singapore trip photo 1" },
+        { src: "/images/travel/singapore/singapore-02.jpg", alt: "Singapore trip photo 2" },
+        { src: "/images/travel/singapore/singapore-03.jpg", alt: "Singapore trip photo 3" },
+        { src: "/images/travel/singapore/singapore-04.jpg", alt: "Singapore trip photo 4" },
+        { src: "/images/travel/singapore/singapore-05.jpg", alt: "Singapore trip photo 5" },
+      ],
+    },
   ],
 };
