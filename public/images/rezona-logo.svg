@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="rezona-logo-title">
+  <title id="rezona-logo-title">Rezona logo</title>
+  <g fill="#ff7900">
+    <path d="M34 30h88c26 0 44 17 44 40s-18 40-44 40H34V30Z" />
+    <path d="M34 30h66v166H34V30Z" />
+    <path d="M104 102c38 4 64 43 64 94h-64v-94Z" />
+  </g>
+  <circle cx="77" cy="67" r="5.5" fill="#050505" />
+  <path
+    d="M70 90c11 9 24 13 39 13"
+    fill="none"
+    stroke="#050505"
+    stroke-width="6"
+    stroke-linecap="round"
+  />
+</svg>

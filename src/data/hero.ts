@@ -22,6 +22,17 @@ export const hero = {
     { src: "/images/nuomi/糯恐龙.jpg", alt: "糯恐龙" },
     { src: "/images/nuomi/糯狮子.jpg", alt: "糯狮子" },
   ],
+  aiCatPhotos: [
+    { src: "/images/nuomi/ai/ai-nuomi-01-sitting.png", alt: "AI 糯米端正坐着" },
+    { src: "/images/nuomi/ai/ai-nuomi-02-wave.png", alt: "AI 糯米抬爪打招呼" },
+    { src: "/images/nuomi/ai/ai-nuomi-03-sleeping.png", alt: "AI 糯米蜷着睡觉" },
+    { src: "/images/nuomi/ai/ai-nuomi-04-eating.png", alt: "AI 糯米低头吃东西" },
+    { src: "/images/nuomi/ai/ai-nuomi-05-stretching.png", alt: "AI 糯米伸懒腰" },
+    { src: "/images/nuomi/ai/ai-nuomi-06-jumping.png", alt: "AI 糯米开心跳起来" },
+    { src: "/images/nuomi/ai/ai-nuomi-07-curious.png", alt: "AI 糯米歪头好奇" },
+    { src: "/images/nuomi/ai/ai-nuomi-08-yawning.png", alt: "AI 糯米趴着打哈欠" },
+    { src: "/images/nuomi/ai/ai-nuomi-09-sitting-bright.png", alt: "AI 糯米端坐亮色版" },
+  ],
   countries: [
     {
       name: "Thailand", flag: "🇹🇭",

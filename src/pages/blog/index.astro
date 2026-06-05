@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { site } from "../../data/site";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog", ({ data }) => !data.draft);
@@ -127,7 +128,18 @@ const topicSections = topics
   .filter((topic) => topic.posts.length > 0);
 ---
 
-<Layout title="Blog — Charles">
+<Layout
+  title="Blog — Charles Cheng"
+  description="Essays by Charles Cheng on AI agents, Claude Code, Kubernetes, cloud-native infrastructure, investing, career growth, writing, and engineering practice."
+  canonicalPath="/blog"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Charles Cheng Blog",
+    url: new URL("/blog", site.url).toString(),
+    description: "Essays grouped by AI agents, investing, career growth, technical deep dives, and writing.",
+  }}
+>
   <h1 class="text-2xl font-bold tracking-tight mb-2" style={`color: var(--text-primary);`}>Blog</h1>
   <p class="text-sm leading-relaxed mb-8 max-w-2xl" style={`color: var(--text-secondary);`}>
     Writing is where I clarify ideas. Start with the selected essays, or browse by topic if you already know what you are looking for.

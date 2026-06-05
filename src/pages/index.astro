@@ -5,6 +5,7 @@ import WorkTimeline from "../components/WorkTimeline.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import BlogCard from "../components/BlogCard.astro";
 import { projects } from "../data/projects";
+import { site } from "../data/site";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog", ({ data }) => !data.draft);
@@ -23,9 +24,24 @@ const selectedHomePosts = homeBlogIds
 const homePosts = selectedHomePosts.length > 0 ? selectedHomePosts : posts.slice(0, 6);
 ---
 
-<Layout title="Charles — Developer">
+<Layout
+  title={site.title}
+  description={site.description}
+  canonicalPath="/"
+  pageType="profile"
+>
   <!-- Hero / Intro -->
   <Hero />
+
+  <section class="py-6" aria-labelledby="site-focus-heading">
+    <h2 id="site-focus-heading" class="text-lg font-bold tracking-tight mb-4" style={`color: var(--text-primary);`}>
+      What this site is about
+    </h2>
+    <p class="text-xs leading-[1.8] max-w-2xl" style={`color: var(--text-secondary);`}>
+      This is the personal site of Charles Cheng, also known as 安妮的心动录. I write about Kubernetes, cloud-native infrastructure,
+      AI agents, Claude Code, OpenClaw, DevOps, full-stack engineering, investing, career growth, and building a personal knowledge system.
+    </p>
+  </section>
 
   <div class="section-divider my-6"></div>
 

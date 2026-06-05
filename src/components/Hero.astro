@@ -55,26 +55,63 @@ import { socials } from "../data/socials";
        }
     />
 
-    <!-- Cat photo toggle -->
-    <button
-      id="nuomi-toggle"
-      class="mt-2 inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all duration-200 hover:scale-105 cursor-pointer"
-      style={`color: var(--color-accent); background: var(--bg-secondary); border: 1px solid var(--border-color);`}
-    >
-      <span>🐱</span>
-      <span id="nuomi-toggle-text">Meet Nuomi</span>
-    </button>
+    <!-- Cat photo galleries -->
+    <div class="mt-2 flex flex-wrap gap-2">
+      <button
+        id="nuomi-toggle"
+        class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all duration-200 hover:scale-105 cursor-pointer"
+        style={`color: var(--text-secondary); background: var(--bg-secondary); border: 1px solid var(--border-color);`}
+        type="button"
+        aria-expanded="false"
+        aria-controls="nuomi-photos-panel"
+      >
+        <span>🐱</span>
+        <span id="nuomi-toggle-text">Meet Nuomi</span>
+      </button>
+      <button
+        id="nuomi-ai-toggle"
+        class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all duration-200 hover:scale-105 cursor-pointer"
+        style={`color: var(--text-secondary); background: var(--bg-secondary); border: 1px solid var(--border-color);`}
+        type="button"
+        aria-expanded="false"
+        aria-controls="nuomi-ai-panel"
+      >
+        <span>✨</span>
+        <span id="nuomi-ai-toggle-text">Meet Nuomi(AI)</span>
+      </button>
+    </div>
 
-    <!-- Cat photo gallery (hidden by default) -->
-    <div id="nuomi-gallery" class="mt-3 hidden">
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+    <div id="nuomi-gallery" class="mt-3 hidden" aria-label="Nuomi photo galleries">
+      <div id="nuomi-photos-panel" class="nuomi-panel hidden grid grid-cols-2 sm:grid-cols-3 gap-2" data-nuomi-panel="photos">
         {
           hero.catPhotos.map((photo) => (
             <div class="relative group overflow-hidden rounded-lg" style={`border: 1px solid var(--border-color);`}>
               <img
                 src={photo.src}
                 alt={photo.alt}
+                width="443"
+                height="443"
                 class="w-full aspect-[4/4] object-cover transition-transform duration-300 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="absolute bottom-0 left-0 right-0 px-2 py-1 text-[10px] font-medium text-white bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                {photo.alt}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div id="nuomi-ai-panel" class="nuomi-panel hidden grid grid-cols-2 sm:grid-cols-3 gap-2" data-nuomi-panel="ai">
+        {
+          hero.aiCatPhotos.map((photo) => (
+            <div class="relative group overflow-hidden rounded-lg" style={`border: 1px solid var(--border-color); background: var(--bg-secondary);`}>
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                width="443"
+                height="443"
+                class="w-full aspect-square object-contain p-2 transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
               <div class="absolute bottom-0 left-0 right-0 px-2 py-1 text-[10px] font-medium text-white bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -171,25 +208,79 @@ import { socials } from "../data/socials";
 </section>
 
 <script>
+  /**
+   * Initializes expandable image galleries on the homepage.
+   *
+   * @returns {void}
+   */
   function initGalleries() {
     // Nuomi gallery
     const nuomiToggle = document.getElementById('nuomi-toggle');
+    const nuomiAiToggle = document.getElementById('nuomi-ai-toggle');
     const nuomiGallery = document.getElementById('nuomi-gallery');
     const nuomiText = document.getElementById('nuomi-toggle-text');
+    const nuomiAiText = document.getElementById('nuomi-ai-toggle-text');
+    const nuomiPanels = document.querySelectorAll('.nuomi-panel');
+    const nuomiButtons = [
+      {
+        button: nuomiToggle,
+        text: nuomiText,
+        panelName: 'photos',
+        defaultLabel: 'Meet Nuomi',
+        activeLabel: 'Hide Nuomi',
+      },
+      {
+        button: nuomiAiToggle,
+        text: nuomiAiText,
+        panelName: 'ai',
+        defaultLabel: 'Meet Nuomi(AI)',
+        activeLabel: 'Hide Nuomi(AI)',
+      },
+    ].filter((item) => item.button && item.text);
 
-    if (nuomiToggle && nuomiGallery && nuomiText) {
-      nuomiGallery.classList.add('hidden');
-      nuomiText.textContent = 'Meet Nuomi';
+    const updateNuomiButtons = (selectedPanel) => {
+      nuomiButtons.forEach((item) => {
+        const isActive = item.panelName === selectedPanel;
+        item.button.setAttribute('aria-expanded', String(isActive));
+        item.text.textContent = isActive ? item.activeLabel : item.defaultLabel;
+        item.button.style.color = isActive ? 'var(--color-accent)' : 'var(--text-secondary)';
+        item.button.style.background = isActive ? 'var(--card-bg)' : 'var(--bg-secondary)';
+        item.button.style.borderColor = isActive ? 'var(--color-accent)' : 'var(--border-color)';
+      });
+    };
 
-      nuomiToggle.addEventListener('click', () => {
-        const isHidden = nuomiGallery.classList.contains('hidden');
-        if (isHidden) {
-          nuomiGallery.classList.remove('hidden');
-          nuomiText.textContent = 'Hide Nuomi';
-        } else {
-          nuomiGallery.classList.add('hidden');
-          nuomiText.textContent = 'Meet Nuomi';
-        }
+    const hideNuomiPanels = () => {
+      nuomiGallery?.classList.add('hidden');
+      nuomiPanels.forEach((panel) => {
+        panel.classList.add('hidden');
+      });
+      updateNuomiButtons(null);
+    };
+
+    const showNuomiPanel = (selectedPanel) => {
+      nuomiGallery?.classList.remove('hidden');
+      nuomiPanels.forEach((panel) => {
+        const isActive = panel.getAttribute('data-nuomi-panel') === selectedPanel;
+        panel.classList.toggle('hidden', !isActive);
+      });
+      updateNuomiButtons(selectedPanel);
+    };
+
+    if (nuomiGallery && nuomiButtons.length > 0) {
+      hideNuomiPanels();
+
+      nuomiButtons.forEach((item) => {
+        item.button.addEventListener('click', () => {
+          const isActive = item.button.getAttribute('aria-expanded') === 'true'
+            && !nuomiGallery.classList.contains('hidden');
+
+          if (isActive) {
+            hideNuomiPanels();
+            return;
+          }
+
+          showNuomiPanel(item.panelName);
+        });
       });
     }
 

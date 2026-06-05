@@ -2,14 +2,26 @@
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { projects } from "../data/projects";
+import { site } from "../data/site";
 ---
 
-<Layout title="Projects — Charles">
+<Layout
+  title="Projects — Charles Cheng"
+  description="Open source projects by Charles Cheng, including AI agent analysis, Claude Code docs, Claude Code config, and practical AI tooling."
+  canonicalPath="/projects"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Charles Cheng Projects",
+    url: new URL("/projects", site.url).toString(),
+    description: "Open source projects and tools by Charles Cheng.",
+  }}
+>
   <h1 class="text-2xl font-bold tracking-tight mb-2" style={`color: var(--text-primary);`}>Projects</h1>
   <p class="text-sm mb-8" style={`color: var(--text-secondary);`}>Open source projects and tools</p>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
     {projects.map((p) => (
-      <ProjectCard name={p.name} description={p.description} url={p.url} github={p.github} stars={p.stars} tags={p.tags} />
+      <ProjectCard name={p.name} description={p.description} url={p.url} github={p.github} tags={p.tags} />
     ))}
   </div>
 </Layout>

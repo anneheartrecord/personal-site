@@ -12,6 +12,19 @@ export interface WorkItem {
 
 export const works: WorkItem[] = [
   {
+    company: "Rezona",
+    companyUrl: "https://rezona.ai/",
+    logo: "rezona",
+    period: "2026.05 — Now",
+    roles: [
+      {
+        title: "AI Agent Development",
+        description:
+          "Responsible for internal AI Agent development and the construction, optimization, and ongoing improvement of Agent infrastructure.",
+      },
+    ],
+  },
+  {
     company: "Tencent Music Entertainment",
     companyUrl: "https://www.tencentmusic.com",
     logo: "tme",

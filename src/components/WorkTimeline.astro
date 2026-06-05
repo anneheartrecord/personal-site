@@ -1,5 +1,10 @@
 ---
 import { works } from "../data/works";
+
+const logoFileExtensions: Record<string, string> = {
+  rezona: "svg",
+  tme: "webp",
+};
 ---
 
 <section class="py-10">
@@ -21,7 +26,7 @@ import { works } from "../data/works";
             >
               {/* Company Logo */}
               <img
-                src={`/images/${work.logo}-logo.${work.logo === "tme" ? "webp" : "png"}`}
+                src={`/images/${work.logo}-logo.${logoFileExtensions[work.logo] ?? "png"}`}
                 alt={work.company}
                 class="w-8 h-8 rounded-lg object-contain"
               />

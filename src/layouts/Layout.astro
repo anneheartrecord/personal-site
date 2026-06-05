@@ -2,26 +2,96 @@
 import Sidebar from "../components/Sidebar.astro";
 import ImageLightbox from "../components/ImageLightbox.astro";
 import TopBar from "../components/TopBar.astro";
+import { site } from "../data/site";
 import "../styles/global.css";
+
+type JsonLd = Record<string, unknown>;
 
 interface Props {
   title: string;
   description?: string;
+  canonicalPath?: string;
+  image?: string;
+  pageType?: "website" | "article" | "profile";
+  lang?: string;
+  jsonLd?: JsonLd | JsonLd[];
 }
 
-const { title, description = "Charles — Developer" } = Astro.props;
+const {
+  title,
+  description = site.description,
+  canonicalPath,
+  image = site.image,
+  pageType = "website",
+  lang = "en",
+  jsonLd = [],
+} = Astro.props;
+
+const baseUrl = Astro.site ?? new URL(site.url);
+const canonicalUrl = new URL(canonicalPath ?? Astro.url.pathname, baseUrl).toString();
+const imageUrl = new URL(image, baseUrl).toString();
+const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+
+const defaultJsonLd: JsonLd[] = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: site.author.name,
+    alternateName: site.author.alias,
+    url: site.url,
+    image: imageUrl,
+    email: site.author.email,
+    jobTitle: "Full-stack Engineer",
+    sameAs: [site.author.github, site.author.x],
+    knowsAbout: site.topics,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: site.name,
+    url: site.url,
+    description: site.description,
+    inLanguage: ["en", "zh-CN"],
+    author: {
+      "@type": "Person",
+      name: site.author.name,
+      alternateName: site.author.alias,
+      url: site.url,
+    },
+  },
+];
+
+const jsonLdPayload = [...defaultJsonLd, ...jsonLdItems];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="author" content={`${site.author.name}, ${site.author.alias}`} />
+    <meta name="keywords" content={site.keywords.join(", ")} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" href="/sitemap.xml" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:type" content={pageType === "article" ? "article" : "website"} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={`${site.name} profile image`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@Charles77xixi" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdPayload)} />
     <script is:inline>
       const theme = localStorage.getItem("theme");
       if (theme === "dark") {
