@@ -1,9 +1,9 @@
 export const site = {
   url: "https://charles-cheng.com",
   name: "Charles Cheng",
-  title: "Charles Cheng — Full-stack Engineer, AI Tooling Builder",
+  title: "Charles Cheng — AI Agent Infra Engineer",
   description:
-    "Charles Cheng is a full-stack engineer writing about Kubernetes, cloud-native infrastructure, AI agents, Claude Code, investing, career growth, and personal knowledge systems.",
+    "Charles Cheng is an engineer building AI Agent infra, with writing on Kubernetes, cloud-native systems, Claude Code, investing, career choices, and decision making.",
   author: {
     name: "Charles Cheng",
     alias: "安妮的心动录",
@@ -19,18 +19,21 @@ export const site = {
     "Kubernetes",
     "cloud-native infrastructure",
     "AI tooling",
+    "AI Agent infrastructure",
+    "AI Agent consulting",
     "AI agents",
     "Claude Code",
     "OpenClaw",
     "DevOps",
     "technical writing",
     "investing",
+    "decision making",
   ],
   topics: [
     "Kubernetes and cloud-native infrastructure",
-    "AI agents, Claude Code, OpenClaw, and AI tooling",
+    "AI Agent infrastructure, Claude Code, OpenClaw, and AI tooling",
     "Backend, DevOps, frontend, and product engineering",
-    "Investing, global accounts, and personal finance",
-    "Career growth, writing, and personal knowledge systems",
+    "Investing, cash flow, and personal finance",
+    "Career choices, writing, decision making, and personal knowledge systems",
   ],
 } as const;

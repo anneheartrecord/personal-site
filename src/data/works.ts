@@ -20,7 +20,7 @@ export const works: WorkItem[] = [
       {
         title: "AI Agent Development",
         description:
-          "Responsible for internal AI Agent development and the construction, optimization, and ongoing improvement of Agent infrastructure.",
+          "Working on an internal game Agent product, while also building and improving the Agent infra around it: deployment, configuration, workflow reliability, and the operational details that keep it usable day to day.",
       },
     ],
   },
@@ -33,17 +33,17 @@ export const works: WorkItem[] = [
       {
         title: "AI Platform Engineering",
         description:
-          "Led the development of an enterprise-wide AI deployment platform from scratch. Designed the complete architecture including dual-channel WeChat integrations (both personal and enterprise WeChat), cross-container persistent memory, a Skills marketplace with GitLab-based version control and rollback, and a Multi-Agent persona system. The platform reached widespread internal adoption within weeks of launch.",
+          "Built TME Claw, an internal deployment platform for OpenClaw. It made OpenClaw easier to use inside the company through WeChat, WeCom, and an internal Skills marketplace, instead of asking every team to wire the same pieces by hand.",
       },
       {
         title: "Release & Deployment Engine",
         description:
-          "Built a standardized release template system that powers configuration-driven deployments across all business lines. Designed a parent-child template architecture that supports API-driven publishing, drastically reducing manual deployment steps and enabling reproducible, auditable releases at scale.",
+          "Worked on release and deployment systems for large internal services. I spent a lot of time turning repeated manual steps into templates, APIs, and safer defaults, because release systems should reduce anxiety instead of adding another layer of ceremony.",
       },
       {
         title: "Container Platform Management",
         description:
-          "Managed the group's large-scale container infrastructure spanning thousands of nodes and GPU cards. Designed and implemented intelligent node scheduling to balance cluster loads, built full pod lifecycle management with auto-scaling (HPA), timed expansion for traffic spikes, and automatic resource governance to prevent waste and reduce operational costs.",
+          "Worked on the container platform behind production workloads: Kubernetes extensions, scheduling, lifecycle management, observability, and resource governance. This part of my career made me care about reliability details before talking about architecture.",
       },
     ],
   },
@@ -56,7 +56,7 @@ export const works: WorkItem[] = [
       {
         title: "Backend Development Intern — Baidu APP",
         description:
-          "Worked on the core interaction system for Baidu APP, including comments, likes, danmaku (bullet comments), and smart content moderation. Built a machine-driven comment insertion system with automated quality scoring. Refactored the intelligent review module using Go for better performance and maintainability. Developed a smart account operations system for content seeding, using Go backend with a low-code amis frontend.",
+          "Worked on backend systems for Baidu APP interactions, including comments, likes, bullet comments, review workflows, and internal operation tools. It was my first serious taste of writing backend code for a product with real traffic and messy edge cases.",
       },
     ],
   },
@@ -69,7 +69,7 @@ export const works: WorkItem[] = [
       {
         title: "Container & Monitoring Development Intern",
         description:
-          "Focused on container orchestration tooling and observability infrastructure. Worked on containerized application deployment workflows and developed Prometheus-based monitoring solutions — including custom metric collection, alerting rules, and storage extension for long-term metric retention.",
+          "Worked on container deployment workflows and observability tooling. This was where I started to connect Kubernetes, monitoring, alerts, and daily operations into one mental model instead of treating them as separate tools.",
       },
     ],
   },
@@ -82,7 +82,7 @@ export const works: WorkItem[] = [
       {
         title: "Early Team Member",
         description:
-          "Joined as an early team member during sophomore year, working alongside senior schoolmates to build the company from the ground up. PANDAG has since secured investments from Jack Li (李泽湘), Miracle Plus (奇绩创坛) and other notable investors, successfully closing its Series A round and growing to nearly 100 employees.",
+          "Joined a student-founded startup as an early team member. I was still young enough to underestimate how hard building a company is, but that experience made product, hiring, delivery, and money feel much less abstract.",
       },
     ],
   },

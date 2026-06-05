@@ -21,7 +21,7 @@ export const GET: APIRoute = async ({ site }) => {
       "",
       "## Author",
       "",
-      `Charles Cheng, also known as ${siteData.author.alias}, is a full-stack engineer focused on Kubernetes, cloud-native infrastructure, AI tooling, AI agents, investing, career growth, and personal knowledge systems.`,
+      `Charles Cheng, also known as ${siteData.author.alias}, is an engineer working on AI Agent infrastructure. His writing covers Kubernetes, cloud-native systems, Claude Code, OpenClaw, investing, career choices, decision making, and personal knowledge systems.`,
       "",
       "## Projects",
       "",
