@@ -191,7 +191,7 @@ Suggested hosted flow:
   -> create PR for review
   -> merge/push after approval
   -> Vercel deploys from main
-  -> send email notification to chenqisheng777@gmail.com
+  -> send email notification to chenxisheng777@gmail.com
 ```
 
 Safety gate:
@@ -304,7 +304,7 @@ Behavior:
 - Trigger on pushes to `main` that change `src/content/ai-news/**`.
 - Skip `_template.md`.
 - Skip issues with `draft: true`.
-- Send an email to `chenqisheng777@gmail.com`.
+- Send an email to `chenxisheng777@gmail.com`.
 
 Required GitHub configuration:
 

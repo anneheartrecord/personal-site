@@ -28,7 +28,7 @@ The full growth plan is documented in `docs/ai-news-growth-system.md`.
 
 ### AI News publish notification
 
-When a published AI News Markdown file is pushed to `main`, GitHub Actions sends a notification email to `chenqisheng777@gmail.com`.
+When a published AI News Markdown file is pushed to `main`, GitHub Actions sends a notification email to `chenxisheng777@gmail.com`.
 
 Configure these in GitHub:
 

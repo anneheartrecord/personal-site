@@ -14,6 +14,11 @@ on:
         description: "Optional AI News Markdown path, for example src/content/ai-news/2026-06-06.md"
         required: false
         type: string
+      test_email:
+        description: "Send a test notification email without requiring a published AI News issue"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -37,8 +42,9 @@ jobs:
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           AI_NEWS_EMAIL_FROM: ${{ vars.AI_NEWS_EMAIL_FROM }}
-          AI_NEWS_NOTIFY_TO: chenqisheng777@gmail.com
+          AI_NEWS_NOTIFY_TO: chenxisheng777@gmail.com
           AI_NEWS_ISSUE_PATH: ${{ inputs.issue_path }}
+          AI_NEWS_TEST_EMAIL: ${{ inputs.test_email }}
           SITE_URL: https://charles-cheng.com
         run: |
           if [ -z "$RESEND_API_KEY" ]; then

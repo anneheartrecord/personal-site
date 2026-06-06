@@ -4,7 +4,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { basename, resolve } from "node:path";
 
-const DEFAULT_NOTIFY_TO = "chenqisheng777@gmail.com";
+const DEFAULT_NOTIFY_TO = "chenxisheng777@gmail.com";
 const DEFAULT_SITE_URL = "https://charles-cheng.com";
 const DEFAULT_FROM = "AI News <onboarding@resend.dev>";
 
@@ -174,7 +174,20 @@ const sendEmail = async (issues) => {
   console.log(`AI News notification sent to ${toEmail}.`);
 };
 
-const issues = getPublishedIssues();
+const issues =
+  process.env.AI_NEWS_TEST_EMAIL === "true"
+    ? [
+        {
+          title: "AI News notification test",
+          description: "This is a test email from the AI News GitHub Actions workflow.",
+          date: new Date().toISOString().split("T")[0],
+          sourceCount: "test",
+          filePath: "workflow_dispatch",
+          url: `${(process.env.SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, "")}/ai-news`,
+        },
+      ]
+    : getPublishedIssues();
+
 if (issues.length === 0) {
   console.log("No published AI News issue changed. Skipping notification.");
   process.exit(0);
