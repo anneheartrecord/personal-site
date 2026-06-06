@@ -168,28 +168,40 @@ Why Kit first:
 
 ## Phase 2: Daily Automation
 
-Target behavior:
+Status: implemented as a no-key v1 automation.
+
+Current behavior:
 
 - Run every day around 08:07 Asia/Shanghai.
 - Use GitHub Actions as the execution environment. The user's laptop is not part of the production path.
 - Chrome Tab is optional for preview and visual checking. It is not the core runtime.
-- Generate the daily issue as Markdown.
-- Generate an internal selection log.
+- Fetch public `follow-builders` JSON feeds.
+- Deterministically score and select 5-10 builder-facing items.
+- Generate the daily public issue as `src/content/ai-news/YYYY-MM-DD.md`.
+- Generate an internal selection log in `.ai-news-internal/`.
 - Run `npm run build`.
-- Create a pull request or commit a draft depending on automation maturity.
+- Commit the generated public issue to `main`.
 - Let Vercel deploy from `main`.
+- Send a Resend notification email to `chengxisheng777@gmail.com` after the generated issue is committed.
+
+Implemented files:
+
+- `scripts/generate-ai-news-from-follow-builders.mjs`
+- `.github/workflows/ai-news-generate.yml`
+- `npm run news:generate`
+
+The v1 generator does not require a paid LLM key. It uses public feeds plus deterministic scoring. This is enough to publish a real daily issue and validate the website loop. A later LLM step can improve judgment quality and rewrite summaries in a stronger personal voice.
 
 Suggested hosted flow:
 
 ```text
 08:07 GitHub Actions
   -> fetch candidate sources
-  -> AI selects 5-10 items
+  -> deterministic scorer selects 5-10 items
   -> write internal selection log
-  -> AI writes src/content/ai-news/YYYY-MM-DD.md
+  -> write src/content/ai-news/YYYY-MM-DD.md
   -> npm run build
-  -> create PR for review
-  -> merge/push after approval
+  -> commit/push to main
   -> Vercel deploys from main
   -> send email notification to chengxisheng777@gmail.com
 ```
@@ -202,8 +214,8 @@ Safety gate:
 Execution answer:
 
 - The AI News production and selection process should run in GitHub Actions.
-- The LLM call should happen from the GitHub Actions runner using repository secrets.
-- Source fetching, scoring, Markdown generation, build validation, and notification should be deterministic scripts plus one LLM step.
+- In v1, no LLM call is required. Source fetching, scoring, Markdown generation, build validation, and notification are deterministic scripts.
+- In v2, the LLM call should happen from the GitHub Actions runner using repository secrets.
 - A separate server is not required for the first version.
 - A hosted browser provider is only needed later if we need real browser sessions beyond Playwright checks.
 

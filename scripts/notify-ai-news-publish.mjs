@@ -104,7 +104,7 @@ const sendEmail = async (issues) => {
   const fromEmail = process.env.AI_NEWS_EMAIL_FROM || DEFAULT_FROM;
   const toEmail = process.env.AI_NEWS_NOTIFY_TO || DEFAULT_NOTIFY_TO;
   const repository = process.env.GITHUB_REPOSITORY || "";
-  const commitSha = process.env.GITHUB_SHA || "";
+  const commitSha = process.env.AI_NEWS_COMMIT_SHA || process.env.GITHUB_SHA || "";
   const commitUrl =
     repository && commitSha ? `https://github.com/${repository}/commit/${commitSha}` : "";
   const firstIssue = issues[0];

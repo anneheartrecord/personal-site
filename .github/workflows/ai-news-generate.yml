@@ -1,0 +1,102 @@
+name: AI News Generate
+
+on:
+  schedule:
+    - cron: "7 0 * * *"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Optional issue date in Asia/Shanghai, for example 2026-06-06"
+        required: false
+        type: string
+      force:
+        description: "Overwrite an existing issue for the same date"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate AI News issue
+        env:
+          AI_NEWS_DATE: ${{ github.event.inputs.date || '' }}
+          AI_NEWS_FORCE: ${{ github.event.inputs.force || 'false' }}
+        run: npm run news:generate
+
+      - name: Build site
+        run: npm run build
+
+      - name: Upload internal selection log
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ai-news-internal-log
+          path: .ai-news-internal/
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Commit generated issue
+        id: commit
+        run: |
+          if git diff --quiet -- src/content/ai-news; then
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            echo "No new AI News issue to commit."
+            exit 0
+          fi
+
+          issue_path="$(git diff --name-only -- src/content/ai-news | grep -E '^src/content/ai-news/.+\.md$' | grep -v '_template.md' | head -n 1)"
+          if [ -z "$issue_path" ]; then
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            echo "No public AI News Markdown issue changed."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$issue_path"
+          git commit -m "docs: publish daily ai news"
+          git push
+
+          echo "published=true" >> "$GITHUB_OUTPUT"
+          echo "issue_path=$issue_path" >> "$GITHUB_OUTPUT"
+          echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Send publish notification
+        if: steps.commit.outputs.published == 'true'
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          AI_NEWS_EMAIL_FROM: ${{ vars.AI_NEWS_EMAIL_FROM }}
+          AI_NEWS_NOTIFY_TO: ${{ vars.AI_NEWS_NOTIFY_TO || 'chengxisheng777@gmail.com' }}
+          AI_NEWS_ISSUE_PATH: ${{ steps.commit.outputs.issue_path }}
+          AI_NEWS_COMMIT_SHA: ${{ steps.commit.outputs.commit_sha }}
+          SITE_URL: https://charles-cheng.com
+        run: |
+          if [ -z "$RESEND_API_KEY" ]; then
+            echo "::notice::RESEND_API_KEY is not configured. Skipping AI News email notification."
+            exit 0
+          fi
+
+          if [ -z "$AI_NEWS_EMAIL_FROM" ]; then
+            echo "::notice::AI_NEWS_EMAIL_FROM is not configured. Skipping AI News email notification."
+            exit 0
+          fi
+
+          node scripts/notify-ai-news-publish.mjs
