@@ -47,6 +47,95 @@ In addition to daily news, the site should publish one weekly long-form AI essay
 
 Daily AI News feeds the weekly essay. The weekly essay should not be a summary dump. It should extract one durable thesis from the week's information flow.
 
+## Follow Builders Adaptation
+
+The reference implementation is `zarazhangrui/follow-builders`:
+
+- GitHub: https://github.com/zarazhangrui/follow-builders
+- Core principle: follow builders, not influencers.
+- Default sources: 26 X/Twitter builders, 6 AI podcasts, and 2 official blogs.
+- Feed generation runs in GitHub Actions, not on the user's laptop.
+- The central feed is generated first, then an agent/LLM remixes the feed into a digest.
+
+For this site, reuse the principle, not the full product shape. The public AI News should be a website-native publication, not a chat digest.
+
+Internal rule:
+
+- Marketing accounts, listicle accounts, affiliate accounts, and pure repost accounts are excluded by default.
+- A source earns attention by showing work: product launches, demos, code, architecture notes, workflow changes, evaluation results, or failure analysis.
+- A single item still needs its own evidence. A trusted account posting fluff should be skipped.
+
+Initial 10 X/Twitter builders to watch:
+
+1. Andrej Karpathy — `karpathy`
+2. Swyx — `swyx`
+3. Josh Woodward — `joshwoodward`
+4. Boris Cherny — `bcherny`
+5. Amjad Masad — `amasad`
+6. Guillermo Rauch — `rauchg`
+7. Alex Albert — `alexalbert__`
+8. Ryo Lu — `ryolu_`
+9. Peter Steinberger — `steipete`
+10. Dan Shipper — `danshipper`
+
+These are not permanent endorsements. They are the first seed set. The source list should evolve based on signal quality.
+
+Candidate scoring:
+
+| Dimension | Score |
+| --- | --- |
+| Original source link exists | 0-2 |
+| Real builder activity, not commentary-only | 0-2 |
+| Useful to engineering/product/workflow decisions | 0-2 |
+| New information density | 0-2 |
+| Long-term thesis value for weekly essays | 0-2 |
+
+Decision rule:
+
+- Below 6: discard into internal log only.
+- 6-7: candidate for short news.
+- 8-10: candidate for top placement.
+
+The public AI News must not include a "discarded today" section. Rejections belong in internal logs only.
+
+Public issue structure:
+
+```markdown
+# AI News｜YYYY-MM-DD
+
+## 今日目录
+- [Title A](#title-a)
+- [Title B](#title-b)
+
+## 今日判断
+One sentence about the most important pattern.
+
+## 快讯
+
+### Title A
+[查看原文](https://...)
+
+100-300 words: what happened, why it matters, and my judgment.
+```
+
+Internal log structure:
+
+```markdown
+# AI News Internal Log｜YYYY-MM-DD
+
+## Candidate Pool
+Raw items and source links.
+
+## Selected
+Items selected for public publication, with scores.
+
+## Discarded
+Items rejected, with reasons.
+
+## Follow-up
+Items worth testing, watching, or turning into weekly essay material.
+```
+
 ## Phase 1: Website Surface and Subscription Entry
 
 Status: implemented in this first pass.
@@ -81,32 +170,42 @@ Why Kit first:
 
 Target behavior:
 
-- Run every day around 08:00 Asia/Shanghai.
-- Use a local Mac `launchd` job because the requested Chrome Tab preview needs a GUI environment.
+- Run every day around 08:07 Asia/Shanghai.
+- Use GitHub Actions as the execution environment. The user's laptop is not part of the production path.
+- Chrome Tab is optional for preview and visual checking. It is not the core runtime.
 - Generate the daily issue as Markdown.
-- Start a local Astro preview.
-- Open Chrome to the generated issue URL.
+- Generate an internal selection log.
 - Run `npm run build`.
-- Commit and push if the issue passes review.
+- Create a pull request or commit a draft depending on automation maturity.
 - Let Vercel deploy from `main`.
 
-Suggested local flow:
+Suggested hosted flow:
 
 ```text
-08:00 launchd
+08:07 GitHub Actions
   -> fetch candidate sources
   -> AI selects 5-10 items
+  -> write internal selection log
   -> AI writes src/content/ai-news/YYYY-MM-DD.md
   -> npm run build
-  -> npm run preview
-  -> open Chrome tab for review
-  -> commit + push after approval
+  -> create PR for review
+  -> merge/push after approval
+  -> Vercel deploys from main
+  -> send email notification to chenqisheng777@gmail.com
 ```
 
 Safety gate:
 
 - First 1-2 weeks should be `auto-generate + human approve`.
 - Full auto-send should start only after quality is stable.
+
+Execution answer:
+
+- The AI News production and selection process should run in GitHub Actions.
+- The LLM call should happen from the GitHub Actions runner using repository secrets.
+- Source fetching, scoring, Markdown generation, build validation, and notification should be deterministic scripts plus one LLM step.
+- A separate server is not required for the first version.
+- A hosted browser provider is only needed later if we need real browser sessions beyond Playwright checks.
 
 ## Phase 3: Email Delivery and Growth Loop
 
@@ -195,3 +294,25 @@ Selection should favor:
 - engineering practice over pure announcement;
 - original source over secondary commentary;
 - events that connect to weekly long-form themes.
+
+## Notification
+
+Publication notifications are handled by `.github/workflows/ai-news-notify.yml`.
+
+Behavior:
+
+- Trigger on pushes to `main` that change `src/content/ai-news/**`.
+- Skip `_template.md`.
+- Skip issues with `draft: true`.
+- Send an email to `chenqisheng777@gmail.com`.
+
+Required GitHub configuration:
+
+- Secret: `RESEND_API_KEY`
+- Variable: `AI_NEWS_EMAIL_FROM`
+
+`AI_NEWS_EMAIL_FROM` should be a verified sender in Resend. Example:
+
+```text
+AI News <news@charles-cheng.com>
+```

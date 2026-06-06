@@ -1,0 +1,54 @@
+name: AI News Publish Notification
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/content/ai-news/**"
+      - "scripts/notify-ai-news-publish.mjs"
+      - ".github/workflows/ai-news-notify.yml"
+  workflow_dispatch:
+    inputs:
+      issue_path:
+        description: "Optional AI News Markdown path, for example src/content/ai-news/2026-06-06.md"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Send notification email
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          AI_NEWS_EMAIL_FROM: ${{ vars.AI_NEWS_EMAIL_FROM }}
+          AI_NEWS_NOTIFY_TO: chenqisheng777@gmail.com
+          AI_NEWS_ISSUE_PATH: ${{ inputs.issue_path }}
+          SITE_URL: https://charles-cheng.com
+        run: |
+          if [ -z "$RESEND_API_KEY" ]; then
+            echo "::notice::RESEND_API_KEY is not configured. Skipping AI News email notification."
+            exit 0
+          fi
+
+          if [ -z "$AI_NEWS_EMAIL_FROM" ]; then
+            echo "::notice::AI_NEWS_EMAIL_FROM is not configured. Skipping AI News email notification."
+            exit 0
+          fi
+
+          node scripts/notify-ai-news-publish.mjs
