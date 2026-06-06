@@ -47,6 +47,7 @@ export const GET: APIRoute = async ({ site }) => {
       "",
       formatLink("Home", new URL("/", baseUrl).toString(), "Profile, work summary, selected projects, writing, and Nuomi photo galleries."),
       formatLink("Blog", new URL("/blog", baseUrl).toString(), "Essays grouped by AI agents, investing, career growth, technical deep dives, and writing."),
+      formatLink("AI News", new URL("/ai-news", baseUrl).toString(), "Daily AI signal for builders with source links and short judgment."),
       formatLink("Projects", new URL("/projects", baseUrl).toString(), "Open source projects, AI tooling, Claude Code analysis, and engineering projects."),
       formatLink("AMA", new URL("/ama", baseUrl).toString(), "Career consulting, resume review, interview preparation, and personal advisory page."),
       "",

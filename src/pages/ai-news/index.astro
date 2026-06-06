@@ -1,0 +1,84 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import NewsletterSignup from "../../components/NewsletterSignup.astro";
+import { site } from "../../data/site";
+import { getCollection } from "astro:content";
+
+const allIssues = await getCollection("aiNews", ({ data }) => !data.draft);
+const issues = allIssues.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout
+  title="AI News — Charles Cheng"
+  description="Daily AI signal for builders, with source links, short analysis, and weekly long-form reflections on AI."
+  canonicalPath="/ai-news"
+  lang="en"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Charles Cheng AI News",
+    url: new URL("/ai-news", site.url).toString(),
+    description: "Daily AI news and analysis for builders.",
+  }}
+>
+  <header class="mb-8">
+    <p class="text-[11px] font-semibold uppercase mb-3" style={`color: var(--text-tertiary); letter-spacing: 0;`}>
+      Daily Signal
+    </p>
+    <h1 class="text-2xl font-bold tracking-tight mb-3" style={`color: var(--text-primary);`}>AI News</h1>
+    <p class="text-sm leading-[1.8] max-w-2xl" style={`color: var(--text-secondary);`}>
+      A daily AI information stream for builders. Each issue collects 5-10 events with original links, short context, and a clear judgment on why it matters.
+    </p>
+  </header>
+
+  <NewsletterSignup source="ai-news-index" />
+
+  <div class="section-divider my-8"></div>
+
+  <section class="py-4">
+    <div class="flex items-end justify-between gap-4 mb-5">
+      <div>
+        <p class="text-[11px] font-semibold uppercase mb-2" style={`color: var(--text-tertiary); letter-spacing: 0;`}>
+          Archive
+        </p>
+        <h2 class="text-lg font-bold tracking-tight" style={`color: var(--text-primary);`}>Latest issues</h2>
+      </div>
+      <a href="/ai-news/feed.json" class="tag-pill hover:text-[var(--color-accent)]">JSON feed</a>
+    </div>
+
+    {
+      issues.length > 0 ? (
+        <div class="space-y-3">
+          {issues.map((issue) => (
+            <a href={`/ai-news/${issue.id}`} class="group card block p-5">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-3">
+                <div class="min-w-0">
+                  <h3 class="text-sm font-semibold mb-1.5 group-hover:text-[var(--color-accent)] transition-colors" style={`color: var(--text-primary);`}>
+                    {issue.data.title}
+                  </h3>
+                  <p class="text-xs leading-relaxed line-clamp-2" style={`color: var(--text-secondary);`}>
+                    {issue.data.description}
+                  </p>
+                </div>
+                <time class="text-[10px] font-mono whitespace-nowrap pt-0.5 shrink-0" style={`color: var(--text-tertiary);`}>
+                  {issue.data.date.toISOString().split("T")[0]}
+                </time>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                {issue.data.tags.slice(0, 4).map((tag) => <span class="tag-pill">{tag}</span>)}
+                <span class="tag-pill">{issue.data.sourceCount} sources</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="card p-6">
+          <h3 class="text-sm font-semibold mb-2" style={`color: var(--text-primary);`}>No public issues yet</h3>
+          <p class="text-xs leading-[1.8]" style={`color: var(--text-secondary);`}>
+            The content pipeline is ready. Daily AI News issues will appear here after source selection is finalized.
+          </p>
+        </div>
+      )
+    }
+  </section>
+</Layout>

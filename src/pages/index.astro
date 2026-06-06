@@ -4,6 +4,7 @@ import Hero from "../components/Hero.astro";
 import WorkTimeline from "../components/WorkTimeline.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import BlogCard from "../components/BlogCard.astro";
+import NewsletterSignup from "../components/NewsletterSignup.astro";
 import { projects } from "../data/projects";
 import { site } from "../data/site";
 import { getCollection } from "astro:content";
@@ -42,6 +43,30 @@ const homePosts = selectedHomePosts.length > 0 ? selectedHomePosts : posts.slice
       and AI Agent infra. The writing goes a little wider: Claude Code, OpenClaw, investing, career choices, and how I make
       decisions when the answer is not sitting neatly in a document.
     </p>
+  </section>
+
+  <div class="section-divider my-6"></div>
+
+  <section class="py-6" aria-labelledby="ai-news-heading">
+    <div class="flex flex-col lg:flex-row lg:items-start gap-4">
+      <div class="flex-1">
+        <p class="text-[11px] font-semibold uppercase mb-2" style={`color: var(--text-tertiary); letter-spacing: 0;`}>
+          Daily AI Signal
+        </p>
+        <h2 id="ai-news-heading" class="text-lg font-bold tracking-tight mb-3" style={`color: var(--text-primary);`}>
+          AI News
+        </h2>
+        <p class="text-xs leading-[1.8] max-w-2xl" style={`color: var(--text-secondary);`}>
+          A daily feed for tracking AI tools, agent workflows, model updates, infrastructure shifts, and the original links behind each event.
+        </p>
+        <a href="/ai-news" class="tag-pill hover:text-[var(--color-accent)] mt-4 w-fit">
+          Browse AI News
+        </a>
+      </div>
+      <div class="lg:w-[340px]">
+        <NewsletterSignup compact source="home-ai-news" />
+      </div>
+    </div>
   </section>
 
   <div class="section-divider my-6"></div>

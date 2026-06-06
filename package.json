@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "news:stub": "node scripts/generate-ai-news-draft.mjs",
     "astro": "astro"
   },
   "dependencies": {

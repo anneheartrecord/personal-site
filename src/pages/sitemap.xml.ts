@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 
-const staticPages = ["", "blog", "projects", "ama", "social", "friends"];
+const staticPages = ["", "blog", "ai-news", "projects", "ama", "social", "friends"];
 
 /** Escape XML entities in URL and date fields. */
 const escapeXml = (value: string) =>
@@ -27,6 +27,7 @@ const renderUrl = (url: string, lastmod?: Date) => {
 export const GET: APIRoute = async ({ site }) => {
   const baseUrl = site ?? new URL("https://charles-cheng.com");
   const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const aiNewsIssues = await getCollection("aiNews", ({ data }) => !data.draft);
   const urls = [
     ...staticPages.map((path) => ({
       url: new URL(`/${path}`, baseUrl).toString(),
@@ -35,6 +36,10 @@ export const GET: APIRoute = async ({ site }) => {
     ...posts.map((post) => ({
       url: new URL(`/blog/${post.id}`, baseUrl).toString(),
       lastmod: post.data.date,
+    })),
+    ...aiNewsIssues.map((issue) => ({
+      url: new URL(`/ai-news/${issue.id}`, baseUrl).toString(),
+      lastmod: issue.data.date,
     })),
   ];
 

@@ -10,6 +10,22 @@ npm run dev        # localhost:4321
 npm run build      # production build → ./dist/
 ```
 
+## AI News
+
+Daily AI News lives in `src/content/ai-news/`.
+
+```bash
+npm run news:stub -- --date 2026-06-06
+```
+
+Set `PUBLIC_KIT_FORM_ID` and the Kit v3 public API key to connect the AI News signup form to Kit:
+
+```bash
+PUBLIC_KIT_FORM_ID=your_form_id PUBLIC_KIT_API_KEY=your_public_api_key npm run build
+```
+
+The full growth plan is documented in `docs/ai-news-growth-system.md`.
+
 ## Deploy
 
 Push to `main` branch → Vercel auto-deploys.

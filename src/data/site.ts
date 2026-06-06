@@ -11,6 +11,10 @@ export const site = {
     github: "https://github.com/anneheartrecord",
     x: "https://x.com/Charles77xixi",
   },
+  newsletter: {
+    name: "AI News",
+    description: "Daily AI signal for builders: tools, agents, models, infra, product shifts, and the links behind each event.",
+  },
   image: "/images/avatar.jpg",
   keywords: [
     "Charles Cheng",

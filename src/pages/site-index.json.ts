@@ -10,7 +10,9 @@ const toAbsoluteUrl = (path: string, baseUrl: URL) => new URL(path, baseUrl).toS
 export const GET: APIRoute = async ({ site }) => {
   const baseUrl = site ?? new URL(siteData.url);
   const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const aiNewsIssues = await getCollection("aiNews", ({ data }) => !data.draft);
   const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const sortedAiNewsIssues = aiNewsIssues.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   const payload = {
     site: {
       name: siteData.name,
@@ -23,6 +25,7 @@ export const GET: APIRoute = async ({ site }) => {
     pages: [
       { title: "Home", url: toAbsoluteUrl("/", baseUrl), description: "Profile, work summary, projects, blog highlights, travel and Nuomi galleries." },
       { title: "Blog", url: toAbsoluteUrl("/blog", baseUrl), description: "Writing grouped by AI, investing, career, engineering, and thinking." },
+      { title: "AI News", url: toAbsoluteUrl("/ai-news", baseUrl), description: "Daily AI news with original links, short context, and builder-focused judgment." },
       { title: "Projects", url: toAbsoluteUrl("/projects", baseUrl), description: "Open source projects and AI tooling work." },
       { title: "AMA", url: toAbsoluteUrl("/ama", baseUrl), description: "Career consulting and resume/interview advisory." },
       { title: "Social Media", url: toAbsoluteUrl("/social", baseUrl), description: "Public social profiles and contact methods." },
@@ -36,6 +39,14 @@ export const GET: APIRoute = async ({ site }) => {
       description: post.data.description,
       date: post.data.date.toISOString().split("T")[0],
       tags: post.data.tags,
+    })),
+    aiNews: sortedAiNewsIssues.map((issue) => ({
+      title: issue.data.title,
+      url: toAbsoluteUrl(`/ai-news/${issue.id}`, baseUrl),
+      description: issue.data.description,
+      date: issue.data.date.toISOString().split("T")[0],
+      tags: issue.data.tags,
+      sourceCount: issue.data.sourceCount,
     })),
   };
 
