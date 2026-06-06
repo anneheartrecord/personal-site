@@ -42,7 +42,7 @@ jobs:
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           AI_NEWS_EMAIL_FROM: ${{ vars.AI_NEWS_EMAIL_FROM }}
-          AI_NEWS_NOTIFY_TO: chenxisheng777@gmail.com
+          AI_NEWS_NOTIFY_TO: ${{ vars.AI_NEWS_NOTIFY_TO || 'chengxisheng777@gmail.com' }}
           AI_NEWS_ISSUE_PATH: ${{ inputs.issue_path }}
           AI_NEWS_TEST_EMAIL: ${{ inputs.test_email }}
           SITE_URL: https://charles-cheng.com

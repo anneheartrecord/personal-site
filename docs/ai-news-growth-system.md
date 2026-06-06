@@ -191,7 +191,7 @@ Suggested hosted flow:
   -> create PR for review
   -> merge/push after approval
   -> Vercel deploys from main
-  -> send email notification to chenxisheng777@gmail.com
+  -> send email notification to chengxisheng777@gmail.com
 ```
 
 Safety gate:
@@ -304,12 +304,13 @@ Behavior:
 - Trigger on pushes to `main` that change `src/content/ai-news/**`.
 - Skip `_template.md`.
 - Skip issues with `draft: true`.
-- Send an email to `chenxisheng777@gmail.com`.
+- Send an email to `chengxisheng777@gmail.com`.
 
 Required GitHub configuration:
 
 - Secret: `RESEND_API_KEY`
 - Variable: `AI_NEWS_EMAIL_FROM`
+- Variable: `AI_NEWS_NOTIFY_TO`
 
 `AI_NEWS_EMAIL_FROM` should be a verified sender in Resend. Example:
 
