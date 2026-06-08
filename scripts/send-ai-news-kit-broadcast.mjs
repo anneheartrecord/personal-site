@@ -199,6 +199,35 @@ const getVerifiedSenderEmail = async (apiKey) => {
   return senderAddress.email_address;
 };
 
+/** Return a specific draft broadcast id when the caller wants to resume one.
+ * @returns {number | null} Existing Kit broadcast id, or null for create mode.
+ */
+const getBroadcastId = () => {
+  const broadcastId = Number(process.env.KIT_BROADCAST_ID || "");
+  if (!Number.isInteger(broadcastId) || broadcastId <= 0) {
+    return null;
+  }
+
+  return broadcastId;
+};
+
+/** Build a useful error for Kit broadcast write failures.
+ * @param {number} statusCode - Kit HTTP status code.
+ * @param {string} errorBody - Raw Kit error body.
+ * @returns {Error} Error with operational context.
+ */
+const createKitBroadcastError = (statusCode, errorBody) => {
+  if (statusCode === 403) {
+    return new Error(
+      "Kit broadcast failed: 403. The API key is valid, but Kit rejected " +
+        "broadcast write access for this account. Confirm that Trust & Safety " +
+        `has restored sending permissions. Raw response: ${errorBody}`,
+    );
+  }
+
+  return new Error(`Kit broadcast failed: ${statusCode} ${errorBody}`);
+};
+
 /** Create or schedule a Kit broadcast for the issue.
  * @param {{title: string, description: string, date: string, url: string, html: string}} issue - Issue payload.
  * @returns {Promise<void>} Resolves after Kit accepts the broadcast.
@@ -231,8 +260,12 @@ const createBroadcast = async (issue) => {
     payload.email_template_id = templateId;
   }
 
-  const response = await fetch(`${KIT_API_BASE_URL}/broadcasts`, {
-    method: "POST",
+  const broadcastId = getBroadcastId();
+  const endpoint = broadcastId
+    ? `${KIT_API_BASE_URL}/broadcasts/${broadcastId}`
+    : `${KIT_API_BASE_URL}/broadcasts`;
+  const response = await fetch(endpoint, {
+    method: broadcastId ? "PUT" : "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
       "X-Kit-Api-Key": apiKey,
@@ -242,7 +275,7 @@ const createBroadcast = async (issue) => {
 
   if (!response.ok) {
     const errorBody = await response.text();
-    throw new Error(`Kit broadcast failed: ${response.status} ${errorBody}`);
+    throw createKitBroadcastError(response.status, errorBody);
   }
 
   const result = await response.json();
@@ -251,6 +284,7 @@ const createBroadcast = async (issue) => {
     JSON.stringify(
       {
         broadcastId: broadcast.id,
+        mode: broadcastId ? "update" : "create",
         subject: broadcast.subject,
         sendAt: broadcast.send_at,
         public: broadcast.public,
