@@ -18,11 +18,14 @@ Daily AI News lives in `src/content/ai-news/`.
 npm run news:stub -- --date 2026-06-06
 ```
 
-Set `PUBLIC_KIT_FORM_ID` and the Kit v3 public API key to connect the AI News signup form to Kit:
+Set private Vercel environment variables to connect the AI News signup form to Kit:
 
 ```bash
-PUBLIC_KIT_FORM_ID=your_form_id PUBLIC_KIT_API_KEY=your_public_api_key npm run build
+KIT_FORM_ID
+KIT_API_KEY
 ```
+
+The browser posts subscriptions to `/api/ai-news-subscribe`; Kit credentials stay server-side in Vercel.
 
 The full growth plan is documented in `docs/ai-news-growth-system.md`.
 

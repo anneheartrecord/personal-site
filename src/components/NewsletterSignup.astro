@@ -7,10 +7,6 @@ interface Props {
 }
 
 const { compact = false, source = "site" } = Astro.props;
-const kitFormId = import.meta.env.PUBLIC_KIT_FORM_ID;
-const kitApiKey = import.meta.env.PUBLIC_KIT_API_KEY;
-const kitSubscribeUrl = kitFormId ? `https://api.convertkit.com/v3/forms/${kitFormId}/subscribe` : "";
-const isConfigured = Boolean(kitFormId && kitApiKey);
 const formId = `ai-news-signup-form-${source}`;
 const statusId = `ai-news-signup-status-${source}`;
 ---
@@ -29,58 +25,45 @@ const statusId = `ai-news-signup-status-${source}`;
       </p>
     </div>
 
-    {
-      isConfigured ? (
-        <form
-          id={formId}
-          action={kitSubscribeUrl}
-          method="post"
-          class="flex flex-col sm:flex-row gap-2"
-          data-kit-subscribe-form
-          data-kit-subscribe-url={kitSubscribeUrl}
-          data-kit-api-key={kitApiKey}
-          data-newsletter-source={source}
-          aria-describedby={statusId}
-        >
-          <input type="hidden" name="api_key" value={kitApiKey} />
-          <input type="hidden" name="fields[source]" value={source} />
-          <div class="flex-1">
-            <label for={`email-${source}`} class="sr-only">Email address</label>
-            <input
-              id={`email-${source}`}
-              name="email"
-              type="email"
-              autocomplete="email"
-              required
-              placeholder="you@example.com"
-              class="w-full min-h-11 px-3 py-2 rounded-xl text-sm outline-none"
-              style={`background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color);`}
-            />
-          </div>
-          <button
-            type="submit"
-            class="min-h-11 px-4 rounded-xl text-sm font-semibold cursor-pointer transition-all hover:opacity-90"
-            style={`background: var(--color-accent); color: white;`}
-          >
-            Subscribe
-          </button>
-        </form>
-        <p
-          id={statusId}
-          class="text-[11px] leading-relaxed"
-          style={`color: var(--text-tertiary);`}
-          role="status"
-          aria-live="polite"
-          data-kit-subscribe-status
+    <form
+      id={formId}
+      action="/api/ai-news-subscribe"
+      method="post"
+      class="flex flex-col sm:flex-row gap-2"
+      data-newsletter-subscribe-form
+      data-newsletter-source={source}
+      aria-describedby={statusId}
+    >
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+      <div class="flex-1">
+        <label for={`email-${source}`} class="sr-only">Email address</label>
+        <input
+          id={`email-${source}`}
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="you@example.com"
+          class="w-full min-h-11 px-3 py-2 rounded-xl text-sm outline-none"
+          style={`background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color);`}
         />
-      ) : (
-        <div class="rounded-xl p-4" style={`background: var(--bg-secondary); border: 1px solid var(--border-color);`}>
-          <p class="text-xs leading-[1.8]" style={`color: var(--text-secondary);`}>
-            订阅入口正在接入中。现在可以先直接阅读每日 AI News，后续开放后会支持邮件接收。
-          </p>
-        </div>
-      )
-    }
+      </div>
+      <button
+        type="submit"
+        class="min-h-11 px-4 rounded-xl text-sm font-semibold cursor-pointer transition-all hover:opacity-90"
+        style={`background: var(--color-accent); color: white;`}
+      >
+        Subscribe
+      </button>
+    </form>
+    <p
+      id={statusId}
+      class="text-[11px] leading-relaxed"
+      style={`color: var(--text-tertiary);`}
+      role="status"
+      aria-live="polite"
+      data-newsletter-subscribe-status
+    />
 
     <p class="text-[11px] leading-relaxed" style={`color: var(--text-tertiary);`}>
       No spam. Every issue links back to the original sources.
@@ -94,24 +77,23 @@ const statusId = `ai-news-signup-status-${source}`;
 
     document.addEventListener("submit", async (event) => {
       const form = event.target;
-      if (!(form instanceof HTMLFormElement) || !form.matches("[data-kit-subscribe-form]")) {
+      if (!(form instanceof HTMLFormElement) || !form.matches("[data-newsletter-subscribe-form]")) {
         return;
       }
 
       event.preventDefault();
 
       const emailInput = form.querySelector('input[name="email"]');
+      const websiteInput = form.querySelector('input[name="website"]');
       const submitButton = form.querySelector('button[type="submit"]');
-      const status = form.parentElement?.querySelector("[data-kit-subscribe-status]");
-      const subscribeUrl = form.dataset.kitSubscribeUrl;
-      const apiKey = form.dataset.kitApiKey;
+      const status = form.parentElement?.querySelector("[data-newsletter-subscribe-status]");
       const source = form.dataset.newsletterSource ?? "site";
 
       if (!(emailInput instanceof HTMLInputElement) || !(submitButton instanceof HTMLButtonElement)) {
         return;
       }
 
-      if (!subscribeUrl || !apiKey || !emailInput.reportValidity()) {
+      if (!emailInput.reportValidity()) {
         return;
       }
 
@@ -123,17 +105,15 @@ const statusId = `ai-news-signup-status-${source}`;
       }
 
       try {
-        const response = await fetch(subscribeUrl, {
+        const response = await fetch(form.action, {
           method: "POST",
           headers: {
             "Content-Type": "application/json; charset=utf-8",
           },
           body: JSON.stringify({
-            api_key: apiKey,
             email: emailInput.value,
-            fields: {
-              source,
-            },
+            source,
+            website: websiteInput instanceof HTMLInputElement ? websiteInput.value : "",
           }),
         });
 
@@ -143,12 +123,12 @@ const statusId = `ai-news-signup-status-${source}`;
 
         emailInput.value = "";
         if (status) {
-          status.textContent = "Subscribed. Check your inbox if Kit requires confirmation.";
+          status.textContent = "Subscribed. Check your inbox if confirmation is required.";
         }
       } catch (error) {
         console.error(error);
         if (status) {
-          status.textContent = "Subscription failed. Please try again later.";
+          status.textContent = "Subscription is not available yet. Please try again later.";
         }
       } finally {
         submitButton.disabled = false;
