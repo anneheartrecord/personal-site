@@ -39,6 +39,17 @@ Configure these in GitHub:
 - Variable: `AI_NEWS_EMAIL_FROM` (must be a verified Resend sender)
 - Variable: `AI_NEWS_NOTIFY_TO`
 
+### AI News subscriber broadcast
+
+When the daily generation workflow publishes a new issue, it can also create and schedule a Kit broadcast for subscribers.
+
+Configure these in GitHub:
+
+- Secret: `KIT_V4_API_KEY`
+- Variable: `KIT_BROADCAST_FROM_EMAIL` (optional)
+- Variable: `KIT_BROADCAST_TEMPLATE_ID` (optional)
+- Variable: `KIT_BROADCAST_SEND_AT` (optional ISO timestamp; defaults to five minutes after workflow runtime)
+
 ## Deploy
 
 Push to `main` branch → Vercel auto-deploys.

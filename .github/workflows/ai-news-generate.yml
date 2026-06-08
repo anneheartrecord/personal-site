@@ -105,3 +105,14 @@ jobs:
           fi
 
           node scripts/notify-ai-news-publish.mjs
+
+      - name: Send subscriber broadcast
+        if: steps.commit.outputs.published == 'true'
+        env:
+          KIT_V4_API_KEY: ${{ secrets.KIT_V4_API_KEY }}
+          KIT_BROADCAST_FROM_EMAIL: ${{ vars.KIT_BROADCAST_FROM_EMAIL }}
+          KIT_BROADCAST_TEMPLATE_ID: ${{ vars.KIT_BROADCAST_TEMPLATE_ID }}
+          KIT_BROADCAST_SEND_AT: ${{ vars.KIT_BROADCAST_SEND_AT }}
+          AI_NEWS_ISSUE_PATH: ${{ steps.commit.outputs.issue_path }}
+          SITE_URL: https://charles-cheng.com
+        run: npm run news:broadcast
