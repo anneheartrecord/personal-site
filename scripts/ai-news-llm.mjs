@@ -9,6 +9,14 @@ const getResponsesUrl = () => {
   return `${baseUrl.replace(/\/$/, "")}/responses`;
 };
 
+/** Build the OpenAI-compatible Chat Completions API URL.
+ * @returns {string} Chat Completions API endpoint.
+ */
+const getChatCompletionsUrl = () => {
+  const baseUrl = process.env.OPENAI_BASE_URL || DEFAULT_OPENAI_BASE_URL;
+  return `${baseUrl.replace(/\/$/, "")}/chat/completions`;
+};
+
 /** Shorten source text before sending candidates to the model.
  * @param {string} text - Raw candidate text.
  * @param {number} maxLength - Maximum characters to keep.
@@ -40,6 +48,12 @@ const extractResponseText = (responseBody) => {
     .join("\n")
     .trim();
 };
+
+/** Extract text from a raw Chat Completions payload.
+ * @param {object} responseBody - Raw chat completion response body.
+ * @returns {string} Model output text.
+ */
+const extractChatText = (responseBody) => responseBody.choices?.[0]?.message?.content?.trim() ?? "";
 
 /** Parse a JSON object from model output.
  * @param {string} text - Model output.
@@ -151,6 +165,23 @@ export const generateLlmIssue = async ({ issueDate, scoredCandidates }) => {
 
   const model = process.env.OPENAI_MODEL || DEFAULT_MODEL;
   const candidates = buildCandidatePayload(scoredCandidates);
+  const prompt = buildPrompt(issueDate, candidates);
+  const rawOutput =
+    process.env.OPENAI_API_MODE === "chat"
+      ? await callChatCompletions({ apiKey, model, prompt })
+      : await callResponsesApi({ apiKey, model, prompt });
+
+  return validateLlmIssue(parseJsonOutput(rawOutput), scoredCandidates);
+};
+
+/** Call an OpenAI-compatible Responses API endpoint.
+ * @param {object} params - Request parameters.
+ * @param {string} params.apiKey - Provider API key.
+ * @param {string} params.model - Model name.
+ * @param {string} params.prompt - User prompt.
+ * @returns {Promise<string>} Model output text.
+ */
+const callResponsesApi = async ({ apiKey, model, prompt }) => {
   const response = await fetch(getResponsesUrl(), {
     method: "POST",
     headers: {
@@ -159,25 +190,65 @@ export const generateLlmIssue = async ({ issueDate, scoredCandidates }) => {
     },
     body: JSON.stringify({
       model,
-      input: buildPrompt(issueDate, candidates),
+      input: prompt,
       max_output_tokens: 7000,
     }),
   });
 
   if (!response.ok) {
-    const errorText = await response.text();
-    let errorSummary = "unknown_error";
-    try {
-      const errorBody = JSON.parse(errorText);
-      errorSummary = errorBody.error?.code || errorBody.error?.type || errorSummary;
-    } catch {
-      errorSummary = "unparseable_error";
-    }
-    throw new Error(`OpenAI Responses API failed: ${response.status} ${errorSummary}`);
+    throw new Error(`OpenAI Responses API failed: ${response.status} ${await summarizeError(response)}`);
   }
 
   const responseBody = await response.json();
-  return validateLlmIssue(parseJsonOutput(extractResponseText(responseBody)), scoredCandidates);
+  return extractResponseText(responseBody);
+};
+
+/** Call an OpenAI-compatible Chat Completions API endpoint.
+ * @param {object} params - Request parameters.
+ * @param {string} params.apiKey - Provider API key.
+ * @param {string} params.model - Model name.
+ * @param {string} params.prompt - User prompt.
+ * @returns {Promise<string>} Model output text.
+ */
+const callChatCompletions = async ({ apiKey, model, prompt }) => {
+  const response = await fetch(getChatCompletionsUrl(), {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model,
+      messages: [
+        {
+          role: "user",
+          content: prompt,
+        },
+      ],
+      max_completion_tokens: 7000,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`OpenAI Chat Completions API failed: ${response.status} ${await summarizeError(response)}`);
+  }
+
+  const responseBody = await response.json();
+  return extractChatText(responseBody);
+};
+
+/** Summarize an API error body without printing secrets.
+ * @param {Response} response - Failed fetch response.
+ * @returns {Promise<string>} Short error code or type.
+ */
+const summarizeError = async (response) => {
+  const errorText = await response.text();
+  try {
+    const errorBody = JSON.parse(errorText);
+    return errorBody.error?.code || errorBody.error?.type || "unknown_error";
+  } catch {
+    return "unparseable_error";
+  }
 };
 
 /** Validate model output and normalize selected source metadata.
