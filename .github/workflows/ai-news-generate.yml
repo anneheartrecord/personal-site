@@ -61,13 +61,13 @@ jobs:
       - name: Commit generated issue
         id: commit
         run: |
-          if git diff --quiet -- src/content/ai-news; then
+          if [ -z "$(git status --porcelain -- src/content/ai-news)" ]; then
             echo "published=false" >> "$GITHUB_OUTPUT"
             echo "No new AI News issue to commit."
             exit 0
           fi
 
-          issue_path="$(git diff --name-only -- src/content/ai-news | grep -E '^src/content/ai-news/.+\.md$' | grep -v '_template.md' | head -n 1)"
+          issue_path="$(git status --porcelain -- src/content/ai-news | awk '{print $2}' | grep -E '^src/content/ai-news/.+\.md$' | grep -v '_template.md' | head -n 1)"
           if [ -z "$issue_path" ]; then
             echo "published=false" >> "$GITHUB_OUTPUT"
             echo "No public AI News Markdown issue changed."
