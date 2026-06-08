@@ -104,6 +104,19 @@ const markdownToHtml = (markdown) => {
   return htmlParts.join("\n");
 };
 
+/** Mask an email address before writing diagnostic output.
+ * @param {string | undefined} email - Raw email address.
+ * @returns {string} Redacted email address.
+ */
+const maskEmail = (email) => {
+  if (!email || !email.includes("@")) {
+    return "unknown";
+  }
+
+  const [localPart, domain] = email.split("@");
+  return `${localPart.slice(0, 2)}***@${domain}`;
+};
+
 /** Read the AI News issue path from env and return normalized metadata.
  * @returns {{title: string, description: string, date: string, url: string, html: string}} Issue payload.
  */
@@ -146,6 +159,46 @@ const readIssue = () => {
   };
 };
 
+/** Ensure the Kit broadcast sender address can send email.
+ * @param {string} apiKey - Kit v4 API key.
+ * @returns {Promise<string>} Verified sender email address.
+ */
+const getVerifiedSenderEmail = async (apiKey) => {
+  const response = await fetch(`${KIT_API_BASE_URL}/account`, {
+    headers: {
+      "X-Kit-Api-Key": apiKey,
+    },
+  });
+
+  if (!response.ok) {
+    const errorBody = await response.text();
+    throw new Error(`Kit account lookup failed: ${response.status} ${errorBody}`);
+  }
+
+  const result = await response.json();
+  const addresses = result.account?.sending_addresses || [];
+  const configuredEmail = process.env.KIT_BROADCAST_FROM_EMAIL?.trim();
+  const senderAddress = configuredEmail
+    ? addresses.find(
+        (address) =>
+          address.email_address?.toLowerCase() === configuredEmail.toLowerCase(),
+      )
+    : addresses.find((address) => address.is_default) || addresses[0];
+
+  if (!senderAddress) {
+    throw new Error("Kit has no sending address configured for broadcasts.");
+  }
+
+  if (!senderAddress.is_verified) {
+    throw new Error(
+      `Kit sender ${maskEmail(senderAddress.email_address)} is not verified yet. ` +
+        `Current status: ${senderAddress.status || "unknown"}.`,
+    );
+  }
+
+  return senderAddress.email_address;
+};
+
 /** Create or schedule a Kit broadcast for the issue.
  * @param {{title: string, description: string, date: string, url: string, html: string}} issue - Issue payload.
  * @returns {Promise<void>} Resolves after Kit accepts the broadcast.
@@ -161,20 +214,17 @@ const createBroadcast = async (issue) => {
     process.env.KIT_BROADCAST_SEND_AT ||
     new Date(Date.now() + 5 * 60 * 1000).toISOString();
   const subject = process.env.KIT_BROADCAST_SUBJECT || issue.title;
+  const senderEmail = await getVerifiedSenderEmail(apiKey);
   const payload = {
     subject,
     preview_text: issue.description,
     description: issue.description,
     content: issue.html,
+    email_address: senderEmail,
     public: true,
     published_at: new Date(`${issue.date}T00:00:00+08:00`).toISOString(),
     send_at: sendAt,
   };
-
-  const senderEmail = process.env.KIT_BROADCAST_FROM_EMAIL;
-  if (senderEmail) {
-    payload.email_address = senderEmail;
-  }
 
   const templateId = Number(process.env.KIT_BROADCAST_TEMPLATE_ID || "");
   if (Number.isInteger(templateId) && templateId > 0) {
@@ -196,13 +246,14 @@ const createBroadcast = async (issue) => {
   }
 
   const result = await response.json();
+  const broadcast = result.broadcast || result;
   console.log(
     JSON.stringify(
       {
-        broadcastId: result.id,
-        subject: result.subject,
-        sendAt: result.send_at,
-        public: result.public,
+        broadcastId: broadcast.id,
+        subject: broadcast.subject,
+        sendAt: broadcast.send_at,
+        public: broadcast.public,
         issueUrl: issue.url,
       },
       null,
