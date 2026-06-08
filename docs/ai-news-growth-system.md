@@ -177,7 +177,8 @@ Current behavior:
 - Chrome Tab is optional for preview and visual checking. It is not the core runtime.
 - Fetch public `follow-builders` JSON feeds.
 - Deterministically pre-score candidate items.
-- Use OpenAI Responses API to cluster, de-duplicate, score, select, and write 5-10 builder-facing items when `OPENAI_API_KEY` is configured.
+- Use an OpenAI-compatible Responses API to cluster, de-duplicate, score, select, and write 5-10 builder-facing items when `OPENAI_API_KEY` is configured.
+- `OPENAI_BASE_URL` can switch the provider. The current GitHub variable points to PackyAPI.
 - Fall back to deterministic rules when the LLM key is missing or the API call fails.
 - The scheduled GitHub Actions workflow sets `AI_NEWS_REQUIRE_LLM=true`, so production generation fails loudly if the LLM call cannot complete.
 - Generate the daily public issue as `src/content/ai-news/YYYY-MM-DD.md`.
@@ -220,7 +221,7 @@ Safety gate:
 Execution answer:
 
 - The AI News production and selection process should run in GitHub Actions.
-- The LLM call happens from the GitHub Actions runner using the `OPENAI_API_KEY` repository secret.
+- The LLM call happens from the GitHub Actions runner using the `OPENAI_API_KEY` repository secret and `OPENAI_BASE_URL` repository variable.
 - Source fetching, deterministic pre-scoring, LLM selection, Markdown generation, build validation, and notification are all in the same scheduled workflow.
 - A separate server is not required for the first version.
 - A hosted browser provider is only needed later if we need real browser sessions beyond Playwright checks.

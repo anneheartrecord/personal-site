@@ -1,5 +1,13 @@
-const OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses";
 const DEFAULT_MODEL = "gpt-5-mini";
+const DEFAULT_OPENAI_BASE_URL = "https://api.openai.com/v1";
+
+/** Build the OpenAI-compatible Responses API URL.
+ * @returns {string} Responses API endpoint.
+ */
+const getResponsesUrl = () => {
+  const baseUrl = process.env.OPENAI_BASE_URL || DEFAULT_OPENAI_BASE_URL;
+  return `${baseUrl.replace(/\/$/, "")}/responses`;
+};
 
 /** Shorten source text before sending candidates to the model.
  * @param {string} text - Raw candidate text.
@@ -143,7 +151,7 @@ export const generateLlmIssue = async ({ issueDate, scoredCandidates }) => {
 
   const model = process.env.OPENAI_MODEL || DEFAULT_MODEL;
   const candidates = buildCandidatePayload(scoredCandidates);
-  const response = await fetch(OPENAI_RESPONSES_URL, {
+  const response = await fetch(getResponsesUrl(), {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
