@@ -107,7 +107,7 @@ jobs:
           node scripts/notify-ai-news-publish.mjs
 
       - name: Send subscriber broadcast
-        if: steps.commit.outputs.published == 'true'
+        if: steps.commit.outputs.published == 'true' && vars.AI_NEWS_BROADCAST_ENABLED == 'true'
         env:
           KIT_V4_API_KEY: ${{ secrets.KIT_V4_API_KEY }}
           KIT_BROADCAST_FROM_EMAIL: ${{ vars.KIT_BROADCAST_FROM_EMAIL }}

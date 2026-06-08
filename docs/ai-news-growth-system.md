@@ -156,9 +156,10 @@ Deliverables:
 Subscription behavior:
 
 - Uses Kit as the preferred newsletter system.
-- Set `PUBLIC_KIT_FORM_ID` and `PUBLIC_KIT_API_KEY` to connect the signup form to Kit's public form subscribe API.
-- Without both public env vars, the site shows a configured-safe disabled state instead of silently failing.
-- Do not expose Kit API secrets in the static site. Secrets are only for the later automation layer that creates broadcasts and reads analytics.
+- The signup form posts to the server-side `/api/ai-news-subscribe` endpoint.
+- Set `KIT_FORM_ID` and `KIT_API_KEY` in Vercel to subscribe users to the configured Kit form.
+- Do not expose Kit API secrets in the static site.
+- The page subscription flow is active. Subscriber email broadcast is intentionally gated and can be enabled later with the `AI_NEWS_BROADCAST_ENABLED=true` GitHub variable.
 
 Why Kit first:
 
@@ -211,6 +212,7 @@ Suggested hosted flow:
   -> commit/push to main
   -> Vercel deploys from main
   -> send email notification to chengxisheng777@gmail.com
+  -> skip subscriber broadcast unless AI_NEWS_BROADCAST_ENABLED=true
 ```
 
 Safety gate:
@@ -232,6 +234,7 @@ Target behavior:
 
 - Create a Kit broadcast for each daily issue.
 - Use a server-side script or secure scheduled job for Kit broadcast creation and analytics reads.
+- Keep subscriber broadcast disabled until Kit sending permissions and content quality are stable.
 - Add UTM parameters to every website link:
   - `utm_source=kit`
   - `utm_medium=email`
