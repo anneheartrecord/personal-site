@@ -157,8 +157,15 @@ export const generateLlmIssue = async ({ issueDate, scoredCandidates }) => {
   });
 
   if (!response.ok) {
-    const errorBody = await response.text();
-    throw new Error(`OpenAI Responses API failed: ${response.status} ${errorBody}`);
+    const errorText = await response.text();
+    let errorSummary = "unknown_error";
+    try {
+      const errorBody = JSON.parse(errorText);
+      errorSummary = errorBody.error?.code || errorBody.error?.type || errorSummary;
+    } catch {
+      errorSummary = "unparseable_error";
+    }
+    throw new Error(`OpenAI Responses API failed: ${response.status} ${errorSummary}`);
   }
 
   const responseBody = await response.json();
