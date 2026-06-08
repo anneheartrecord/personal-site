@@ -1,3 +1,5 @@
+import { createInsight } from "./ai-news-follow-builders-rules.mjs";
+
 const DEFAULT_MODEL = "gpt-5-mini";
 const DEFAULT_OPENAI_BASE_URL = "https://api.openai.com/v1";
 
@@ -226,6 +228,7 @@ const callChatCompletions = async ({ apiKey, model, prompt }) => {
         },
       ],
       max_completion_tokens: 7000,
+      response_format: { type: "json_object" },
     }),
   });
 
@@ -261,8 +264,8 @@ const validateLlmIssue = (issue, scoredCandidates) => {
   const selected = Array.isArray(issue.selected) ? issue.selected : [];
   const discarded = Array.isArray(issue.discarded) ? issue.discarded : [];
 
-  if (selected.length < 5 || selected.length > 10) {
-    throw new Error(`OpenAI selected ${selected.length} items. Expected 5-10.`);
+  if (selected.length > 10) {
+    throw new Error(`OpenAI selected ${selected.length} items. Expected at most 10.`);
   }
 
   const normalizedSelected = selected.map((item) => {
@@ -282,6 +285,34 @@ const validateLlmIssue = (issue, scoredCandidates) => {
       candidate,
     };
   });
+  const selectedIds = new Set(normalizedSelected.map((item) => item.id));
+
+  if (normalizedSelected.length < 5) {
+    const supplementItems = scoredCandidates
+      .filter((candidate) => !selectedIds.has(candidate.id))
+      .filter((candidate) => candidate.dropReasons.length === 0)
+      .sort((left, right) => right.score - left.score)
+      .slice(0, 5 - normalizedSelected.length)
+      .map((candidate) => {
+        const insight = createInsight(candidate);
+        return {
+          id: candidate.id,
+          score: Math.min(7, Math.max(6, Math.round(candidate.score / 12))),
+          title: insight.title,
+          sourceLabel: candidate.sourceLabel,
+          sourceUrl: candidate.url,
+          categories: candidate.categories,
+          whySelected: "LLM selected fewer than 5 items; deterministic scorer added this high-signal fallback.",
+          summary: insight.summary,
+          candidate,
+        };
+      });
+    normalizedSelected.push(...supplementItems);
+  }
+
+  if (normalizedSelected.length < 5) {
+    throw new Error(`AI News selected ${normalizedSelected.length} items after supplement. Expected 5-10.`);
+  }
 
   for (const item of normalizedSelected) {
     if (!item.title || !item.summary || !item.sourceUrl) {
