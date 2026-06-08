@@ -8,6 +8,11 @@ import {
   createInsight,
   createTopicKey,
 } from "./ai-news-follow-builders-rules.mjs";
+import {
+  buildLlmInternalLog,
+  buildLlmPublicIssue,
+  generateLlmIssue,
+} from "./ai-news-llm.mjs";
 
 const CONTENT_DIR = join(process.cwd(), "src", "content", "ai-news");
 const INTERNAL_LOG_DIR = join(process.cwd(), ".ai-news-internal");
@@ -417,20 +422,41 @@ const main = async () => {
     ...extractBlogItems(feeds.blogFeed),
   ];
   const scoredCandidates = candidates.map(scoreCandidate);
-  const selectedItems = selectItems(scoredCandidates);
+  let publicIssueContent = "";
+  let internalLogContent = "";
+  let generationMode = "deterministic";
 
-  if (selectedItems.length < 5) {
-    throw new Error(`Only selected ${selectedItems.length} items. Expected at least 5.`);
+  if (process.env.OPENAI_API_KEY && process.env.AI_NEWS_DISABLE_LLM !== "true") {
+    try {
+      const llmIssue = await generateLlmIssue({ issueDate, scoredCandidates });
+      if (llmIssue) {
+        publicIssueContent = buildLlmPublicIssue(issueDate, llmIssue, getIssueNumber(issueDate));
+        internalLogContent = buildLlmInternalLog(issueDate, llmIssue, scoredCandidates, feeds);
+        generationMode = "llm";
+      }
+    } catch (error) {
+      if (process.env.AI_NEWS_REQUIRE_LLM === "true") {
+        throw error;
+      }
+      console.warn(`LLM generation failed, falling back to deterministic rules: ${error.message}`);
+    }
   }
 
-  writeFileSync(publicIssuePath, buildPublicIssue(issueDate, selectedItems), "utf8");
-  writeFileSync(
-    join(INTERNAL_LOG_DIR, `${issueDate}.md`),
-    buildInternalLog(issueDate, selectedItems, scoredCandidates, feeds),
-    "utf8",
-  );
+  if (!publicIssueContent) {
+    const selectedItems = selectItems(scoredCandidates);
+    if (selectedItems.length < 5) {
+      throw new Error(`Only selected ${selectedItems.length} items. Expected at least 5.`);
+    }
+
+    publicIssueContent = buildPublicIssue(issueDate, selectedItems);
+    internalLogContent = buildInternalLog(issueDate, selectedItems, scoredCandidates, feeds);
+  }
+
+  writeFileSync(publicIssuePath, publicIssueContent, "utf8");
+  writeFileSync(join(INTERNAL_LOG_DIR, `${issueDate}.md`), internalLogContent, "utf8");
 
   console.log(`Generated public AI News issue: ${publicIssuePath}`);
+  console.log(`Generation mode: ${generationMode}`);
   console.log(`Generated internal AI News log: ${join(INTERNAL_LOG_DIR, `${issueDate}.md`)}`);
 };
 

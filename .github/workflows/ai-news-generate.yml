@@ -39,6 +39,9 @@ jobs:
         env:
           AI_NEWS_DATE: ${{ github.event.inputs.date || '' }}
           AI_NEWS_FORCE: ${{ github.event.inputs.force || 'false' }}
+          AI_NEWS_REQUIRE_LLM: "true"
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5-mini' }}
         run: npm run news:generate
 
       - name: Build site

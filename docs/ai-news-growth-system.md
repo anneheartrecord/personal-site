@@ -168,7 +168,7 @@ Why Kit first:
 
 ## Phase 2: Daily Automation
 
-Status: implemented as a no-key v1 automation.
+Status: implemented as an LLM-first automation with deterministic fallback.
 
 Current behavior:
 
@@ -176,7 +176,10 @@ Current behavior:
 - Use GitHub Actions as the execution environment. The user's laptop is not part of the production path.
 - Chrome Tab is optional for preview and visual checking. It is not the core runtime.
 - Fetch public `follow-builders` JSON feeds.
-- Deterministically score and select 5-10 builder-facing items.
+- Deterministically pre-score candidate items.
+- Use OpenAI Responses API to cluster, de-duplicate, score, select, and write 5-10 builder-facing items when `OPENAI_API_KEY` is configured.
+- Fall back to deterministic rules when the LLM key is missing or the API call fails.
+- The scheduled GitHub Actions workflow sets `AI_NEWS_REQUIRE_LLM=true`, so production generation fails loudly if the LLM call cannot complete.
 - Generate the daily public issue as `src/content/ai-news/YYYY-MM-DD.md`.
 - Generate an internal selection log in `.ai-news-internal/`.
 - Run `npm run build`.
@@ -187,17 +190,20 @@ Current behavior:
 Implemented files:
 
 - `scripts/generate-ai-news-from-follow-builders.mjs`
+- `scripts/ai-news-llm.mjs`
+- `scripts/ai-news-follow-builders-rules.mjs`
 - `.github/workflows/ai-news-generate.yml`
 - `npm run news:generate`
 
-The v1 generator does not require a paid LLM key. It uses public feeds plus deterministic scoring. This is enough to publish a real daily issue and validate the website loop. A later LLM step can improve judgment quality and rewrite summaries in a stronger personal voice.
+The current generator is LLM-first. Deterministic scoring is still kept as a guardrail and fallback, not as the final editorial layer.
 
 Suggested hosted flow:
 
 ```text
 08:07 GitHub Actions
   -> fetch candidate sources
-  -> deterministic scorer selects 5-10 items
+  -> deterministic scorer ranks candidates
+  -> LLM clusters, de-duplicates, selects, scores, and writes public copy
   -> write internal selection log
   -> write src/content/ai-news/YYYY-MM-DD.md
   -> npm run build
@@ -214,8 +220,8 @@ Safety gate:
 Execution answer:
 
 - The AI News production and selection process should run in GitHub Actions.
-- In v1, no LLM call is required. Source fetching, scoring, Markdown generation, build validation, and notification are deterministic scripts.
-- In v2, the LLM call should happen from the GitHub Actions runner using repository secrets.
+- The LLM call happens from the GitHub Actions runner using the `OPENAI_API_KEY` repository secret.
+- Source fetching, deterministic pre-scoring, LLM selection, Markdown generation, build validation, and notification are all in the same scheduled workflow.
 - A separate server is not required for the first version.
 - A hosted browser provider is only needed later if we need real browser sessions beyond Playwright checks.
 
