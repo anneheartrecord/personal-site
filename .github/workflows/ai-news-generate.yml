@@ -2,7 +2,10 @@ name: AI News Generate
 
 on:
   schedule:
-    - cron: "7 0 * * *"
+    # 08:37 Asia/Shanghai. Avoid GitHub Actions top-of-hour schedule drops.
+    - cron: "37 0 * * *"
+    # 09:17 Asia/Shanghai fallback. Existing daily issues are no-op by default.
+    - cron: "17 1 * * *"
   workflow_dispatch:
     inputs:
       date:
@@ -17,6 +20,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: ai-news-generate-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   generate:

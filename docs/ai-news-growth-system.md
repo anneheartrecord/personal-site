@@ -173,7 +173,7 @@ Status: implemented as an LLM-first automation with deterministic fallback.
 
 Current behavior:
 
-- Run every day around 08:07 Asia/Shanghai.
+- Run every day around 08:37 Asia/Shanghai, with a 09:17 fallback schedule.
 - Use GitHub Actions as the execution environment. The user's laptop is not part of the production path.
 - Chrome Tab is optional for preview and visual checking. It is not the core runtime.
 - Fetch public `follow-builders` JSON feeds.
@@ -202,7 +202,7 @@ The current generator is LLM-first. Deterministic scoring is still kept as a gua
 Suggested hosted flow:
 
 ```text
-08:07 GitHub Actions
+08:37 GitHub Actions
   -> fetch candidate sources
   -> deterministic scorer ranks candidates
   -> LLM clusters, de-duplicates, selects, scores, and writes public copy
@@ -213,6 +213,10 @@ Suggested hosted flow:
   -> Vercel deploys from main
   -> send email notification to chengxisheng777@gmail.com
   -> skip subscriber broadcast unless AI_NEWS_BROADCAST_ENABLED=true
+
+09:17 GitHub Actions fallback
+  -> run the same workflow if the primary schedule was dropped or delayed
+  -> no-op if src/content/ai-news/YYYY-MM-DD.md already exists
 ```
 
 Safety gate:
