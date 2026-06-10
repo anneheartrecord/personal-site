@@ -2,12 +2,12 @@ name: AI News Generate
 
 on:
   schedule:
-    # Temporary verification schedule for 2026-06-10. Remove after schedule trigger is confirmed.
-    - cron: "*/5 * * * *"
-    # 08:37 Asia/Shanghai. Avoid GitHub Actions top-of-hour schedule drops.
-    - cron: "37 0 * * *"
-    # 09:17 Asia/Shanghai fallback. Existing daily issues are no-op by default.
-    - cron: "17 1 * * *"
+    # Morning generation window in Asia/Shanghai. Existing daily issues are no-op by default.
+    - cron: "5 0 * * *"
+    - cron: "35 0 * * *"
+    - cron: "5 1 * * *"
+    - cron: "35 1 * * *"
+    - cron: "5 2 * * *"
   workflow_dispatch:
     inputs:
       date:
