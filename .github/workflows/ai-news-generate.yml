@@ -59,7 +59,7 @@ jobs:
         env:
           AI_NEWS_DATE: ${{ github.event.inputs.date || '' }}
           AI_NEWS_FORCE: ${{ github.event.inputs.force || 'false' }}
-          AI_NEWS_REQUIRE_LLM: ${{ vars.AI_NEWS_REQUIRE_LLM || 'false' }}
+          AI_NEWS_REQUIRE_LLM: "false"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5-mini' }}
           OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
