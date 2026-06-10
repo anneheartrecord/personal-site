@@ -173,8 +173,9 @@ Status: implemented as an LLM-first automation with deterministic and external c
 
 Current behavior:
 
-- Run every day around 08:37 Asia/Shanghai, with a 09:17 GitHub Actions fallback schedule.
-- Run a Vercel Cron fallback around 09:45 Asia/Shanghai. It dispatches the same GitHub Actions workflow and becomes a no-op when the daily issue already exists.
+- Run every morning in Asia/Shanghai through several GitHub Actions windows: 08:05, 08:35, 09:05, 09:35, and 10:05.
+- Run Vercel Cron external fallbacks at 08:00 and 09:00 Asia/Shanghai. Vercel Hobby cron has hourly precision, so these are treated as morning-window fallbacks, not exact minute triggers.
+- The Vercel cron endpoint dispatches the same GitHub Actions workflow and becomes a no-op when the daily issue already exists.
 - Use GitHub Actions as the execution environment. The user's laptop is not part of the production path.
 - Chrome Tab is optional for preview and visual checking. It is not the core runtime.
 - Fetch public `follow-builders` JSON feeds.
@@ -209,7 +210,7 @@ The current generator is LLM-first. Deterministic scoring is still kept as a gua
 Suggested hosted flow:
 
 ```text
-08:37 GitHub Actions
+08:05 / 08:35 / 09:05 / 09:35 / 10:05 GitHub Actions
   -> fetch candidate sources
   -> deterministic scorer ranks candidates
   -> LLM clusters, de-duplicates, selects, scores, and writes public copy
@@ -221,11 +222,7 @@ Suggested hosted flow:
   -> send email notification to chengxisheng777@gmail.com
   -> skip subscriber broadcast unless AI_NEWS_BROADCAST_ENABLED=true
 
-09:17 GitHub Actions fallback
-  -> run the same workflow if the primary schedule was dropped or delayed
-  -> no-op if src/content/ai-news/YYYY-MM-DD.md already exists
-
-09:45 Vercel Cron fallback
+08:00 / 09:00 Vercel Cron fallback
   -> call /api/ai-news-cron with CRON_SECRET
   -> dispatch the GitHub Actions workflow on main
   -> no-op if the daily issue already exists
