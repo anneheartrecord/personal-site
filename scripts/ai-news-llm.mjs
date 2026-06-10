@@ -2,6 +2,32 @@ import { createInsight } from "./ai-news-follow-builders-rules.mjs";
 
 const DEFAULT_MODEL = "gpt-5-mini";
 const DEFAULT_OPENAI_BASE_URL = "https://api.openai.com/v1";
+const DEFAULT_OPENAI_MAX_ATTEMPTS = 3;
+
+/** Pause before retrying a transient model API failure.
+ * @param {number} milliseconds - Delay length.
+ * @returns {Promise<void>} Resolves after the delay.
+ */
+const sleep = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+/** Return the configured model API retry count.
+ * @returns {number} Number of attempts for retryable failures.
+ */
+const getMaxAttempts = () => {
+  const configuredAttempts = Number(process.env.OPENAI_MAX_ATTEMPTS || "");
+  if (Number.isInteger(configuredAttempts) && configuredAttempts > 0) {
+    return configuredAttempts;
+  }
+
+  return DEFAULT_OPENAI_MAX_ATTEMPTS;
+};
+
+/** Check whether an HTTP status is likely to be transient.
+ * @param {number} statusCode - HTTP status code.
+ * @returns {boolean} True when retrying is reasonable.
+ */
+const isRetryableStatus = (statusCode) =>
+  statusCode === 408 || statusCode === 429 || statusCode >= 500;
 
 /** Build the OpenAI-compatible Responses API URL.
  * @returns {string} Responses API endpoint.
@@ -17,6 +43,48 @@ const getResponsesUrl = () => {
 const getChatCompletionsUrl = () => {
   const baseUrl = process.env.OPENAI_BASE_URL || DEFAULT_OPENAI_BASE_URL;
   return `${baseUrl.replace(/\/$/, "")}/chat/completions`;
+};
+
+/** Run an OpenAI-compatible request with retries for transient provider errors.
+ * @param {string} label - API label for logs and errors.
+ * @param {() => Promise<Response>} request - Request factory.
+ * @returns {Promise<Response>} Successful response.
+ */
+const fetchWithRetries = async (label, request) => {
+  const maxAttempts = getMaxAttempts();
+  let lastError = null;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    let response;
+    try {
+      response = await request();
+    } catch (error) {
+      lastError = error;
+      if (attempt === maxAttempts) {
+        break;
+      }
+
+      const message = error instanceof Error ? error.message : "unknown_error";
+      console.warn(`${label} attempt ${attempt}/${maxAttempts} failed: ${message}. Retrying...`);
+      await sleep(1500 * attempt);
+      continue;
+    }
+
+    if (response.ok) {
+      return response;
+    }
+
+    const errorSummary = await summarizeError(response);
+    lastError = new Error(`${label} failed: ${response.status} ${errorSummary}`);
+    if (!isRetryableStatus(response.status) || attempt === maxAttempts) {
+      throw lastError;
+    }
+
+    console.warn(`${label} attempt ${attempt}/${maxAttempts} failed: ${response.status} ${errorSummary}. Retrying...`);
+    await sleep(1500 * attempt);
+  }
+
+  throw lastError instanceof Error ? lastError : new Error(`${label} failed.`);
 };
 
 /** Shorten source text before sending candidates to the model.
@@ -193,22 +261,20 @@ export const generateLlmIssue = async ({ issueDate, scoredCandidates }) => {
  * @returns {Promise<string>} Model output text.
  */
 const callResponsesApi = async ({ apiKey, model, prompt }) => {
-  const response = await fetch(getResponsesUrl(), {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model,
-      input: prompt,
-      max_output_tokens: 7000,
+  const response = await fetchWithRetries("OpenAI Responses API", () =>
+    fetch(getResponsesUrl(), {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model,
+        input: prompt,
+        max_output_tokens: 7000,
+      }),
     }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`OpenAI Responses API failed: ${response.status} ${await summarizeError(response)}`);
-  }
+  );
 
   const responseBody = await response.json();
   return extractResponseText(responseBody);
@@ -222,28 +288,26 @@ const callResponsesApi = async ({ apiKey, model, prompt }) => {
  * @returns {Promise<string>} Model output text.
  */
 const callChatCompletions = async ({ apiKey, model, prompt }) => {
-  const response = await fetch(getChatCompletionsUrl(), {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model,
-      messages: [
-        {
-          role: "user",
-          content: prompt,
-        },
-      ],
-      max_completion_tokens: 7000,
-      response_format: { type: "json_object" },
+  const response = await fetchWithRetries("OpenAI Chat Completions API", () =>
+    fetch(getChatCompletionsUrl(), {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model,
+        messages: [
+          {
+            role: "user",
+            content: prompt,
+          },
+        ],
+        max_completion_tokens: 7000,
+        response_format: { type: "json_object" },
+      }),
     }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`OpenAI Chat Completions API failed: ${response.status} ${await summarizeError(response)}`);
-  }
+  );
 
   const responseBody = await response.json();
   return extractChatText(responseBody);

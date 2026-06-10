@@ -2,6 +2,8 @@ name: AI News Generate
 
 on:
   schedule:
+    # Temporary verification schedule for 2026-06-10. Remove after schedule trigger is confirmed.
+    - cron: "16 09 * * *"
     # 08:37 Asia/Shanghai. Avoid GitHub Actions top-of-hour schedule drops.
     - cron: "37 0 * * *"
     # 09:17 Asia/Shanghai fallback. Existing daily issues are no-op by default.
@@ -46,11 +48,12 @@ jobs:
         env:
           AI_NEWS_DATE: ${{ github.event.inputs.date || '' }}
           AI_NEWS_FORCE: ${{ github.event.inputs.force || 'false' }}
-          AI_NEWS_REQUIRE_LLM: "true"
+          AI_NEWS_REQUIRE_LLM: ${{ vars.AI_NEWS_REQUIRE_LLM || 'false' }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5-mini' }}
           OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
           OPENAI_API_MODE: ${{ vars.OPENAI_API_MODE || 'responses' }}
+          OPENAI_MAX_ATTEMPTS: ${{ vars.OPENAI_MAX_ATTEMPTS || '3' }}
         run: npm run news:generate
 
       - name: Build site

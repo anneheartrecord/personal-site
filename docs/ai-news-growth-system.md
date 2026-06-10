@@ -181,7 +181,8 @@ Current behavior:
 - Use an OpenAI-compatible Responses API to cluster, de-duplicate, score, select, and write 5-10 builder-facing items when `OPENAI_API_KEY` is configured.
 - `OPENAI_BASE_URL` can switch the provider. The current GitHub variable points to PackyAPI.
 - Fall back to deterministic rules when the LLM key is missing or the API call fails.
-- The scheduled GitHub Actions workflow sets `AI_NEWS_REQUIRE_LLM=true`, so production generation fails loudly if the LLM call cannot complete.
+- The scheduled GitHub Actions workflow keeps `AI_NEWS_REQUIRE_LLM=false` by default. The page must be generated even when the model provider has a transient outage.
+- Model API calls are retried before falling back to deterministic rules.
 - Generate the daily public issue as `src/content/ai-news/YYYY-MM-DD.md`.
 - Generate an internal selection log in `.ai-news-internal/`.
 - Run `npm run build`.
