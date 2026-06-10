@@ -485,6 +485,9 @@ LLM selection and writing via OpenAI Responses API.
 - X feed generated at: ${feeds.xFeed.generatedAt ?? "unknown"}
 - Podcast feed generated at: ${feeds.podcastFeed.generatedAt ?? "unknown"}
 - Blog feed generated at: ${feeds.blogFeed.generatedAt ?? "unknown"}
+- X feed status: ${JSON.stringify(feeds.feedStatuses?.x ?? { status: "unknown" })}
+- Podcast feed status: ${JSON.stringify(feeds.feedStatuses?.podcasts ?? { status: "unknown" })}
+- Blog feed status: ${JSON.stringify(feeds.feedStatuses?.blogs ?? { status: "unknown" })}
 - Candidate count: ${scoredCandidates.length}
 - Selected count: ${issue.selected.length}
 

@@ -2,8 +2,6 @@ name: AI News Generate
 
 on:
   schedule:
-    # Temporary verification schedule for 2026-06-10. Remove after schedule trigger is confirmed.
-    - cron: "31 09 * * *"
     # 08:37 Asia/Shanghai. Avoid GitHub Actions top-of-hour schedule drops.
     - cron: "37 0 * * *"
     # 09:17 Asia/Shanghai fallback. Existing daily issues are no-op by default.
@@ -34,12 +32,25 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6.0.3
+        with:
+          ref: main
+
+      - name: Refresh main branch
+        run: git pull --ff-only origin main
 
       - name: Set up Node.js
         uses: actions/setup-node@v6.4.0
         with:
           node-version: "22"
           cache: "npm"
+
+      - name: Restore AI News source cache
+        uses: actions/cache@v4
+        with:
+          path: .ai-news-cache
+          key: ai-news-feed-cache-${{ github.run_id }}
+          restore-keys: |
+            ai-news-feed-cache-
 
       - name: Install dependencies
         run: npm ci
@@ -126,3 +137,26 @@ jobs:
           AI_NEWS_ISSUE_PATH: ${{ steps.commit.outputs.issue_path }}
           SITE_URL: https://charles-cheng.com
         run: npm run news:broadcast
+
+      - name: Send failure notification
+        if: failure()
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          AI_NEWS_EMAIL_FROM: ${{ vars.AI_NEWS_EMAIL_FROM }}
+          AI_NEWS_NOTIFY_TO: ${{ vars.AI_NEWS_NOTIFY_TO || 'chengxisheng777@gmail.com' }}
+          AI_NEWS_FAILURE_EMAIL: "true"
+          AI_NEWS_FAILURE_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          AI_NEWS_FAILURE_MESSAGE: "AI News Generate failed. Check the GitHub Actions run logs."
+          SITE_URL: https://charles-cheng.com
+        run: |
+          if [ -z "$RESEND_API_KEY" ]; then
+            echo "::notice::RESEND_API_KEY is not configured. Skipping AI News failure notification."
+            exit 0
+          fi
+
+          if [ -z "$AI_NEWS_EMAIL_FROM" ]; then
+            echo "::notice::AI_NEWS_EMAIL_FROM is not configured. Skipping AI News failure notification."
+            exit 0
+          fi
+
+          node scripts/notify-ai-news-publish.mjs

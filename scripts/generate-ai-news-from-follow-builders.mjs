@@ -16,11 +16,17 @@ import {
 
 const CONTENT_DIR = join(process.cwd(), "src", "content", "ai-news");
 const INTERNAL_LOG_DIR = join(process.cwd(), ".ai-news-internal");
+const FEED_CACHE_DIR = join(process.cwd(), ".ai-news-cache");
 const TIME_ZONE = "Asia/Shanghai";
 const FEED_URLS = {
   x: "https://raw.githubusercontent.com/zarazhangrui/follow-builders/main/feed-x.json",
   podcasts: "https://raw.githubusercontent.com/zarazhangrui/follow-builders/main/feed-podcasts.json",
   blogs: "https://raw.githubusercontent.com/zarazhangrui/follow-builders/main/feed-blogs.json",
+};
+const EMPTY_FEEDS = {
+  x: { generatedAt: null, x: [] },
+  podcasts: { generatedAt: null, podcasts: [] },
+  blogs: { generatedAt: null, blogs: [] },
 };
 
 /** Return a CLI option value by flag name.
@@ -72,28 +78,110 @@ const cleanText = (text) =>
  */
 const createAnchor = (prefix, index) => `${prefix}-${String(index).padStart(2, "0")}`;
 
-/** Fetch and parse JSON from a public feed URL.
- * @param {string} feedUrl - Public JSON URL.
- * @returns {Promise<object>} Parsed JSON payload.
+/** Return a feed cache file path.
+ * @param {string} feedName - Stable feed key.
+ * @returns {string} Local cache file path.
  */
-const fetchJsonFeed = async (feedUrl) => {
-  const response = await fetch(feedUrl);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch ${feedUrl}: ${response.status}`);
+const getFeedCachePath = (feedName) => join(FEED_CACHE_DIR, `${feedName}.json`);
+
+/** Write a successful feed response to the local cache.
+ * @param {string} feedName - Stable feed key.
+ * @param {string} feedUrl - Public JSON URL.
+ * @param {object} payload - Parsed feed payload.
+ * @returns {void}
+ */
+const writeCachedFeed = (feedName, feedUrl, payload) => {
+  mkdirSync(FEED_CACHE_DIR, { recursive: true });
+  writeFileSync(
+    getFeedCachePath(feedName),
+    JSON.stringify({ cachedAt: new Date().toISOString(), feedUrl, payload }, null, 2),
+    "utf8",
+  );
+};
+
+/** Read the last successful feed response from cache.
+ * @param {string} feedName - Stable feed key.
+ * @returns {{payload: object, cachedAt: string} | null} Cached payload when available.
+ */
+const readCachedFeed = (feedName) => {
+  const cachePath = getFeedCachePath(feedName);
+  if (!existsSync(cachePath)) {
+    return null;
   }
-  return response.json();
+
+  const cachedFeed = JSON.parse(readFileSync(cachePath, "utf8"));
+  if (!cachedFeed.payload || typeof cachedFeed.cachedAt !== "string") {
+    return null;
+  }
+
+  return { payload: cachedFeed.payload, cachedAt: cachedFeed.cachedAt };
+};
+
+/** Build an empty feed payload when neither network nor cache is available.
+ * @param {string} feedName - Stable feed key.
+ * @returns {object} Empty feed payload with the expected shape.
+ */
+const createEmptyFeed = (feedName) => ({ ...EMPTY_FEEDS[feedName], fallbackReason: "empty_feed_fallback" });
+
+/** Convert an unknown error into a short log-safe message.
+ * @param {unknown} error - Caught error.
+ * @returns {string} Human-readable error message.
+ */
+const getErrorMessage = (error) => (error instanceof Error ? error.message : "unknown_error");
+
+/** Fetch and parse JSON from a public feed URL with cache fallback.
+ * @param {string} feedName - Stable feed key.
+ * @param {string} feedUrl - Public JSON URL.
+ * @returns {Promise<{payload: object, status: string, cachedAt?: string, error?: string}>} Feed result.
+ */
+const fetchJsonFeed = async (feedName, feedUrl) => {
+  try {
+    const response = await fetch(feedUrl);
+    if (!response.ok) {
+      throw new Error(`fetch_failed_${response.status}`);
+    }
+
+    const payload = await response.json();
+    writeCachedFeed(feedName, feedUrl, payload);
+    return { payload, status: "fresh" };
+  } catch (error) {
+    const message = getErrorMessage(error);
+    const cachedFeed = readCachedFeed(feedName);
+    if (cachedFeed) {
+      console.warn(`Feed ${feedName} failed, using cached copy from ${cachedFeed.cachedAt}: ${message}`);
+      return {
+        payload: cachedFeed.payload,
+        status: "cached",
+        cachedAt: cachedFeed.cachedAt,
+        error: message,
+      };
+    }
+
+    console.warn(`Feed ${feedName} failed and has no cache, using empty feed: ${message}`);
+    return { payload: createEmptyFeed(feedName), status: "empty", error: message };
+  }
 };
 
 /** Fetch all public follow-builders feeds.
- * @returns {Promise<{xFeed: object, podcastFeed: object, blogFeed: object}>} Feed payloads.
+ * @returns {Promise<{xFeed: object, podcastFeed: object, blogFeed: object, feedStatuses: object}>} Feed payloads.
  */
 const fetchFeeds = async () => {
-  const [xFeed, podcastFeed, blogFeed] = await Promise.all([
-    fetchJsonFeed(FEED_URLS.x),
-    fetchJsonFeed(FEED_URLS.podcasts),
-    fetchJsonFeed(FEED_URLS.blogs),
+  const [xFeedResult, podcastFeedResult, blogFeedResult] = await Promise.all([
+    fetchJsonFeed("x", FEED_URLS.x),
+    fetchJsonFeed("podcasts", FEED_URLS.podcasts),
+    fetchJsonFeed("blogs", FEED_URLS.blogs),
   ]);
-  return { xFeed, podcastFeed, blogFeed };
+  const toStatus = ({ status, cachedAt, error }) => ({ status, cachedAt, error });
+  return {
+    xFeed: xFeedResult.payload,
+    podcastFeed: podcastFeedResult.payload,
+    blogFeed: blogFeedResult.payload,
+    feedStatuses: {
+      x: toStatus(xFeedResult),
+      podcasts: toStatus(podcastFeedResult),
+      blogs: toStatus(blogFeedResult),
+    },
+  };
 };
 
 /** Convert X feed entries into candidate items.
@@ -348,7 +436,7 @@ ${body}
  * @param {string} issueDate - Issue date in YYYY-MM-DD.
  * @param {Array<object>} selectedItems - Selected candidates.
  * @param {Array<object>} scoredCandidates - All scored candidates.
- * @param {{xFeed: object, podcastFeed: object, blogFeed: object}} feeds - Source feeds.
+ * @param {{xFeed: object, podcastFeed: object, blogFeed: object, feedStatuses: object}} feeds - Source feeds.
  * @returns {string} Internal Markdown log.
  */
 const buildInternalLog = (issueDate, selectedItems, scoredCandidates, feeds) => {
@@ -377,6 +465,9 @@ const buildInternalLog = (issueDate, selectedItems, scoredCandidates, feeds) => 
 - X feed generated at: ${feeds.xFeed.generatedAt ?? "unknown"}
 - Podcast feed generated at: ${feeds.podcastFeed.generatedAt ?? "unknown"}
 - Blog feed generated at: ${feeds.blogFeed.generatedAt ?? "unknown"}
+- X feed status: ${JSON.stringify(feeds.feedStatuses.x)}
+- Podcast feed status: ${JSON.stringify(feeds.feedStatuses.podcasts)}
+- Blog feed status: ${JSON.stringify(feeds.feedStatuses.blogs)}
 - Candidate count: ${scoredCandidates.length}
 - Selected count: ${selectedItems.length}
 

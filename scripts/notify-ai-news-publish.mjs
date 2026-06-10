@@ -39,6 +39,14 @@ const parseFrontmatter = (content) => {
   return frontmatter;
 };
 
+/** Escape text before embedding it in a minimal HTML email. */
+const escapeHtml = (value) =>
+  String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
 /** Return AI News Markdown files changed in the current commit. */
 const getChangedIssuePaths = () => {
   const explicitPath = process.env.AI_NEWS_ISSUE_PATH;
@@ -93,8 +101,11 @@ const getPublishedIssues = () => {
     .filter(Boolean);
 };
 
-/** Send the publication notification email through Resend. */
-const sendEmail = async (issues) => {
+/** Send an email through Resend.
+ * @param {{subject: string, text: string, html: string}} emailPayload - Email content.
+ * @returns {Promise<void>} Resolves after Resend accepts the email.
+ */
+const sendEmailPayload = async ({ subject, text, html }) => {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.log("RESEND_API_KEY is not configured. Skipping email notification.");
@@ -103,53 +114,6 @@ const sendEmail = async (issues) => {
 
   const fromEmail = process.env.AI_NEWS_EMAIL_FROM || DEFAULT_FROM;
   const toEmail = process.env.AI_NEWS_NOTIFY_TO || DEFAULT_NOTIFY_TO;
-  const repository = process.env.GITHUB_REPOSITORY || "";
-  const commitSha = process.env.AI_NEWS_COMMIT_SHA || process.env.GITHUB_SHA || "";
-  const commitUrl =
-    repository && commitSha ? `https://github.com/${repository}/commit/${commitSha}` : "";
-  const firstIssue = issues[0];
-
-  const subject =
-    issues.length === 1
-      ? `AI News published: ${firstIssue.date}`
-      : `AI News published: ${issues.length} issues`;
-
-  const issueLines = issues
-    .map(
-      (issue) =>
-        `- ${issue.title}\n  URL: ${issue.url}\n  File: ${issue.filePath}\n  Sources: ${issue.sourceCount}`,
-    )
-    .join("\n\n");
-
-  const text = [
-    "AI News has been pushed to the website repository.",
-    "",
-    issueLines,
-    "",
-    commitUrl ? `Commit: ${commitUrl}` : "",
-  ]
-    .filter(Boolean)
-    .join("\n");
-
-  const htmlIssues = issues
-    .map(
-      (issue) => `
-        <li>
-          <p><strong>${issue.title}</strong></p>
-          <p>${issue.description}</p>
-          <p><a href="${issue.url}">${issue.url}</a></p>
-          <p>File: <code>${issue.filePath}</code></p>
-          <p>Sources: ${issue.sourceCount}</p>
-        </li>
-      `,
-    )
-    .join("");
-
-  const html = `
-    <p>AI News has been pushed to the website repository.</p>
-    <ul>${htmlIssues}</ul>
-    ${commitUrl ? `<p>Commit: <a href="${commitUrl}">${commitSha.slice(0, 7)}</a></p>` : ""}
-  `;
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -174,23 +138,104 @@ const sendEmail = async (issues) => {
   console.log(`AI News notification sent to ${toEmail}.`);
 };
 
-const issues =
-  process.env.AI_NEWS_TEST_EMAIL === "true"
-    ? [
-        {
-          title: "AI News notification test",
-          description: "This is a test email from the AI News GitHub Actions workflow.",
-          date: new Date().toISOString().split("T")[0],
-          sourceCount: "test",
-          filePath: "workflow_dispatch",
-          url: `${(process.env.SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, "")}/ai-news`,
-        },
-      ]
-    : getPublishedIssues();
+/** Send the publication notification email through Resend.
+ * @param {Array<object>} issues - Published AI News issues.
+ * @returns {Promise<void>} Resolves after the notification is sent.
+ */
+const sendPublicationEmail = async (issues) => {
+  const repository = process.env.GITHUB_REPOSITORY || "";
+  const commitSha = process.env.AI_NEWS_COMMIT_SHA || process.env.GITHUB_SHA || "";
+  const commitUrl =
+    repository && commitSha ? `https://github.com/${repository}/commit/${commitSha}` : "";
+  const firstIssue = issues[0];
+  const subject =
+    issues.length === 1
+      ? `AI News published: ${firstIssue.date}`
+      : `AI News published: ${issues.length} issues`;
+  const issueLines = issues
+    .map(
+      (issue) =>
+        `- ${issue.title}\n  URL: ${issue.url}\n  File: ${issue.filePath}\n  Sources: ${issue.sourceCount}`,
+    )
+    .join("\n\n");
+  const text = [
+    "AI News has been pushed to the website repository.",
+    "",
+    issueLines,
+    "",
+    commitUrl ? `Commit: ${commitUrl}` : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+  const htmlIssues = issues
+    .map(
+      (issue) => `
+        <li>
+          <p><strong>${escapeHtml(issue.title)}</strong></p>
+          <p>${escapeHtml(issue.description)}</p>
+          <p><a href="${escapeHtml(issue.url)}">${escapeHtml(issue.url)}</a></p>
+          <p>File: <code>${escapeHtml(issue.filePath)}</code></p>
+          <p>Sources: ${escapeHtml(issue.sourceCount)}</p>
+        </li>
+      `,
+    )
+    .join("");
+  const html = `
+    <p>AI News has been pushed to the website repository.</p>
+    <ul>${htmlIssues}</ul>
+    ${commitUrl ? `<p>Commit: <a href="${escapeHtml(commitUrl)}">${escapeHtml(commitSha.slice(0, 7))}</a></p>` : ""}
+  `;
 
-if (issues.length === 0) {
-  console.log("No published AI News issue changed. Skipping notification.");
-  process.exit(0);
+  await sendEmailPayload({ subject, text, html });
+};
+
+/** Send a failure notification email through Resend.
+ * @returns {Promise<void>} Resolves after the notification is sent.
+ */
+const sendFailureEmail = async () => {
+  const runUrl = process.env.AI_NEWS_FAILURE_RUN_URL || "";
+  const message = process.env.AI_NEWS_FAILURE_MESSAGE || "AI News generation failed.";
+  const date = new Date().toISOString().split("T")[0];
+  const siteUrl = (process.env.SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, "");
+  const subject = `AI News generation failed: ${date}`;
+  const text = [
+    message,
+    "",
+    runUrl ? `Run: ${runUrl}` : "",
+    `Site: ${siteUrl}/ai-news`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+  const html = `
+    <p>${escapeHtml(message)}</p>
+    ${runUrl ? `<p>Run: <a href="${escapeHtml(runUrl)}">${escapeHtml(runUrl)}</a></p>` : ""}
+    <p>Site: <a href="${escapeHtml(`${siteUrl}/ai-news`)}">${escapeHtml(`${siteUrl}/ai-news`)}</a></p>
+  `;
+
+  await sendEmailPayload({ subject, text, html });
+};
+
+if (process.env.AI_NEWS_FAILURE_EMAIL === "true") {
+  await sendFailureEmail();
+} else {
+  const issues =
+    process.env.AI_NEWS_TEST_EMAIL === "true"
+      ? [
+          {
+            title: "AI News notification test",
+            description: "This is a test email from the AI News GitHub Actions workflow.",
+            date: new Date().toISOString().split("T")[0],
+            sourceCount: "test",
+            filePath: "workflow_dispatch",
+            url: `${(process.env.SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, "")}/ai-news`,
+          },
+        ]
+      : getPublishedIssues();
+
+  if (issues.length === 0) {
+    console.log("No published AI News issue changed. Skipping notification.");
+    process.exit(0);
+  }
+
+  await sendPublicationEmail(issues);
 }
-
-await sendEmail(issues);

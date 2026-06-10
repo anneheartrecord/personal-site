@@ -169,14 +169,17 @@ Why Kit first:
 
 ## Phase 2: Daily Automation
 
-Status: implemented as an LLM-first automation with deterministic fallback.
+Status: implemented as an LLM-first automation with deterministic and external cron fallback.
 
 Current behavior:
 
-- Run every day around 08:37 Asia/Shanghai, with a 09:17 fallback schedule.
+- Run every day around 08:37 Asia/Shanghai, with a 09:17 GitHub Actions fallback schedule.
+- Run a Vercel Cron fallback around 09:45 Asia/Shanghai. It dispatches the same GitHub Actions workflow and becomes a no-op when the daily issue already exists.
 - Use GitHub Actions as the execution environment. The user's laptop is not part of the production path.
 - Chrome Tab is optional for preview and visual checking. It is not the core runtime.
 - Fetch public `follow-builders` JSON feeds.
+- Cache successful source feed responses in `.ai-news-cache/` through GitHub Actions cache.
+- If a source feed fetch fails, reuse the latest cached feed. If no cache exists, continue with an empty feed for that source and record the degraded status in the internal log.
 - Deterministically pre-score candidate items.
 - Use an OpenAI-compatible Responses API to cluster, de-duplicate, score, select, and write 5-10 builder-facing items when `OPENAI_API_KEY` is configured.
 - `OPENAI_BASE_URL` can switch the provider. The current GitHub variable points to PackyAPI.
@@ -189,6 +192,7 @@ Current behavior:
 - Commit the generated public issue to `main`.
 - Let Vercel deploy from `main`.
 - Send a Resend notification email to `chengxisheng777@gmail.com` after the generated issue is committed.
+- Send a Resend failure notification when the generation workflow fails, as long as Resend is configured.
 
 Implemented files:
 
@@ -196,6 +200,8 @@ Implemented files:
 - `scripts/ai-news-llm.mjs`
 - `scripts/ai-news-follow-builders-rules.mjs`
 - `.github/workflows/ai-news-generate.yml`
+- `api/ai-news-cron.js`
+- `vercel.json`
 - `npm run news:generate`
 
 The current generator is LLM-first. Deterministic scoring is still kept as a guardrail and fallback, not as the final editorial layer.
@@ -218,6 +224,12 @@ Suggested hosted flow:
 09:17 GitHub Actions fallback
   -> run the same workflow if the primary schedule was dropped or delayed
   -> no-op if src/content/ai-news/YYYY-MM-DD.md already exists
+
+09:45 Vercel Cron fallback
+  -> call /api/ai-news-cron with CRON_SECRET
+  -> dispatch the GitHub Actions workflow on main
+  -> no-op if the daily issue already exists
+  -> send failure notification if dispatch itself fails and Resend is configured
 ```
 
 Safety gate:
@@ -230,7 +242,7 @@ Execution answer:
 - The AI News production and selection process should run in GitHub Actions.
 - The LLM call happens from the GitHub Actions runner using the `OPENAI_API_KEY` repository secret and `OPENAI_BASE_URL` repository variable.
 - Source fetching, deterministic pre-scoring, LLM selection, Markdown generation, build validation, and notification are all in the same scheduled workflow.
-- A separate server is not required for the first version.
+- A separate server is not required for the first version. Vercel only hosts the tiny cron dispatch endpoint; the actual production work still happens in GitHub Actions.
 - A hosted browser provider is only needed later if we need real browser sessions beyond Playwright checks.
 
 ## Phase 3: Email Delivery and Growth Loop
