@@ -20,7 +20,7 @@ export const works: WorkItem[] = [
       {
         title: "AI Agent Development",
         description:
-          "Working on an internal game Agent product, while also building and improving the Agent infra around it: deployment, configuration, workflow reliability, and the operational details that keep it usable day to day.",
+          "Working on an internal game Agent product, while also building and improving the Agent infra.",
       },
     ],
   },
@@ -33,17 +33,17 @@ export const works: WorkItem[] = [
       {
         title: "AI Platform Engineering",
         description:
-          "Built TME Claw, an internal deployment platform for OpenClaw. It made OpenClaw easier to use inside the company through WeChat, WeCom, and an internal Skills marketplace, instead of asking every team to wire the same pieces by hand.",
+          "Built an internal deployment platform for OpenClaw. It made OpenClaw easier to use inside the company through WeChat, WeCom, and an internal Skills marketplace.",
       },
       {
-        title: "Release & Deployment Engine",
+        title: "Release System",
         description:
-          "Worked on release and deployment systems for large internal services. I spent a lot of time turning repeated manual steps into templates, APIs, and safer defaults, because release systems should reduce anxiety instead of adding another layer of ceremony.",
+          "Worked on release and deployment systems for large internal services, turning repeated manual steps into templates, APIs, and safer defaults.",
       },
       {
         title: "Container Platform Management",
         description:
-          "Worked on the container platform behind production workloads: Kubernetes extensions, scheduling, lifecycle management, observability, and resource governance. This part of my career made me care about reliability details before talking about architecture.",
+          "Worked on the container platform behind production workloads: Kubernetes extensions, scheduling, lifecycle management, observability, and resource governance.",
       },
     ],
   },
@@ -54,9 +54,9 @@ export const works: WorkItem[] = [
     period: "2023.02 — 2023.05",
     roles: [
       {
-        title: "Backend Development Intern — Baidu APP",
+        title: "Backend Development Intern",
         description:
-          "Worked on backend systems for Baidu APP interactions, including comments, likes, bullet comments, review workflows, and internal operation tools. It was my first serious taste of writing backend code for a product with real traffic and messy edge cases.",
+          "Worked on backend systems for Baidu APP interactions, including comments, likes, bullet comments, review workflows, and internal operation tools.",
       },
     ],
   },
@@ -67,9 +67,9 @@ export const works: WorkItem[] = [
     period: "2022.09 — 2022.12",
     roles: [
       {
-        title: "Container & Monitoring Development Intern",
+        title: "Backend Development Intern",
         description:
-          "Worked on container deployment workflows and observability tooling. This was where I started to connect Kubernetes, monitoring, alerts, and daily operations into one mental model instead of treating them as separate tools.",
+          "Worked on container deployment workflows and observability tooling.",
       },
     ],
   },
@@ -82,7 +82,7 @@ export const works: WorkItem[] = [
       {
         title: "Early Team Member",
         description:
-          "Joined a student-founded startup as an early team member. I was still young enough to underestimate how hard building a company is, but that experience made product, hiring, delivery, and money feel much less abstract.",
+          "Joined a student-founded startup as an early team member.",
       },
     ],
   },
