@@ -21,6 +21,8 @@ const sidebarSocials = socials.filter((s) => s.showInSidebar);
   class="fixed top-4 left-4 z-50 lg:hidden p-2 rounded-xl shadow-sm"
   style={`background-color: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary);`}
   aria-label="Menu"
+  aria-controls="sidebar"
+  aria-expanded="false"
 >
   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -33,7 +35,7 @@ const sidebarSocials = socials.filter((s) => s.showInSidebar);
 <!-- Sidebar -->
 <aside
   id="sidebar"
-  class="fixed top-0 left-0 h-screen w-64 z-40 flex flex-col -translate-x-full lg:translate-x-0 transition-transform duration-300"
+  class="fixed inset-y-0 left-0 z-40 flex w-full max-w-full flex-col overflow-y-auto overscroll-contain -translate-x-full transition-transform duration-300 lg:w-64 lg:translate-x-0"
   style={`background-color: var(--sidebar-bg); border-right: 1px solid var(--border-color);`}
 >
   <!-- Profile section -->
@@ -182,6 +184,18 @@ const sidebarSocials = socials.filter((s) => s.showInSidebar);
 </script>
 
 <style>
+  #sidebar {
+    height: var(--app-height, 100dvh);
+    max-height: var(--app-height, 100dvh);
+  }
+
+  @media (min-width: 1024px) {
+    #sidebar {
+      height: 100dvh;
+      max-height: 100dvh;
+    }
+  }
+
   @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }

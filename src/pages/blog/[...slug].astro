@@ -55,11 +55,11 @@ const canonicalPath = `/blog/${post.id}`;
       <h1 class="text-2xl sm:text-3xl font-bold tracking-tight mb-3" style={`color: var(--text-primary);`}>
         {post.data.title}
       </h1>
-      <div class="flex items-center gap-3">
-        <time class="text-xs font-mono" style={`color: var(--text-tertiary);`}>
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <time class="text-xs font-mono shrink-0" style={`color: var(--text-tertiary);`}>
           {post.data.date.toISOString().split("T")[0]}
         </time>
-        <div class="flex gap-1.5">
+        <div class="flex min-w-0 flex-wrap gap-1.5">
           {post.data.tags.map((tag: string) => <span class="tag-pill">{tag}</span>)}
         </div>
       </div>

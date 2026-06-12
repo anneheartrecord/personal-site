@@ -97,20 +97,28 @@ const jsonLdPayload = [...defaultJsonLd, ...jsonLdItems];
       if (theme === "dark") {
         document.documentElement.classList.add("dark");
       }
+
+      const syncViewportSize = () => {
+        document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
+      };
+
+      syncViewportSize();
+      window.addEventListener("resize", syncViewportSize, { passive: true });
+      window.addEventListener("orientationchange", syncViewportSize, { passive: true });
     </script>
   </head>
-  <body class="min-h-screen antialiased">
-    <div class="flex">
+  <body class="min-h-dvh antialiased">
+    <div class="flex min-h-dvh w-full min-w-0 overflow-x-clip">
       <Sidebar />
 
-      <main class="flex-1 min-h-screen ml-0 lg:ml-64">
+      <main class="flex-1 min-w-0 w-full min-h-dvh overflow-x-clip ml-0 lg:ml-64">
         <TopBar />
 
-        <div class="max-w-4xl mx-auto px-6 py-6 lg:py-10">
+        <div class="w-full max-w-4xl mx-auto px-4 py-5 sm:px-6 lg:py-10">
           <slot />
         </div>
 
-        <footer class="max-w-4xl mx-auto px-6 pb-8">
+        <footer class="w-full max-w-4xl mx-auto px-4 sm:px-6 pb-8">
           <div class="section-divider mb-6"></div>
           <p class="text-[11px]" style={`color: var(--text-tertiary); opacity: 0.5;`}>
             Built with
@@ -128,12 +136,26 @@ const jsonLdPayload = [...defaultJsonLd, ...jsonLdItems];
       const menuBtn = document.getElementById("mobile-menu-btn");
       const sidebar = document.getElementById("sidebar");
       const overlay = document.getElementById("sidebar-overlay");
-      function toggleSidebar() {
-        sidebar?.classList.toggle("-translate-x-full");
-        overlay?.classList.toggle("hidden");
+
+      function setSidebarOpen(isOpen) {
+        sidebar?.classList.toggle("-translate-x-full", !isOpen);
+        overlay?.classList.toggle("hidden", !isOpen);
+        menuBtn?.setAttribute("aria-expanded", String(isOpen));
+        document.body.classList.toggle("overflow-hidden", isOpen);
       }
+
+      function toggleSidebar() {
+        const isOpen = !sidebar?.classList.contains("-translate-x-full");
+        setSidebarOpen(!isOpen);
+      }
+
       menuBtn?.addEventListener("click", toggleSidebar);
-      overlay?.addEventListener("click", toggleSidebar);
+      overlay?.addEventListener("click", () => setSidebarOpen(false));
+      window.addEventListener("resize", () => {
+        if (window.matchMedia("(min-width: 1024px)").matches) {
+          setSidebarOpen(false);
+        }
+      });
     </script>
   </body>
 </html>
