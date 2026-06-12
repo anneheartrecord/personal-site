@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import BlogShareCard from "../../components/BlogShareCard.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "../../data/site";
 
@@ -14,7 +15,9 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const publishedDate = post.data.date.toISOString();
+const displayDate = post.data.date.toISOString().split("T")[0];
 const canonicalPath = `/blog/${post.id}`;
+const canonicalUrl = new URL(canonicalPath, site.url).toString();
 ---
 
 <Layout
@@ -30,7 +33,7 @@ const canonicalPath = `/blog/${post.id}`;
     description: post.data.description,
     datePublished: publishedDate,
     dateModified: publishedDate,
-    url: new URL(canonicalPath, site.url).toString(),
+    url: canonicalUrl,
     keywords: post.data.tags,
     author: {
       "@type": "Person",
@@ -52,12 +55,22 @@ const canonicalPath = `/blog/${post.id}`;
     </a>
 
     <header class="mb-8">
-      <h1 class="text-2xl sm:text-3xl font-bold tracking-tight mb-3" style={`color: var(--text-primary);`}>
-        {post.data.title}
-      </h1>
+      <div class="flex items-start justify-between gap-4 mb-3">
+        <h1 class="min-w-0 text-2xl sm:text-3xl font-bold tracking-tight" style={`color: var(--text-primary);`}>
+          {post.data.title}
+        </h1>
+        <BlogShareCard
+          title={post.data.title}
+          description={post.data.description}
+          date={displayDate}
+          url={canonicalUrl}
+          authorName={site.author.name}
+          authorAlias={site.author.alias}
+        />
+      </div>
       <div class="flex flex-wrap items-center gap-2 sm:gap-3">
         <time class="text-xs font-mono shrink-0" style={`color: var(--text-tertiary);`}>
-          {post.data.date.toISOString().split("T")[0]}
+          {displayDate}
         </time>
         <div class="flex min-w-0 flex-wrap gap-1.5">
           {post.data.tags.map((tag: string) => <span class="tag-pill">{tag}</span>)}
@@ -65,7 +78,7 @@ const canonicalPath = `/blog/${post.id}`;
       </div>
     </header>
 
-    <div class="prose"><Content /></div>
+    <div class="prose" data-blog-content><Content /></div>
 
     <div class="mt-12 pt-6" style={`border-top: 1px solid var(--border-color);`}>
       <a href="/blog" class="text-xs font-medium transition-opacity hover:opacity-70" style={`color: var(--color-accent);`}>← Back to blog</a>

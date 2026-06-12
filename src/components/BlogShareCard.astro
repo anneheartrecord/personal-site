@@ -1,0 +1,269 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  date: string;
+  url: string;
+  authorName: string;
+  authorAlias: string;
+}
+
+const { title, description, date, url, authorName, authorAlias } = Astro.props;
+---
+
+<blog-share-card
+  class="blog-share-card"
+  data-title={title}
+  data-description={description}
+  data-date={date}
+  data-url={url}
+  data-author-name={authorName}
+  data-author-alias={authorAlias}
+>
+  <button class="blog-share-trigger" type="button" aria-label="Share article" aria-haspopup="dialog">
+    <svg class="blog-share-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.7" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 12.75 16.5 18m0 0a3 3 0 1 0 .75-2m-.75 2L7.5 7.5m0 0a3 3 0 1 0-.75 2m.75-2 9-5.25" />
+    </svg>
+    <span>Share</span>
+  </button>
+
+  <div class="blog-share-modal" role="dialog" aria-modal="true" aria-label="Share image" hidden>
+    <div class="blog-share-backdrop" data-share-close></div>
+    <div class="blog-share-panel">
+      <div class="blog-share-panel-head">
+        <div>
+          <p class="blog-share-kicker">Share card</p>
+          <h2>文章卡片</h2>
+        </div>
+        <button class="blog-share-close" type="button" aria-label="Close" data-share-close>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6 6 18" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="blog-share-preview-shell">
+        <canvas class="blog-share-canvas" width="1080" height="1920"></canvas>
+        <div class="blog-share-status" aria-live="polite">Generating...</div>
+      </div>
+
+      <div class="blog-share-actions">
+        <button class="blog-share-action" type="button" data-share-native hidden>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.7" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16V4m0 0 4.5 4.5M12 4 7.5 8.5M5 14.5v3.75A1.75 1.75 0 0 0 6.75 20h10.5A1.75 1.75 0 0 0 19 18.25V14.5" />
+          </svg>
+          <span>Share image</span>
+        </button>
+        <button class="blog-share-action is-primary" type="button" data-share-download>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.7" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M5 19.5h14" />
+          </svg>
+          <span>Download PNG</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</blog-share-card>
+
+<style>
+  .blog-share-card {
+    display: inline-flex;
+  }
+
+  .blog-share-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.25rem;
+    padding: 0 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    box-shadow: var(--card-shadow);
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .blog-share-trigger:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 40%, var(--border-color));
+    color: var(--color-accent);
+    background: var(--bg-secondary);
+  }
+
+  .blog-share-icon {
+    width: 0.95rem;
+    height: 0.95rem;
+    flex: none;
+  }
+
+  .blog-share-modal[hidden] {
+    display: none;
+  }
+
+  .blog-share-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+  }
+
+  .blog-share-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 12, 22, 0.72);
+    backdrop-filter: blur(10px);
+  }
+
+  .blog-share-panel {
+    position: relative;
+    width: min(100%, 34rem);
+    max-height: min(92dvh, 58rem);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    background: var(--card-bg);
+    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
+  }
+
+  .blog-share-panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1rem 0.85rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .blog-share-kicker {
+    margin: 0 0 0.2rem;
+    color: var(--text-tertiary);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .blog-share-panel h2 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 0.98rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .blog-share-close {
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    flex: none;
+    place-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+  }
+
+  .blog-share-close svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .blog-share-preview-shell {
+    position: relative;
+    min-height: 0;
+    flex: 1;
+    overflow: auto;
+    padding: 1rem;
+    background: var(--bg-secondary);
+  }
+
+  .blog-share-canvas {
+    display: block;
+    width: min(100%, 23rem);
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.22);
+  }
+
+  .blog-share-status {
+    position: absolute;
+    inset: 1rem;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--card-bg) 86%, transparent);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+  }
+
+  .blog-share-status.is-hidden {
+    display: none;
+  }
+
+  .blog-share-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    padding: 0.85rem 1rem 1rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .blog-share-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 2.35rem;
+    padding: 0 0.85rem;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .blog-share-action[hidden] {
+    display: none;
+  }
+
+  .blog-share-action svg {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .blog-share-action.is-primary {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  @media (max-width: 520px) {
+    .blog-share-trigger span {
+      display: none;
+    }
+
+    .blog-share-trigger {
+      width: 2.35rem;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .blog-share-panel {
+      border-radius: 14px;
+    }
+  }
+</style>
+
+<script>
+  import "../scripts/blog-share-card";
+</script>
