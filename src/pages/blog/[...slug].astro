@@ -13,17 +13,20 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 const publishedDate = post.data.date.toISOString();
 const displayDate = post.data.date.toISOString().split("T")[0];
 const canonicalPath = `/blog/${post.id}`;
 const canonicalUrl = new URL(canonicalPath, site.url).toString();
+const articleHeadings = headings.filter((heading) => heading.depth >= 2 && heading.depth <= 3);
+const hasTableOfContents = articleHeadings.length > 0;
 ---
 
 <Layout
   title={`${post.data.title} — Charles Cheng`}
   description={post.data.description}
   canonicalPath={canonicalPath}
+  contentClass="w-full max-w-6xl mx-auto px-4 py-5 sm:px-6 lg:py-10"
   pageType="article"
   lang="zh-CN"
   jsonLd={{
@@ -49,12 +52,16 @@ const canonicalUrl = new URL(canonicalPath, site.url).toString();
     },
   }}
 >
-  <article>
+  <div class="reading-progress" aria-hidden="true">
+    <div class="reading-progress-bar" data-reading-progress-bar></div>
+  </div>
+
+  <article class="blog-article" data-reading-article>
     <a href="/blog" class="inline-flex items-center text-xs font-medium mb-6 transition-opacity hover:opacity-70" style={`color: var(--text-tertiary);`}>
       ← Back to blog
     </a>
 
-    <header class="mb-8">
+    <header class="blog-article-header">
       <div class="flex items-start justify-between gap-4 mb-3">
         <h1 class="min-w-0 text-2xl sm:text-3xl font-bold tracking-tight" style={`color: var(--text-primary);`}>
           {post.data.title}
@@ -78,10 +85,289 @@ const canonicalUrl = new URL(canonicalPath, site.url).toString();
       </div>
     </header>
 
-    <div class="prose" data-blog-content><Content /></div>
+    <div class="blog-article-grid">
+      <div class="blog-article-main">
+        {
+          hasTableOfContents && (
+            <details class="mobile-toc">
+              <summary>Table of contents</summary>
+              <nav aria-label="Table of contents">
+                {articleHeadings.map((heading) => (
+                  <a
+                    href={`#${heading.slug}`}
+                    class:list={["toc-link", heading.depth === 3 && "toc-link-nested"]}
+                    data-toc-link={heading.slug}
+                  >
+                    {heading.text}
+                  </a>
+                ))}
+              </nav>
+            </details>
+          )
+        }
 
-    <div class="mt-12 pt-6" style={`border-top: 1px solid var(--border-color);`}>
-      <a href="/blog" class="text-xs font-medium transition-opacity hover:opacity-70" style={`color: var(--color-accent);`}>← Back to blog</a>
+        <div class="prose" data-blog-content><Content /></div>
+
+        <div class="mt-12 pt-6" style={`border-top: 1px solid var(--border-color);`}>
+          <a href="/blog" class="text-xs font-medium transition-opacity hover:opacity-70" style={`color: var(--color-accent);`}>← Back to blog</a>
+        </div>
+      </div>
+
+      {
+        hasTableOfContents && (
+          <aside class="desktop-toc" aria-label="Table of contents">
+            <p>On this page</p>
+            <nav>
+              {articleHeadings.map((heading) => (
+                <a
+                  href={`#${heading.slug}`}
+                  class:list={["toc-link", heading.depth === 3 && "toc-link-nested"]}
+                  data-toc-link={heading.slug}
+                >
+                  {heading.text}
+                </a>
+              ))}
+            </nav>
+          </aside>
+        )
+      }
     </div>
   </article>
 </Layout>
+
+<style>
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 60;
+    height: 3px;
+    background: transparent;
+    pointer-events: none;
+  }
+
+  .reading-progress-bar {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.1s linear;
+  }
+
+  .blog-article {
+    width: 100%;
+  }
+
+  .blog-article-header {
+    max-width: 72ch;
+    margin-bottom: 2rem;
+  }
+
+  .blog-article-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .blog-article-main {
+    min-width: 0;
+    max-width: 72ch;
+  }
+
+  .mobile-toc {
+    margin: 0 0 1.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+  }
+
+  .mobile-toc summary {
+    min-height: 2.75rem;
+    padding: 0.85rem 1rem;
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .mobile-toc nav {
+    display: grid;
+    gap: 0.15rem;
+    padding: 0 1rem 1rem;
+  }
+
+  .desktop-toc {
+    display: none;
+  }
+
+  .desktop-toc p {
+    margin: 0 0 0.8rem;
+    color: var(--text-tertiary);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .desktop-toc nav {
+    display: grid;
+    gap: 0.12rem;
+    max-height: calc(100dvh - 7rem);
+    overflow: auto;
+    padding-right: 0.25rem;
+  }
+
+  .toc-link {
+    display: block;
+    border-left: 2px solid transparent;
+    padding: 0.35rem 0 0.35rem 0.7rem;
+    color: var(--text-tertiary);
+    font-size: 0.76rem;
+    line-height: 1.55;
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .toc-link:hover,
+  .toc-link.is-active {
+    border-left-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .toc-link.is-active {
+    background: var(--accent-glow);
+  }
+
+  .toc-link-nested {
+    padding-left: 1.35rem;
+    font-size: 0.72rem;
+  }
+
+  @media (min-width: 1024px) {
+    .reading-progress {
+      left: 16rem;
+    }
+
+    .blog-article-header {
+      margin-right: 17rem;
+    }
+
+    .blog-article-grid {
+      grid-template-columns: minmax(0, 72ch) 15rem;
+      align-items: start;
+      gap: 3rem;
+    }
+
+    .mobile-toc {
+      display: none;
+    }
+
+    .desktop-toc {
+      position: sticky;
+      top: 5rem;
+      display: block;
+      min-width: 0;
+      padding-left: 1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reading-progress-bar,
+    .toc-link {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const progressBar = document.querySelector<HTMLElement>("[data-reading-progress-bar]");
+  const article = document.querySelector<HTMLElement>("[data-reading-article]");
+  const contentRoot = document.querySelector<HTMLElement>("[data-blog-content]");
+  const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc-link]"));
+  const articleHeadings = Array.from(contentRoot?.querySelectorAll<HTMLElement>("h2[id], h3[id]") ?? []);
+  let ticking = false;
+
+  /**
+   * Keeps a number inside the inclusive 0..1 range used by the progress bar.
+   *
+   * @param value - Raw progress ratio.
+   * @returns Progress ratio constrained to the 0..1 range.
+   */
+  function clampProgress(value: number): number {
+    return Math.min(1, Math.max(0, value));
+  }
+
+  /**
+   * Calculates how far the reader has moved through the rendered article.
+   *
+   * @returns Current article reading progress as a 0..1 ratio.
+   */
+  function calculateReadingProgress(): number {
+    if (!article) {
+      return 0;
+    }
+
+    const articleTop = article.offsetTop;
+    const readableHeight = article.scrollHeight - window.innerHeight;
+    if (readableHeight <= 0) {
+      return 1;
+    }
+
+    return clampProgress((window.scrollY - articleTop) / readableHeight);
+  }
+
+  /**
+   * Marks the nearest passed heading as active in both desktop and mobile TOCs.
+   *
+   * @returns Nothing; mutates TOC link classes and aria-current state.
+   */
+  function updateActiveToc(): void {
+    if (articleHeadings.length === 0 || tocLinks.length === 0) {
+      return;
+    }
+
+    let activeId = articleHeadings[0].id;
+    for (const heading of articleHeadings) {
+      if (heading.getBoundingClientRect().top <= 128) {
+        activeId = heading.id;
+      }
+    }
+
+    for (const link of tocLinks) {
+      const isActive = link.dataset.tocLink === activeId;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "true");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    }
+  }
+
+  /**
+   * Batches scroll work into one animation frame for smoother reading.
+   *
+   * @returns Nothing; schedules a progress and TOC update if one is not pending.
+   */
+  function requestReadingUiUpdate(): void {
+    if (ticking) {
+      return;
+    }
+
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      if (progressBar) {
+        progressBar.style.transform = `scaleX(${calculateReadingProgress()})`;
+      }
+      updateActiveToc();
+      ticking = false;
+    });
+  }
+
+  requestReadingUiUpdate();
+  window.addEventListener("scroll", requestReadingUiUpdate, { passive: true });
+  window.addEventListener("resize", requestReadingUiUpdate, { passive: true });
+</script>

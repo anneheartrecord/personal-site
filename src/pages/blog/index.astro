@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import BlogSearch from "../../components/BlogSearch.astro";
 import { site } from "../../data/site";
 import { getCollection } from "astro:content";
 
@@ -144,6 +145,8 @@ const topicSections = topics
   <p class="text-sm leading-relaxed mb-8 max-w-2xl" style={`color: var(--text-secondary);`}>
     Writing is where I clarify ideas. Start with the selected essays, or browse by topic if you already know what you are looking for.
   </p>
+
+  <BlogSearch postCount={posts.length} />
 
   <section class="mb-10">
     <div class="flex items-end justify-between gap-4 mb-5">

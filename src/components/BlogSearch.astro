@@ -1,0 +1,489 @@
+---
+interface Props {
+  postCount: number;
+}
+
+const { postCount } = Astro.props;
+---
+
+<section class="blog-search" data-blog-search>
+  <div class="blog-search-head">
+    <div>
+      <p class="blog-search-kicker">Search</p>
+      <h2>Find an essay</h2>
+    </div>
+    <p class="blog-search-count">{postCount} posts</p>
+  </div>
+
+  <label class="blog-search-label" for="blog-search-input">Search blog</label>
+  <div class="blog-search-input-wrap">
+    <svg class="blog-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.7" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35m1.6-5.4a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+    </svg>
+    <input
+      id="blog-search-input"
+      class="blog-search-input"
+      type="search"
+      inputmode="search"
+      autocomplete="off"
+      placeholder="Kubernetes, 投资, AI..."
+      aria-describedby="blog-search-status"
+      data-blog-search-input
+    />
+  </div>
+
+  <p id="blog-search-status" class="blog-search-status" aria-live="polite" data-blog-search-status>
+    Ready.
+  </p>
+  <div class="blog-search-results" data-blog-search-results hidden></div>
+</section>
+
+<style>
+  .blog-search {
+    margin-bottom: 2.5rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background:
+      linear-gradient(135deg, var(--accent-glow), transparent 42%),
+      var(--card-bg);
+    box-shadow: var(--card-shadow);
+  }
+
+  .blog-search-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .blog-search-kicker {
+    margin: 0 0 0.25rem;
+    color: var(--text-tertiary);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .blog-search h2 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .blog-search-count {
+    flex: none;
+    margin: 0;
+    color: var(--text-tertiary);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+  }
+
+  .blog-search-label {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .blog-search-input-wrap {
+    position: relative;
+  }
+
+  .blog-search-icon {
+    position: absolute;
+    top: 50%;
+    left: 0.85rem;
+    width: 1rem;
+    height: 1rem;
+    color: var(--text-tertiary);
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .blog-search-input {
+    width: 100%;
+    min-height: 2.85rem;
+    padding: 0 0.9rem 0 2.55rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    outline: none;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .blog-search-input:focus {
+    border-color: color-mix(in srgb, var(--color-accent) 62%, var(--border-color));
+    box-shadow: 0 0 0 4px var(--accent-glow);
+  }
+
+  .blog-search-input::placeholder {
+    color: var(--text-tertiary);
+  }
+
+  .blog-search-status {
+    min-height: 1.25rem;
+    margin: 0.7rem 0 0;
+    color: var(--text-tertiary);
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .blog-search-results[hidden] {
+    display: none;
+  }
+
+  .blog-search-results {
+    display: grid;
+    gap: 0.65rem;
+    margin-top: 0.9rem;
+  }
+
+  :global(.blog-search-result) {
+    display: block;
+    padding: 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--bg-primary);
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  :global(.blog-search-result:hover) {
+    border-color: color-mix(in srgb, var(--color-accent) 42%, var(--border-color));
+    background: var(--bg-secondary);
+    transform: translateY(-1px);
+  }
+
+  :global(.blog-search-result-top) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.9rem;
+    margin-bottom: 0.45rem;
+  }
+
+  :global(.blog-search-result-title) {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.55;
+  }
+
+  :global(.blog-search-result-date) {
+    flex: none;
+    padding-top: 0.15rem;
+    color: var(--text-tertiary);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+  }
+
+  :global(.blog-search-result-snippet) {
+    margin: 0 0 0.7rem;
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    line-height: 1.75;
+  }
+
+  :global(.blog-search-result-tags) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  @media (max-width: 520px) {
+    .blog-search {
+      padding: 0.85rem;
+      border-radius: 14px;
+    }
+
+    .blog-search-head,
+    :global(.blog-search-result-top) {
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+  }
+</style>
+
+<script>
+  interface BlogSearchEntry {
+    id: string;
+    title: string;
+    description: string;
+    date: string;
+    tags: string[];
+    url: string;
+    content: string;
+  }
+
+  interface ScoredBlogSearchEntry extends BlogSearchEntry {
+    score: number;
+    snippet: string;
+  }
+
+  const searchRoot = document.querySelector<HTMLElement>("[data-blog-search]");
+  const searchInput = searchRoot?.querySelector<HTMLInputElement>("[data-blog-search-input]");
+  const searchStatus = searchRoot?.querySelector<HTMLElement>("[data-blog-search-status]");
+  const searchResults = searchRoot?.querySelector<HTMLElement>("[data-blog-search-results]");
+  let searchEntries: BlogSearchEntry[] = [];
+  let searchLoadPromise: Promise<BlogSearchEntry[]> | null = null;
+
+  /**
+   * Collapses user input and index text into a comparable lowercase form.
+   *
+   * @param value - Raw text from either the query or search index.
+   * @returns Lowercase text with repeated whitespace collapsed.
+   */
+  function normalizeSearchText(value: string): string {
+    return value.toLowerCase().replace(/\s+/g, " ").trim();
+  }
+
+  /**
+   * Escapes a query term before it is used in a regular expression.
+   *
+   * @param value - Query term that may contain regular expression tokens.
+   * @returns A safe literal string for RegExp construction.
+   */
+  function escapeRegExp(value: string): string {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  /**
+   * Splits a query into searchable terms while preserving unspaced CJK queries.
+   *
+   * @param query - Raw search input value.
+   * @returns Non-empty normalized search terms.
+   */
+  function tokenizeQuery(query: string): string[] {
+    const normalizedQuery = normalizeSearchText(query);
+    if (normalizedQuery.length === 0) {
+      return [];
+    }
+
+    return normalizedQuery.split(/\s+/).filter((term) => term.length > 0);
+  }
+
+  /**
+   * Loads the static blog search index once per page visit.
+   *
+   * @returns Published blog entries from /blog/search.json.
+   */
+  async function loadSearchIndex(): Promise<BlogSearchEntry[]> {
+    if (searchEntries.length > 0) {
+      return searchEntries;
+    }
+
+    if (!searchLoadPromise) {
+      searchLoadPromise = fetch("/blog/search.json")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Search index failed with ${response.status}`);
+          }
+          return response.json() as Promise<{ posts: BlogSearchEntry[] }>;
+        })
+        .then((payload) => payload.posts);
+    }
+
+    searchEntries = await searchLoadPromise;
+    return searchEntries;
+  }
+
+  /**
+   * Calculates a simple weighted score for one entry against the query terms.
+   *
+   * @param entry - Blog index entry to evaluate.
+   * @param terms - Normalized search terms.
+   * @returns Weighted match score where 0 means no match.
+   */
+  function scoreEntry(entry: BlogSearchEntry, terms: string[]): number {
+    const title = normalizeSearchText(entry.title);
+    const description = normalizeSearchText(entry.description);
+    const tags = normalizeSearchText(entry.tags.join(" "));
+    const content = normalizeSearchText(entry.content);
+
+    return terms.reduce((score, term) => {
+      const termPattern = new RegExp(escapeRegExp(term), "i");
+      let nextScore = score;
+      if (termPattern.test(title)) {
+        nextScore += 8;
+      }
+      if (termPattern.test(tags)) {
+        nextScore += 5;
+      }
+      if (termPattern.test(description)) {
+        nextScore += 4;
+      }
+      if (termPattern.test(content)) {
+        nextScore += 1;
+      }
+      return nextScore;
+    }, 0);
+  }
+
+  /**
+   * Builds a short snippet around the first visible query match.
+   *
+   * @param entry - Blog index entry used for snippet source text.
+   * @param terms - Normalized search terms.
+   * @returns Description text or a content excerpt around the first match.
+   */
+  function createSnippet(entry: BlogSearchEntry, terms: string[]): string {
+    const source = entry.content.length > 0 ? entry.content : entry.description;
+    const normalizedSource = normalizeSearchText(source);
+    const matchedTerm = terms.find((term) => normalizedSource.includes(term));
+
+    if (!matchedTerm) {
+      return entry.description;
+    }
+
+    const matchIndex = normalizedSource.indexOf(matchedTerm);
+    const startIndex = Math.max(0, matchIndex - 48);
+    const endIndex = Math.min(source.length, matchIndex + matchedTerm.length + 96);
+    const prefix = startIndex > 0 ? "..." : "";
+    const suffix = endIndex < source.length ? "..." : "";
+    return `${prefix}${source.slice(startIndex, endIndex).trim()}${suffix}`;
+  }
+
+  /**
+   * Returns the top matching posts for the current query.
+   *
+   * @param entries - All indexed blog posts.
+   * @param query - Raw search query from the input.
+   * @returns Top scored entries ordered by score and date.
+   */
+  function searchPosts(entries: BlogSearchEntry[], query: string): ScoredBlogSearchEntry[] {
+    const terms = tokenizeQuery(query);
+    if (terms.length === 0) {
+      return [];
+    }
+
+    return entries
+      .map((entry) => ({
+        ...entry,
+        score: scoreEntry(entry, terms),
+        snippet: createSnippet(entry, terms),
+      }))
+      .filter((entry) => entry.score > 0)
+      .sort((leftEntry, rightEntry) => {
+        if (rightEntry.score !== leftEntry.score) {
+          return rightEntry.score - leftEntry.score;
+        }
+        return rightEntry.date.localeCompare(leftEntry.date);
+      })
+      .slice(0, 8);
+  }
+
+  /**
+   * Creates one search result link without injecting raw HTML.
+   *
+   * @param entry - Scored blog result to render.
+   * @returns Anchor element linking to the matched article.
+   */
+  function renderResult(entry: ScoredBlogSearchEntry): HTMLAnchorElement {
+    const link = document.createElement("a");
+    link.className = "blog-search-result";
+    link.href = entry.url;
+
+    const topRow = document.createElement("div");
+    topRow.className = "blog-search-result-top";
+
+    const title = document.createElement("h3");
+    title.className = "blog-search-result-title";
+    title.textContent = entry.title;
+
+    const date = document.createElement("time");
+    date.className = "blog-search-result-date";
+    date.dateTime = entry.date;
+    date.textContent = entry.date;
+
+    topRow.append(title, date);
+
+    const snippet = document.createElement("p");
+    snippet.className = "blog-search-result-snippet";
+    snippet.textContent = entry.snippet;
+
+    const tags = document.createElement("div");
+    tags.className = "blog-search-result-tags";
+    for (const tagText of entry.tags.slice(0, 4)) {
+      const tag = document.createElement("span");
+      tag.className = "tag-pill";
+      tag.textContent = tagText;
+      tags.append(tag);
+    }
+
+    link.append(topRow, snippet, tags);
+    return link;
+  }
+
+  /**
+   * Paints the current search state into the result container.
+   *
+   * @param results - Scored results for the current query.
+   * @param query - Trimmed query shown in status text.
+   * @returns Nothing; mutates the result container in place.
+   */
+  function renderResults(results: ScoredBlogSearchEntry[], query: string): void {
+    if (!searchResults || !searchStatus) {
+      return;
+    }
+
+    searchResults.replaceChildren();
+    searchResults.hidden = query.length === 0;
+
+    if (query.length === 0) {
+      searchStatus.textContent = "Ready.";
+      return;
+    }
+
+    if (results.length === 0) {
+      searchStatus.textContent = `No results for "${query}".`;
+      return;
+    }
+
+    searchStatus.textContent = `${results.length} result${results.length === 1 ? "" : "s"} for "${query}".`;
+    searchResults.append(...results.map((entry) => renderResult(entry)));
+  }
+
+  /**
+   * Coordinates index loading, scoring, and rendering for the current input value.
+   *
+   * @returns A promise that resolves after the current search state is rendered.
+   */
+  async function runSearch(): Promise<void> {
+    if (!searchInput || !searchStatus) {
+      return;
+    }
+
+    const query = searchInput.value.trim();
+    if (query.length === 0) {
+      renderResults([], "");
+      return;
+    }
+
+    searchStatus.textContent = "Searching...";
+
+    try {
+      const entries = await loadSearchIndex();
+      renderResults(searchPosts(entries, query), query);
+    } catch (error) {
+      console.error(error);
+      searchStatus.textContent = "Search is unavailable right now.";
+    }
+  }
+
+  searchInput?.addEventListener("input", () => {
+    window.clearTimeout(Number(searchInput.dataset.searchTimer ?? 0));
+    const timerId = window.setTimeout(() => {
+      void runSearch();
+    }, 120);
+    searchInput.dataset.searchTimer = String(timerId);
+  });
+</script>
