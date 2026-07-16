@@ -21,28 +21,28 @@ const topicDefinitions = [
   {
     id: "ai-agent",
     name: "AI & Agent",
-    description: "AI tools, agent frameworks, Claude Code, OpenClaw, and engineering productivity.",
+    description: "AI 工具、Agent 框架、Claude Code、OpenClaw 与工程效率。",
     tags: ["AI", "Claude Code", "OpenClaw", "Harness Engineering", "工程效率"],
     keywords: ["ai-first", "agent", "claude code", "openclaw", "模型"],
   },
   {
     id: "investing-business",
     name: "Investing & Business",
-    description: "Investing mindset, markets, global accounts, business judgment, and decision-making.",
+    description: "投资理念、市场、全球账户、商业判断与决策。",
     tags: ["投资", "美股", "Crypto", "商业", "港卡", "资产配置", "全球支付", "交易系统"],
     keywords: ["投资", "美股", "crypto", "交易", "港卡", "海外银行卡", "资产配置"],
   },
   {
     id: "career-growth",
     name: "Career & Growth",
-    description: "Job hunting, career choices, work quality, output, visibility, and personal growth.",
+    description: "求职、职业选择、工作质量、输出、影响力与个人成长。",
     tags: ["求职", "职场", "职业发展", "成长", "个人成长", "面试", "管理", "做事方法"],
     keywords: ["求职", "实习", "面试", "职场", "晋升", "绩效", "主业", "做事"],
   },
   {
     id: "technical-deep-dives",
     name: "Technical Deep Dives",
-    description: "Kubernetes, cloud native, backend systems, Go, Python, databases, and infrastructure notes.",
+    description: "Kubernetes、云原生、后端系统、Go、Python、数据库与基础设施笔记。",
     tags: [
       "Kubernetes",
       "K8S",
@@ -70,22 +70,26 @@ const topicDefinitions = [
   },
   {
     id: "thinking-writing",
-    name: "Thinking & Writing",
-    description: "Writing, cognition, content, first-principles thinking, and personal observations.",
+    name: "Thinking & Writing · 随笔",
+    description: "写作、认知、第一性原理思考，以及不好归入其他主题的随笔与零散观察。",
     tags: ["写作", "认知", "思考", "内容", "内容创作", "个人品牌", "自媒体", "流量", "生产力"],
     keywords: ["写作", "认知", "思考", "输出", "流量", "曝光", "不公平", "努力"],
   },
+  {
+    id: "quarterly-reviews",
+    name: "Reviews · 季度复盘",
+    description: "个人季度与年度复盘——工作、成长、习惯、投资心态与生活。",
+    tags: ["季度复盘"],
+    keywords: [],
+  },
 ];
 
-const fallbackTopic = {
-  id: "other-notes",
-  name: "Other Notes",
-  description: "Essays and notes that do not fit neatly into one major bucket.",
-  tags: [],
-  keywords: [],
-};
+// Posts that match no topic fall into Thinking & Writing (which now absorbs 随笔).
+const fallbackTopic =
+  topicDefinitions.find((topic) => topic.id === "thinking-writing") ??
+  topicDefinitions[topicDefinitions.length - 1];
 
-const topics = [...topicDefinitions, fallbackTopic];
+const topics = [...topicDefinitions];
 
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
@@ -127,6 +131,37 @@ const topicSections = topics
     posts: posts.filter((post) => getPrimaryTopic(post).topic.id === topic.id),
   }))
   .filter((topic) => topic.posts.length > 0);
+
+// Serialized per-topic article index consumed by the browse-by-topic modal on the client.
+const topicIndex = Object.fromEntries(
+  topicSections.map((topic) => [
+    topic.id,
+    {
+      name: topic.name,
+      description: topic.description,
+      posts: topic.posts.map((post) => ({
+        title: post.data.title,
+        date: post.data.date.toISOString().split("T")[0],
+        url: `/blog/${post.id}`,
+      })),
+    },
+  ]),
+);
+
+// All posts grouped by year (newest first) for the chronological on-page archive.
+const postsByYear: Array<[string, typeof posts]> = (() => {
+  const byYear = new Map<string, typeof posts>();
+  for (const post of posts) {
+    const year = String(post.data.date.getFullYear());
+    const bucket = byYear.get(year);
+    if (bucket) {
+      bucket.push(post);
+    } else {
+      byYear.set(year, [post]);
+    }
+  }
+  return [...byYear.entries()];
+})();
 ---
 
 <Layout
@@ -184,55 +219,457 @@ const topicSections = topics
 
   <div class="section-divider my-6"></div>
 
-  <section class="py-10">
-    <p class="text-[11px] font-semibold uppercase mb-3" style={`color: var(--text-tertiary); letter-spacing: 0;`}>
-      Browse by Topic
-    </p>
-    <div class="flex flex-wrap gap-2">
+  <section class="py-8">
+    <div class="mb-5">
+      <p class="text-[11px] font-semibold uppercase mb-2" style={`color: var(--text-tertiary); letter-spacing: 0;`}>
+        Browse by Topic
+      </p>
+      <h2 class="text-lg font-bold tracking-tight" style={`color: var(--text-primary);`}>
+        按主题浏览
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="topic-index" data-topics={JSON.stringify(topicIndex)}>
       {topicSections.map((topic) => (
-        <a href={`#${topic.id}`} class="tag-pill hover:text-[var(--color-accent)]">
-          {topic.name} · {topic.posts.length}
-        </a>
+        <button type="button" class="group card p-5 flex flex-col text-left min-h-[168px]" data-topic-open={topic.id}>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <h3 class="text-base font-bold tracking-tight group-hover:text-[var(--color-accent)] transition-colors" style={`color: var(--text-primary);`}>
+              {topic.name}
+            </h3>
+            <span class="tag-pill shrink-0">{topic.posts.length}</span>
+          </div>
+          <p class="text-xs leading-[1.8] mb-5" style={`color: var(--text-secondary);`}>
+            {topic.description}
+          </p>
+          <span class="mt-auto text-xs font-medium inline-flex items-center gap-1 group-hover:gap-1.5 transition-all" style={`color: var(--color-accent);`}>
+            查看文章 <span aria-hidden="true">→</span>
+          </span>
+        </button>
       ))}
     </div>
   </section>
 
-  <div class="space-y-12">
-    {
-      topicSections.map((topic) => (
-        <section id={topic.id} class="scroll-mt-8">
-          <div class="mb-5">
-            <h2 class="text-lg font-bold tracking-tight mb-2" style={`color: var(--text-primary);`}>
-              {topic.name}
-            </h2>
-            <p class="text-xs leading-[1.8] max-w-2xl" style={`color: var(--text-secondary);`}>
-              {topic.description}
-            </p>
-          </div>
-          <div class="space-y-3">
-            {topic.posts.map((post) => (
-              <a href={`/blog/${post.id}`} class="group card block p-5">
-                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-3">
-                  <div class="min-w-0">
-                    <h3 class="text-sm font-semibold mb-1.5 group-hover:text-[var(--color-accent)] transition-colors" style={`color: var(--text-primary);`}>
-                      {post.data.title}
-                    </h3>
-                    <p class="text-xs leading-relaxed line-clamp-2" style={`color: var(--text-secondary);`}>
-                      {post.data.description}
-                    </p>
-                  </div>
-                  <time class="text-[10px] font-mono whitespace-nowrap pt-0.5 shrink-0" style={`color: var(--text-tertiary);`}>
-                    {post.data.date.toISOString().split("T")[0]}
-                  </time>
-                </div>
-                <div class="flex flex-wrap gap-1.5">
-                  {post.data.tags.slice(0, 4).map((tag) => <span class="tag-pill">{tag}</span>)}
-                </div>
+  <div class="section-divider my-6"></div>
+
+  <section class="py-8">
+    <div class="mb-5">
+      <p class="text-[11px] font-semibold uppercase mb-2" style={`color: var(--text-tertiary); letter-spacing: 0;`}>
+        All Posts
+      </p>
+      <h2 class="text-lg font-bold tracking-tight" style={`color: var(--text-primary);`}>
+        全部文章 · 按时间
+      </h2>
+    </div>
+
+    <ul class="entry-list">
+      {postsByYear.map(([year, items]) => (
+        <>
+          <li class="entry-year">
+            <b>{year}</b>
+            <i></i>
+            <em>{items.length} 篇</em>
+          </li>
+          {items.map((post) => (
+            <li>
+              <a class="entry-row" href={`/blog/${post.id}`}>
+                <span class="entry-row__title">
+                  {post.data.title}
+                  <span class="entry-row__arrow" aria-hidden="true">→</span>
+                </span>
+                <time class="entry-row__date">{post.data.date.toISOString().split("T")[0]}</time>
               </a>
-            ))}
+            </li>
+          ))}
+        </>
+      ))}
+    </ul>
+  </section>
+
+  <div class="topic-modal" data-topic-modal hidden>
+    <div class="topic-modal-backdrop" data-topic-close></div>
+    <div class="topic-modal-card" role="dialog" aria-modal="true" aria-labelledby="topic-modal-title">
+      <div class="topic-modal-head">
+        <div class="topic-modal-heading">
+          <div class="topic-modal-title-row">
+            <h3 id="topic-modal-title" class="topic-modal-title"></h3>
+            <span class="topic-modal-count" data-topic-count></span>
           </div>
-        </section>
-      ))
-    }
+          <p class="topic-modal-desc" data-topic-desc></p>
+        </div>
+        <button type="button" class="topic-modal-close" data-topic-close aria-label="关闭">✕</button>
+      </div>
+      <ul class="topic-modal-list" data-topic-list></ul>
+    </div>
   </div>
 </Layout>
+
+<style is:global>
+  /* --- modal shell --- */
+  .topic-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .topic-modal[hidden] {
+    display: none;
+  }
+
+  .topic-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+  }
+
+  .topic-modal-card {
+    position: relative;
+    width: 100%;
+    max-width: 34rem;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    animation: topic-modal-in 0.18s ease-out;
+  }
+
+  @keyframes topic-modal-in {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .topic-modal-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.35rem 1.5rem 1.15rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .topic-modal-heading {
+    min-width: 0;
+  }
+
+  .topic-modal-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .topic-modal-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+
+  .topic-modal-count {
+    flex-shrink: 0;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: var(--accent-glow);
+    color: var(--color-accent);
+    font-size: 0.68rem;
+    font-weight: 700;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  .topic-modal-desc {
+    margin: 0;
+    font-size: 0.76rem;
+    line-height: 1.65;
+    color: var(--text-tertiary);
+  }
+
+  .topic-modal-close {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 9px;
+    border: none;
+    background: transparent;
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .topic-modal-close:hover {
+    background: var(--accent-glow);
+    color: var(--color-accent);
+  }
+
+  .topic-modal-list {
+    margin: 0;
+    padding: 0.4rem 0.6rem 0.9rem;
+    list-style: none;
+    overflow-y: auto;
+  }
+
+  /* --- shared article list (modal + on-page archive), 方案 B --- */
+  .entry-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .entry-year {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1rem 0.85rem 0.5rem;
+  }
+
+  .entry-year b {
+    font: 700 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: 0.02em;
+    color: var(--text-secondary);
+  }
+
+  .entry-year i {
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+    opacity: 0.6;
+  }
+
+  .entry-year em {
+    font-style: normal;
+    font: 600 0.66rem/1 inherit;
+    color: var(--text-tertiary);
+  }
+
+  .entry-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.92rem 0.85rem;
+    border-radius: 11px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.15s ease;
+  }
+
+  .entry-row::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0.85rem;
+    right: 0.85rem;
+    height: 1px;
+    background: var(--border-color);
+    opacity: 0.5;
+  }
+
+  .entry-list > li:first-child .entry-row::before,
+  .entry-year + li .entry-row::before,
+  .entry-row:hover::before {
+    opacity: 0;
+  }
+
+  .entry-row:hover {
+    background: var(--accent-glow);
+  }
+
+  .entry-row__title {
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .entry-row:hover .entry-row__title {
+    color: var(--color-accent);
+  }
+
+  .entry-row__arrow {
+    flex-shrink: 0;
+    color: var(--color-accent);
+    opacity: 0;
+    transform: translateX(-3px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .entry-row:hover .entry-row__arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .entry-row__date {
+    flex-shrink: 0;
+    font: 0.7rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: var(--text-tertiary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .topic-modal-card { animation: none; }
+    .entry-row,
+    .entry-row__title,
+    .entry-row__arrow { transition: none; }
+  }
+</style>
+
+<script>
+  interface TopicPost {
+    title: string;
+    date: string;
+    url: string;
+  }
+
+  interface TopicEntry {
+    name: string;
+    description: string;
+    posts: TopicPost[];
+  }
+
+  const grid = document.getElementById("topic-index");
+  const modal = document.querySelector<HTMLElement>("[data-topic-modal]");
+  const titleEl = document.getElementById("topic-modal-title");
+  const countEl = document.querySelector<HTMLElement>("[data-topic-count]");
+  const descEl = document.querySelector<HTMLElement>("[data-topic-desc]");
+  const listEl = document.querySelector<HTMLElement>("[data-topic-list]");
+  const topicData: Record<string, TopicEntry> = grid
+    ? (JSON.parse(grid.dataset.topics ?? "{}") as Record<string, TopicEntry>)
+    : {};
+
+  /**
+   * Builds one clean article row (title + date) for the modal list.
+   *
+   * @param post - The article to render.
+   * @returns A list item element containing the linked article row.
+   */
+  function buildRow(post: TopicPost): HTMLLIElement {
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = post.url;
+    link.className = "entry-row";
+
+    const title = document.createElement("span");
+    title.className = "entry-row__title";
+    title.textContent = post.title;
+    const arrow = document.createElement("span");
+    arrow.className = "entry-row__arrow";
+    arrow.setAttribute("aria-hidden", "true");
+    arrow.textContent = "→";
+    title.append(arrow);
+
+    const date = document.createElement("time");
+    date.className = "entry-row__date";
+    date.textContent = post.date;
+
+    link.append(title, date);
+    item.append(link);
+    return item;
+  }
+
+  /**
+   * Builds a year divider row carrying the year and its article count.
+   *
+   * @param year - Four-digit year label.
+   * @param count - Number of articles in that year.
+   * @returns A list item element for the year header.
+   */
+  function buildYearHead(year: string, count: number): HTMLLIElement {
+    const item = document.createElement("li");
+    item.className = "entry-year";
+    const label = document.createElement("b");
+    label.textContent = year;
+    const rule = document.createElement("i");
+    const tally = document.createElement("em");
+    tally.textContent = `${count} 篇`;
+    item.append(label, rule, tally);
+    return item;
+  }
+
+  /**
+   * Renders a topic's articles into the modal, grouped by year, and reveals it.
+   *
+   * @param topicId - The topic identifier whose articles should be shown.
+   * @returns Nothing; mutates modal DOM and locks background scrolling.
+   */
+  function openTopic(topicId: string): void {
+    const entry = topicData[topicId];
+    if (!entry || !modal || !titleEl || !listEl) {
+      return;
+    }
+
+    titleEl.textContent = entry.name;
+    if (countEl) {
+      countEl.textContent = `${entry.posts.length} 篇`;
+    }
+    if (descEl) {
+      descEl.textContent = entry.description;
+    }
+
+    const countsByYear = new Map<string, number>();
+    for (const post of entry.posts) {
+      const year = post.date.slice(0, 4);
+      countsByYear.set(year, (countsByYear.get(year) ?? 0) + 1);
+    }
+
+    const fragment = document.createDocumentFragment();
+    let currentYear = "";
+    for (const post of entry.posts) {
+      const year = post.date.slice(0, 4);
+      if (year !== currentYear) {
+        currentYear = year;
+        fragment.append(buildYearHead(year, countsByYear.get(year) ?? 0));
+      }
+      fragment.append(buildRow(post));
+    }
+    listEl.replaceChildren(fragment);
+
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  /**
+   * Hides the topic modal and restores background scrolling.
+   *
+   * @returns Nothing; mutates modal visibility and body overflow.
+   */
+  function closeTopic(): void {
+    if (!modal) {
+      return;
+    }
+    modal.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  for (const trigger of document.querySelectorAll<HTMLElement>("[data-topic-open]")) {
+    trigger.addEventListener("click", () => openTopic(trigger.dataset.topicOpen ?? ""));
+  }
+
+  for (const closer of document.querySelectorAll<HTMLElement>("[data-topic-close]")) {
+    closer.addEventListener("click", closeTopic);
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal && !modal.hidden) {
+      closeTopic();
+    }
+  });
+</script>
