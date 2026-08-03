@@ -6,6 +6,8 @@ tags: ["AI", "职业发展", "Agent", "译写"]
 draft: false
 ---
 
+![封面：AI 时代的职业选择](/images/blog/career-advice-in-the-age-of-ai/cover.png)
+
 Phil Chen 写了一篇 AI 时代的职业建议，7 月初发出来滚到了 310 万曝光。他的经历比较特别，6 年里从自己创业，到 Helm AI（15 人涨到 50 人）、Scale AI（500 涨到 1500）、OpenAI（1500 涨到 3000）、Google（10 万人以上），把公司的各个量级都待了一遍，现在自己在做一家完全 agent-native 的公司，坐在面试官那一侧。
 
 这篇里最有价值的两块是：他把工程师的面试题从 Leetcode 和 system design 换成了什么，以及他 2023 年拒掉 Anthropic 和 Cursor、2024 年又拒了一次之后，怎么复盘这两个决定。我按原文全文译写，正文如下，文末是我自己的判断。
