@@ -18,7 +18,15 @@ export function validateTranslationLinks(posts: CollectionEntry<"blog">[]): void
   const knownIds = new Set(posts.map((post) => post.id));
   for (const post of posts) {
     const translationOf = post.data.translationOf;
-    if (translationOf !== undefined && !knownIds.has(translationOf)) {
+    if (translationOf === undefined) {
+      continue;
+    }
+
+    if (translationOf === post.id) {
+      throw new Error(`Blog post "${post.id}" has translationOf pointing at itself, which is not a translation pair.`);
+    }
+
+    if (!knownIds.has(translationOf)) {
       throw new Error(
         `Blog post "${post.id}" has translationOf: "${translationOf}", which does not match any known blog post id.`,
       );
