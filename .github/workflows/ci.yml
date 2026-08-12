@@ -38,3 +38,6 @@ jobs:
 
       - name: Build site
         run: npm run build
+
+      - name: Verify SEO output
+        run: npm run seo:verify

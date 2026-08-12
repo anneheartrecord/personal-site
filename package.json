@@ -12,6 +12,7 @@
     "news:stub": "node scripts/generate-ai-news-draft.mjs",
     "news:generate": "node scripts/generate-ai-news-from-follow-builders.mjs",
     "news:broadcast": "node scripts/send-ai-news-kit-broadcast.mjs",
+    "seo:verify": "node scripts/verify-seo-output.mjs",
     "astro": "astro"
   },
   "dependencies": {
