@@ -1,5 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { site } from "../data/site";
+import { getPersonSchema } from "../lib/person-schema";
+
+const amaImageUrl = new URL(site.image, site.url).toString();
 ---
 
 <Layout
@@ -7,6 +11,14 @@ import Layout from "../layouts/Layout.astro";
   description="One-on-one consulting with Charles Cheng on career growth, resume review, interviews, investing mindset, personal branding, and portfolio building."
   canonicalPath="/ama"
   lang="zh-CN"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    name: "Ask Me Anything — Charles Cheng",
+    url: new URL("/ama", site.url).toString(),
+    description: "一对一付费咨询，我能提供职业、投资、自媒体等方面的帮助。",
+    mainEntity: getPersonSchema(amaImageUrl),
+  }}
 >
   <h1 class="text-2xl font-bold tracking-tight mb-2" style={`color: var(--text-primary);`}>Ask Me Anything</h1>
   <p class="text-sm mb-4" style={`color: var(--text-secondary);`}>一对一付费咨询，我能提供职业、投资、自媒体等方面的帮助。</p>

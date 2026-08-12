@@ -1,11 +1,13 @@
 ---
+import type { Thing, WithContext } from "schema-dts";
 import Sidebar from "../components/Sidebar.astro";
 import ImageLightbox from "../components/ImageLightbox.astro";
 import TopBar from "../components/TopBar.astro";
 import { site } from "../data/site";
+import { getPersonSchema } from "../lib/person-schema";
 import "../styles/global.css";
 
-type JsonLd = Record<string, unknown>;
+type JsonLd = WithContext<Thing>;
 
 interface Props {
   title: string;
@@ -35,18 +37,7 @@ const imageUrl = new URL(image, baseUrl).toString();
 const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
 
 const defaultJsonLd: JsonLd[] = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: site.author.name,
-    alternateName: site.author.alias,
-    url: site.url,
-    image: imageUrl,
-    email: site.author.email,
-    jobTitle: "Full-stack Engineer",
-    sameAs: [site.author.github, site.author.x],
-    knowsAbout: site.topics,
-  },
+  getPersonSchema(imageUrl),
   {
     "@context": "https://schema.org",
     "@type": "WebSite",

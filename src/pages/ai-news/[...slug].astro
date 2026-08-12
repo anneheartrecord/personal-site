@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import NewsletterSignup from "../../components/NewsletterSignup.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "../../data/site";
+import { getContentFileLastmod } from "../../lib/git-lastmod";
 
 export async function getStaticPaths() {
   const issues = await getCollection("aiNews", ({ data }) => !data.draft);
@@ -14,8 +15,13 @@ export async function getStaticPaths() {
 
 const { issue } = Astro.props;
 const { Content } = await render(issue);
+const lang = "zh-CN";
 const publishedDate = issue.data.date.toISOString();
 const canonicalPath = `/ai-news/${issue.id}`;
+const canonicalUrl = new URL(canonicalPath, site.url).toString();
+const imageUrl = new URL(site.image, site.url).toString();
+const dateModified = getContentFileLastmod(`src/content/ai-news/${issue.id}.md`, issue.data.date).toISOString();
+const aiNewsIndexUrl = new URL("/ai-news", site.url).toString();
 ---
 
 <Layout
@@ -23,29 +29,42 @@ const canonicalPath = `/ai-news/${issue.id}`;
   description={issue.data.description}
   canonicalPath={canonicalPath}
   pageType="article"
-  lang="zh-CN"
-  jsonLd={{
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: issue.data.title,
-    description: issue.data.description,
-    datePublished: publishedDate,
-    dateModified: publishedDate,
-    url: new URL(canonicalPath, site.url).toString(),
-    keywords: issue.data.tags,
-    author: {
-      "@type": "Person",
-      name: site.author.name,
-      alternateName: site.author.alias,
-      url: site.url,
+  lang={lang}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: issue.data.title,
+      description: issue.data.description,
+      image: imageUrl,
+      inLanguage: lang,
+      datePublished: publishedDate,
+      dateModified: dateModified,
+      url: canonicalUrl,
+      keywords: issue.data.tags,
+      author: {
+        "@type": "Person",
+        name: site.author.name,
+        alternateName: site.author.alias,
+        url: site.url,
+      },
+      publisher: {
+        "@type": "Person",
+        name: site.author.name,
+        alternateName: site.author.alias,
+        url: site.url,
+      },
     },
-    publisher: {
-      "@type": "Person",
-      name: site.author.name,
-      alternateName: site.author.alias,
-      url: site.url,
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+        { "@type": "ListItem", position: 2, name: "AI News", item: aiNewsIndexUrl },
+        { "@type": "ListItem", position: 3, name: issue.data.title, item: canonicalUrl },
+      ],
     },
-  }}
+  ]}
 >
   <article>
     <a href="/ai-news" class="inline-flex items-center text-xs font-medium mb-6 transition-opacity hover:opacity-70" style={`color: var(--text-tertiary);`}>
