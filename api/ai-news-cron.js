@@ -3,7 +3,7 @@ const DEFAULT_REPOSITORY = "anneheartrecord/personal-site";
 const DEFAULT_WORKFLOW_FILE = "ai-news-generate.yml";
 const DEFAULT_REF = "main";
 const DEFAULT_NOTIFY_TO = "chengxisheng777@gmail.com";
-const DEFAULT_SITE_URL = "https://charles-cheng.com";
+const DEFAULT_SITE_URL = "https://www.charles-cheng.com";
 
 /** Send a JSON response from the serverless function.
  * @param {import("http").ServerResponse} response - Node response object.

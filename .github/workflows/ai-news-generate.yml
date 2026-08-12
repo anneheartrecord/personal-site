@@ -115,7 +115,7 @@ jobs:
           AI_NEWS_NOTIFY_TO: ${{ vars.AI_NEWS_NOTIFY_TO || 'chengxisheng777@gmail.com' }}
           AI_NEWS_ISSUE_PATH: ${{ steps.commit.outputs.issue_path }}
           AI_NEWS_COMMIT_SHA: ${{ steps.commit.outputs.commit_sha }}
-          SITE_URL: https://charles-cheng.com
+          SITE_URL: https://www.charles-cheng.com
         run: |
           if [ -z "$RESEND_API_KEY" ]; then
             echo "::notice::RESEND_API_KEY is not configured. Skipping AI News email notification."
@@ -137,7 +137,7 @@ jobs:
           KIT_BROADCAST_TEMPLATE_ID: ${{ vars.KIT_BROADCAST_TEMPLATE_ID }}
           KIT_BROADCAST_SEND_AT: ${{ vars.KIT_BROADCAST_SEND_AT }}
           AI_NEWS_ISSUE_PATH: ${{ steps.commit.outputs.issue_path }}
-          SITE_URL: https://charles-cheng.com
+          SITE_URL: https://www.charles-cheng.com
         run: npm run news:broadcast
 
       - name: Send failure notification
@@ -149,7 +149,7 @@ jobs:
           AI_NEWS_FAILURE_EMAIL: "true"
           AI_NEWS_FAILURE_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           AI_NEWS_FAILURE_MESSAGE: "AI News Generate failed. Check the GitHub Actions run logs."
-          SITE_URL: https://charles-cheng.com
+          SITE_URL: https://www.charles-cheng.com
         run: |
           if [ -z "$RESEND_API_KEY" ]; then
             echo "::notice::RESEND_API_KEY is not configured. Skipping AI News failure notification."

@@ -5,7 +5,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { basename, resolve } from "node:path";
 
 const DEFAULT_NOTIFY_TO = "chengxisheng777@gmail.com";
-const DEFAULT_SITE_URL = "https://charles-cheng.com";
+const DEFAULT_SITE_URL = "https://www.charles-cheng.com";
 const DEFAULT_FROM = "AI News <onboarding@resend.dev>";
 
 /** Run a git command and return trimmed stdout. */

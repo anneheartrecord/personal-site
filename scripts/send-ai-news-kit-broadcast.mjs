@@ -3,7 +3,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { basename, resolve } from "node:path";
 
-const DEFAULT_SITE_URL = "https://charles-cheng.com";
+const DEFAULT_SITE_URL = "https://www.charles-cheng.com";
 const KIT_API_BASE_URL = "https://api.kit.com/v4";
 
 /** Escape text before inserting it into HTML.
