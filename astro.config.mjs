@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://charles-cheng.com',
+  site: 'https://www.charles-cheng.com',
   markdown: {
     remarkPlugins: [remarkGfm],
   },

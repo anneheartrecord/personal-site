@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 
 /** Build robots.txt from the configured production site URL. */
 export const GET: APIRoute = ({ site }) => {
-  const baseUrl = site ?? new URL("https://charles-cheng.com");
+  const baseUrl = site ?? new URL("https://www.charles-cheng.com");
   const sitemapUrl = new URL("/sitemap.xml", baseUrl);
   const llmsUrl = new URL("/llms.txt", baseUrl);
 

@@ -1,5 +1,5 @@
 export const site = {
-  url: "https://charles-cheng.com",
+  url: "https://www.charles-cheng.com",
   name: "Charles Cheng",
   title: "Charles Cheng — AI Agent Infra Engineer",
   description:

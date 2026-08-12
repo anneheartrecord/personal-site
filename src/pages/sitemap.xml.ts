@@ -25,7 +25,7 @@ const renderUrl = (url: string, lastmod?: Date) => {
 };
 
 export const GET: APIRoute = async ({ site }) => {
-  const baseUrl = site ?? new URL("https://charles-cheng.com");
+  const baseUrl = site ?? new URL("https://www.charles-cheng.com");
   const posts = await getCollection("blog", ({ data }) => !data.draft);
   const aiNewsIssues = await getCollection("aiNews", ({ data }) => !data.draft);
   const urls = [
