@@ -1,11 +1,9 @@
 ---
 title: "认识区块链（八）：安装fabric"
-description: "curl -sSLO -o install-fabric.sh https://github.com/hyperledger/fabric/raw/main/scripts/install-fabric.sh"
+description: "本篇记录了安装Hyperledger Fabric的实际操作过程，通过官方提供的install-fabric.sh脚本完成环境搭建，并配图记录了安装过程中遇到的实际界面与细节。"
 date: 2024-12-20
 tags: ["区块链"]
 ---
-# 认识区块链（八）：安装fabric
-
 ![](https://cdn.nlark.com/yuque/0/2024/png/26372139/1711784059930-b1d2278d-49c4-4b61-a34f-370453d373c8.png)![](https://cdn.nlark.com/yuque/0/2024/png/26372139/1711784139195-bbf891c7-992e-4dd9-9b5d-407f5197a6e3.png)
 
 ![](https://cdn.nlark.com/yuque/0/2024/png/26372139/1711784659718-3d9822c1-890f-44bb-8aca-cbec22043e6a.png)

@@ -4,8 +4,6 @@ description: "K8S除了会全生命周期跟踪`Pod`的状况，还会跟踪更�
 date: 2023-10-13
 tags: ["K8S", "容器"]
 ---
-# 06.源码级别Pod详解（三）：Container 生命周期
-
 ## 前言
 
 K8S除了会全生命周期跟踪`Pod`的状况，还会跟踪更底层的`Container`生命周期，`Container`的生命周期主要是由三部分组成、调控的，分别是`Container States`、`postStart&&preStop`以及`Container RestartPolicy`。

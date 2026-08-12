@@ -4,8 +4,6 @@ description: "Python2中有两种表示字符序列的类型，分别是str和un
 date: 2022-11-15
 tags: ["Python"]
 ---
-# Python进阶技巧二三事（七）：字符串、python版本控制、
-
 ## str与unicode
 
 Python2中有两种表示字符序列的类型，分别是str和unicode，str的实例的每个元素包含原始的8位二进制码，而unicode的实例，则包含Unicode字符。

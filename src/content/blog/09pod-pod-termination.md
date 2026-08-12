@@ -4,8 +4,6 @@ description: "我们在前面几篇博客中介绍了`Pod`生命周期各类组�
 date: 2023-10-19
 tags: ["K8S"]
 ---
-# 09.源码级别Pod详解（五）： Pod Termination
-
 ## 前言
 
 我们在前面几篇博客中介绍了`Pod`生命周期各类组件与相关字段，比如`Phase`与`Condition`、`Probe`与`lifecycle`等等，这些组件的作用都是描述或调控`Pod`生命周期。这篇文章会向大家介绍`Pod`终止相关内容。

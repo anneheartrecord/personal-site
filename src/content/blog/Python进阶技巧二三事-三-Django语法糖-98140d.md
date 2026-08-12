@@ -1,6 +1,6 @@
 ---
 title: "Python进阶技巧二三事(三) Django语法糖"
-description: "`SomeModel.objects.filter(env=env).prefetch_related('fileds')`"
+description: "Django查询中的prefetch_related方法能在一对多、多对多关系场景下减少数据库查询次数、提升性能，本文讲解它的作用与适用场景，并顺带说明PostgreSQL和MySQL在类型匹配上的差异，以及as_view的作用。"
 date: 2022-10-12
 tags: ["Python", "数据库"]
 ---

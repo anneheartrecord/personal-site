@@ -4,8 +4,6 @@ description: "首先在我们的开发机上生成对应的`ssh-key`公钥和私
 date: 2023-11-16
 tags: ["Git"]
 ---
-# 入职一家新公司如何配置Git及远程开发？
-
 ## 配置Git
 
 ### clone 仓库

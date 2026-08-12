@@ -1,11 +1,9 @@
 ---
 title: "08.源码级别Pod详解（四）： Pod readiness与Container Probe"
-description: "在前文我们[05.源码级别Pod详解（二）：Pod生命周期](<https://juejin.cn/post/7295565904406511657>)说过，因为`Pod`通常不直接被部署，而是通过更高级别的`Workload`所进行调度和管控，于是K8S提供了一种检测`Pod`是否成功部署的机制，"
+description: "K8S通过Pod readiness机制判断Pod是否已经就绪，本文说明readiness的值如何由PodStatus的condition决定、需要满足哪些条件才算Ready，以及如何通过Readiness Probe自定义就绪判断逻辑。"
 date: 2023-10-17
 tags: ["K8S"]
 ---
-# 08.源码级别Pod详解（四）： Pod readiness与Container Probe
-
 ## 前言
 
 在前文我们[05.源码级别Pod详解（二）：Pod生命周期](<https://juejin.cn/post/7295565904406511657>)说过，因为`Pod`通常不直接被部署，而是通过更高级别的`Workload`所进行调度和管控，于是K8S提供了一种检测`Pod`是否成功部署的机制，这就是`Pod readiness`。

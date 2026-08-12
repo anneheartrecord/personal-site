@@ -1,11 +1,9 @@
 ---
 title: "前端路由实现方式"
-description: "博客:cbb777.fun"
+description: "单页应用切换页面时浏览器并不会发出真实请求，页面又是如何感知用户点击并更新内容区域的？本文介绍hash和history两种主流前端路由实现方式，重点讲解hash模式如何借助hashchange事件在不刷新页面的情况下完成跳转。"
 date: 2024-01-21
 tags: ["Git", "前端"]
 ---
-# 前端路由实现方式
-
 博客:cbb777.fun
 
   

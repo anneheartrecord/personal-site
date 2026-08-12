@@ -14,6 +14,8 @@
     "news:broadcast": "node scripts/send-ai-news-kit-broadcast.mjs",
     "seo:verify": "node scripts/verify-seo-output.mjs",
     "indexnow:submit": "node scripts/submit-indexnow.mjs",
+    "backfill:dry-run": "node scripts/backfill-post-metadata.mjs --dry-run",
+    "backfill:apply": "node scripts/backfill-post-metadata.mjs --apply",
     "astro": "astro"
   },
   "dependencies": {

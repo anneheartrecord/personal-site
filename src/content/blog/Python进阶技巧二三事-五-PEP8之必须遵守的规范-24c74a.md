@@ -4,8 +4,6 @@ description: "链接http://www.python.org/dev/peps/pep0008，建议每位python�
 date: 2022-12-17
 tags: ["Python"]
 ---
-# Python进阶技巧二三事（五）：PEP8之必须遵守的规范
-
 ## PEP8规范
 
 链接http://www.python.org/dev/peps/pep0008，建议每位python开发者都自己看一遍规则详情，下面列出几条绝对应该遵守的规则。

@@ -4,8 +4,6 @@ description: "在你给出的代码中，`:key=\"item.id\"`是为Vue的列表渲
 date: 2023-04-28
 tags: ["前端"]
 ---
-# vue学习笔记
-
 ## 指令
 
 1.v-for

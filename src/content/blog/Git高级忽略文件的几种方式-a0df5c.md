@@ -4,8 +4,6 @@ description: "首先我们创建一个`git-learn`目录，通过`git init`来初
 date: 2022-06-02
 tags: ["Git", "职场"]
 ---
-# Git高级——忽略文件的几种方式
-
 ## 初始化git仓库
 
 首先我们创建一个`git-learn`目录，通过`git init`来初始化`git`仓库。

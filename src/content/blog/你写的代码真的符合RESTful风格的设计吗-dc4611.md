@@ -4,8 +4,6 @@ description: "之前一直认为接口按照增删改查的功能，使用`GET P
 date: 2023-10-14
 tags: ["DevOps", "网络"]
 ---
-# 你写的代码真的符合RESTful风格的设计吗？
-
 ## 前言
 
 之前一直认为接口按照增删改查的功能，使用`GET POST PUT DELETE`这几个`HTTP`方法，并且URL符合对应对象，比如书籍的增删改查用`book`，用户的增删改查用`user`就算是`RESTUful`风格了，这和实际上的`RESTful`要求的相去甚远。

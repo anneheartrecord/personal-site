@@ -1,11 +1,9 @@
 ---
 title: "go.sum是什么"
-description: "博客:cbb777.fun"
+description: "go.sum是Go语言配合go mod使用的一种锁文件，记录了项目所有依赖包的路径、版本和哈希值。本文说明go.sum如何在构建时校验依赖哈希，从而保证项目依赖关系可靠、构建过程可重现。"
 date: 2023-03-24
 tags: ["Go", "Git", "并发"]
 ---
-# go.sum是什么
-
 博客:cbb777.fun
 
 全平台账号:安妮的心动录

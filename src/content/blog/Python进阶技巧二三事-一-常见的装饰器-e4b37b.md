@@ -4,8 +4,6 @@ description: "`classmethod`是`python`中的一个装饰器，它的作用是：
 date: 2022-10-11
 tags: ["Python"]
 ---
-# Python进阶技巧二三事(一)： 常见的装饰器
-
 ## 常见的装饰器
 
 ### 类方法

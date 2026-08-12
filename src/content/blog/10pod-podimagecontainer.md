@@ -1,11 +1,9 @@
 ---
 title: "10.源码级别Pod详解（六）：Pod、Image与Container"
-description: "在[前文](<https://juejin.cn/column/7291519245334347836>)中向大家介绍了Pod的一些高级特性，如底层实现、生命周期、探针、宽限期等等，本文将向大家介绍Pod、Image与Container之间的联系与作用，并会通过两则实战带领大家走近镜像与多容器Pod"
+description: "本文介绍K8S中镜像的概念与拉取机制：为什么用摘要代替标签能保证版本一致性，以及IfNotPresent、Always、Never三种镜像拉取策略各自的适用场景，并配实战演示多容器Pod的用法。"
 date: 2023-10-21
 tags: ["K8S", "容器"]
 ---
-# 10.源码级别Pod详解（六）：Pod、Image与Container
-
 ## 前言
 
 在[前文](<https://juejin.cn/column/7291519245334347836>)中向大家介绍了Pod的一些高级特性，如底层实现、生命周期、探针、宽限期等等，本文将向大家介绍Pod、Image与Container之间的联系与作用，并会通过两则实战带领大家走近镜像与多容器Pod。

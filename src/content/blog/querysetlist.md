@@ -4,8 +4,6 @@ description: "在编程中，特别是在使用Django框架时，`queryset`和`l
 date: 2023-04-27
 tags: ["Python", "数据库"]
 ---
-# queryset和list区别
-
 [code]
     在编程中，特别是在使用Django框架时，`queryset`和`list`这两个概念经常被提到，它们各自有不同的特点和用途：
     

@@ -4,8 +4,6 @@ description: "对于临时容器Ephemeral Containers最准确的定义是：临�
 date: 2023-10-25
 tags: ["K8S", "容器", "云原生"]
 ---
-# 12.【云原生-K8S】：临时 容器与Pod调试
-
 ## Ephemeral Containers
 
 对于临时容器Ephemeral Containers最准确的定义是：临时容器是一种特殊的用于`debug`的容器，可以**动态的** 添加到Pod中，通常用来对难以复现的问题进行排查，而不对业务有帮助。因为pod由规约控制，一旦pod创建就无法将容器新加到pod中，如果需要对pod的状态进行检查，那么临时容器就派上用场了。

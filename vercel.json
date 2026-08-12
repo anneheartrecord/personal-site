@@ -8,5 +8,12 @@
       "path": "/api/ai-news-cron",
       "schedule": "0 1 * * *"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/blog/17想为k8s做贡献-先把cla签署了-bc158b",
+      "destination": "/blog/想为k8s做贡献-先把cla签署了-8c7e89",
+      "permanent": true
+    }
   ]
 }

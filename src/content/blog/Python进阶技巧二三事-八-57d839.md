@@ -4,8 +4,6 @@ description: "Python提供了一种把序列切成小块的写法，语法是`so
 date: 2022-12-18
 tags: ["Python"]
 ---
-# Python进阶技巧二三事（八)
-
 ## 数组切片
 
 Python提供了一种把序列切成小块的写法，语法是`somlist[start:end]`，遵循左闭右开原则，start的元素在结果之中，end的元素在结果之外。同样我们也可以使用负数来倒取切片，这也是被推荐的切片方式。

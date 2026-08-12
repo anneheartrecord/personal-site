@@ -4,8 +4,6 @@ description: "找元素，右边会显示style样式"
 date: 2023-12-19
 tags: ["前端"]
 ---
-# 前端debug学习
-
 找元素，右边会显示style样式
 
   * 源码的对应html代码，放上去
