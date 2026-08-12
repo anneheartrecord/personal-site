@@ -6,7 +6,9 @@ on:
       - main
     paths:
       - "src/content/ai-news/**"
+      - "src/content/blog/**"
       - "scripts/notify-ai-news-publish.mjs"
+      - "scripts/submit-indexnow.mjs"
       - ".github/workflows/ai-news-notify.yml"
   workflow_dispatch:
     inputs:
@@ -58,3 +60,15 @@ jobs:
           fi
 
           node scripts/notify-ai-news-publish.mjs
+
+      - name: Submit changed URLs to IndexNow
+        env:
+          INDEXNOW_KEY: ${{ vars.INDEXNOW_KEY }}
+          SITE_URL: https://www.charles-cheng.com
+        run: |
+          if [ -z "$INDEXNOW_KEY" ]; then
+            echo "::notice::INDEXNOW_KEY is not configured. Skipping IndexNow submission."
+            exit 0
+          fi
+
+          node scripts/submit-indexnow.mjs --changed
