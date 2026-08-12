@@ -1,21 +1,24 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import BlogShareCard from "../../components/BlogShareCard.astro";
-import { getCollection, render } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import { site } from "../../data/site";
 import { getContentFileLastmod } from "../../lib/git-lastmod";
+import { getHreflangLinks, validateTranslationLinks } from "../../lib/hreflang";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
+  validateTranslationLinks(posts);
   return posts.map((post) => ({
     params: { slug: post.id },
-    props: { post },
+    props: { post, posts },
   }));
 }
 
-const { post } = Astro.props;
+const { post, posts } = Astro.props as { post: CollectionEntry<"blog">; posts: CollectionEntry<"blog">[] };
 const { Content, headings } = await render(post);
-const lang = "zh-CN";
+const lang = post.data.lang;
+const hreflangLinks = getHreflangLinks(post, posts, (id) => new URL(`/blog/${id}`, site.url).toString());
 const publishedDate = post.data.date.toISOString();
 const displayDate = post.data.date.toISOString().split("T")[0];
 const canonicalPath = `/blog/${post.id}`;
@@ -38,6 +41,7 @@ const hasTableOfContents = articleHeadings.length > 0;
   contentClass="w-full max-w-6xl mx-auto px-4 py-5 sm:px-6 lg:py-10"
   pageType="article"
   lang={lang}
+  hreflangLinks={hreflangLinks}
   jsonLd={[
     {
       "@context": "https://schema.org",
