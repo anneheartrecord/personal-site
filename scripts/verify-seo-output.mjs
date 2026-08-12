@@ -203,6 +203,82 @@ const checkIndexNowKeyFile = () => {
   return [];
 };
 
+/** Extract every JSON-LD payload (one array entry per `<script type="application/ld+json">` block) from an HTML file's raw content.
+ * @param {string} htmlContent - Raw HTML file content.
+ * @returns {Array<{raw: string, parsed: unknown}>} One entry per script block that parsed successfully.
+ */
+const extractJsonLdBlocks = (htmlContent) => {
+  const blocks = [];
+  for (const match of htmlContent.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    try {
+      blocks.push({ raw: match[1], parsed: JSON.parse(match[1]) });
+    } catch {
+      blocks.push({ raw: match[1], parsed: undefined });
+    }
+  }
+
+  return blocks;
+};
+
+/** Check that every JSON-LD script block on every built page parses as valid JSON, and that none emits a pruned type (R17).
+ * @param {Array<string>} htmlFiles - Absolute paths of all scanned HTML files.
+ * @returns {Array<string>} Failure messages, empty when every page passes.
+ */
+const checkJsonLdValidityAndPrunedTypes = (htmlFiles) => {
+  const failures = [];
+  const prunedTypes = new Set(["FAQPage", "HowTo"]);
+
+  for (const filePath of htmlFiles) {
+    const content = readFileSync(filePath, "utf8");
+    for (const { parsed } of extractJsonLdBlocks(content)) {
+      if (parsed === undefined) {
+        failures.push(`json-ld-invalid: ${toDisplayPath(filePath)} has a <script type="application/ld+json"> block that is not valid JSON`);
+        continue;
+      }
+
+      const nodes = Array.isArray(parsed) ? parsed : [parsed];
+      for (const node of nodes) {
+        if (node && prunedTypes.has(node["@type"])) {
+          failures.push(`json-ld-pruned-type-emitted: ${toDisplayPath(filePath)} emits "@type": "${node["@type"]}", which R17 requires the site to never emit`);
+        }
+      }
+    }
+  }
+
+  return failures;
+};
+
+/** Check that no built BlogPosting/NewsArticle JSON-LD node reports a dateModified earlier than its datePublished.
+ * @param {Array<string>} htmlFiles - Absolute paths of all scanned HTML files.
+ * @returns {Array<string>} Failure messages, empty when every dated node passes.
+ */
+const checkDateModifiedNotBeforePublished = (htmlFiles) => {
+  const failures = [];
+  for (const filePath of htmlFiles) {
+    const content = readFileSync(filePath, "utf8");
+    for (const { parsed } of extractJsonLdBlocks(content)) {
+      if (parsed === undefined) {
+        continue;
+      }
+
+      const nodes = Array.isArray(parsed) ? parsed : [parsed];
+      for (const node of nodes) {
+        if (!node || !node.datePublished || !node.dateModified) {
+          continue;
+        }
+
+        if (new Date(node.dateModified).getTime() < new Date(node.datePublished).getTime()) {
+          failures.push(
+            `date-modified-before-published: ${toDisplayPath(filePath)} has dateModified "${node.dateModified}" earlier than datePublished "${node.datePublished}"`,
+          );
+        }
+      }
+    }
+  }
+
+  return failures;
+};
+
 /** Run all post-build SEO assertions against dist/ and report every failure found.
  * @returns {Array<string>} All failure messages across every check.
  */
@@ -225,6 +301,9 @@ const runChecks = () => {
   failures.push(...checkRobotsTxt());
   failures.push(...checkIndexNowKeyFile());
 
+  failures.push(...checkJsonLdValidityAndPrunedTypes(htmlFiles));
+  failures.push(...checkDateModifiedNotBeforePublished(htmlFiles));
+
   return failures;
 };
 
@@ -243,7 +322,7 @@ const main = () => {
   }
 
   console.log(
-    "seo:verify passed: no apex-host leaks, sitemap.xml is well-formed, blog canonical/og:url tags are correct, both RSS feeds are well-formed with items, robots.txt has no non-standard directives or named-crawler disallows, and the IndexNow key file is present and correct.",
+    "seo:verify passed: no apex-host leaks, sitemap.xml is well-formed, blog canonical/og:url tags are correct, both RSS feeds are well-formed with items, robots.txt has no non-standard directives or named-crawler disallows, the IndexNow key file is present and correct, every page's JSON-LD is valid with no pruned types, and no dateModified precedes its datePublished.",
   );
 };
 

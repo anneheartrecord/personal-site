@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
 import { execSync } from "node:child_process";
 import { getPublishableEntries } from "../lib/content-index";
+import { isShallowRepo } from "../lib/git-lastmod";
 
 /** Static routes emitted in the sitemap, paired with the source file used to derive their last-modified date. */
 const staticPages = [
@@ -32,26 +33,6 @@ const renderUrl = (url: string, lastmod?: Date) => {
 
   lines.push("  </url>");
   return lines.join("\n");
-};
-
-let isShallowRepoCache: boolean | undefined;
-
-/**
- * Detect whether the current checkout is a shallow git clone (the default on CI and on Vercel
- * unless "Deep Clone" is enabled). Under a shallow clone, `git log -1 -- <file>` "succeeds" but
- * silently returns the same single available commit's date for every file, which would make every
- * static page's lastmod identical and wrong rather than absent.
- */
-const isShallowRepo = (): boolean => {
-  if (isShallowRepoCache === undefined) {
-    try {
-      isShallowRepoCache = execSync("git rev-parse --is-shallow-repository", { encoding: "utf8" }).trim() === "true";
-    } catch {
-      isShallowRepoCache = true;
-    }
-  }
-
-  return isShallowRepoCache;
 };
 
 /** Look up a static page's last-modified date from its git history, falling back to the current build time when git history is unavailable or unreliable (shallow clone, no git). */

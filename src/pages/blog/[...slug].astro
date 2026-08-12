@@ -21,7 +21,11 @@ const displayDate = post.data.date.toISOString().split("T")[0];
 const canonicalPath = `/blog/${post.id}`;
 const canonicalUrl = new URL(canonicalPath, site.url).toString();
 const imageUrl = new URL(site.image, site.url).toString();
-const dateModified = getContentFileLastmod(`src/content/blog/${post.id}.md`, post.data.date).toISOString();
+// post.id is lowercased by Astro's glob loader (githubSlug), but the file on disk keeps its
+// original case, so rebuilding the path from post.id silently mismatches git history for any
+// post whose filename has uppercase letters. post.filePath preserves the real, case-correct,
+// repo-root-relative path — use it instead.
+const dateModified = getContentFileLastmod(post.filePath ?? `src/content/blog/${post.id}.md`, post.data.date).toISOString();
 const blogIndexUrl = new URL("/blog", site.url).toString();
 const articleHeadings = headings.filter((heading) => heading.depth >= 2 && heading.depth <= 3);
 const hasTableOfContents = articleHeadings.length > 0;

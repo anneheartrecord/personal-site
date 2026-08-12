@@ -20,7 +20,11 @@ const publishedDate = issue.data.date.toISOString();
 const canonicalPath = `/ai-news/${issue.id}`;
 const canonicalUrl = new URL(canonicalPath, site.url).toString();
 const imageUrl = new URL(site.image, site.url).toString();
-const dateModified = getContentFileLastmod(`src/content/ai-news/${issue.id}.md`, issue.data.date).toISOString();
+// issue.id is lowercased by Astro's glob loader (githubSlug), but the file on disk keeps its
+// original case, so rebuilding the path from issue.id silently mismatches git history for any
+// issue whose filename has uppercase letters. issue.filePath preserves the real, case-correct,
+// repo-root-relative path — use it instead.
+const dateModified = getContentFileLastmod(issue.filePath ?? `src/content/ai-news/${issue.id}.md`, issue.data.date).toISOString();
 const aiNewsIndexUrl = new URL("/ai-news", site.url).toString();
 ---
 

@@ -6,10 +6,11 @@ let isShallowRepoCache: boolean | undefined;
  * Detect whether the current checkout is a shallow git clone (the default on CI and on Vercel
  * unless "Deep Clone" is enabled). Under a shallow clone, `git log -1 -- <file>` "succeeds" but
  * silently returns the same single available commit's date for every file, which would make every
- * file's derived date identical and wrong rather than absent. Mirrors the guard in
- * `src/pages/sitemap.xml.ts`'s `isShallowRepo()`.
+ * file's derived date identical and wrong rather than absent. Shared by `src/pages/sitemap.xml.ts`
+ * (static-page lastmod) and `getContentFileLastmod` below (content dateModified) so there is one
+ * cached check per build, not one per caller.
  */
-const isShallowRepo = (): boolean => {
+export const isShallowRepo = (): boolean => {
   if (isShallowRepoCache === undefined) {
     try {
       isShallowRepoCache = execSync("git rev-parse --is-shallow-repository", { encoding: "utf8" }).trim() === "true";
