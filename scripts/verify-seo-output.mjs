@@ -127,6 +127,82 @@ const checkBlogCanonicalAndOgUrl = (htmlFiles) => {
   return failures;
 };
 
+/** Check that a built RSS feed exists, is well-formed enough to be a feed, and carries at least one item.
+ * @param {string} relativeDistPath - Path to the feed file, relative to dist/ (for example "blog/rss.xml").
+ * @returns {Array<string>} Failure messages, empty when the feed passes.
+ */
+const checkRssFeed = (relativeDistPath) => {
+  const feedPath = join(DIST_DIR, relativeDistPath);
+  if (!existsSync(feedPath)) {
+    return [`rss-feed-missing: dist/${relativeDistPath} does not exist`];
+  }
+
+  const feedContent = readFileSync(feedPath, "utf8");
+  const failures = [];
+  if (!feedContent.includes("<rss") || !feedContent.includes("</rss>")) {
+    failures.push(`rss-feed-malformed: dist/${relativeDistPath} has no <rss>...</rss> root element`);
+  }
+
+  if (!feedContent.includes("<item>")) {
+    failures.push(`rss-feed-empty: dist/${relativeDistPath} has zero <item> entries`);
+  }
+
+  return failures;
+};
+
+/** Check that dist/robots.txt has no non-standard "LLMs:" directive and disallows none of the named crawlers.
+ * @returns {Array<string>} Failure messages, empty when the check passes.
+ */
+const checkRobotsTxt = () => {
+  const robotsPath = join(DIST_DIR, "robots.txt");
+  if (!existsSync(robotsPath)) {
+    return [`robots-missing: ${toDisplayPath(robotsPath)} does not exist`];
+  }
+
+  const robotsContent = readFileSync(robotsPath, "utf8");
+  const failures = [];
+  if (/^LLMs:/im.test(robotsContent)) {
+    failures.push(`robots-non-standard-directive: dist/robots.txt still contains a non-standard "LLMs:" line`);
+  }
+
+  const namedCrawlers = ["Googlebot", "Bingbot", "OAI-SearchBot", "ClaudeBot", "PerplexityBot"];
+  for (const crawler of namedCrawlers) {
+    const groupMatch = robotsContent.match(new RegExp(`User-agent:\\s*${crawler}\\b([\\s\\S]*?)(?:\\n\\n|$)`, "i"));
+    if (groupMatch && /Disallow:\s*\S/.test(groupMatch[1])) {
+      failures.push(`robots-crawler-disallowed: dist/robots.txt has a Disallow rule under the ${crawler} group`);
+    }
+  }
+
+  return failures;
+};
+
+/** Check that exactly one IndexNow key file is published at the dist root, with a body matching the key format.
+ * @returns {Array<string>} Failure messages, empty when the check passes.
+ */
+const checkIndexNowKeyFile = () => {
+  const knownRootTextFiles = new Set(["robots.txt", "llms.txt", "llms-full.txt"]);
+  const rootTxtFiles = readdirSync(DIST_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".txt") && !knownRootTextFiles.has(entry.name));
+
+  const keyFiles = rootTxtFiles.filter((entry) => /^[a-zA-Z0-9-]{8,128}\.txt$/.test(entry.name));
+  if (keyFiles.length !== 1) {
+    return [
+      `indexnow-key-file-missing: expected exactly one IndexNow key file (<key>.txt, 8-128 chars of [a-zA-Z0-9-]) at the dist root, found ${keyFiles.length}`,
+    ];
+  }
+
+  const [keyFile] = keyFiles;
+  const expectedKey = keyFile.name.replace(/\.txt$/, "");
+  const actualBody = readFileSync(join(DIST_DIR, keyFile.name), "utf8").trim();
+  if (actualBody !== expectedKey) {
+    return [
+      `indexnow-key-file-mismatch: dist/${keyFile.name}'s body ("${actualBody}") does not match its own filename-derived key ("${expectedKey}")`,
+    ];
+  }
+
+  return [];
+};
+
 /** Run all post-build SEO assertions against dist/ and report every failure found.
  * @returns {Array<string>} All failure messages across every check.
  */
@@ -143,6 +219,11 @@ const runChecks = () => {
 
   const htmlFiles = scannedFiles.filter((filePath) => extname(filePath).toLowerCase() === ".html");
   failures.push(...checkBlogCanonicalAndOgUrl(htmlFiles));
+
+  failures.push(...checkRssFeed("blog/rss.xml"));
+  failures.push(...checkRssFeed("ai-news/rss.xml"));
+  failures.push(...checkRobotsTxt());
+  failures.push(...checkIndexNowKeyFile());
 
   return failures;
 };
@@ -161,7 +242,9 @@ const main = () => {
     return;
   }
 
-  console.log("seo:verify passed: no apex-host leaks, sitemap.xml is well-formed, and blog canonical/og:url tags are correct.");
+  console.log(
+    "seo:verify passed: no apex-host leaks, sitemap.xml is well-formed, blog canonical/og:url tags are correct, both RSS feeds are well-formed with items, robots.txt has no non-standard directives or named-crawler disallows, and the IndexNow key file is present and correct.",
+  );
 };
 
 main();
