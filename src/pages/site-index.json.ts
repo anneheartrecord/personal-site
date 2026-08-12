@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { getCollection } from "astro:content";
+import { getPublishableEntries } from "../lib/content-index";
 import { projects } from "../data/projects";
 import { socials } from "../data/socials";
 import { site as siteData } from "../data/site";
@@ -9,10 +9,21 @@ const toAbsoluteUrl = (path: string, baseUrl: URL) => new URL(path, baseUrl).toS
 
 export const GET: APIRoute = async ({ site }) => {
   const baseUrl = site ?? new URL(siteData.url);
-  const posts = await getCollection("blog", ({ data }) => !data.draft);
-  const aiNewsIssues = await getCollection("aiNews", ({ data }) => !data.draft);
-  const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-  const sortedAiNewsIssues = aiNewsIssues.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const entries = await getPublishableEntries();
+  const sortedPosts = entries
+    .filter((entry) => entry.collection === "blog")
+    .sort((a, b) => b.date.valueOf() - a.date.valueOf());
+  const sortedAiNewsIssues = entries
+    .filter((entry) => entry.collection === "aiNews")
+    .sort((a, b) => b.date.valueOf() - a.date.valueOf());
+  // Any collection added to content-index.ts beyond blog/aiNews lands here automatically, grouped by
+  // collection name, so a new collection is never silently missing while it awaits its own named key.
+  const otherEntriesByCollection = entries
+    .filter((entry) => entry.collection !== "blog" && entry.collection !== "aiNews")
+    .reduce<Record<string, typeof entries>>((groups, entry) => {
+      (groups[entry.collection] ??= []).push(entry);
+      return groups;
+    }, {});
   const payload = {
     site: {
       name: siteData.name,
@@ -34,20 +45,36 @@ export const GET: APIRoute = async ({ site }) => {
     socials,
     projects,
     posts: sortedPosts.map((post) => ({
-      title: post.data.title,
-      url: toAbsoluteUrl(`/blog/${post.id}`, baseUrl),
-      description: post.data.description,
-      date: post.data.date.toISOString().split("T")[0],
-      tags: post.data.tags,
+      title: post.title,
+      url: toAbsoluteUrl(post.url, baseUrl),
+      description: post.description,
+      date: post.date.toISOString().split("T")[0],
+      tags: post.tags,
     })),
     aiNews: sortedAiNewsIssues.map((issue) => ({
-      title: issue.data.title,
-      url: toAbsoluteUrl(`/ai-news/${issue.id}`, baseUrl),
-      description: issue.data.description,
-      date: issue.data.date.toISOString().split("T")[0],
-      tags: issue.data.tags,
-      sourceCount: issue.data.sourceCount,
+      title: issue.title,
+      url: toAbsoluteUrl(issue.url, baseUrl),
+      description: issue.description,
+      date: issue.date.toISOString().split("T")[0],
+      tags: issue.tags,
+      sourceCount: issue.sourceCount,
     })),
+    ...(Object.keys(otherEntriesByCollection).length > 0
+      ? {
+          otherCollections: Object.fromEntries(
+            Object.entries(otherEntriesByCollection).map(([collection, collectionEntries]) => [
+              collection,
+              collectionEntries.map((entry) => ({
+                title: entry.title,
+                url: toAbsoluteUrl(entry.url, baseUrl),
+                description: entry.description,
+                date: entry.date.toISOString().split("T")[0],
+                tags: entry.tags,
+              })),
+            ]),
+          ),
+        }
+      : {}),
   };
 
   return new Response(JSON.stringify(payload, null, 2), {

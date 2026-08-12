@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { getCollection } from "astro:content";
+import { getPublishableEntries } from "../lib/content-index";
 import { projects } from "../data/projects";
 import { site as siteData } from "../data/site";
 
@@ -10,10 +10,18 @@ const formatLink = (title: string, url: string, description: string, metadata: s
 
 export const GET: APIRoute = async ({ site }) => {
   const baseUrl = site ?? new URL(siteData.url);
-  const posts = await getCollection("blog", ({ data }) => !data.draft);
-  const aiNewsIssues = await getCollection("aiNews", ({ data }) => !data.draft);
-  const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-  const sortedAiNewsIssues = aiNewsIssues.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const entries = await getPublishableEntries();
+  const sortedPosts = entries
+    .filter((entry) => entry.collection === "blog")
+    .sort((a, b) => b.date.valueOf() - a.date.valueOf());
+  const sortedAiNewsIssues = entries
+    .filter((entry) => entry.collection === "aiNews")
+    .sort((a, b) => b.date.valueOf() - a.date.valueOf());
+  // Any collection added to content-index.ts beyond blog/aiNews lands here automatically, so a new
+  // collection is never silently missing from this index while it awaits its own dedicated section.
+  const otherEntries = entries
+    .filter((entry) => entry.collection !== "blog" && entry.collection !== "aiNews")
+    .sort((a, b) => b.date.valueOf() - a.date.valueOf());
 
   return new Response(
     [
@@ -35,10 +43,10 @@ export const GET: APIRoute = async ({ site }) => {
       "",
       ...sortedAiNewsIssues.map((issue) =>
         formatLink(
-          issue.data.title,
-          new URL(`/ai-news/${issue.id}`, baseUrl).toString(),
-          issue.data.description,
-          `date: ${issue.data.date.toISOString().split("T")[0]}; sources: ${issue.data.sourceCount}; tags: ${issue.data.tags.join(", ")}`,
+          issue.title,
+          new URL(issue.url, baseUrl).toString(),
+          issue.description,
+          `date: ${issue.date.toISOString().split("T")[0]}; sources: ${issue.sourceCount}; tags: ${issue.tags.join(", ")}`,
         ),
       ),
       "",
@@ -46,12 +54,27 @@ export const GET: APIRoute = async ({ site }) => {
       "",
       ...sortedPosts.map((post) =>
         formatLink(
-          post.data.title,
-          new URL(`/blog/${post.id}`, baseUrl).toString(),
-          post.data.description,
-          `date: ${post.data.date.toISOString().split("T")[0]}; tags: ${post.data.tags.join(", ")}`,
+          post.title,
+          new URL(post.url, baseUrl).toString(),
+          post.description,
+          `date: ${post.date.toISOString().split("T")[0]}; tags: ${post.tags.join(", ")}`,
         ),
       ),
+      ...(otherEntries.length > 0
+        ? [
+            "",
+            "## Other Content",
+            "",
+            ...otherEntries.map((entry) =>
+              formatLink(
+                entry.title,
+                new URL(entry.url, baseUrl).toString(),
+                entry.description,
+                `date: ${entry.date.toISOString().split("T")[0]}; tags: ${entry.tags.join(", ")}`,
+              ),
+            ),
+          ]
+        : []),
       "",
     ].join("\n"),
     {

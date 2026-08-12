@@ -1,7 +1,17 @@
 import type { APIRoute } from "astro";
-import { getCollection } from "astro:content";
+import { execSync } from "node:child_process";
+import { getPublishableEntries } from "../lib/content-index";
 
-const staticPages = ["", "blog", "ai-news", "projects", "ama", "social", "friends"];
+/** Static routes emitted in the sitemap, paired with the source file used to derive their last-modified date. */
+const staticPages = [
+  { path: "", file: "src/pages/index.astro" },
+  { path: "blog", file: "src/pages/blog/index.astro" },
+  { path: "ai-news", file: "src/pages/ai-news/index.astro" },
+  { path: "projects", file: "src/pages/projects.astro" },
+  { path: "ama", file: "src/pages/ama.astro" },
+  { path: "social", file: "src/pages/social.astro" },
+  { path: "friends", file: "src/pages/friends.astro" },
+];
 
 /** Escape XML entities in URL and date fields. */
 const escapeXml = (value: string) =>
@@ -24,22 +34,31 @@ const renderUrl = (url: string, lastmod?: Date) => {
   return lines.join("\n");
 };
 
+/** Look up a static page's last-modified date from its git history, falling back to the current build time when git history is unavailable (e.g. a shallow clone). */
+const getStaticPageLastmod = (file: string): Date => {
+  try {
+    const output = execSync(`git log -1 --format=%aI -- "${file}"`, { encoding: "utf8" }).trim();
+    if (output) {
+      return new Date(output);
+    }
+  } catch {
+    // Fall through to the build-time fallback below.
+  }
+
+  return new Date();
+};
+
 export const GET: APIRoute = async ({ site }) => {
   const baseUrl = site ?? new URL("https://www.charles-cheng.com");
-  const posts = await getCollection("blog", ({ data }) => !data.draft);
-  const aiNewsIssues = await getCollection("aiNews", ({ data }) => !data.draft);
+  const entries = await getPublishableEntries();
   const urls = [
-    ...staticPages.map((path) => ({
+    ...staticPages.map(({ path, file }) => ({
       url: new URL(`/${path}`, baseUrl).toString(),
-      lastmod: undefined,
+      lastmod: getStaticPageLastmod(file),
     })),
-    ...posts.map((post) => ({
-      url: new URL(`/blog/${post.id}`, baseUrl).toString(),
-      lastmod: post.data.date,
-    })),
-    ...aiNewsIssues.map((issue) => ({
-      url: new URL(`/ai-news/${issue.id}`, baseUrl).toString(),
-      lastmod: issue.data.date,
+    ...entries.map((entry) => ({
+      url: new URL(entry.url, baseUrl).toString(),
+      lastmod: entry.date,
     })),
   ];
 

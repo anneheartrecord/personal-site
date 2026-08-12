@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { getCollection } from "astro:content";
+import { getPublishableEntries } from "../lib/content-index";
 import { projects } from "../data/projects";
 import { site as siteData } from "../data/site";
 
@@ -19,7 +19,8 @@ const formatLink = (title: string, url: string, description: string) => {
 
 export const GET: APIRoute = async ({ site }) => {
   const baseUrl = site ?? new URL(siteData.url);
-  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const entries = await getPublishableEntries();
+  const posts = entries.filter((entry) => entry.collection === "blog");
   const selectedPosts = selectedPostIds
     .map((id) => posts.find((post) => post.id === id))
     .filter((post) => post !== undefined);
@@ -58,7 +59,7 @@ export const GET: APIRoute = async ({ site }) => {
       "## Selected Essays",
       "",
       ...selectedPosts.map((post) =>
-        formatLink(post.data.title, new URL(`/blog/${post.id}`, baseUrl).toString(), post.data.description),
+        formatLink(post.title, new URL(post.url, baseUrl).toString(), post.description),
       ),
       "",
       "## Full Index",
