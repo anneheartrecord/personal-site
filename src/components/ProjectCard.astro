@@ -5,9 +5,14 @@ interface Props {
   url: string;
   github?: string;
   tags: string[];
+  license: string;
+  language: string;
+  updatedAt: string;
+  stars?: number;
+  comparisonUrl?: string;
 }
 
-const { name, description, url, github, tags } = Astro.props;
+const { name, description, url, github, tags, license, language, updatedAt, stars, comparisonUrl } = Astro.props;
 ---
 
 <div class="card p-5">
@@ -27,7 +32,29 @@ const { name, description, url, github, tags } = Astro.props;
 
   <p class="text-xs leading-[1.8] mb-4" style={`color: var(--text-secondary);`}>{description}</p>
 
-  <div class="flex flex-wrap gap-1.5">
+  <div class="flex flex-wrap gap-1.5 mb-3">
     {tags.map((tag) => <span class="tag-pill">{tag}</span>)}
+  </div>
+
+  <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.7rem] font-mono" style={`color: var(--text-tertiary);`}>
+    <span>{license}</span>
+    <span>·</span>
+    <span>{language}</span>
+    <span>·</span>
+    <span>Updated {updatedAt}</span>
+    {stars !== undefined && (
+      <>
+        <span>·</span>
+        <span>★ {stars}</span>
+      </>
+    )}
+    {comparisonUrl && (
+      <>
+        <span>·</span>
+        <a href={comparisonUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-[var(--color-accent)]">
+          Framework comparison
+        </a>
+      </>
+    )}
   </div>
 </div>

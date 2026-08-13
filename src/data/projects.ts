@@ -4,6 +4,11 @@ export interface Project {
   url: string;
   github?: string;
   tags: string[];
+  license: string;
+  language: string;
+  updatedAt: string;
+  stars?: number;
+  comparisonUrl?: string;
 }
 
 export const projects: Project[] = [
@@ -14,6 +19,10 @@ export const projects: Project[] = [
     url: "https://mbti.charles-cheng.com",
     github: "https://github.com/anneheartrecord/talk-mbti",
     tags: ["AI", "MBTI", "Prompt"],
+    license: "MIT",
+    language: "Vue",
+    updatedAt: "2026-04-08",
+    stars: 2,
   },
   {
     name: "hermes-agent-anatomy",
@@ -22,6 +31,11 @@ export const projects: Project[] = [
     url: "https://anneheartrecord.github.io/hermes-agent-anatomy/",
     github: "https://github.com/anneheartrecord/hermes-agent-anatomy",
     tags: ["AI Agent", "源码解析", "Hermes"],
+    license: "Unlicensed",
+    language: "HTML",
+    updatedAt: "2026-04-09",
+    stars: 90,
+    comparisonUrl: "https://anneheartrecord.github.io/hermes-agent-anatomy/#/docs/08-三方对比",
   },
   {
     name: "claude-code-docs",
@@ -30,6 +44,10 @@ export const projects: Project[] = [
     url: "https://anneheartrecord.github.io/claude-code-docs/",
     github: "https://github.com/anneheartrecord/claude-code-docs",
     tags: ["Claude Code", "源码解析", "AI Agent"],
+    license: "MIT",
+    language: "Python",
+    updatedAt: "2026-08-11",
+    stars: 175,
   },
   {
     name: "claude-code-config",
@@ -38,5 +56,57 @@ export const projects: Project[] = [
     url: "https://github.com/anneheartrecord/claude-code-config",
     github: "https://github.com/anneheartrecord/claude-code-config",
     tags: ["Claude Code", "配置", "最佳实践"],
+    license: "Unlicensed",
+    language: "Shell",
+    updatedAt: "2026-05-23",
+    stars: 11,
+  },
+  {
+    name: "resume-tuning",
+    description:
+      "交互式简历打磨 skill —— 把旧简历、笔记或岗位描述（JD）喂进去，通过对话逐项打磨，产出一份 ATS 友好、能过 JD 关键词筛查的单页 PDF 简历。是作者 star 数第三高的仓库。",
+    url: "https://github.com/anneheartrecord/resume-tuning",
+    github: "https://github.com/anneheartrecord/resume-tuning",
+    tags: ["Claude Code", "简历", "求职"],
+    license: "MIT",
+    language: "Python",
+    updatedAt: "2026-06-19",
+    stars: 44,
+  },
+  {
+    name: "charles-skill",
+    description:
+      "14 个装上就能用的 agent skill 合集 —— 视频转笔记、去 AI 味、改简历、背调招聘方、X 运营、代码库知识图谱等，同时支持 Claude Code 与 Codex。",
+    url: "https://github.com/anneheartrecord/charles-skill",
+    github: "https://github.com/anneheartrecord/charles-skill",
+    tags: ["Claude Code", "Codex", "Agent Skill"],
+    license: "MIT",
+    language: "Python",
+    updatedAt: "2026-08-08",
+    stars: 1,
+  },
+  {
+    name: "x-operation-skills",
+    description:
+      "X（Twitter）运营 AI agent skill 套装 —— 数据复盘、账号诊断、发帖、热点做推文，配好一次 cookie 就能长期使用，也支持 X 官方付费 API。",
+    url: "https://github.com/anneheartrecord/x-operation-skills",
+    github: "https://github.com/anneheartrecord/x-operation-skills",
+    tags: ["X", "自媒体运营", "Agent Skill"],
+    license: "MIT",
+    language: "Python",
+    updatedAt: "2026-07-14",
+    stars: 2,
+  },
+  {
+    name: "duanyongping-perspective",
+    description:
+      "段永平投资哲学 skill —— 基于雪球原帖、巴菲特午餐实录、浙大演讲等一手素材调研，把段永平的投资哲学和商业思维框架蒸馏为可运行的 AI skill，提炼 5 个核心心智模型、7 条决策启发式和完整的表达 DNA。",
+    url: "https://github.com/anneheartrecord/duanyongping-perspective",
+    github: "https://github.com/anneheartrecord/duanyongping-perspective",
+    tags: ["投资", "Agent Skill", "段永平"],
+    license: "MIT",
+    language: "Shell",
+    updatedAt: "2026-04-08",
+    stars: 11,
   },
 ];

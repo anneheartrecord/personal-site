@@ -22,7 +22,18 @@ import { site } from "../data/site";
   <p class="text-sm mb-8" style={`color: var(--text-secondary);`}>Open source projects and tools</p>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
     {projects.map((p) => (
-      <ProjectCard name={p.name} description={p.description} url={p.url} github={p.github} tags={p.tags} />
+      <ProjectCard
+        name={p.name}
+        description={p.description}
+        url={p.url}
+        github={p.github}
+        tags={p.tags}
+        license={p.license}
+        language={p.language}
+        updatedAt={p.updatedAt}
+        stars={p.stars}
+        comparisonUrl={p.comparisonUrl}
+      />
     ))}
   </div>
 </Layout>
