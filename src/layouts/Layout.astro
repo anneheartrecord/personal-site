@@ -1,5 +1,6 @@
 ---
 import type { Thing, WithContext } from "schema-dts";
+import Analytics from "@vercel/analytics/astro";
 import Sidebar from "../components/Sidebar.astro";
 import ImageLightbox from "../components/ImageLightbox.astro";
 import TopBar from "../components/TopBar.astro";
@@ -169,5 +170,7 @@ const jsonLdPayload = [...defaultJsonLd, ...jsonLdItems];
         }
       });
     </script>
+
+    <Analytics />
   </body>
 </html>
