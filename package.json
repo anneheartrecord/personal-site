@@ -23,6 +23,7 @@
     "@astrojs/rss": "^4.0.19",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^7.0.2",
+    "astro-og-canvas": "^0.13.0",
     "qrcode": "^1.5.4",
     "remark-gfm": "^4.0.1",
     "tailwindcss": "^4.2.2"

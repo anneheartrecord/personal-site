@@ -4,6 +4,7 @@ import NewsletterSignup from "../../components/NewsletterSignup.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "../../data/site";
 import { getContentFileLastmod } from "../../lib/git-lastmod";
+import { getOgImagePath } from "../../lib/og-image";
 
 export async function getStaticPaths() {
   const issues = await getCollection("aiNews", ({ data }) => !data.draft);
@@ -19,7 +20,10 @@ const lang = "zh-CN";
 const publishedDate = issue.data.date.toISOString();
 const canonicalPath = `/ai-news/${issue.id}`;
 const canonicalUrl = new URL(canonicalPath, site.url).toString();
-const imageUrl = new URL(site.image, site.url).toString();
+// Per-issue generated OG card (U10) — falls back to site.image only for pages outside a content
+// collection (see Layout's default), never for AI News issues, which always get a card.
+const ogImagePath = getOgImagePath("aiNews", issue.id);
+const imageUrl = new URL(ogImagePath, site.url).toString();
 // issue.id is lowercased by Astro's glob loader (githubSlug), but the file on disk keeps its
 // original case, so rebuilding the path from issue.id silently mismatches git history for any
 // issue whose filename has uppercase letters. issue.filePath preserves the real, case-correct,
@@ -32,6 +36,8 @@ const aiNewsIndexUrl = new URL("/ai-news", site.url).toString();
   title={`${issue.data.title} — Charles Cheng`}
   description={issue.data.description}
   canonicalPath={canonicalPath}
+  image={ogImagePath}
+  imageAlt={issue.data.title}
   pageType="article"
   lang={lang}
   jsonLd={[

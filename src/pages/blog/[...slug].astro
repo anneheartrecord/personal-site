@@ -5,6 +5,7 @@ import { getCollection, render, type CollectionEntry } from "astro:content";
 import { site } from "../../data/site";
 import { getContentFileLastmod } from "../../lib/git-lastmod";
 import { getHreflangLinks, validateTranslationLinks } from "../../lib/hreflang";
+import { getOgImagePath } from "../../lib/og-image";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -23,7 +24,10 @@ const publishedDate = post.data.date.toISOString();
 const displayDate = post.data.date.toISOString().split("T")[0];
 const canonicalPath = `/blog/${post.id}`;
 const canonicalUrl = new URL(canonicalPath, site.url).toString();
-const imageUrl = new URL(site.image, site.url).toString();
+// Per-post generated OG card (U10) — falls back to site.image only for pages outside a content
+// collection (see Layout's default), never for blog posts, which always get a card.
+const ogImagePath = getOgImagePath("blog", post.id);
+const imageUrl = new URL(ogImagePath, site.url).toString();
 // post.id is lowercased by Astro's glob loader (githubSlug), but the file on disk keeps its
 // original case, so rebuilding the path from post.id silently mismatches git history for any
 // post whose filename has uppercase letters. post.filePath preserves the real, case-correct,
@@ -38,6 +42,8 @@ const hasTableOfContents = articleHeadings.length > 0;
   title={`${post.data.title} — Charles Cheng`}
   description={post.data.description}
   canonicalPath={canonicalPath}
+  image={ogImagePath}
+  imageAlt={post.data.title}
   contentClass="w-full max-w-6xl mx-auto px-4 py-5 sm:px-6 lg:py-10"
   pageType="article"
   lang={lang}

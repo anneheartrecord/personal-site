@@ -15,6 +15,7 @@ interface Props {
   description?: string;
   canonicalPath?: string;
   image?: string;
+  imageAlt?: string;
   pageType?: "website" | "article" | "profile";
   lang?: string;
   hreflangLinks?: HreflangLink[];
@@ -27,6 +28,7 @@ const {
   description = site.description,
   canonicalPath,
   image = site.image,
+  imageAlt = `${site.name} profile image`,
   pageType = "website",
   lang = "en",
   hreflangLinks = [],
@@ -94,7 +96,7 @@ const jsonLdPayload = [...defaultJsonLd, ...jsonLdItems];
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={imageUrl} />
-    <meta property="og:image:alt" content={`${site.name} profile image`} />
+    <meta property="og:image:alt" content={imageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@Charles77xixi" />
     <meta name="twitter:title" content={title} />
