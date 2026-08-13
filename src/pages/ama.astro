@@ -8,7 +8,7 @@ const amaImageUrl = new URL(site.image, site.url).toString();
 
 <Layout
   title="Ask Me Anything — Charles Cheng"
-  description="One-on-one consulting with Charles Cheng on career growth, resume review, interviews, investing mindset, personal branding, and portfolio building."
+  description="One-on-one consulting with Charles Cheng on using AI at work, career growth, resume review, interviews, investing mindset, personal branding, and portfolio building."
   canonicalPath="/ama"
   lang="zh-CN"
   jsonLd={{
@@ -16,13 +16,14 @@ const amaImageUrl = new URL(site.image, site.url).toString();
     "@type": "ProfilePage",
     name: "Ask Me Anything — Charles Cheng",
     url: new URL("/ama", site.url).toString(),
-    description: "一对一付费咨询，我能提供职业、投资、自媒体等方面的帮助。",
+    description: "一对一付费咨询，我能提供 AI 使用、职业、投资、自媒体等方面的帮助。",
     mainEntity: getPersonSchema(amaImageUrl),
   }}
 >
   <h1 class="text-2xl font-bold tracking-tight mb-2" style={`color: var(--text-primary);`}>Ask Me Anything</h1>
-  <p class="text-sm mb-4" style={`color: var(--text-secondary);`}>一对一付费咨询，我能提供职业、投资、自媒体等方面的帮助。</p>
+  <p class="text-sm mb-4" style={`color: var(--text-secondary);`}>一对一付费咨询，我能提供 AI 使用、职业、投资、自媒体等方面的帮助。</p>
   <div class="flex flex-wrap gap-2 mb-10">
+    <span class="tag-pill">AI 落地</span>
     <span class="tag-pill">职业发展</span>
     <span class="tag-pill">投资框架</span>
     <span class="tag-pill">自媒体 / Portfolio</span>
@@ -33,16 +34,19 @@ const amaImageUrl = new URL(site.image, site.url).toString();
     <h2 class="text-lg font-bold mb-4" style={`color: var(--text-primary);`}>关于我</h2>
     <div class="card p-6 space-y-4 text-sm leading-relaxed" style={`color: var(--text-secondary);`}>
       <p>
-        前大厂工程师。实习、校招、社招全流程走过来，累计面试<strong style={`color: var(--text-primary);`}>上百场</strong>，校招多个大厂 offer，近期社招通过率超过 <strong style={`color: var(--text-primary);`}>90%</strong>。牛客搜<strong style={`color: var(--text-primary);`}>安妮的心动录</strong>能找到我。
+        前大厂工程师，在<strong style={`color: var(--text-primary);`}>两家大厂</strong>呆过，累计超过三年，今年跳到一家 <strong style={`color: var(--text-primary);`}>AI startup</strong> 做 Agent。实习、校招、社招全流程走过来，累计面试<strong style={`color: var(--text-primary);`}>上百场</strong>，校招多个大厂 offer，最近一次看机会社招通过率超过 <strong style={`color: var(--text-primary);`}>90%</strong>。牛客搜<strong style={`color: var(--text-primary);`}>安妮的心动录</strong>能找到我。
       </p>
       <p>
-        从本科开始就在做职业辅导。在学校工作室带学弟学妹时积累了第一批经验，后来他们在秋招拿了不少好 offer。毕业后陆续辅导了<strong style={`color: var(--text-primary);`}>数十位不同背景的同学</strong>，覆盖暑期实习、秋招春招、社招跳槽、技术转型、发展路线规划，从二本到 985、从应届到工作三五年的都聊过。
+        <strong style={`color: var(--text-primary);`}>职业与求职：</strong>从本科开始就在做职业辅导。在学校工作室带学弟学妹时积累了第一批经验，后来他们在秋招拿了不少好 offer。毕业后陆续辅导了<strong style={`color: var(--text-primary);`}>数十位不同背景的同学</strong>，覆盖暑期实习、秋招春招、社招跳槽、技术转型、发展路线规划，从普通本科到 Top2、从应届到工作三年内的同学我都有接触过。比较喜欢折腾，大厂和初创两种环境我都待过，所以如果你在纠结要不要去初创，也许我也能给一些帮助建议。
       </p>
       <p>
         <strong style={`color: var(--text-primary);`}>投资：</strong>我从 <strong style={`color: var(--text-primary);`}>2023 年</strong>开始做投资，投过美股、Crypto、A 股，目前主要持仓是美股和 Crypto。自己拿到的收益还不错，也踩过不少坑、交过不少学费。我能分享一套长期来看非常适合普通人的投资 mindset，以及我自己验证过、确实能赚到钱的方法。
       </p>
       <p>
-        <strong style={`color: var(--text-primary);`}>自媒体：</strong>目前我的 X 账号有 <strong style={`color: var(--text-primary);`}>3K+</strong> 粉丝。如果你想把账号做成自己的 portfolio，通过持续输出链接到更多人，我觉得我可以提供一些实操经验。
+        <strong style={`color: var(--text-primary);`}>自媒体：</strong>目前我的 X 账号有 <strong style={`color: var(--text-primary);`}>4K+</strong> 粉丝。如果你想把账号做成自己的 portfolio，通过持续输出链接到更多人，我觉得我可以提供一些实操经验。
+      </p>
+      <p>
+        <strong style={`color: var(--text-primary);`}>AI 落地：</strong>现在每天的工作就是开发 Agent 以及把 <strong style={`color: var(--text-primary);`}>Agentic Coding</strong> 真正接进开发流程，所以能给到一些一线的 AI 经验，比如：工程师怎么把 AI 用进真实项目、企业内部推 AI 提效会卡在哪几个环节、AI 时代怎么保住自己的专注力。
       </p>
     </div>
   </section>
@@ -55,10 +59,10 @@ const amaImageUrl = new URL(site.image, site.url).toString();
         <strong style={`color: var(--text-primary);`}>咨询解决的是信息差，不是执行力。</strong>该刷的题还是得自己刷，该写的内容还是得自己写，该承担的投资风险也还是你自己承担。我能帮你的是，在你做决策之前，多一个经历过这些阶段的人帮你看一眼全局。
       </p>
       <p>
-        很多时候你觉得纠结，不是因为选项本身有多复杂，而是缺少一个<strong style={`color: var(--text-primary);`}>局外人的视角</strong>。职业、投资、自媒体，本质上都是长期决策：你要知道自己有什么筹码，能承受什么风险，最小可执行动作是什么。我辅导过的同学里，有些人问题很具体，聊半小时就够了；有些人需要从头梳理整条路线，这种就适合深度聊。无论哪种，我的原则是只聊我有把握的东西，不确定的会直说，不会瞎忽悠。
+        很多时候你觉得纠结，不是因为选项本身有多复杂，而是缺少一个<strong style={`color: var(--text-primary);`}>局外人的视角</strong>。AI 怎么用、职业怎么选、投资怎么做、账号怎么起，本质上都是长期决策：你要知道自己有什么筹码，能承受什么风险，最小可执行动作是什么。我辅导过的同学里，有些人问题很具体，聊半小时就够了；有些人需要从头梳理整条路线，这种就适合深度聊。无论哪种，我的原则是只聊我有把握的东西，不确定的会直说，不会瞎忽悠。
       </p>
       <p>
-        付费咨询的好处是双方都认真。你带着准备好的问题和背景来，我给你<strong style={`color: var(--text-primary);`}>经过思考的、针对你个人情况的反馈</strong>。我只聊自己有实践、有复盘、有把握的东西，不确定的会直说。
+        付费咨询的好处是双方都认真。你带着准备好的问题和背景来，我给你<strong style={`color: var(--text-primary);`}>经过思考的、针对你个人情况的反馈</strong>。
       </p>
     </div>
   </section>
@@ -106,11 +110,11 @@ const amaImageUrl = new URL(site.image, site.url).toString();
       <div class="card p-5">
         <div class="flex items-center gap-2 mb-2">
           <svg class="w-4 h-4 shrink-0" style={`color: var(--color-accent);`} fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-8.25-6h16.5M5.25 6.75h13.5A2.25 2.25 0 0121 9v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V9a2.25 2.25 0 012.25-2.25z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
           </svg>
-          <h3 class="text-sm font-semibold" style={`color: var(--text-primary);`}>投资标的讨论</h3>
+          <h3 class="text-sm font-semibold" style={`color: var(--text-primary);`}>使用 AI 的正确姿势</h3>
         </div>
-        <p class="text-xs" style={`color: var(--text-tertiary);`}>适合想入门但不想乱冲的人，先建立基本判断，再决定买什么、买多少。</p>
+        <p class="text-xs" style={`color: var(--text-tertiary);`}>工程师怎么把 AI 用进真实开发流程、企业内部怎么落地提效、AI 时代怎么保住专注力。</p>
       </div>
       <div class="card p-5">
         <div class="flex items-center gap-2 mb-2">
@@ -148,14 +152,20 @@ const amaImageUrl = new URL(site.image, site.url).toString();
     <h2 class="text-lg font-bold mb-4" style={`color: var(--text-primary);`}>定价</h2>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
       <div class="card p-5 text-center">
-        <p class="text-2xl font-bold mb-1" style={`color: var(--text-primary);`}>¥200</p>
+        <p class="text-2xl font-bold mb-1" style={`color: var(--text-primary);`}>¥199</p>
         <p class="text-xs font-medium mb-3" style={`color: var(--color-accent);`}>半小时</p>
         <p class="text-xs" style={`color: var(--text-tertiary);`}>单个明确问题，快速聊透</p>
       </div>
-      <div class="card p-5 text-center">
-        <p class="text-2xl font-bold mb-1" style={`color: var(--text-primary);`}>¥388</p>
+      <div class="card p-5 text-center relative">
+        <span
+          class="absolute top-2 right-2 text-[10px] font-medium px-2 py-0.5 rounded-full"
+          style={`background: var(--color-accent); color: #fff;`}>限时</span>
+        <p class="mb-1">
+          <span class="text-sm line-through mr-2" style={`color: var(--text-tertiary);`}>¥369</span>
+          <span class="text-2xl font-bold" style={`color: var(--color-accent);`}>¥199</span>
+        </p>
         <p class="text-xs font-medium mb-3" style={`color: var(--color-accent);`}>1 小时</p>
-        <p class="text-xs" style={`color: var(--text-tertiary);`}>求职、投资、账号，多问题深度讨论</p>
+        <p class="text-xs" style={`color: var(--text-tertiary);`}>AI 落地、求职、投资、账号，多问题深度讨论</p>
       </div>
       <div class="card p-5 text-center">
         <p class="text-2xl font-bold mb-1" style={`color: var(--text-primary);`}>¥588</p>
