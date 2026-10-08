@@ -100,5 +100,18 @@ export const hero = {
         { src: "/images/travel/singapore/merlion.jpg", alt: "Merlion" },
       ],
     },
+    {
+      name: "Japan", flag: "🇯🇵",
+      photos: [
+        { src: "/images/travel/japan/yasaka-shrine.jpg", alt: "Yasaka Shrine" },
+        { src: "/images/travel/japan/ninenzaka.jpg", alt: "Ninenzaka" },
+        { src: "/images/travel/japan/ninenzaka-crow.jpg", alt: "Ninenzaka Crow" },
+        { src: "/images/travel/japan/kifune-shrine.jpg", alt: "Kifune Shrine" },
+        { src: "/images/travel/japan/sanzen-in-jizo.jpg", alt: "Sanzen-in Moss Jizo" },
+        { src: "/images/travel/japan/otagi-nenbutsu-ji.jpg", alt: "Otagi Nenbutsu-ji" },
+        { src: "/images/travel/japan/gio-ji.jpg", alt: "Gio-ji" },
+        { src: "/images/travel/japan/nison-in.jpg", alt: "Nison-in" },
+      ],
+    },
   ],
 };
