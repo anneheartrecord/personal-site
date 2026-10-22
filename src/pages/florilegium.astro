@@ -1,0 +1,333 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { site } from "../data/site";
+
+const apiBase = (import.meta.env.PUBLIC_FLORILEGIUM_API_BASE ?? "").replace(/\/$/, "");
+const pageDescription =
+  "Florilegium turns YouTube, Bilibili, and other video links into readable local Markdown notes with captions first and local Whisper fallback.";
+---
+
+<Layout
+  title="Florilegium — Video links to local notes"
+  description={pageDescription}
+  canonicalPath="/florilegium"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Florilegium",
+    applicationCategory: "ProductivityApplication",
+    operatingSystem: "Web",
+    url: new URL("/florilegium", site.url).toString(),
+    description: pageDescription,
+  }}
+>
+  <section class="fl-page" data-api-base={apiBase} id="florilegium-app">
+    <div class="fl-hero">
+      <div>
+        <p class="fl-eyebrow">Local video notes</p>
+        <h1>Florilegium</h1>
+        <p class="fl-lede">
+          把 YouTube、B站和通用视频链接整理成可直接阅读的 Markdown 笔记。字幕优先；没有字幕时走音频和本地 Whisper。
+        </p>
+        <div class="fl-actions">
+          <a class="fl-primary-link" href="#fl-workbench">Start</a>
+          <a class="fl-secondary-link" href="https://github.com/anneheartrecord/florilegium" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+      <div class="fl-status-panel" aria-live="polite">
+        <span class={apiBase ? "fl-status-dot is-ready" : "fl-status-dot"}></span>
+        <div>
+          <p class="fl-status-title">{apiBase ? "Backend connected" : "Backend not connected"}</p>
+          <p class="fl-status-copy">
+            {apiBase ? apiBase : "Set PUBLIC_FLORILEGIUM_API_BASE to enable online transcription."}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <section class="fl-workbench card" id="fl-workbench" aria-labelledby="fl-workbench-heading">
+      <div class="fl-section-head">
+        <div>
+          <p class="fl-eyebrow">Web workbench</p>
+          <h2 id="fl-workbench-heading">整理一个视频</h2>
+        </div>
+        <span class="fl-badge">YouTube / B站 / 通用链接</span>
+      </div>
+
+      <form class="fl-form" id="fl-job-form">
+        <label class="fl-field">
+          <span>视频链接</span>
+          <textarea
+            id="fl-video-url"
+            name="url"
+            placeholder="https://www.youtube.com/watch?v=... 或 https://www.bilibili.com/video/BV..."
+            rows="4"
+          ></textarea>
+        </label>
+
+        <div class="fl-grid">
+          <label class="fl-field">
+            <span>浏览器登录态</span>
+            <select id="fl-browser" name="browser">
+              <option value="chrome">chrome</option>
+              <option value="safari">safari</option>
+              <option value="brave">brave</option>
+              <option value="edge">edge</option>
+              <option value="firefox">firefox</option>
+            </select>
+          </label>
+          <label class="fl-field">
+            <span>语言</span>
+            <select id="fl-language" name="language">
+              <option value="zh">zh</option>
+              <option value="en">en</option>
+              <option value="auto">auto</option>
+            </select>
+          </label>
+          <label class="fl-field">
+            <span>Whisper 模型</span>
+            <input id="fl-model" name="whisperModel" value="small" />
+          </label>
+        </div>
+
+        <button class="fl-submit" id="fl-submit" type="submit" disabled={!apiBase}>
+          {apiBase ? "Start transcription" : "Backend required"}
+        </button>
+      </form>
+
+      <div class="fl-output" id="fl-output">
+        <div class="fl-empty-state">等待任务。页面会显示平台识别、字幕抓取、音频兜底、转写和保存状态。</div>
+      </div>
+    </section>
+
+    <section class="fl-capabilities" aria-labelledby="fl-capabilities-heading">
+      <div class="fl-section-head">
+        <div>
+          <p class="fl-eyebrow">What it does</p>
+          <h2 id="fl-capabilities-heading">好记，好找，好用</h2>
+        </div>
+      </div>
+      <div class="fl-card-grid">
+        <article class="fl-mini-card">
+          <h3>链接记录</h3>
+          <p>给它一个视频链接，后端自动判断平台和抓取路径。</p>
+        </article>
+        <article class="fl-mini-card">
+          <h3>字幕优先</h3>
+          <p>能下载字幕时直接清洗成连续文本，速度最快。</p>
+        </article>
+        <article class="fl-mini-card">
+          <h3>音频兜底</h3>
+          <p>没有字幕时下载音频，用 faster-whisper 本地转写。</p>
+        </article>
+        <article class="fl-mini-card">
+          <h3>本地归档</h3>
+          <p>生成 Markdown，写入你的 Obsidian vault 或服务器目录。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="fl-note card">
+      <h2>部署边界</h2>
+      <p>
+        个人站当前是静态 Astro 页面。真正执行 yt-dlp、Whisper 和文件写入，需要一个单独的 Node/Python 后端运行
+        <code>florilegium-web</code>。配置后端域名后，这个页面无需改代码即可调用。
+      </p>
+    </section>
+  </section>
+</Layout>
+
+<script>
+  interface JobSnapshot {
+    id: string;
+    status: "queued" | "running" | "succeeded" | "failed" | "canceled";
+    stage: string;
+    logs: string[];
+    platform?: string;
+    transcriptMode?: string;
+    sourceTitle?: string;
+    articleMarkdown?: string;
+    outputPath?: string;
+    error?: string;
+  }
+
+  const root = document.getElementById("florilegium-app");
+  const form = document.getElementById("fl-job-form") as HTMLFormElement | null;
+  const output = document.getElementById("fl-output");
+  const submitButton = document.getElementById("fl-submit") as HTMLButtonElement | null;
+  const apiBase = root?.dataset.apiBase ?? "";
+  let activeTimer: number | undefined;
+
+  /**
+   * Sends JSON to the Florilegium backend and returns typed data.
+   */
+  async function fetchJson<ResponseBody>(path: string, init?: RequestInit): Promise<ResponseBody> {
+    const response = await fetch(`${apiBase}${path}`, {
+      ...init,
+      headers: {
+        "Content-Type": "application/json",
+        ...init?.headers,
+      },
+    });
+    const body = await response.json() as { error?: string };
+    if (!response.ok) {
+      throw new Error(body.error ?? "Request failed.");
+    }
+    return body as ResponseBody;
+  }
+
+  /**
+   * Checks the submitted URL before sending it to the backend.
+   */
+  function readHttpUrl(value: FormDataEntryValue | null): string {
+    if (typeof value !== "string" || value.trim().length === 0) {
+      throw new Error("请输入视频链接。");
+    }
+    const parsedUrl = new URL(value.trim());
+    if (parsedUrl.protocol !== "https:" && parsedUrl.protocol !== "http:") {
+      throw new Error("只支持 http 或 https 链接。");
+    }
+    return parsedUrl.toString();
+  }
+
+  /**
+   * Renders current task state into the output panel.
+   */
+  function renderJob(job: JobSnapshot): void {
+    if (!output) {
+      return;
+    }
+    const logs = job.logs.map((line) => `<li>${escapeHtml(line)}</li>`).join("");
+    const markdown = job.articleMarkdown
+      ? `<pre class="fl-markdown-preview">${escapeHtml(job.articleMarkdown)}</pre>`
+      : "";
+    output.innerHTML = `
+      <div class="fl-job-head">
+        <div>
+          <p class="fl-status-title">${escapeHtml(job.status)}</p>
+          <p class="fl-status-copy">${escapeHtml(job.platform ?? "Detecting platform")} · ${escapeHtml(job.stage)}</p>
+        </div>
+        <span class="fl-badge">${escapeHtml(job.transcriptMode ?? "processing")}</span>
+      </div>
+      ${job.sourceTitle ? `<p class="fl-job-title">${escapeHtml(job.sourceTitle)}</p>` : ""}
+      ${job.outputPath ? `<p class="fl-path">${escapeHtml(job.outputPath)}</p>` : ""}
+      ${job.error ? `<p class="fl-error">${escapeHtml(job.error)}</p>` : ""}
+      <ul class="fl-log-list">${logs}</ul>
+      ${markdown}
+      ${job.articleMarkdown ? '<button class="fl-copy" id="fl-copy-markdown" type="button">Copy Markdown</button>' : ""}
+    `;
+    document.getElementById("fl-copy-markdown")?.addEventListener("click", () => {
+      void navigator.clipboard.writeText(job.articleMarkdown ?? "");
+    });
+  }
+
+  /**
+   * Renders a short error message in the output panel.
+   */
+  function renderError(message: string): void {
+    if (output) {
+      output.innerHTML = `<p class="fl-error">${escapeHtml(message)}</p>`;
+    }
+  }
+
+  /**
+   * Polls a running Florilegium job until it reaches a terminal state.
+   */
+  async function pollJob(jobId: string): Promise<void> {
+    const response = await fetchJson<{ job: JobSnapshot }>(`/api/jobs/${jobId}`);
+    renderJob(response.job);
+    if (["succeeded", "failed", "canceled"].includes(response.job.status)) {
+      window.clearInterval(activeTimer);
+      submitButton?.removeAttribute("disabled");
+    }
+  }
+
+  /**
+   * Escapes API text before rendering it as HTML.
+   */
+  function escapeHtml(value: string): string {
+    return value
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!apiBase) {
+      renderError("后端还没有连接。请先配置 PUBLIC_FLORILEGIUM_API_BASE。");
+      return;
+    }
+    try {
+      const formData = new FormData(form);
+      submitButton?.setAttribute("disabled", "true");
+      const response = await fetchJson<{ jobId: string; job: JobSnapshot }>("/api/jobs", {
+        method: "POST",
+        body: JSON.stringify({
+          url: readHttpUrl(formData.get("url")),
+          browser: formData.get("browser"),
+          language: formData.get("language"),
+          whisperModel: formData.get("whisperModel"),
+        }),
+      });
+      renderJob(response.job);
+      activeTimer = window.setInterval(() => void pollJob(response.jobId), 1400);
+    } catch (error) {
+      submitButton?.removeAttribute("disabled");
+      renderError(error instanceof Error ? error.message : "任务创建失败。");
+    }
+  });
+</script>
+
+<style>
+  .fl-page { display: grid; gap: 2.5rem; }
+  .fl-hero { display: grid; gap: 1rem; align-items: end; }
+  .fl-eyebrow { color: var(--color-accent); font-size: 0.72rem; font-weight: 700; margin-bottom: 0.65rem; text-transform: uppercase; }
+  .fl-hero h1 { color: var(--text-primary); font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 800; line-height: 0.95; margin: 0; }
+  .fl-lede { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.9; margin-top: 1rem; max-width: 44rem; }
+  .fl-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+  .fl-primary-link, .fl-secondary-link, .fl-submit, .fl-copy { align-items: center; border-radius: 0.75rem; display: inline-flex; font-size: 0.8rem; font-weight: 700; min-height: 2.75rem; padding: 0 1rem; transition: all 0.18s ease; }
+  .fl-primary-link, .fl-submit, .fl-copy { background: var(--text-primary); color: var(--bg-primary); }
+  .fl-secondary-link { border: 1px solid var(--border-color); color: var(--text-primary); }
+  .fl-submit:disabled { cursor: not-allowed; opacity: 0.45; }
+  .fl-status-panel { align-items: center; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 1rem; display: flex; gap: 0.75rem; padding: 1rem; }
+  .fl-status-dot { background: #f59e0b; border-radius: 999px; height: 0.65rem; width: 0.65rem; }
+  .fl-status-dot.is-ready { background: #10b981; }
+  .fl-status-title { color: var(--text-primary); font-size: 0.82rem; font-weight: 700; margin: 0; }
+  .fl-status-copy { color: var(--text-tertiary); font-size: 0.74rem; line-height: 1.5; margin: 0.15rem 0 0; word-break: break-word; }
+  .fl-workbench { padding: 1rem; }
+  .fl-section-head { align-items: start; display: flex; gap: 1rem; justify-content: space-between; margin-bottom: 1rem; }
+  .fl-section-head h2, .fl-note h2 { color: var(--text-primary); font-size: 1.25rem; font-weight: 800; margin: 0; }
+  .fl-badge { background: var(--bg-tertiary); border-radius: 999px; color: var(--text-tertiary); display: inline-flex; flex-shrink: 0; font-size: 0.68rem; font-weight: 700; padding: 0.35rem 0.65rem; }
+  .fl-form { display: grid; gap: 0.9rem; }
+  .fl-field { color: var(--text-secondary); display: grid; font-size: 0.78rem; font-weight: 700; gap: 0.45rem; }
+  .fl-field input, .fl-field select, .fl-field textarea { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 0.75rem; color: var(--text-primary); font: inherit; min-height: 2.75rem; outline: none; padding: 0.75rem; width: 100%; }
+  .fl-field textarea { line-height: 1.7; resize: vertical; }
+  .fl-field input:focus, .fl-field select:focus, .fl-field textarea:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+  .fl-grid { display: grid; gap: 0.75rem; grid-template-columns: 1fr; }
+  .fl-output { border-top: 1px solid var(--border-color); margin-top: 1rem; padding-top: 1rem; }
+  .fl-empty-state, .fl-error, .fl-path, .fl-job-title { border-radius: 0.75rem; font-size: 0.78rem; line-height: 1.7; padding: 0.8rem; }
+  .fl-empty-state { background: var(--bg-secondary); color: var(--text-tertiary); }
+  .fl-error { background: color-mix(in srgb, #ef4444 12%, var(--card-bg)); color: #ef4444; }
+  .fl-path, .fl-job-title { background: var(--bg-secondary); color: var(--text-secondary); margin-top: 0.75rem; word-break: break-word; }
+  .fl-job-head { align-items: center; display: flex; gap: 1rem; justify-content: space-between; }
+  .fl-log-list { color: var(--text-secondary); display: grid; font-size: 0.72rem; gap: 0.35rem; line-height: 1.6; margin: 0.75rem 0 0; padding-left: 1rem; }
+  .fl-markdown-preview { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 0.75rem; color: var(--text-secondary); font-size: 0.72rem; line-height: 1.7; margin-top: 1rem; max-height: 18rem; overflow: auto; padding: 1rem; white-space: pre-wrap; }
+  .fl-copy { border: 0; cursor: pointer; margin-top: 0.75rem; }
+  .fl-capabilities { display: grid; gap: 1rem; }
+  .fl-card-grid { display: grid; gap: 0.75rem; grid-template-columns: 1fr; }
+  .fl-mini-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 1rem; padding: 1rem; }
+  .fl-mini-card h3 { color: var(--text-primary); font-size: 0.95rem; font-weight: 800; margin: 0; }
+  .fl-mini-card p, .fl-note p { color: var(--text-secondary); font-size: 0.78rem; line-height: 1.8; margin: 0.5rem 0 0; }
+  .fl-note { padding: 1rem; }
+  .fl-note code { background: var(--bg-tertiary); border-radius: 0.4rem; color: var(--text-primary); padding: 0.1rem 0.35rem; }
+  @media (min-width: 640px) {
+    .fl-grid, .fl-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1024px) {
+    .fl-hero { grid-template-columns: 1fr 18rem; }
+    .fl-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+</style>
