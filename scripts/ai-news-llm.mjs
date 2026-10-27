@@ -123,7 +123,13 @@ const extractResponseText = (responseBody) => {
  * @param {object} responseBody - Raw chat completion response body.
  * @returns {string} Model output text.
  */
-const extractChatText = (responseBody) => responseBody.choices?.[0]?.message?.content?.trim() ?? "";
+const extractChatText = (responseBody) => {
+  const choice = responseBody.choices?.[0];
+  if (choice?.finish_reason === "length") {
+    console.warn("OpenAI Chat Completions output reached maximum length limit.");
+  }
+  return choice?.message?.content?.trim() ?? "";
+};
 
 /** Parse a JSON object from model output.
  * @param {string} text - Model output.
@@ -183,7 +189,7 @@ const buildPrompt = (issueDate, candidates) => `你是 charles-cheng.com 的 AI 
 选稿规则：
 - 从候选里选 5-10 条。每条必须保留原链接。
 - 对重复事件做聚类，只保留最有信息量的一条。
-- 每条评分 0-10。低于 6 分的进入内部 discarded，不进入公开 News。
+- 每条评分 0-10。低于 6 分的进入内部 discarded。未选中的候选仅需在 discarded 挑选有代表性的 5-8 条简述丢弃原因即可，无需穷举所有候选。
 - 评分维度：原始来源、真实 builder 行为、对工程/产品/工作流决策的帮助、新信息密度、是否能沉淀为周度长文判断。
 
 公开稿格式要求：
@@ -303,7 +309,7 @@ const callChatCompletions = async ({ apiKey, model, prompt }) => {
             content: prompt,
           },
         ],
-        max_completion_tokens: 7000,
+        max_tokens: 8192,
         response_format: { type: "json_object" },
       }),
     }),
