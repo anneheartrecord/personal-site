@@ -321,7 +321,7 @@ const summarizeError = async (response) => {
   const errorText = await response.text();
   try {
     const errorBody = JSON.parse(errorText);
-    return errorBody.error?.code || errorBody.error?.type || "unknown_error";
+    return errorBody.error?.message || errorBody.error?.code || errorBody.error?.type || "unknown_error";
   } catch {
     return "unparseable_error";
   }
