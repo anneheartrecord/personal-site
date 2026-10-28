@@ -67,6 +67,13 @@ jobs:
           OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
           OPENAI_API_MODE: ${{ vars.OPENAI_API_MODE || 'responses' }}
           OPENAI_MAX_ATTEMPTS: ${{ vars.OPENAI_MAX_ATTEMPTS || '3' }}
+          AI_NEWS_PRIMARY_MODEL: ${{ vars.AI_NEWS_PRIMARY_MODEL || vars.OPENAI_MODEL || 'gpt-5-mini' }}
+          AI_NEWS_PRIMARY_BASE_URL: ${{ vars.AI_NEWS_PRIMARY_BASE_URL || vars.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
+          AI_NEWS_PRIMARY_API_KEY: ${{ secrets.AI_NEWS_PRIMARY_API_KEY || secrets.OPENAI_API_KEY }}
+          AI_NEWS_PRIMARY_API_MODE: ${{ vars.AI_NEWS_PRIMARY_API_MODE || vars.OPENAI_API_MODE || '' }}
+          AI_NEWS_WASH_MODEL: ${{ vars.AI_NEWS_WASH_MODEL || vars.WASH_MODEL || 'deepseek-v4-1-flash' }}
+          AI_NEWS_WASH_BASE_URL: ${{ vars.AI_NEWS_WASH_BASE_URL || vars.WASH_BASE_URL || vars.OPENAI_BASE_URL || 'https://cheapaimodel.com/v1' }}
+          AI_NEWS_WASH_API_KEY: ${{ secrets.AI_NEWS_WASH_API_KEY || secrets.WASH_API_KEY || secrets.OPENAI_API_KEY }}
         run: npm run news:generate
 
       - name: Build site

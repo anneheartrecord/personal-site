@@ -1,14 +1,167 @@
+import { existsSync, readFileSync } from "node:fs";
+import { homedir } from "node:os";
+import { join } from "node:path";
 import { createInsight } from "./ai-news-follow-builders-rules.mjs";
 
 const DEFAULT_MODEL = "gpt-5-mini";
 const DEFAULT_OPENAI_BASE_URL = "https://api.openai.com/v1";
+const DEFAULT_WASH_MODEL = "deepseek-v4-1-flash";
+const DEFAULT_WASH_BASE_URL = "https://cheapaimodel.com/v1";
 const DEFAULT_OPENAI_MAX_ATTEMPTS = 3;
+
+export const CROSS_WASH_SYSTEM_PROMPT = `你是一位顶级的中文技术写作与文字脱水精炼专家。你的任务是对 Charles 的个人网站（charles-cheng.com）AI News 初稿进行第二道交叉脱水精写，去除大模型常见的浮夸、重复与 AI 腔，将内容打磨为具有极高信息密度的一线 Builder 个人观察与精准技术快讯。
+
+必须严格遵守以下准则：
+
+1. 削减浮夸与煽动性大词：
+- 严禁堆砌宏大叙事、浮夸修辞与煽动性大词（如“颠覆性范式转移”、“重塑底层逻辑”、“震撼”、“史诗级”、“极致”、“狂飙”等）。
+- 将所有形容词降温为平实、中立、精准的事实陈述、底层机制与可落地的数字测算。
+
+2. 合并车轱辘话与重复表达：
+- 凡是用多句话反复论述同一个事实或观点的段落，坚决精简合并为一句。消灭空洞铺垫与语义重复，大幅提升信息密度。
+- 删去“核心在于”、“本质上”、“值得注意的是”、“不仅是 X 更是 Y”这类模板化 AI 腔。
+
+3. 绝对禁止防御性免责表达（核心红线·最高优先级）：
+- 绝对禁止出现任何辩解、免责或说明性废话，严禁出现诸如“作者没有提到……”、“原文并未提及……”、“文中未详细说明……”、“由于缺乏细节……”、“出于客观考虑……”等字样。
+- 如果某处细节未详细展开，直接平实陈述或顺畅衔接，绝不允许向读者解释“为什么没有写”。
+
+4. 今日判断文风（dailyJudgment）：
+- 写成 Charles 自己每天看完 AI 动态后的第一人称判断，优先用“我今天更关注”、“我看下来”、“我的判断是”。
+- 抽象判断后必须紧接具体机制、数字或架构细节，绝不能只讲趋势空泛升华。
+- 结尾落到一个给一线 builder 的具体动作或硬核判断，不要写成公关 PR 或行业报告。
+
+5. 快讯标题与摘要（items）：
+- 标题：保持客观精准、凝练有力，直击最核心的技术/业务事实，绝不标题党。
+- 摘要：严格回答“发生了什么、为什么重要、判断”，消灭翻译腔与欧化长定语从句，结构紧凑。
+
+6. 格式与排版硬性红线：
+- 标点一律中文全角：，。：；！？、“”‘’…… 绝不用英文半角标点（代码、英文缩写、URL、版本号、数字式如 1/n 或 20:00 除外）。
+- 严禁使用「」尖角符包装词语（杜绝「侧翼偷家」「干活的人」这类词汇/概念包装，普通词汇直接平实书写，需要强调加粗）。
+- 极度克制（）括号夹注与注释，重要信息直接融入主句，次要冗余信息直接删除。
+
+请只输出清洗后的 JSON，结构必须与输入完全一致：
+{
+  "dailyJudgment": "...",
+  "items": [
+    {
+      "id": "...",
+      "title": "...",
+      "summary": "..."
+    }
+  ]
+}
+`;
 
 /** Pause before retrying a transient model API failure.
  * @param {number} milliseconds - Delay length.
  * @returns {Promise<void>} Resolves after the delay.
  */
 const sleep = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+/** Safely load secrets from ~/.config/secrets/api-keys.env when running in a local environment.
+ * Will not overwrite existing environment variables.
+ * @returns {void}
+ */
+export const loadLocalSecrets = () => {
+  try {
+    const envPath = join(homedir(), ".config", "secrets", "api-keys.env");
+    if (!existsSync(envPath)) {
+      return;
+    }
+
+    const content = readFileSync(envPath, "utf8");
+    for (const rawLine of content.split("\n")) {
+      const line = rawLine.trim();
+      if (!line.startsWith("export ")) {
+        continue;
+      }
+      const eqIdx = line.indexOf("=");
+      if (eqIdx === -1) {
+        continue;
+      }
+      const key = line.slice("export ".length, eqIdx).trim();
+      let val = line.slice(eqIdx + 1).trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      if (!process.env[key] && val) {
+        process.env[key] = val;
+      }
+    }
+  } catch {
+    // Non-fatal if local secrets file cannot be accessed
+  }
+};
+
+/** Resolve configuration for the dual-model pipeline.
+ * Stage 1: Selection & Draft (Primary Model)
+ * Stage 2: Cross-Wash Refinement (Secondary Model, defaults to DeepSeek / CheapAIModel)
+ * @returns {object} Dual-model configuration.
+ */
+export const resolveDualModelConfig = () => {
+  loadLocalSecrets();
+
+  let primaryApiKey = process.env.AI_NEWS_PRIMARY_API_KEY || process.env.OPENAI_API_KEY || "";
+  let primaryBaseUrl = process.env.AI_NEWS_PRIMARY_BASE_URL || process.env.OPENAI_BASE_URL || "";
+  let primaryModel = process.env.AI_NEWS_PRIMARY_MODEL || process.env.OPENAI_MODEL || "";
+
+  if (!primaryApiKey && process.env.CHEAPAIMODEL_DEEPSEEK_API_KEY) {
+    primaryApiKey = process.env.CHEAPAIMODEL_DEEPSEEK_API_KEY;
+    if (!primaryBaseUrl) {
+      primaryBaseUrl = process.env.CHEAPAIMODEL_DEEPSEEK_BASE_URL || DEFAULT_WASH_BASE_URL;
+    }
+    if (!primaryModel) {
+      primaryModel = process.env.CHEAPAIMODEL_DEEPSEEK_MODEL || DEFAULT_WASH_MODEL;
+    }
+  }
+
+  if (!primaryBaseUrl) {
+    primaryBaseUrl = DEFAULT_OPENAI_BASE_URL;
+  }
+  if (!primaryModel) {
+    primaryModel = DEFAULT_MODEL;
+  }
+
+  const primaryApiMode =
+    process.env.AI_NEWS_PRIMARY_API_MODE ||
+    process.env.OPENAI_API_MODE ||
+    (primaryBaseUrl.includes("cheapaimodel") || primaryBaseUrl.includes("deepseek") ? "chat" : "responses");
+
+  const washApiKey =
+    process.env.AI_NEWS_WASH_API_KEY ||
+    process.env.WASH_API_KEY ||
+    process.env.CHEAPAIMODEL_DEEPSEEK_API_KEY ||
+    process.env.DEEPSEEK_API_KEY ||
+    process.env.OPENAI_API_KEY ||
+    "";
+  const washBaseUrl =
+    process.env.AI_NEWS_WASH_BASE_URL ||
+    process.env.WASH_BASE_URL ||
+    process.env.CHEAPAIMODEL_DEEPSEEK_BASE_URL ||
+    (primaryBaseUrl.includes("cheapaimodel") ? primaryBaseUrl : DEFAULT_WASH_BASE_URL);
+  const washModel =
+    process.env.AI_NEWS_WASH_MODEL ||
+    process.env.WASH_MODEL ||
+    process.env.CHEAPAIMODEL_DEEPSEEK_MODEL ||
+    DEFAULT_WASH_MODEL;
+  const washEnabled =
+    process.env.AI_NEWS_DISABLE_WASH !== "true" && Boolean(washApiKey);
+
+  return {
+    primary: {
+      apiKey: primaryApiKey,
+      baseUrl: primaryBaseUrl,
+      model: primaryModel,
+      mode: primaryApiMode,
+    },
+    wash: {
+      apiKey: washApiKey,
+      baseUrl: washBaseUrl,
+      model: washModel,
+      enabled: washEnabled,
+    },
+  };
+};
 
 /** Return the configured model API retry count.
  * @returns {number} Number of attempts for retryable failures.
@@ -28,22 +181,6 @@ const getMaxAttempts = () => {
  */
 const isRetryableStatus = (statusCode) =>
   statusCode === 408 || statusCode === 429 || statusCode >= 500;
-
-/** Build the OpenAI-compatible Responses API URL.
- * @returns {string} Responses API endpoint.
- */
-const getResponsesUrl = () => {
-  const baseUrl = process.env.OPENAI_BASE_URL || DEFAULT_OPENAI_BASE_URL;
-  return `${baseUrl.replace(/\/$/, "")}/responses`;
-};
-
-/** Build the OpenAI-compatible Chat Completions API URL.
- * @returns {string} Chat Completions API endpoint.
- */
-const getChatCompletionsUrl = () => {
-  const baseUrl = process.env.OPENAI_BASE_URL || DEFAULT_OPENAI_BASE_URL;
-  return `${baseUrl.replace(/\/$/, "")}/chat/completions`;
-};
 
 /** Run an OpenAI-compatible request with retries for transient provider errors.
  * @param {string} label - API label for logs and errors.
@@ -141,7 +278,7 @@ const parseJsonOutput = (text) => {
   } catch {
     const match = text.match(/\{[\s\S]*\}/);
     if (!match) {
-      throw new Error("OpenAI response did not contain JSON.");
+      throw new Error("Model response did not contain JSON.");
     }
     return JSON.parse(match[0]);
   }
@@ -166,7 +303,7 @@ const buildCandidatePayload = (scoredCandidates) =>
       deterministicCategories: candidate.categories,
       deterministicDropReasons: candidate.dropReasons,
       engagement: candidate.engagement,
-      text: truncateText(candidate.text, candidate.type === "podcast" ? 1800 : 900),
+      text: truncateText(candidate.type === "podcast" ? 1800 : 900, candidate.text),
     }));
 
 /** Build the prompt for AI News selection and writing.
@@ -236,39 +373,27 @@ const buildPrompt = (issueDate, candidates) => `你是 charles-cheng.com 的 AI 
 ${JSON.stringify(candidates, null, 2)}
 `;
 
-/** Call OpenAI Responses API for the AI News issue.
- * @param {object} params - Generation parameters.
- * @param {string} params.issueDate - Issue date.
- * @param {Array<object>} params.scoredCandidates - Candidates with deterministic scores.
- * @returns {Promise<object>} Parsed AI News JSON.
- */
-export const generateLlmIssue = async ({ issueDate, scoredCandidates }) => {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) {
-    return null;
-  }
-
-  const model = process.env.OPENAI_MODEL || DEFAULT_MODEL;
-  const candidates = buildCandidatePayload(scoredCandidates);
-  const prompt = buildPrompt(issueDate, candidates);
-  const rawOutput =
-    process.env.OPENAI_API_MODE === "chat"
-      ? await callChatCompletions({ apiKey, model, prompt })
-      : await callResponsesApi({ apiKey, model, prompt });
-
-  return validateLlmIssue(parseJsonOutput(rawOutput), scoredCandidates);
-};
-
 /** Call an OpenAI-compatible Responses API endpoint.
  * @param {object} params - Request parameters.
  * @param {string} params.apiKey - Provider API key.
+ * @param {string} [params.baseUrl] - Provider base URL.
  * @param {string} params.model - Model name.
  * @param {string} params.prompt - User prompt.
+ * @param {number} [params.maxOutputTokens] - Max output tokens.
+ * @param {string} [params.label] - Label for logs.
  * @returns {Promise<string>} Model output text.
  */
-const callResponsesApi = async ({ apiKey, model, prompt }) => {
-  const response = await fetchWithRetries("OpenAI Responses API", () =>
-    fetch(getResponsesUrl(), {
+const callResponsesApi = async ({
+  apiKey,
+  baseUrl = DEFAULT_OPENAI_BASE_URL,
+  model,
+  prompt,
+  maxOutputTokens = 7000,
+  label = "Responses API",
+}) => {
+  const url = `${baseUrl.replace(/\/$/, "")}/responses`;
+  const response = await fetchWithRetries(label, () =>
+    fetch(url, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -277,7 +402,7 @@ const callResponsesApi = async ({ apiKey, model, prompt }) => {
       body: JSON.stringify({
         model,
         input: prompt,
-        max_output_tokens: 7000,
+        max_output_tokens: maxOutputTokens,
       }),
     }),
   );
@@ -289,13 +414,28 @@ const callResponsesApi = async ({ apiKey, model, prompt }) => {
 /** Call an OpenAI-compatible Chat Completions API endpoint.
  * @param {object} params - Request parameters.
  * @param {string} params.apiKey - Provider API key.
+ * @param {string} [params.baseUrl] - Provider base URL.
  * @param {string} params.model - Model name.
- * @param {string} params.prompt - User prompt.
+ * @param {Array<object>} params.messages - Chat messages.
+ * @param {number} [params.temperature] - Sampling temperature.
+ * @param {number} [params.maxTokens] - Max tokens.
+ * @param {object} [params.responseFormat] - Response format.
+ * @param {string} [params.label] - Label for logs.
  * @returns {Promise<string>} Model output text.
  */
-const callChatCompletions = async ({ apiKey, model, prompt }) => {
-  const response = await fetchWithRetries("OpenAI Chat Completions API", () =>
-    fetch(getChatCompletionsUrl(), {
+const callChatCompletions = async ({
+  apiKey,
+  baseUrl = DEFAULT_OPENAI_BASE_URL,
+  model,
+  messages,
+  temperature = 0.3,
+  maxTokens = 8192,
+  responseFormat = { type: "json_object" },
+  label = "Chat Completions API",
+}) => {
+  const url = `${baseUrl.replace(/\/$/, "")}/chat/completions`;
+  const response = await fetchWithRetries(label, () =>
+    fetch(url, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -303,14 +443,10 @@ const callChatCompletions = async ({ apiKey, model, prompt }) => {
       },
       body: JSON.stringify({
         model,
-        messages: [
-          {
-            role: "user",
-            content: prompt,
-          },
-        ],
-        max_tokens: 8192,
-        response_format: { type: "json_object" },
+        messages,
+        temperature,
+        max_tokens: maxTokens,
+        ...(responseFormat ? { response_format: responseFormat } : {}),
       }),
     }),
   );
@@ -333,6 +469,37 @@ const summarizeError = async (response) => {
   }
 };
 
+/** Normalize typography to strictly follow user rules:
+ * - Chinese full-width punctuation (，。：；！？、“”‘’……)
+ * - Strip 「」 angle quotes completely
+ * @param {string} text - Raw text.
+ * @returns {string} Normalized text.
+ */
+export const normalizeChineseTypography = (text) => {
+  if (typeof text !== "string" || !text) {
+    return "";
+  }
+
+  let cleaned = text;
+
+  // 1. Strip 「」 angle quotation marks completely
+  cleaned = cleaned.replace(/「([^」]+)」/g, "$1");
+  cleaned = cleaned.replace(/[「」]/g, "");
+
+  // 2. Convert common half-width punctuation adjacent to Chinese characters into full-width
+  cleaned = cleaned.replace(/([\u4e00-\u9fa5])\s*,/g, "$1，");
+  cleaned = cleaned.replace(/,\s*([\u4e00-\u9fa5])/g, "，$1");
+  cleaned = cleaned.replace(/([\u4e00-\u9fa5]):(?!\/\/|\d)/g, "$1：");
+  cleaned = cleaned.replace(/([\u4e00-\u9fa5]);/g, "$1；");
+  cleaned = cleaned.replace(/;([\u4e00-\u9fa5])/g, "；$1");
+  cleaned = cleaned.replace(/!\s*([\u4e00-\u9fa5]|$)/g, "！$1");
+  cleaned = cleaned.replace(/\?\s*([\u4e00-\u9fa5]|$)/g, "？$1");
+  cleaned = cleaned.replace(/([\u4e00-\u9fa5])\.(?![\w/])/g, "$1。");
+  cleaned = cleaned.replace(/\.\s*$/g, "。");
+
+  return cleaned.trim();
+};
+
 /** Validate model output and normalize selected source metadata.
  * @param {object} issue - Parsed model issue.
  * @param {Array<object>} scoredCandidates - Source candidates.
@@ -344,13 +511,13 @@ const validateLlmIssue = (issue, scoredCandidates) => {
   const discarded = Array.isArray(issue.discarded) ? issue.discarded : [];
 
   if (selected.length > 10) {
-    throw new Error(`OpenAI selected ${selected.length} items. Expected at most 10.`);
+    throw new Error(`Model selected ${selected.length} items. Expected at most 10.`);
   }
 
   const normalizedSelected = selected.map((item) => {
     const candidate = candidateById.get(item.id);
     if (!candidate) {
-      throw new Error(`OpenAI selected unknown candidate id: ${item.id}`);
+      throw new Error(`Model selected unknown candidate id: ${item.id}`);
     }
 
     return {
@@ -395,7 +562,7 @@ const validateLlmIssue = (issue, scoredCandidates) => {
 
   for (const item of normalizedSelected) {
     if (!item.title || !item.summary || !item.sourceUrl) {
-      throw new Error(`OpenAI returned incomplete selected item: ${item.id}`);
+      throw new Error(`Model returned incomplete selected item: ${item.id}`);
     }
   }
 
@@ -404,6 +571,179 @@ const validateLlmIssue = (issue, scoredCandidates) => {
     tags: Array.isArray(issue.tags) && issue.tags.length > 0 ? issue.tags : ["AI News", "AI", "Agent", "Builder"],
     selected: normalizedSelected,
     discarded,
+  };
+};
+
+/** Run Stage 2 cross-wash refinement on an issue.
+ * Dehydrates hype, cuts AI phrasing, strips defensive disclaimers, and polishes Chinese typography.
+ * @param {object} params - Parameters.
+ * @param {object} params.issue - Validated Stage 1 issue.
+ * @param {object} params.config - Dual-model configuration.
+ * @returns {Promise<{issue: object, washStatus: string, washModel: string, washBaseUrl: string}>}
+ */
+export const crossWashIssue = async ({ issue, config }) => {
+  if (!config.wash.enabled || !config.wash.apiKey) {
+    return {
+      issue: {
+        ...issue,
+        dailyJudgment: normalizeChineseTypography(issue.dailyJudgment),
+        selected: issue.selected.map((item) => ({
+          ...item,
+          title: normalizeChineseTypography(item.title),
+          summary: normalizeChineseTypography(item.summary),
+        })),
+      },
+      washStatus: "skipped",
+      washModel: config.wash.model,
+      washBaseUrl: config.wash.baseUrl,
+    };
+  }
+
+  const itemsPayload = issue.selected.map((item) => ({
+    id: item.id,
+    title: item.title,
+    summary: item.summary,
+  }));
+
+  const washInput = {
+    dailyJudgment: issue.dailyJudgment,
+    items: itemsPayload,
+  };
+
+  const messages = [
+    {
+      role: "system",
+      content: CROSS_WASH_SYSTEM_PROMPT,
+    },
+    {
+      role: "user",
+      content: `请对以下 AI News 初稿内容进行第二道交叉脱水精炼重写：\n\n${JSON.stringify(washInput, null, 2)}`,
+    },
+  ];
+
+  try {
+    console.log(`[ai-news] Stage 2: Cross-wash refinement via ${config.wash.model} (${config.wash.baseUrl})...`);
+    const rawWashOutput = await callChatCompletions({
+      apiKey: config.wash.apiKey,
+      baseUrl: config.wash.baseUrl,
+      model: config.wash.model,
+      messages,
+      temperature: 0.3,
+      responseFormat: { type: "json_object" },
+      label: `Wash Model (${config.wash.model})`,
+    });
+
+    const parsedWash = parseJsonOutput(rawWashOutput);
+    const washedItemsMap = new Map();
+    if (Array.isArray(parsedWash.items)) {
+      for (const item of parsedWash.items) {
+        if (item && item.id) {
+          washedItemsMap.set(item.id, item);
+        }
+      }
+    }
+
+    const refinedSelected = issue.selected.map((item) => {
+      const washed = washedItemsMap.get(item.id);
+      return {
+        ...item,
+        title: normalizeChineseTypography(washed?.title || item.title),
+        summary: normalizeChineseTypography(washed?.summary || item.summary),
+      };
+    });
+
+    const refinedDailyJudgment = normalizeChineseTypography(
+      parsedWash.dailyJudgment || issue.dailyJudgment,
+    );
+
+    console.log("[ai-news] Stage 2 cross-wash refinement applied successfully.");
+    return {
+      issue: {
+        ...issue,
+        dailyJudgment: refinedDailyJudgment,
+        selected: refinedSelected,
+      },
+      washStatus: "applied",
+      washModel: config.wash.model,
+      washBaseUrl: config.wash.baseUrl,
+    };
+  } catch (error) {
+    console.warn(`[ai-news] Stage 2 cross-wash failed: ${error.message}. Falling back to Stage 1 draft with typography normalization.`);
+    return {
+      issue: {
+        ...issue,
+        dailyJudgment: normalizeChineseTypography(issue.dailyJudgment),
+        selected: issue.selected.map((item) => ({
+          ...item,
+          title: normalizeChineseTypography(item.title),
+          summary: normalizeChineseTypography(item.summary),
+        })),
+      },
+      washStatus: `failed (${error.message})`,
+      washModel: config.wash.model,
+      washBaseUrl: config.wash.baseUrl,
+    };
+  }
+};
+
+/** Generate an AI News issue using our dual-model refinement pipeline:
+ * 1. Stage 1: Primary Model clusters candidates, scores, and creates initial draft.
+ * 2. Stage 2: Cross-Wash Model (DeepSeek) dehydrates hype, cuts AI phrasing, and refines tone.
+ * @param {object} params - Generation parameters.
+ * @param {string} params.issueDate - Issue date.
+ * @param {Array<object>} params.scoredCandidates - Candidates with deterministic scores.
+ * @returns {Promise<object>} Parsed and polished AI News JSON.
+ */
+export const generateLlmIssue = async ({ issueDate, scoredCandidates }) => {
+  const config = resolveDualModelConfig();
+  if (!config.primary.apiKey) {
+    return null;
+  }
+
+  console.log(`[ai-news] Stage 1: Primary drafting via ${config.primary.model} (${config.primary.baseUrl})...`);
+  const candidates = buildCandidatePayload(scoredCandidates);
+  const prompt = buildPrompt(issueDate, candidates);
+  const rawOutput =
+    config.primary.mode === "chat"
+      ? await callChatCompletions({
+          apiKey: config.primary.apiKey,
+          baseUrl: config.primary.baseUrl,
+          model: config.primary.model,
+          messages: [
+            {
+              role: "user",
+              content: prompt,
+            },
+          ],
+          maxTokens: 8192,
+          responseFormat: { type: "json_object" },
+          label: `Primary Model (${config.primary.model})`,
+        })
+      : await callResponsesApi({
+          apiKey: config.primary.apiKey,
+          baseUrl: config.primary.baseUrl,
+          model: config.primary.model,
+          prompt,
+          maxOutputTokens: 7000,
+          label: `Primary Model (${config.primary.model})`,
+        });
+
+  const primaryIssue = validateLlmIssue(parseJsonOutput(rawOutput), scoredCandidates);
+
+  // Stage 2: Cross-wash refinement
+  const { issue: refinedIssue, washStatus, washModel, washBaseUrl } = await crossWashIssue({
+    issue: primaryIssue,
+    config,
+  });
+
+  return {
+    ...refinedIssue,
+    primaryModel: config.primary.model,
+    primaryBaseUrl: config.primary.baseUrl,
+    washModel: washModel || config.wash.model,
+    washBaseUrl: washBaseUrl || config.wash.baseUrl,
+    washStatus,
+    washApplied: washStatus === "applied",
   };
 };
 
@@ -480,11 +820,21 @@ export const buildLlmInternalLog = (issueDate, issue, scoredCandidates, feeds) =
     .map((item) => `- ${item.score}｜${item.sourceLabel}\n  ${item.url}\n  ${item.text.slice(0, 220)}`)
     .join("\n\n");
 
+  const modeDescription = issue.washApplied
+    ? "Dual-model selection and cross-wash refinement pipeline"
+    : "Single-model LLM selection and writing";
+
   return `# AI News Internal Log｜${issueDate}
 
 ## Mode
 
-LLM selection and writing via OpenAI Responses API.
+${modeDescription}
+
+## Models
+
+- Primary Model: ${issue.primaryModel || "unknown"} (${issue.primaryBaseUrl || "default"})
+- Cross-Wash Model: ${issue.washModel || "none"} (${issue.washBaseUrl || "default"})
+- Wash Status: ${issue.washStatus || "n/a"}
 
 ## Feed Snapshot
 

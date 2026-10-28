@@ -13,6 +13,7 @@ yarn-error.log*
 pnpm-debug.log*
 .ai-news-internal/
 .ai-news-cache/
+.playwright-mcp/
 
 
 # environment variables
@@ -24,3 +25,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# git worktrees
+.worktrees/

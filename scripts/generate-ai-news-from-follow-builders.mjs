@@ -12,6 +12,7 @@ import {
   buildLlmInternalLog,
   buildLlmPublicIssue,
   generateLlmIssue,
+  resolveDualModelConfig,
 } from "./ai-news-llm.mjs";
 
 const CONTENT_DIR = join(process.cwd(), "src", "content", "ai-news");
@@ -519,13 +520,14 @@ const main = async () => {
   let internalLogContent = "";
   let generationMode = "deterministic";
 
-  if (process.env.OPENAI_API_KEY && process.env.AI_NEWS_DISABLE_LLM !== "true") {
+  const dualModelConfig = resolveDualModelConfig();
+  if (dualModelConfig.primary.apiKey && process.env.AI_NEWS_DISABLE_LLM !== "true") {
     try {
       const llmIssue = await generateLlmIssue({ issueDate, scoredCandidates });
       if (llmIssue) {
         publicIssueContent = buildLlmPublicIssue(issueDate, llmIssue, getIssueNumber(issueDate));
         internalLogContent = buildLlmInternalLog(issueDate, llmIssue, scoredCandidates, feeds);
-        generationMode = "llm";
+        generationMode = llmIssue.washApplied ? "dual-model" : "llm";
       }
     } catch (error) {
       if (process.env.AI_NEWS_REQUIRE_LLM === "true") {

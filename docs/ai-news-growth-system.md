@@ -213,8 +213,10 @@ Suggested hosted flow:
 08:05 / 08:35 / 09:05 / 09:35 / 10:05 GitHub Actions
   -> fetch candidate sources
   -> deterministic scorer ranks candidates
-  -> LLM clusters, de-duplicates, selects, scores, and writes public copy
-  -> write internal selection log
+  -> Stage 1 Primary Model: clusters, de-duplicates, selects, scores, and writes initial draft
+  -> Stage 2 Wash Model (DeepSeek): cross-wash dehydration, strips hype & defensive disclaimers, polishes tone
+  -> Deterministic typography normalization: full-width Chinese punctuation, strips 「」 angle quotes
+  -> write internal selection log with dual-model metadata
   -> write src/content/ai-news/YYYY-MM-DD.md
   -> npm run build
   -> commit/push to main
