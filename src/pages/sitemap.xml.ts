@@ -9,6 +9,7 @@ const staticPages = [
   { path: "blog", file: "src/pages/blog/index.astro" },
   { path: "ai-news", file: "src/pages/ai-news/index.astro" },
   { path: "projects", file: "src/pages/projects.astro" },
+  { path: "books", file: "src/pages/books.astro" },
   { path: "ama", file: "src/pages/ama.astro" },
   { path: "social", file: "src/pages/social.astro" },
   { path: "friends", file: "src/pages/friends.astro" },

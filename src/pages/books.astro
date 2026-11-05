@@ -1,0 +1,1004 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { bookshelf } from "../data/bookshelf";
+import { site } from "../data/site";
+
+const data = bookshelf;
+// Book details (thoughts, highlights) load from /books/data.json when a dialog opens, keeping this page light.
+const pageDescription =
+  "Charles Cheng 的书房：微信读书阅读时长、阅读习惯，以及读过的书里划下的句子和当时写下的想法。";
+
+const maxYear = Math.max(...data.years.map((y) => y.hours));
+const maxMonth = Math.max(...data.months.map((m) => m.hours));
+const peakMonth = data.months.reduce((a, b) => (b.hours > a.hours ? b : a));
+const maxHour = Math.max(...data.hourly.map((h) => h.hours));
+const peakHour = data.hourly.reduce((a, b) => (b.hours > a.hours ? b : a));
+const maxCat = Math.max(...data.categories.map((c) => c.hours));
+const currentYear = data.years[data.years.length - 1].year;
+const firstMonthIdx = data.months.findIndex((m) => m.hours > 0);
+const months = data.months.slice(firstMonthIdx);
+const asOf = `${Number(data.generatedAt.slice(5, 7))} 月 ${Number(data.generatedAt.slice(8))} 日`;
+
+const cardText = (b: (typeof data.books)[number]): string | undefined =>
+  b.verdict ?? b.myThoughts[0]?.text ?? b.highlights[0];
+
+const fmtHours = (h: number) => (h >= 10 ? Math.round(h).toString() : h.toFixed(1));
+const monthLabel = (m: string) => {
+  const [y, mm] = m.split("-");
+  return `${y} 年 ${Number(mm)} 月`;
+};
+
+const stats = [
+  { value: data.totalHours.toString(), unit: "小时", label: "累计阅读" },
+  { value: data.readDays.toString(), unit: "天", label: "有阅读的日子" },
+  { value: data.readBooks.replace("本", ""), unit: "本", label: "读过" },
+  { value: data.finishedBooks.replace("本", ""), unit: "本", label: "读完" },
+  { value: data.notes.replace("条", ""), unit: "条", label: "划线和想法" },
+];
+---
+
+<Layout
+  title="书房 — Charles Cheng"
+  description={pageDescription}
+  canonicalPath="/books"
+  lang="zh-CN"
+  contentClass="w-full max-w-5xl mx-auto px-4 py-5 sm:px-6 lg:py-12"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Charles Cheng 的书房",
+    url: new URL("/books", site.url).toString(),
+    description: pageDescription,
+  }}
+>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaigbscreen.css" />
+  <div class="bk-page">
+    <header class="bk-hero">
+      <p class="bk-overline">Reading · 微信读书</p>
+      <h1>书房</h1>
+    </header>
+
+    <section class="bk-stats" aria-label="阅读总览">
+      {stats.map((s) => (
+        <div class="bk-stat">
+          <p class="bk-stat-value">{s.value}<span>{s.unit}</span></p>
+          <p class="bk-stat-label">{s.label}</p>
+        </div>
+      ))}
+    </section>
+
+    <section class="bk-section">
+      <div class="bk-panel">
+        <div class="bk-year-chart" role="img" aria-label="每年阅读时长柱状图">
+          {data.years.map((y) => (
+            <div class="bk-year-col">
+              <span class="bk-year-value">{fmtHours(y.hours)}<small>h</small></span>
+              <div class="bk-year-track">
+                <div
+                  class:list={["bk-bar", { "is-partial": y.year === currentYear }]}
+                  style={`height:${Math.max((y.hours / maxYear) * 100, 1.5)}%`}
+                  tabindex="0"
+                  data-tip={`${y.year} 年${y.year === currentYear ? `截至 ${asOf}` : ""}｜${y.hours} 小时｜${y.days} 天在读｜读完 ${y.finished} 本`}
+                  aria-label={`${y.year} 年 ${y.hours} 小时，${y.days} 天在读，读完 ${y.finished} 本`}
+                ></div>
+              </div>
+              <span class="bk-axis-label">{y.year}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bk-section">
+      <div class="bk-panel">
+        <div class="bk-month-chart" role="img" aria-label="每月阅读时长柱状图">
+          {months.map((m) => (
+            <div class="bk-month-col">
+              <div
+                class:list={["bk-bar", { "is-peak": m.month === peakMonth.month }]}
+                style={`height:${Math.max((m.hours / maxMonth) * 100, m.hours > 0 ? 2 : 0.6)}%`}
+                tabindex="0"
+                data-tip={`${monthLabel(m.month)}｜${m.hours} 小时`}
+                aria-label={`${monthLabel(m.month)} ${m.hours} 小时`}
+              ></div>
+            </div>
+          ))}
+        </div>
+        <div class="bk-month-axis">
+          {months.map((m) => (
+            <span>{m.month.endsWith("-01") ? m.month.slice(0, 4) : ""}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="bk-two">
+      <section class="bk-section">
+        <div class="bk-panel bk-panel-fill">
+          <div class="bk-hour-chart" role="img" aria-label="按小时的累计阅读时长">
+            {data.hourly.map((h) => (
+              <div class="bk-hour-col">
+                <div
+                  class:list={["bk-bar", { "is-peak": h.hour === peakHour.hour }]}
+                  style={`height:${Math.max((h.hours / maxHour) * 100, 1.5)}%`}
+                  tabindex="0"
+                  data-tip={`${h.hour}:00–${h.hour + 1}:00｜累计 ${h.hours} 小时`}
+                  aria-label={`${h.hour} 点 累计 ${h.hours} 小时`}
+                ></div>
+              </div>
+            ))}
+          </div>
+          <div class="bk-hour-axis">
+            {data.hourly.map((h) => (
+              <span>{h.hour % 6 === 0 ? `${h.hour} 点` : ""}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bk-section">
+        <div class="bk-panel bk-cats">
+          {data.categories.map((c, i) => (
+            <div class="bk-cat-row" tabindex="0" data-tip={`${c.name}｜${c.hours} 小时｜${c.count} 本`}>
+              <span class="bk-cat-name">{c.name}</span>
+              <div class="bk-cat-track">
+                <div class:list={["bk-cat-bar", { "is-peak": i === 0 }]} style={`width:${Math.max((c.hours / maxCat) * 100, 2)}%`}></div>
+              </div>
+              <span class="bk-cat-value">{c.hours}h · {c.count} 本</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+
+    <section class="bk-picks">
+      <div class="bk-filter" role="tablist" aria-label="按分类筛选">
+        <button type="button" class="bk-chip-btn is-active" data-cat="all" role="tab" aria-selected="true">全部<span>{data.books.length}</span></button>
+        {data.bookCategories.map((c) => (
+          <button type="button" class="bk-chip-btn" data-cat={c} role="tab" aria-selected="false">
+            {c}<span>{data.books.filter((b) => b.category === c).length}</span>
+          </button>
+        ))}
+      </div>
+
+      <ol class="bk-grid">
+        {data.books.map((b, i) => (
+          <li data-cat={b.category}>
+            <button class="bk-book" type="button" data-idx={i} aria-haspopup="dialog">
+              <span class="bk-shelf">
+                {b.recommended && <span class="bk-reco">推荐</span>}
+                <img
+                  src={b.cover}
+                  alt={`《${b.title}》封面`}
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer"
+                  width="120"
+                  height="172"
+                />
+              </span>
+              <span class="bk-book-body">
+                <span class="bk-book-title">{b.title}</span>
+                <span class="bk-book-author">{b.author}</span>
+                {cardText(b) && (
+                  <span class:list={["bk-book-verdict", { "is-quote": !b.verdict && b.myThoughts.length === 0 && !cardText(b)?.startsWith("“") }]}>
+                    {cardText(b)}
+                  </span>
+                )}
+                <span class="bk-book-meta">
+                  <span>{b.finished ? `${b.finished.slice(0, 7).replace("-", ".")} 读完` : `读到 ${b.progress}%`}</span>
+                  {b.hours > 0 && <span>≥ {b.hours} h</span>}
+                  <span>{b.category}</span>
+                </span>
+              </span>
+            </button>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <dialog class="bk-dialog" id="bk-dialog" aria-labelledby="bk-dialog-title">
+      <div class="bk-dialog-inner">
+        <button class="bk-close" type="button" data-close aria-label="关闭">×</button>
+        <div class="bk-dialog-body" id="bk-dialog-body"></div>
+      </div>
+    </dialog>
+
+    <footer class="bk-footnote">
+      数据于 {data.generatedAt} 从微信读书拉取。单本书的阅读时长按每月阅读前 10 名累加，只能算下限。想法保留原话。
+    </footer>
+  </div>
+
+  <div class="bk-tip" id="bk-tip" role="tooltip" hidden></div>
+</Layout>
+
+<script>
+  const tip = document.getElementById("bk-tip");
+  if (tip) {
+    const show = (el: HTMLElement, x: number, y: number) => {
+      tip.textContent = el.dataset.tip ?? "";
+      tip.hidden = false;
+      const r = tip.getBoundingClientRect();
+      const left = Math.min(Math.max(x - r.width / 2, 8), window.innerWidth - r.width - 8);
+      tip.style.left = `${left}px`;
+      tip.style.top = `${Math.max(y - r.height - 12, 8)}px`;
+    };
+    const hide = () => {
+      tip.hidden = true;
+    };
+    document.querySelectorAll<HTMLElement>("[data-tip]").forEach((el) => {
+      el.addEventListener("pointermove", (e) => show(el, e.clientX, e.clientY));
+      el.addEventListener("pointerleave", hide);
+      el.addEventListener("focus", () => {
+        const r = el.getBoundingClientRect();
+        show(el, r.left + r.width / 2, r.top);
+      });
+      el.addEventListener("blur", hide);
+    });
+  }
+
+  const chips = document.querySelectorAll<HTMLButtonElement>(".bk-chip-btn");
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const cat = chip.dataset.cat;
+      chips.forEach((c) => {
+        const on = c === chip;
+        c.classList.toggle("is-active", on);
+        c.setAttribute("aria-selected", String(on));
+      });
+      document.querySelectorAll<HTMLElement>(".bk-grid li").forEach((li) => {
+        li.hidden = cat !== "all" && li.dataset.cat !== cat;
+      });
+    });
+  });
+
+  type Book = {
+    title: string; author: string; cover: string; category: string; rating: number; progress: number;
+    finished: string | null; hours: number; marks: number; recommended: boolean; verdict: string | null;
+    myThoughts: { text: string; quote: string }[]; quotes: string[]; highlights: string[]; cards: string[]; link: string | null;
+  };
+  const dlg = document.getElementById("bk-dialog") as HTMLDialogElement | null;
+  const body = document.getElementById("bk-dialog-body");
+  let books: Book[] | null = null;
+  const el = (tag: string, cls?: string, text?: string) => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  };
+  const render = (b: Book) => {
+    if (!body) return;
+    body.replaceChildren();
+    const head = el("div", "bk-dialog-head");
+    const img = el("img") as HTMLImageElement;
+    img.src = b.cover; img.alt = ""; img.width = 84; img.height = 120; img.referrerPolicy = "no-referrer";
+    const info = el("div");
+    info.append(el("p", "bk-dialog-score", b.recommended ? `推荐 · ${b.category}` : b.category));
+    const h3 = el("h3", undefined, `《${b.title}》`); h3.id = "bk-dialog-title"; info.append(h3);
+    info.append(el("p", "bk-book-author", b.author));
+    const pills = el("ul", "bk-pills");
+    [b.finished ? `读完于 ${b.finished}` : `读到 ${b.progress}%`, b.hours > 0 ? `至少读了 ${b.hours} 小时` : "", `划线 ${b.marks}`, b.rating ? `微信读书 ${b.rating}%` : ""]
+      .filter(Boolean).forEach((p) => pills.append(el("li", undefined, p)));
+    info.append(pills); head.append(img, info); body.append(head);
+    if (b.verdict) body.append(el("p", "bk-dialog-verdict", b.verdict));
+    if (b.myThoughts.length) {
+      const notes = el("div", "bk-notes");
+      b.myThoughts.forEach((t) => {
+        const fig = el("figure", "bk-note");
+        fig.append(el("blockquote", undefined, t.quote));
+        const cap = el("figcaption"); cap.append(el("span", undefined, "我"), document.createTextNode(t.text));
+        fig.append(cap); notes.append(fig);
+      });
+      body.append(notes);
+    }
+    const marks = [...b.quotes, ...b.highlights];
+    if (marks.length) {
+      const ol = el("ol", "bk-marks");
+      marks.forEach((m) => ol.append(el("li", undefined, m)));
+      body.append(ol);
+    }
+    if (b.cards.length || b.link) {
+      const foot = el("div", "bk-dialog-foot");
+      const chips = el("div", "bk-chips");
+      b.cards.forEach((c) => chips.append(el("span", "bk-chip", c)));
+      foot.append(chips);
+      if (b.link) {
+        const a = el("a", "bk-link", "在微信读书打开 →") as HTMLAnchorElement;
+        a.href = b.link; a.target = "_blank"; a.rel = "noopener noreferrer"; foot.append(a);
+      }
+      body.append(foot);
+    }
+  };
+  document.querySelectorAll<HTMLButtonElement>(".bk-book").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      if (!dlg) return;
+      if (!books) books = await fetch("/books/data.json").then((r) => r.json());
+      const b = books?.[Number(btn.dataset.idx)];
+      if (!b) return;
+      render(b);
+      dlg.showModal();
+      dlg.scrollTop = 0;
+    });
+  });
+  if (dlg) {
+    dlg.addEventListener("click", (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+    dlg.querySelector("[data-close]")?.addEventListener("click", () => dlg.close());
+  }
+</script>
+
+<style is:global>
+
+  /* Kami parchment palette for this page only: page canvas, sidebar, top bar. */
+  :root:has(.bk-page) {
+    --bg-primary: #f5f4ed;
+    --sidebar-bg: #f0efe6;
+    --border-color: #e8e6dc;
+    --text-primary: #141413;
+    --text-secondary: #504e49;
+    --text-tertiary: #6b6a64;
+    --card-bg: #faf9f5;
+    --card-hover: #f0efe6;
+  }
+  :root.dark:has(.bk-page) {
+    --bg-primary: #141413;
+    --sidebar-bg: #141413;
+    --border-color: #30302e;
+    --text-primary: #f5f4ed;
+    --text-secondary: #c2c0b6;
+    --text-tertiary: #8f8d85;
+    --card-bg: #1e1d1b;
+    --card-hover: #262523;
+  }
+  .bk-page,
+  .bk-tip {
+    --k-canvas: #f5f4ed;
+    --k-ivory: #faf9f5;
+    --k-sand: #e8e6dc;
+    --k-border: #e8e6dc;
+    --k-border-soft: #e5e3d8;
+    --k-ink: #1b365d;
+    --k-ink-tint: #e4ecf5;
+    --k-bar: #8a9cb5;
+    --k-bar-soft: #cbd4e0;
+    --k-text: #141413;
+    --k-warm: #3d3d3a;
+    --k-olive: #504e49;
+    --k-stone: #6b6a64;
+    --k-serif: "LXGW WenKai Screen", "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", Georgia, serif;
+  }
+  .dark .bk-page,
+  .dark .bk-tip {
+    --k-canvas: #141413;
+    --k-ivory: #1e1d1b;
+    --k-sand: #2a2927;
+    --k-border: #30302e;
+    --k-border-soft: #2a2927;
+    --k-ink: #a9bdd8;
+    --k-ink-tint: #26303d;
+    --k-bar: #55698a;
+    --k-bar-soft: #343d4a;
+    --k-text: #f5f4ed;
+    --k-warm: #dedcd2;
+    --k-olive: #c2c0b6;
+    --k-stone: #8f8d85;
+  }
+</style>
+
+<style is:global>
+  .bk-page {
+    font-family: var(--k-serif);
+    font-synthesis-weight: none;
+    color: var(--k-text);
+    letter-spacing: 0.01em;
+  }
+
+  .bk-overline {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--k-stone);
+    margin-bottom: 0.6rem;
+  }
+  .bk-hero {
+    margin-bottom: 2rem;
+  }
+  .bk-hero h1 {
+    font-size: 2.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.06em;
+    padding-left: 0.9rem;
+    border-left: 4px solid var(--k-ink);
+  }
+
+  .bk-stats {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    background: var(--k-ivory);
+    border: 1px solid var(--k-border);
+    border-radius: 12px;
+    margin-bottom: 2.75rem;
+  }
+  .bk-stat {
+    padding: 1.15rem 1.25rem 1rem;
+  }
+  .bk-stat + .bk-stat {
+    border-left: 1px solid var(--k-border-soft);
+  }
+  .bk-stat-value {
+    font-size: 1.85rem;
+    font-weight: 500;
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .bk-stat-value span {
+    font-size: 0.8rem;
+    color: var(--k-stone);
+    margin-left: 0.25rem;
+  }
+  .bk-stat-label {
+    font-size: 0.8rem;
+    color: var(--k-olive);
+    margin-top: 0.3rem;
+  }
+
+  .bk-section {
+    margin-bottom: 1.25rem;
+  }
+  .bk-panel {
+    background: var(--k-ivory);
+    border: 1px solid var(--k-border);
+    border-radius: 12px;
+    padding: 1.25rem 1.25rem 0.85rem;
+  }
+
+  .bk-bar {
+    width: 100%;
+    background: var(--k-bar);
+    border-radius: 4px 4px 0 0;
+    outline: none;
+    transition: background-color 0.15s;
+  }
+  .bk-bar:hover,
+  .bk-bar:focus-visible {
+    background: var(--k-ink);
+  }
+  .bk-bar:focus-visible {
+    box-shadow: 0 0 0 2px var(--k-ivory), 0 0 0 3px var(--k-ink);
+  }
+  .bk-bar.is-partial {
+    background: var(--k-bar-soft);
+  }
+  .bk-bar.is-peak {
+    background: var(--k-ink);
+  }
+
+  .bk-year-chart {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+    height: 220px;
+    padding: 0 0.5rem;
+  }
+  .bk-year-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+  }
+  .bk-year-value {
+    font-size: 0.95rem;
+    font-variant-numeric: tabular-nums lining-nums;
+    margin-bottom: 0.35rem;
+  }
+  .bk-year-value small {
+    font-size: 0.72rem;
+    color: var(--k-stone);
+    margin-left: 1px;
+  }
+  .bk-year-track {
+    flex: 1;
+    width: min(52px, 100%);
+    display: flex;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--k-border);
+  }
+  .bk-axis-label {
+    font-size: 0.78rem;
+    color: var(--k-stone);
+    margin-top: 0.45rem;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  .bk-month-chart,
+  .bk-hour-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 150px;
+    border-bottom: 1px solid var(--k-border);
+  }
+  .bk-month-col,
+  .bk-hour-col {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    min-width: 0;
+  }
+  .bk-month-col .bk-bar,
+  .bk-hour-col .bk-bar {
+    border-radius: 2px 2px 0 0;
+  }
+  .bk-month-axis,
+  .bk-hour-axis {
+    display: flex;
+    gap: 2px;
+    margin-top: 0.4rem;
+  }
+  .bk-month-axis span,
+  .bk-hour-axis span {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.72rem;
+    color: var(--k-stone);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  .bk-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .bk-two .bk-section {
+    display: flex;
+    flex-direction: column;
+  }
+  .bk-two .bk-panel {
+    flex: 1;
+  }
+  .bk-panel-fill {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .bk-panel-fill .bk-hour-chart {
+    flex: 1;
+    min-height: 150px;
+  }
+
+  .bk-cats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding-bottom: 1.2rem;
+  }
+  .bk-cat-row {
+    display: grid;
+    grid-template-columns: 4.6rem 1fr 6.6rem;
+    align-items: center;
+    gap: 0.7rem;
+    outline: none;
+    border-radius: 6px;
+  }
+  .bk-cat-row:focus-visible {
+    box-shadow: 0 0 0 2px var(--k-ink);
+  }
+  .bk-cat-name {
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  .bk-cat-track {
+    height: 10px;
+  }
+  .bk-cat-bar {
+    height: 100%;
+    background: var(--k-bar);
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.15s;
+  }
+  .bk-cat-bar.is-peak,
+  .bk-cat-row:hover .bk-cat-bar {
+    background: var(--k-ink);
+  }
+  .bk-cat-value {
+    font-size: 0.78rem;
+    color: var(--k-stone);
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  .bk-picks {
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--k-border);
+  }
+  .bk-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .bk-chip-btn {
+    all: unset;
+    cursor: pointer;
+    font-family: var(--k-serif);
+    font-size: 0.85rem;
+    color: var(--k-olive);
+    background: var(--k-ivory);
+    border: 1px solid var(--k-border);
+    border-radius: 999px;
+    padding: 0.3rem 0.85rem;
+    transition: background-color 0.15s, color 0.15s;
+  }
+  .bk-chip-btn span {
+    font-size: 0.72rem;
+    color: var(--k-stone);
+    margin-left: 0.35rem;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .bk-chip-btn:hover {
+    color: var(--k-text);
+  }
+  .bk-chip-btn.is-active {
+    background: var(--k-ink);
+    border-color: var(--k-ink);
+    color: var(--k-canvas);
+  }
+  .bk-chip-btn.is-active span {
+    color: var(--k-ink-tint);
+  }
+  .bk-chip-btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--k-ink);
+  }
+  .bk-grid li[hidden] {
+    display: none;
+  }
+  .bk-reco {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.7rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--k-canvas);
+    background: var(--k-ink);
+    border-radius: 4px;
+    padding: 0.1rem 0.45rem;
+  }
+  .bk-dialog-score {
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: var(--k-ink);
+  }
+  .bk-book-verdict.is-quote::before {
+    content: "“";
+  }
+  .bk-book-verdict.is-quote::after {
+    content: "”";
+  }
+
+  .bk-grid {
+    list-style: none;
+    padding: 0;
+    margin: 1.75rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+  .bk-grid li {
+    display: flex;
+  }
+  .bk-book {
+    all: unset;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: var(--k-ivory);
+    border: 1px solid var(--k-border);
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: var(--k-serif);
+    color: var(--k-text);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .bk-book:hover {
+    border-color: var(--k-bar-soft);
+    box-shadow: 0 0 0 1px var(--k-border), 0 10px 28px rgba(60, 50, 30, 0.08);
+    transform: translateY(-2px);
+  }
+  .bk-book:focus-visible {
+    box-shadow: 0 0 0 2px var(--k-ink);
+  }
+  .bk-shelf {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background: var(--k-sand);
+    padding: 1.9rem 0 1.1rem;
+  }
+  .bk-shelf img {
+    width: 58%;
+    max-width: 120px;
+    height: auto;
+    aspect-ratio: 120 / 172;
+    object-fit: cover;
+    border-radius: 2px 5px 5px 2px;
+    box-shadow: 0 1px 2px rgba(40, 32, 20, 0.18), 0 8px 18px rgba(40, 32, 20, 0.16);
+    background: var(--k-border);
+  }
+  .bk-book-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0.9rem 1rem 1rem;
+  }
+  .bk-book-title {
+    font-size: 1.02rem;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  .bk-book-author {
+    font-size: 0.78rem;
+    color: var(--k-stone);
+    margin-top: 0.2rem;
+  }
+  .bk-book-verdict {
+    font-size: 0.84rem;
+    line-height: 1.7;
+    color: var(--k-warm);
+    margin-top: 0.65rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .bk-book-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.7rem;
+    margin-top: auto;
+    padding-top: 0.8rem;
+    font-size: 0.72rem;
+    color: var(--k-stone);
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  .bk-dialog {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    height: fit-content;
+    overflow-y: auto;
+    width: min(640px, calc(100vw - 32px));
+    max-height: calc(100dvh - 48px);
+    padding: 0;
+    border: 1px solid var(--k-border);
+    border-radius: 16px;
+    background: var(--k-canvas);
+    color: var(--k-text);
+    font-family: var(--k-serif);
+    box-shadow: 0 24px 60px rgba(30, 25, 15, 0.22);
+  }
+  .bk-dialog::backdrop {
+    background: rgba(20, 20, 19, 0.45);
+  }
+  .bk-dialog-inner {
+    position: relative;
+    padding: 1.75rem 1.75rem 1.5rem;
+  }
+  .bk-close {
+    all: unset;
+    cursor: pointer;
+    position: absolute;
+    top: 0.9rem;
+    right: 1.1rem;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--k-stone);
+  }
+  .bk-close:hover {
+    color: var(--k-text);
+  }
+  .bk-dialog-head {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 1.1rem;
+    align-items: start;
+  }
+  .bk-dialog-head img {
+    width: 84px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 2px 5px 5px 2px;
+    box-shadow: 0 6px 14px rgba(40, 32, 20, 0.18);
+  }
+  .bk-dialog-head h3 {
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-top: 0.15rem;
+  }
+  .bk-pills {
+    list-style: none;
+    padding: 0;
+    margin: 0.7rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .bk-pills li {
+    font-size: 0.72rem;
+    color: var(--k-olive);
+    background: var(--k-sand);
+    border-radius: 999px;
+    padding: 0.15rem 0.6rem;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .bk-dialog-verdict {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-top: 1.25rem;
+    padding: 0.9rem 1rem;
+    background: var(--k-ivory);
+    border-left: 3px solid var(--k-ink);
+    border-radius: 0 8px 8px 0;
+  }
+  .bk-notes {
+    margin-top: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .bk-marks {
+    list-style: none;
+    padding: 0;
+    margin: 1.6rem 0 0;
+    border-top: 1px solid var(--k-border);
+  }
+  .bk-marks li {
+    position: relative;
+    padding: 0.75rem 0 0.75rem 1.4rem;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--k-warm);
+    border-bottom: 1px solid var(--k-border-soft);
+  }
+  .bk-marks li::before {
+    content: "";
+    position: absolute;
+    left: 0.25rem;
+    top: 1.45rem;
+    width: 0.45rem;
+    height: 2px;
+    background: var(--k-ink);
+  }
+  .bk-note {
+    margin: 0;
+  }
+  .bk-note blockquote {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.75;
+    color: var(--k-stone);
+    border-left: 1px solid var(--k-border);
+    padding-left: 0.8rem;
+  }
+  .bk-note figcaption {
+    margin-top: 0.4rem;
+    padding-left: 0.8rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+  .bk-note figcaption span {
+    display: inline-block;
+    font-size: 0.7rem;
+    color: var(--k-ink);
+    background: var(--k-ink-tint);
+    border-radius: 4px;
+    padding: 0 0.35rem;
+    margin-right: 0.5rem;
+    transform: translateY(-1px);
+  }
+  .bk-dialog-foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--k-border);
+  }
+  .bk-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .bk-chip {
+    font-size: 0.72rem;
+    color: var(--k-ink);
+    background: var(--k-ink-tint);
+    border-radius: 4px;
+    padding: 0.12rem 0.5rem;
+  }
+  .bk-link {
+    font-size: 0.8rem;
+    color: var(--k-olive);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .bk-link:hover {
+    color: var(--k-ink);
+  }
+
+  .bk-footnote {
+    margin-top: 2.5rem;
+    font-size: 0.75rem;
+    line-height: 1.8;
+    color: var(--k-stone);
+  }
+
+  .bk-tip {
+    position: fixed;
+    z-index: 60;
+    pointer-events: none;
+    font-family: var(--k-serif);
+    background: var(--k-text);
+    color: var(--k-canvas);
+    font-size: 0.75rem;
+    padding: 0.35rem 0.6rem;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) {
+    .bk-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 720px) {
+    .bk-hero h1 {
+      font-size: 2.1rem;
+    }
+    .bk-stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .bk-stat + .bk-stat {
+      border-left: 0;
+    }
+    .bk-stat {
+      border-bottom: 1px solid var(--k-border-soft);
+    }
+    .bk-stat:nth-child(even) {
+      border-left: 1px solid var(--k-border-soft);
+    }
+    .bk-stat:last-child {
+      grid-column: span 2;
+      border-bottom: 0;
+    }
+    .bk-two {
+      grid-template-columns: 1fr;
+    }
+    .bk-year-chart {
+      gap: 0.6rem;
+      height: 180px;
+    }
+    .bk-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    .bk-book-verdict {
+      -webkit-line-clamp: 3;
+    }
+    .bk-dialog-inner {
+      padding: 1.4rem 1.2rem 1.2rem;
+    }
+  }
+</style>
