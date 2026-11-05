@@ -197,9 +197,14 @@ const stats = [
     </div>
 
     <section class="bk-picks">
-      <div class="bk-sort" role="group" aria-label="排序方式">
-        <button type="button" class="bk-sort-btn is-active" data-sort="default" aria-pressed="true">阅读与笔记</button>
-        <button type="button" class="bk-sort-btn" data-sort="recent" aria-pressed="false">最近阅读</button>
+      <div class="bk-tools">
+        <div class="bk-sort" role="group" aria-label="排序方式">
+          <button type="button" class="bk-sort-btn is-active" data-sort="default" aria-pressed="true">推荐优先</button>
+          <button type="button" class="bk-sort-btn" data-sort="recent" aria-pressed="false">最近阅读</button>
+        </div>
+        <button type="button" class="bk-reco-toggle" aria-pressed="false">
+          只看推荐<span>{data.books.filter((b) => b.recommended).length}</span>
+        </button>
       </div>
       <div class="bk-filter" role="tablist" aria-label="按分类筛选">
         <button type="button" class="bk-chip-btn is-active" data-cat="all" role="tab" aria-selected="true">全部<span>{data.books.length}</span></button>
@@ -212,7 +217,7 @@ const stats = [
 
       <ol class="bk-grid">
         {data.books.map((b, i) => (
-          <li data-cat={b.category} data-order={i} data-read={b.readAt ?? ""}>
+          <li data-cat={b.category} data-order={i} data-read={b.readAt ?? ""} data-reco={b.recommended ? "1" : undefined}>
             <button class="bk-book" type="button" data-idx={i} aria-haspopup="dialog">
               <span class="bk-shelf">
                 {b.recommended && <span class="bk-reco">推荐</span>}
@@ -307,19 +312,33 @@ const stats = [
     });
   });
 
+  let activeCat = "all";
+  let recoOnly = false;
+  const applyFilter = () => {
+    document.querySelectorAll<HTMLElement>(".bk-grid li").forEach((li) => {
+      li.hidden = (activeCat !== "all" && li.dataset.cat !== activeCat) || (recoOnly && !li.dataset.reco);
+    });
+  };
+
   const chips = document.querySelectorAll<HTMLButtonElement>(".bk-chip-btn");
   chips.forEach((chip) => {
     chip.addEventListener("click", () => {
-      const cat = chip.dataset.cat;
+      activeCat = chip.dataset.cat ?? "all";
       chips.forEach((c) => {
         const on = c === chip;
         c.classList.toggle("is-active", on);
         c.setAttribute("aria-selected", String(on));
       });
-      document.querySelectorAll<HTMLElement>(".bk-grid li").forEach((li) => {
-        li.hidden = cat !== "all" && li.dataset.cat !== cat;
-      });
+      applyFilter();
     });
+  });
+
+  const recoToggle = document.querySelector<HTMLButtonElement>(".bk-reco-toggle");
+  recoToggle?.addEventListener("click", () => {
+    recoOnly = !recoOnly;
+    recoToggle.classList.toggle("is-active", recoOnly);
+    recoToggle.setAttribute("aria-pressed", String(recoOnly));
+    applyFilter();
   });
 
   type Book = {
@@ -741,13 +760,50 @@ const stats = [
     padding-top: 2.5rem;
     border-top: 1px solid var(--k-border);
   }
+  .bk-tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.85rem;
+  }
   .bk-sort {
     display: inline-flex;
     gap: 2px;
     padding: 3px;
-    margin-bottom: 0.85rem;
     background: var(--k-sand);
     border-radius: 999px;
+  }
+  .bk-reco-toggle {
+    all: unset;
+    cursor: pointer;
+    font-family: var(--k-serif);
+    font-size: 0.82rem;
+    color: var(--k-olive);
+    border: 1px solid var(--k-border);
+    border-radius: 999px;
+    padding: 0.28rem 0.9rem;
+    transition: background-color 0.15s, color 0.15s;
+  }
+  .bk-reco-toggle span {
+    font-size: 0.72rem;
+    color: var(--k-stone);
+    margin-left: 0.35rem;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .bk-reco-toggle:hover {
+    color: var(--k-text);
+  }
+  .bk-reco-toggle.is-active {
+    background: var(--k-ink);
+    border-color: var(--k-ink);
+    color: var(--k-canvas);
+  }
+  .bk-reco-toggle.is-active span {
+    color: var(--k-ink-tint);
+  }
+  .bk-reco-toggle:focus-visible {
+    box-shadow: 0 0 0 2px var(--k-ink);
   }
   .bk-sort-btn {
     all: unset;
