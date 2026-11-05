@@ -153,6 +153,10 @@ const stats = [
     </div>
 
     <section class="bk-picks">
+      <div class="bk-sort" role="group" aria-label="排序方式">
+        <button type="button" class="bk-sort-btn is-active" data-sort="default" aria-pressed="true">阅读与笔记</button>
+        <button type="button" class="bk-sort-btn" data-sort="recent" aria-pressed="false">最近阅读</button>
+      </div>
       <div class="bk-filter" role="tablist" aria-label="按分类筛选">
         <button type="button" class="bk-chip-btn is-active" data-cat="all" role="tab" aria-selected="true">全部<span>{data.books.length}</span></button>
         {data.bookCategories.map((c) => (
@@ -164,7 +168,7 @@ const stats = [
 
       <ol class="bk-grid">
         {data.books.map((b, i) => (
-          <li data-cat={b.category}>
+          <li data-cat={b.category} data-order={i} data-read={b.readAt ?? ""}>
             <button class="bk-book" type="button" data-idx={i} aria-haspopup="dialog">
               <span class="bk-shelf">
                 {b.recommended && <span class="bk-reco">推荐</span>}
@@ -237,6 +241,27 @@ const stats = [
       el.addEventListener("blur", hide);
     });
   }
+
+  const grid = document.querySelector<HTMLOListElement>(".bk-grid");
+  const sortBtns = document.querySelectorAll<HTMLButtonElement>(".bk-sort-btn");
+  sortBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (!grid) return;
+      const mode = btn.dataset.sort;
+      sortBtns.forEach((b) => {
+        const on = b === btn;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-pressed", String(on));
+      });
+      const items = [...grid.children] as HTMLElement[];
+      items.sort((a, b) =>
+        mode === "recent"
+          ? (b.dataset.read ?? "").localeCompare(a.dataset.read ?? "") || Number(a.dataset.order) - Number(b.dataset.order)
+          : Number(a.dataset.order) - Number(b.dataset.order),
+      );
+      grid.append(...items);
+    });
+  });
 
   const chips = document.querySelectorAll<HTMLButtonElement>(".bk-chip-btn");
   chips.forEach((chip) => {
@@ -618,6 +643,35 @@ const stats = [
     margin-top: 3.5rem;
     padding-top: 2.5rem;
     border-top: 1px solid var(--k-border);
+  }
+  .bk-sort {
+    display: inline-flex;
+    gap: 2px;
+    padding: 3px;
+    margin-bottom: 0.85rem;
+    background: var(--k-sand);
+    border-radius: 999px;
+  }
+  .bk-sort-btn {
+    all: unset;
+    cursor: pointer;
+    font-family: var(--k-serif);
+    font-size: 0.82rem;
+    color: var(--k-olive);
+    border-radius: 999px;
+    padding: 0.25rem 0.9rem;
+    transition: background-color 0.15s, color 0.15s;
+  }
+  .bk-sort-btn:hover {
+    color: var(--k-text);
+  }
+  .bk-sort-btn.is-active {
+    background: var(--k-ivory);
+    color: var(--k-text);
+    box-shadow: 0 1px 2px rgba(40, 32, 20, 0.1);
+  }
+  .bk-sort-btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--k-ink);
   }
   .bk-filter {
     display: flex;
