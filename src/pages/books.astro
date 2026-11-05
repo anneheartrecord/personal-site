@@ -19,6 +19,23 @@ const firstMonthIdx = data.months.findIndex((m) => m.hours > 0);
 const months = data.months.slice(firstMonthIdx);
 const asOf = `${Number(data.generatedAt.slice(5, 7))} 月 ${Number(data.generatedAt.slice(8))} 日`;
 
+// Reading-preference radar: the six categories with the most reading time, scaled to the largest.
+const radarCats = data.categories.slice(0, 6);
+const radarMax = Math.max(...radarCats.map((c) => c.hours));
+const RADAR = { cx: 185, cy: 136, r: 84 };
+const radarPoint = (i: number, frac: number) => {
+  const a = -Math.PI / 2 + (i * 2 * Math.PI) / radarCats.length;
+  return { x: RADAR.cx + frac * RADAR.r * Math.cos(a), y: RADAR.cy + frac * RADAR.r * Math.sin(a) };
+};
+const radarRing = (frac: number) =>
+  radarCats.map((_, i) => radarPoint(i, frac)).map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
+const radarVerts = radarCats.map((c, i) => ({ ...c, ...radarPoint(i, Math.max(c.hours / radarMax, 0.06)) }));
+const radarLabels = radarCats.map((c, i) => {
+  const p = radarPoint(i, 1.2);
+  const anchor = Math.abs(p.x - RADAR.cx) < 4 ? "middle" : p.x > RADAR.cx ? "start" : "end";
+  return { ...c, x: p.x, y: p.y, anchor };
+});
+
 const cardText = (b: (typeof data.books)[number]): string | undefined =>
   b.verdict ?? b.myThoughts[0]?.text ?? b.highlights[0];
 
@@ -113,9 +130,8 @@ const stats = [
       </div>
     </section>
 
-    <div class="bk-two">
-      <section class="bk-section">
-        <div class="bk-panel bk-panel-fill">
+    <section class="bk-section">
+        <div class="bk-panel">
           <div class="bk-hour-chart" role="img" aria-label="按小时的累计阅读时长">
             {data.hourly.map((h) => (
               <div class="bk-hour-col">
@@ -134,6 +150,34 @@ const stats = [
               <span>{h.hour % 6 === 0 ? `${h.hour} 点` : ""}</span>
             ))}
           </div>
+        </div>
+      </section>
+
+    <div class="bk-two">
+      <section class="bk-section">
+        <div class="bk-panel bk-radar">
+          <svg viewBox="0 0 370 272" role="img" aria-label={`阅读偏好六维图：${radarCats.map((c) => `${c.name} ${c.hours} 小时`).join("，")}`}>
+            {[0.25, 0.5, 0.75, 1].map((f) => (
+              <polygon class="bk-radar-ring" points={radarRing(f)} />
+            ))}
+            {radarCats.map((_, i) => {
+              const p = radarPoint(i, 1);
+              return <line class="bk-radar-axis" x1={RADAR.cx} y1={RADAR.cy} x2={p.x} y2={p.y} />;
+            })}
+            <polygon class="bk-radar-shape" points={radarVerts.map((v) => `${v.x.toFixed(1)},${v.y.toFixed(1)}`).join(" ")} />
+            {radarVerts.map((v) => (
+              <g class="bk-radar-pt" tabindex="0" data-tip={`${v.name}｜${v.hours} 小时｜${v.count} 本`}>
+                <circle class="bk-radar-hit" cx={v.x} cy={v.y} r="13" />
+                <circle class="bk-radar-dot" cx={v.x} cy={v.y} r="4.5" />
+              </g>
+            ))}
+            {radarLabels.map((l) => (
+              <text class="bk-radar-label" x={l.x} y={l.y} text-anchor={l.anchor} dominant-baseline="middle">
+                <tspan>{l.name}</tspan>
+                <tspan class="bk-radar-value" dx="5">{l.hours}h</tspan>
+              </text>
+            ))}
+          </svg>
         </div>
       </section>
 
@@ -220,7 +264,7 @@ const stats = [
 <script>
   const tip = document.getElementById("bk-tip");
   if (tip) {
-    const show = (el: HTMLElement, x: number, y: number) => {
+    const show = (el: HTMLElement | SVGElement, x: number, y: number) => {
       tip.textContent = el.dataset.tip ?? "";
       tip.hidden = false;
       const r = tip.getBoundingClientRect();
@@ -231,7 +275,7 @@ const stats = [
     const hide = () => {
       tip.hidden = true;
     };
-    document.querySelectorAll<HTMLElement>("[data-tip]").forEach((el) => {
+    document.querySelectorAll<HTMLElement | SVGElement>("[data-tip]").forEach((el) => {
       el.addEventListener("pointermove", (e) => show(el, e.clientX, e.clientY));
       el.addEventListener("pointerleave", hide);
       el.addEventListener("focus", () => {
@@ -596,6 +640,59 @@ const stats = [
     min-height: 150px;
   }
 
+  .bk-radar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+  }
+  .bk-radar svg {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    overflow: visible;
+    font-family: var(--k-serif);
+  }
+  .bk-radar-ring {
+    fill: none;
+    stroke: var(--k-border);
+    stroke-width: 1;
+  }
+  .bk-radar-axis {
+    stroke: var(--k-border);
+    stroke-width: 1;
+  }
+  .bk-radar-shape {
+    fill: var(--k-ink);
+    fill-opacity: 0.14;
+    stroke: var(--k-ink);
+    stroke-width: 2;
+    stroke-linejoin: round;
+  }
+  .bk-radar-hit {
+    fill: transparent;
+  }
+  .bk-radar-dot {
+    fill: var(--k-ink);
+    stroke: var(--k-ivory);
+    stroke-width: 2;
+  }
+  .bk-radar-pt {
+    outline: none;
+    cursor: default;
+  }
+  .bk-radar-pt:hover .bk-radar-dot,
+  .bk-radar-pt:focus-visible .bk-radar-dot {
+    r: 6;
+  }
+  .bk-radar-label {
+    font-size: 13px;
+    fill: var(--k-warm);
+  }
+  .bk-radar-value {
+    font-size: 11px;
+    fill: var(--k-stone);
+  }
   .bk-cats {
     display: flex;
     flex-direction: column;
