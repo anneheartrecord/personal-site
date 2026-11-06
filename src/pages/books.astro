@@ -36,47 +36,57 @@ const radarLabels = radarCats.map((c, i) => {
   return { ...c, x: p.x, y: p.y, anchor };
 });
 
-// Knowledge shelf: every topic is a book spine standing on one long shelf, grouped by domain.
-// Spine height follows reading hours; arcs hanging under the shelf join topics that share books,
-// and arcs that cross domains are the veins (脉) between areas of knowledge. Pure geometry, no illustration.
+// Knowledge ring: each domain holds an arc of the circle, each topic is a point on it sized by reading hours.
+// Relations cross the inside of the ring: the cards' own related-topic links (with a reason) and topics that
+// share books. Links between domains are drawn in cinnabar, because they are the veins (脉) the page is about.
 const f1 = (n: number) => n.toFixed(1);
-const SHELF = { w: 1000, spine: 24, gap: 4, groupGap: 26, base: 370, minH: 150, maxH: 340 };
+const RING = { size: 760, r: 196, gap: 0.2 };
+const C = RING.size / 2;
 const mapDomains = data.domains.filter((d) => d.topics > 0);
 const maxTopicHours = Math.max(...data.topics.map((t) => t.hours), 1);
-const cities = data.topics.map((t, i) => ({ ...t, i, x: 0, h: 0, cx: 0 }));
-const groups: { name: string; books: number; hours: number; x0: number; x1: number }[] = [];
+const cities = data.topics.map((t, i) => ({ ...t, i, a: 0, x: 0, y: 0, dot: 0 }));
+const step = (Math.PI * 2 - RING.gap * mapDomains.length) / cities.length;
+const arcs: { name: string; books: number; a0: number; a1: number; lx: number; ly: number }[] = [];
 {
-  const used = mapDomains.reduce((n, d) => n + d.topics, 0) * (SHELF.spine + SHELF.gap) - SHELF.gap + (mapDomains.length - 1) * SHELF.groupGap;
-  let x = (SHELF.w - used) / 2;
+  let ang = -Math.PI / 2 + RING.gap / 2;
   mapDomains.forEach((d) => {
-    const members = cities.filter((t) => t.domain === d.name).sort((a, b) => b.hours - a.hours);
-    const x0 = x;
+    const members = cities.filter((t) => t.domain === d.name).sort((x, y) => y.hours - x.hours);
+    const a0 = ang;
     members.forEach((t) => {
-      // A spine must hold its vertical title, so short reads keep a floor height; above it, height tracks hours.
-      const text = [...t.name].length * 15.5 + 46;
-      t.h = Math.max(text, SHELF.minH + (SHELF.maxH - SHELF.minH) * Math.sqrt(t.hours / maxTopicHours));
-      t.x = x;
-      t.cx = x + SHELF.spine / 2;
-      x += SHELF.spine + SHELF.gap;
+      t.a = ang + step / 2;
+      t.x = C + RING.r * Math.cos(t.a);
+      t.y = C + RING.r * Math.sin(t.a);
+      t.dot = 3.2 + 6 * Math.sqrt(t.hours / maxTopicHours);
+      ang += step;
     });
-    groups.push({ name: d.name, books: d.books, hours: d.hours, x0, x1: x - SHELF.gap });
-    x += SHELF.groupGap - SHELF.gap;
+    const mid = (a0 + ang) / 2;
+    arcs.push({ name: d.name, books: d.books, a0, a1: ang, lx: C + RING.r * 0.66 * Math.cos(mid), ly: C + RING.r * 0.66 * Math.sin(mid) });
+    ang += RING.gap;
   });
 }
-const roads = cities.flatMap((a) =>
-  cities
-    .filter((b) => b.i > a.i)
-    .map((b) => ({ a, b, w: a.books.filter((x) => b.books.includes(x)).length }))
-    .filter((e) => e.w >= 2)
-    .map((e) => {
-      const sea = e.a.domain !== e.b.domain;
-      const [l, r] = e.a.cx < e.b.cx ? [e.a, e.b] : [e.b, e.a];
-      const depth = Math.min(18 + (r.cx - l.cx) * 0.32, 150);
-      const y = SHELF.base + 34;
-      return { ...e, sea, d: `M${f1(l.cx)},${y}C${f1(l.cx)},${f1(y + depth)} ${f1(r.cx)},${f1(y + depth)} ${f1(r.cx)},${y}` };
-    }),
-);
-const shelfHeight = SHELF.base + 34 + Math.max(...roads.map((r) => Math.min(18 + Math.abs(r.a.cx - r.b.cx) * 0.32, 150)), 0) * 0.75 + 16;
+const arcPath = (a0: number, a1: number, r: number) =>
+  `M${f1(C + r * Math.cos(a0))},${f1(C + r * Math.sin(a0))}A${r},${r} 0 ${a1 - a0 > Math.PI ? 1 : 0} 1 ${f1(C + r * Math.cos(a1))},${f1(C + r * Math.sin(a1))}`;
+const labelOf = (t: (typeof cities)[number]) => {
+  const deg = (t.a * 180) / Math.PI;
+  const right = Math.cos(t.a) >= 0;
+  const r = RING.r + t.dot + 8;
+  return { x: C + r * Math.cos(t.a), y: C + r * Math.sin(t.a), rot: right ? deg : deg + 180, anchor: right ? "start" : "end" };
+};
+const roads = data.relations.map((rel) => {
+  const a = cities[rel.a];
+  const b = cities[rel.b];
+  // Neighbours bow gently near the rim; distant topics pass close to the centre.
+  let d = Math.abs(a.a - b.a);
+  if (d > Math.PI) d = Math.PI * 2 - d;
+  const k = 0.82 * (1 - d / Math.PI);
+  const mx = C + ((a.x + b.x) / 2 - C) * k;
+  const my = C + ((a.y + b.y) / 2 - C) * k;
+  return { ...rel, d: `M${f1(a.x)},${f1(a.y)}Q${f1(mx)},${f1(my)} ${f1(b.x)},${f1(b.y)}` };
+});
+const ringData = {
+  topics: cities.map((t) => ({ name: t.name, domain: t.domain, books: t.books.length, hours: t.hours })),
+  relations: data.relations,
+};
 
 const cardText = (b: (typeof data.books)[number]): string | undefined =>
   b.verdict ?? b.myThoughts[0]?.text ?? b.highlights[0];
@@ -128,45 +138,60 @@ const stats = [
       </dl>
     </header>
 
-    <section class="bk-atlas" aria-label="主题书架">
+    <section class="bk-atlas" aria-label="知识脉络">
       <div class="bk-map-scroll">
-        <svg class="bk-map" viewBox={`0 0 ${SHELF.w} ${f1(shelfHeight)}`} role="group" aria-label={`主题书架：${mapDomains.map((d) => `${d.name} ${d.topics} 个主题`).join("，")}`}>
-          {groups.map((g) => (
-            <text class="bk-group-label" x={f1(g.x0)} y="22">
-              {g.name}
-              <tspan class="bk-group-count" dx="6">{g.books} 本</tspan>
-            </text>
+        <svg class="bk-map" viewBox={`0 0 ${RING.size} ${RING.size}`} role="group" aria-label={`知识脉络：${mapDomains.map((d) => `${d.name} ${d.topics} 个主题`).join("，")}`}>
+          {arcs.map((g) => (
+            <g class="bk-domain">
+              <path class="bk-domain-arc" d={arcPath(g.a0, g.a1, RING.r)} />
+              <text class="bk-domain-label" x={f1(g.lx)} y={f1(g.ly)} text-anchor="middle" dominant-baseline="middle">{g.name}</text>
+            </g>
           ))}
           {roads.map((e) => (
             <path
-              class:list={["bk-road", { "is-sea": e.sea }]}
+              class:list={["bk-road", { "is-sea": e.cross, "is-books": e.kind === "books" }]}
               d={e.d}
-              data-a={e.a.i}
-              data-b={e.b.i}
-              style={`stroke-width:${Math.min(0.7 + 0.35 * e.w, 2.4).toFixed(2)}`}
+              data-a={e.a}
+              data-b={e.b}
+              style={`stroke-width:${(e.kind === "concept" ? 1.3 : 0.9) + Math.min(e.shared, 4) * 0.3}`}
             />
           ))}
-          {cities.map((t, k) => (
-            <g
-              class="bk-city"
-              data-topic={t.i}
-              data-name={t.name}
-              tabindex="0"
-              role="button"
-              aria-label={`${t.name}，${t.books.length} 本书，至少 ${t.hours} 小时`}
-              data-tip={`${t.name}｜${t.books.length} 本书｜≥ ${t.hours} 小时`}
-              style={`--i:${k}`}
-            >
-              <rect class="bk-spine" x={f1(t.x)} y={f1(SHELF.base - t.h)} width={SHELF.spine} height={f1(t.h)} />
-              <path class="bk-spine-band" d={`M${f1(t.x + 4)},${f1(SHELF.base - t.h + 9)}h${SHELF.spine - 8}M${f1(t.x + 4)},${f1(SHELF.base - 12)}h${SHELF.spine - 8}`} />
-              <text class="bk-spine-title" x={f1(t.cx)} y={f1(SHELF.base - t.h + 20)}>{t.name}</text>
-            </g>
-          ))}
-          {groups.map((g) => (
-            <path class="bk-shelf-line" d={`M${f1(g.x0 - 6)},${SHELF.base + 0.5}H${f1(g.x1 + 6)}`} />
-          ))}
+          {cities.map((t) => {
+            const l = labelOf(t);
+            return (
+              <g
+                class="bk-city"
+                data-node={t.i}
+                data-name={t.name}
+                tabindex="0"
+                role="button"
+                aria-label={`${t.name}，${t.books.length} 本书，至少 ${t.hours} 小时`}
+                data-tip={`${t.name}｜${t.books.length} 本书｜≥ ${t.hours} 小时`}
+              >
+                <circle class="bk-node-hit" cx={f1(t.x)} cy={f1(t.y)} r="14" />
+                <circle class="bk-node" cx={f1(t.x)} cy={f1(t.y)} r={f1(t.dot)} />
+                <text class="bk-node-label" x={f1(l.x)} y={f1(l.y)} text-anchor={l.anchor} dominant-baseline="middle" transform={`rotate(${f1(l.rot)} ${f1(l.x)} ${f1(l.y)})`}>{t.name}</text>
+              </g>
+            );
+          })}
         </svg>
       </div>
+      <aside class="bk-veins" aria-live="polite">
+        <div class="bk-veins-head" id="bk-veins-head">
+          <p class="bk-veins-kicker">跨领域的脉络</p>
+        </div>
+        <ol class="bk-veins-list" id="bk-veins-list">
+          {data.relations.filter((r) => r.cross).map((r) => (
+            <li>
+              <button type="button" class="bk-vein" data-a={r.a} data-b={r.b}>
+                <span class="bk-vein-pair">{data.topics[r.a].name}<i>·</i>{data.topics[r.b].name}</span>
+                <span class="bk-vein-why">{r.why}</span>
+              </button>
+            </li>
+          ))}
+        </ol>
+      </aside>
+      <script type="application/json" id="bk-ring-data" set:html={JSON.stringify(ringData).replace(/</g, "\\u003c")} />
     </section>
 
     <section class="bk-rhythm" aria-label="阅读节奏">
@@ -437,7 +462,7 @@ const stats = [
   const loadDetail = async (): Promise<Detail> => ({ books: await load<Book[]>("/books/data.json") });
   const loadTopics = () => load<Topic[]>("/books/topics.json");
   const topicNames = new Map(
-    [...document.querySelectorAll<SVGGElement>(".bk-city")].map((n) => [Number(n.dataset.topic), n.dataset.name ?? ""]),
+    [...document.querySelectorAll<SVGGElement>(".bk-city")].map((n) => [Number(n.dataset.node), n.dataset.name ?? ""]),
   );
   const el = (tag: string, cls?: string, text?: string) => {
     const n = document.createElement(tag);
@@ -598,40 +623,110 @@ const stats = [
     });
   });
 
-  // Hovering a spine lights up its arcs and the spines they reach; everything else fades.
+  // The ring: hovering a topic previews its links; clicking pins it and lists in the side panel what it connects to and why.
   const map = document.querySelector<SVGSVGElement>(".bk-map");
-  if (map && "IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    // Spines stand up once, the first time the shelf scrolls into view.
-    map.classList.add("is-waiting");
-    const io = new IntersectionObserver((entries) => {
-      if (!entries.some((e) => e.isIntersecting)) return;
-      io.disconnect();
-      map.classList.add("is-shown");
-      requestAnimationFrame(() => map.classList.remove("is-waiting"));
-    }, { threshold: 0.2 });
-    io.observe(map);
-  }
-  if (map) {
+  const ringRaw = document.getElementById("bk-ring-data")?.textContent;
+  if (map && ringRaw) {
+    type Rel = { a: number; b: number; why: string; kind: string; cross: boolean; shared: number; sharedBooks?: string };
+    const ring = JSON.parse(ringRaw) as { topics: { name: string; domain: string; books: number; hours: number }[]; relations: Rel[] };
     const roads = [...map.querySelectorAll<SVGPathElement>(".bk-road[data-a]")];
-    const cities = [...map.querySelectorAll<SVGGElement>(".bk-city")];
-    let hovered: string | null = null;
-    let focused: string | null = null;
-    const focus = (i: string | null) => {
-      map.classList.toggle("is-focus", i !== null);
-      const linked = new Set(i === null ? [] : [i]);
+    const nodes = [...map.querySelectorAll<SVGGElement>(".bk-city")];
+    const head = document.getElementById("bk-veins-head");
+    const list = document.getElementById("bk-veins-list");
+    const defaultHead = head?.innerHTML ?? "";
+    const defaultList = list?.innerHTML ?? "";
+    let pinned: number | null = null;
+    const light = (pick: (r: SVGPathElement) => boolean, center: number[]) => {
+      const lit = new Set(center.map(String));
       roads.forEach((r) => {
-        const on = i !== null && (r.dataset.a === i || r.dataset.b === i);
+        const on = pick(r);
         r.classList.toggle("is-on", on);
-        if (on) linked.add(r.dataset.a === i ? r.dataset.b! : r.dataset.a!);
+        if (on) lit.add(r.dataset.a!).add(r.dataset.b!);
       });
-      cities.forEach((c) => c.classList.toggle("is-on", linked.has(c.dataset.topic!)));
+      nodes.forEach((n) => n.classList.toggle("is-on", lit.has(n.dataset.node!)));
+      map.classList.add("is-focus");
     };
-    cities.forEach((c) => {
-      const sync = () => focus(hovered ?? focused);
-      c.addEventListener("pointerenter", () => ((hovered = c.dataset.topic!), sync()));
-      c.addEventListener("pointerleave", () => ((hovered = null), sync()));
-      c.addEventListener("focus", () => ((focused = c.dataset.topic!), sync()));
-      c.addEventListener("blur", () => ((focused = null), sync()));
+    const clear = () => {
+      map.classList.remove("is-focus");
+      roads.forEach((r) => r.classList.remove("is-on"));
+      nodes.forEach((n) => n.classList.remove("is-on", "is-pinned"));
+    };
+    const showTopic = (i: number) => light((r) => r.dataset.a === String(i) || r.dataset.b === String(i), [i]);
+    const showPair = (a: string, b: string) =>
+      light((r) => (r.dataset.a === a && r.dataset.b === b) || (r.dataset.a === b && r.dataset.b === a), [Number(a), Number(b)]);
+    const restore = () => (pinned === null ? clear() : showTopic(pinned));
+    const panelFor = (i: number) => {
+      if (!head || !list) return;
+      const t = ring.topics[i];
+      head.replaceChildren();
+      head.append(el("p", "bk-veins-kicker", `${t.domain} · ${t.books} 本书 · 至少 ${t.hours} 小时`));
+      head.append(el("h3", "bk-veins-title", t.name));
+      const open = jump("展开这个主题", "topic", i, "bk-veins-open");
+      const back = el("button", "bk-veins-back", "看全部脉络") as HTMLButtonElement;
+      back.type = "button";
+      back.addEventListener("click", unpin);
+      const actions = el("div", "bk-veins-actions");
+      actions.append(open, back);
+      head.append(actions);
+      list.replaceChildren();
+      const mine = ring.relations
+        .filter((r) => r.a === i || r.b === i)
+        .sort((x, y) => Number(y.cross) - Number(x.cross) || Number(y.kind === "concept") - Number(x.kind === "concept"));
+      if (!mine.length) list.append(el("li", "bk-vein-empty", "这个主题和其他主题之间还没有记录到联系。"));
+      mine.forEach((r) => {
+        const other = r.a === i ? r.b : r.a;
+        const li = el("li");
+        const btn = el("button", "bk-vein") as HTMLButtonElement;
+        btn.type = "button";
+        btn.dataset.a = String(i);
+        btn.dataset.b = String(other);
+        const pair = el("span", "bk-vein-pair", ring.topics[other].name);
+        if (r.cross) pair.append(el("em", undefined, ring.topics[other].domain));
+        btn.append(pair, el("span", "bk-vein-why", r.why));
+        if (r.kind === "concept" && r.sharedBooks) btn.append(el("span", "bk-vein-books", `共读 ${r.sharedBooks}`));
+        li.append(btn);
+        list.append(li);
+      });
+      bindVeins();
+    };
+    const pin = (i: number) => {
+      pinned = i;
+      nodes.forEach((n) => n.classList.toggle("is-pinned", n.dataset.node === String(i)));
+      showTopic(i);
+      nodes.forEach((n) => n.classList.toggle("is-pinned", n.dataset.node === String(i)));
+      panelFor(i);
+    };
+    function unpin() {
+      pinned = null;
+      clear();
+      if (head) head.innerHTML = defaultHead;
+      if (list) list.innerHTML = defaultList;
+      bindVeins();
+    }
+    function bindVeins() {
+      list?.querySelectorAll<HTMLButtonElement>(".bk-vein").forEach((v) => {
+        v.addEventListener("pointerenter", () => showPair(v.dataset.a!, v.dataset.b!));
+        v.addEventListener("focus", () => showPair(v.dataset.a!, v.dataset.b!));
+        v.addEventListener("pointerleave", restore);
+        v.addEventListener("blur", restore);
+        // In a pinned topic's list, a row moves the pin to the other topic; in the overview it pins the first one.
+        v.addEventListener("click", () => pin(Number(pinned === Number(v.dataset.a) ? v.dataset.b : v.dataset.a)));
+      });
+    }
+    bindVeins();
+    nodes.forEach((n) => {
+      const i = Number(n.dataset.node);
+      n.addEventListener("pointerenter", () => showTopic(i));
+      n.addEventListener("pointerleave", restore);
+      n.addEventListener("focus", () => showTopic(i));
+      n.addEventListener("blur", restore);
+      n.addEventListener("click", () => (pinned === i ? openTopic(i) : pin(i)));
+      n.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          pinned === i ? openTopic(i) : pin(i);
+        }
+      });
     });
   }
   if (dlg) {
@@ -1352,9 +1447,13 @@ const stats = [
     margin-top: 0.45rem;
   }
 
-  /* ---- The topic shelf: the page's one visual anchor. ---- */
+  /* ---- The knowledge ring and its veins panel: the page's one visual anchor. ---- */
   .bk-atlas {
-    margin: 2.6rem 0 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    gap: 1.6rem;
+    align-items: center;
+    margin: 2.2rem 0 0;
   }
   .bk-map-scroll {
     overflow: hidden;
@@ -1365,100 +1464,185 @@ const stats = [
     height: auto;
     font-family: var(--k-serif);
   }
-  .bk-group-label {
+  .bk-domain-arc {
+    fill: none;
+    stroke: var(--k-text);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+  }
+  .bk-domain-label {
     font-size: 15px;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     fill: var(--k-text);
+    paint-order: stroke;
+    stroke: var(--k-canvas);
+    stroke-width: 5px;
+    stroke-linejoin: round;
+    pointer-events: none;
   }
-  .bk-group-count {
-    font-family: var(--k-num);
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0;
-    fill: var(--k-stone);
+  .bk-road {
+    fill: none;
+    stroke: var(--k-ink);
+    stroke-opacity: 0.3;
+    stroke-linecap: round;
+    transition: stroke-opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .bk-shelf-line {
-    stroke: var(--k-text);
-    stroke-width: 1.4;
+  .bk-road.is-books {
+    stroke-dasharray: 2 3;
+  }
+  .bk-road.is-sea {
+    stroke: var(--k-cinnabar);
+    stroke-opacity: 0.62;
+  }
+  .bk-map.is-focus .bk-road {
+    stroke-opacity: 0.06;
+  }
+  .bk-map.is-focus .bk-road.is-on {
+    stroke-opacity: 0.95;
   }
   .bk-city {
     cursor: pointer;
     outline: none;
     transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .bk-spine {
-    fill: var(--k-spine);
-    stroke: var(--k-ink);
-    stroke-opacity: 0.55;
-    stroke-width: 1;
-    transition: fill 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  .bk-node-hit {
+    fill: transparent;
   }
-  .bk-spine-band {
-    stroke: var(--k-ink);
-    stroke-opacity: 0.45;
-    stroke-width: 0.8;
-  }
-  .bk-spine-title {
-    writing-mode: vertical-rl;
-    font-size: 14.5px;
-    letter-spacing: 0.04em;
-    fill: var(--k-text);
-    transition: fill 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  @media (hover: hover) {
-    .bk-city:hover .bk-spine {
-      fill: var(--k-ink);
-    }
-    .bk-city:hover .bk-spine-title {
-      fill: var(--k-canvas);
-    }
-    .bk-city:hover .bk-spine-band {
-      stroke: var(--k-canvas);
-    }
-  }
-  .bk-city:focus-visible .bk-spine {
+  .bk-node {
     fill: var(--k-ink);
+    stroke: var(--k-canvas);
+    stroke-width: 2;
+    transition: fill 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .bk-city:focus-visible .bk-spine-title {
-    fill: var(--k-canvas);
-  }
-  .bk-road {
-    fill: none;
-    stroke: var(--k-ink);
-    stroke-opacity: 0.22;
-    stroke-linecap: round;
-    transition: stroke-opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .bk-road.is-sea {
-    stroke: var(--k-cinnabar);
-    stroke-opacity: 0.5;
-  }
-  .bk-map.is-focus .bk-road[data-a] {
-    stroke-opacity: 0.05;
-  }
-  .bk-map.is-focus .bk-road.is-on {
-    stroke-opacity: 0.9;
+  .bk-node-label {
+    font-size: 13px;
+    fill: var(--k-warm);
+    transition: fill 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .bk-map.is-focus .bk-city {
-    opacity: 0.35;
+    opacity: 0.3;
   }
   .bk-map.is-focus .bk-city.is-on {
     opacity: 1;
   }
-  /* Spines stand up once, left to right, the first time the shelf scrolls into view. */
-  .bk-map.is-waiting .bk-city {
-    opacity: 0;
-    transform: translateY(10px);
+  .bk-city.is-pinned .bk-node,
+  .bk-city:focus-visible .bk-node {
+    fill: var(--k-cinnabar);
   }
-  .bk-map.is-shown .bk-city {
-    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-    transition-delay: calc(var(--i) * 18ms);
+  .bk-city.is-pinned .bk-node-label,
+  .bk-city:focus-visible .bk-node-label {
+    fill: var(--k-text);
+    font-weight: 600;
   }
-  @media (prefers-reduced-motion: reduce) {
-    .bk-map.is-waiting .bk-city {
-      opacity: 1;
-      transform: none;
+  @media (hover: hover) {
+    .bk-city:hover .bk-node-label {
+      fill: var(--k-text);
+    }
+  }
+
+  .bk-veins {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-left: 1.4rem;
+    border-left: 1px solid var(--k-rule);
+    overscroll-behavior: contain;
+  }
+  .bk-veins-kicker {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--k-cinnabar);
+  }
+  .bk-veins-title {
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 0.3rem;
+  }
+  .bk-veins-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.1rem;
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+  }
+  .bk-veins-open {
+    all: unset;
+    cursor: pointer;
+    color: var(--k-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .bk-veins-back {
+    all: unset;
+    cursor: pointer;
+    color: var(--k-stone);
+  }
+  .bk-veins-open:focus-visible,
+  .bk-veins-back:focus-visible {
+    outline: 2px solid var(--k-ink);
+    outline-offset: 2px;
+  }
+  .bk-veins-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.9rem 0 0;
+  }
+  .bk-veins-list li + li {
+    border-top: 1px solid var(--k-border-soft);
+  }
+  .bk-vein {
+    all: unset;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    padding: 0.7rem 0;
+  }
+  .bk-vein:focus-visible {
+    outline: 2px solid var(--k-ink);
+    outline-offset: 2px;
+  }
+  .bk-vein-pair {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--k-text);
+  }
+  .bk-vein-pair i {
+    font-style: normal;
+    color: var(--k-cinnabar);
+    margin: 0 0.4rem;
+  }
+  .bk-vein-pair em {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: var(--k-cinnabar);
+    margin-left: 0.5rem;
+  }
+  .bk-vein-why {
+    display: block;
+    margin-top: 0.2rem;
+    font-family: var(--k-kai);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--k-warm);
+  }
+  .bk-vein-books {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.75rem;
+    color: var(--k-stone);
+  }
+  .bk-vein-empty {
+    font-size: 0.88rem;
+    color: var(--k-stone);
+    padding: 0.7rem 0;
+  }
+  @media (hover: hover) {
+    .bk-vein:hover .bk-vein-pair {
+      color: var(--k-cinnabar);
     }
   }
 
@@ -1591,6 +1775,9 @@ const stats = [
   }
 
   @media (max-width: 900px) {
+    .bk-atlas {
+      grid-template-columns: 1fr;
+    }
     .bk-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -1603,14 +1790,12 @@ const stats = [
     }
   }
   @media (max-width: 720px) {
-    /* The shelf keeps its titles readable by scrolling sideways inside its own frame. */
-    .bk-map-scroll {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .bk-map {
-      width: 900px;
-      max-width: none;
+    .bk-veins {
+      padding-left: 0;
+      border-left: 0;
+      border-top: 1px solid var(--k-rule);
+      padding-top: 1rem;
+      max-height: none;
     }
     .bk-hero h1 {
       font-size: 2.6rem;

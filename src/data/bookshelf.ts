@@ -18482,5 +18482,590 @@ export const bookshelf = {
     }
    ]
   }
+ ],
+ "relations": [
+  {
+   "a": 14,
+   "b": 28,
+   "why": "职场博弈是社会化在组织内的特例",
+   "kind": "concept",
+   "shared": 5,
+   "sharedBooks": "《置身事内》、《圈子圈套》等",
+   "cross": true
+  },
+  {
+   "a": 9,
+   "b": 27,
+   "why": "愤怒转为反思才是成长，停在自责即内耗",
+   "kind": "concept",
+   "shared": 3,
+   "sharedBooks": "《没关系，别在意》、《当下的力量》等",
+   "cross": true
+  },
+  {
+   "a": 1,
+   "b": 12,
+   "why": "复利需要管道，提桶式收入停下就归零",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《管道的故事》",
+   "cross": true
+  },
+  {
+   "a": 6,
+   "b": 26,
+   "why": "认知越清晰，行动越坚定",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《认知觉醒》",
+   "cross": true
+  },
+  {
+   "a": 10,
+   "b": 17,
+   "why": "先对目标做减法，再对执行做减法",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《斯坦福大学人生设计课》",
+   "cross": true
+  },
+  {
+   "a": 23,
+   "b": 26,
+   "why": "刻意练习解构天赋神话，方法胜过时长",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《认知天性》",
+   "cross": true
+  },
+  {
+   "a": 2,
+   "b": 29,
+   "why": "虚荣消费是守富的头号敌人",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 4,
+   "b": 26,
+   "why": "元认知是识别自身思维偏差的元能力",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 5,
+   "b": 12,
+   "why": "定投把人力资本定期转成金融资产",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 7,
+   "b": 17,
+   "why": "过度努力降低产出，删减步骤胜过硬扛",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 8,
+   "b": 26,
+   "why": "深学习需要极度专注，求快即不关心",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 9,
+   "b": 24,
+   "why": "课题分离与自我接纳，让人停止自我排斥",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 13,
+   "b": 24,
+   "why": "把组织当资源库而非身份来源",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 5,
+   "b": 15,
+   "why": "人力资本是最大资产，稀缺决定其估值",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 16,
+   "b": 28,
+   "why": "有效社交靠输出价值，作品就是硬通货",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 15,
+   "b": 20,
+   "why": "工程能力创造稀缺，写作与开源放大它",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 21,
+   "b": 26,
+   "why": "技术学习宜精读一本主干书，深耕胜过泛读",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 17,
+   "b": 24,
+   "why": "不把外部评价当自我尺度，才拿回解释权",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 17,
+   "b": 25,
+   "why": "需要与想要之分：丰盈者选择，匮乏者自证",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 10,
+   "b": 30,
+   "why": "使命宣言是把人生意义落进时间的罗盘",
+   "kind": "concept",
+   "cross": true,
+   "shared": 0
+  },
+  {
+   "a": 10,
+   "b": 13,
+   "why": "共读 2 本书：《高效能人士的七个习惯》、《斯坦福大学人生设计课》",
+   "kind": "books",
+   "shared": 2,
+   "sharedBooks": "《高效能人士的七个习惯》、《斯坦福大学人生设计课》",
+   "cross": true
+  },
+  {
+   "a": 3,
+   "b": 5,
+   "why": "再平衡把钟摆转化为可执行的纪律",
+   "kind": "concept",
+   "shared": 4,
+   "sharedBooks": "《定投十年财务自由》、《资产配置攻略》等",
+   "cross": false
+  },
+  {
+   "a": 0,
+   "b": 1,
+   "why": "回报由少数尾部决定，长期留在场上才接得住",
+   "kind": "concept",
+   "shared": 3,
+   "sharedBooks": "《定投十年财务自由》、《金钱心理学》等",
+   "cross": false
+  },
+  {
+   "a": 2,
+   "b": 4,
+   "why": "贪婪升级与恐慌抛售都在破坏守富纪律",
+   "kind": "concept",
+   "shared": 3,
+   "sharedBooks": "《富爸爸穷爸爸》、《金钱心理学》等",
+   "cross": false
+  },
+  {
+   "a": 29,
+   "b": 30,
+   "why": "卡住体验的往往不是钱，而是怕失去",
+   "kind": "concept",
+   "shared": 3,
+   "sharedBooks": "《幸福的方法》、《强者思维》等",
+   "cross": false
+  },
+  {
+   "a": 0,
+   "b": 3,
+   "why": "风险是永久损失，买得太贵本身就是风险",
+   "kind": "concept",
+   "shared": 2,
+   "sharedBooks": "《定投十年财务自由》、《投资最重要的事》",
+   "cross": false
+  },
+  {
+   "a": 0,
+   "b": 4,
+   "why": "把运气当能力，是最昂贵的认知偏差",
+   "kind": "concept",
+   "shared": 2,
+   "sharedBooks": "《金钱心理学》、《投资最重要的事》",
+   "cross": false
+  },
+  {
+   "a": 1,
+   "b": 2,
+   "why": "守住不出局，复利才有时间发挥作用",
+   "kind": "concept",
+   "shared": 2,
+   "sharedBooks": "《金钱心理学》、《塔木德》",
+   "cross": false
+  },
+  {
+   "a": 3,
+   "b": 4,
+   "why": "贪婪与恐惧的群体情绪推动市场钟摆",
+   "kind": "concept",
+   "shared": 2,
+   "sharedBooks": "《投资最重要的事》、《聪明的投资者》",
+   "cross": false
+  },
+  {
+   "a": 12,
+   "b": 15,
+   "why": "专长乘以杠杆，才能把手艺变成管道",
+   "kind": "concept",
+   "shared": 2,
+   "sharedBooks": "《纳瓦尔宝典》、《单干》",
+   "cross": false
+  },
+  {
+   "a": 13,
+   "b": 14,
+   "why": "重复博弈下，混职场就是混口碑",
+   "kind": "concept",
+   "shared": 2,
+   "sharedBooks": "《职场的逻辑》、《Gap 期生存游戏》",
+   "cross": false
+  },
+  {
+   "a": 13,
+   "b": 17,
+   "why": "以平等交易替代依附，是职业迁移的起点",
+   "kind": "concept",
+   "shared": 2,
+   "sharedBooks": "《这世界既残酷也温柔》、《斯坦福大学人生设计课》",
+   "cross": false
+  },
+  {
+   "a": 20,
+   "b": 22,
+   "why": "AI换掉执行的脑，留下判断的脑",
+   "kind": "concept",
+   "shared": 2,
+   "sharedBooks": "《软技能》、《AI未来已来》",
+   "cross": false
+  },
+  {
+   "a": 20,
+   "b": 23,
+   "why": "工程能力加系统化产出，胜过单点天赋",
+   "kind": "concept",
+   "shared": 2,
+   "sharedBooks": "《黑客与画家》、《AI未来已来》",
+   "cross": false
+  },
+  {
+   "a": 24,
+   "b": 30,
+   "why": "审计默认的人生脚本，才找得到自己的意义",
+   "kind": "concept",
+   "shared": 2,
+   "sharedBooks": "《勇气两部曲》、《多代社会》",
+   "cross": false
+  },
+  {
+   "a": 1,
+   "b": 5,
+   "why": "指数定投是普通人最可靠的复利载体",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《定投十年财务自由》",
+   "cross": false
+  },
+  {
+   "a": 6,
+   "b": 8,
+   "why": "把专注做成固定时段，比靠意志力可靠",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《掌控习惯》",
+   "cross": false
+  },
+  {
+   "a": 7,
+   "b": 9,
+   "why": "带宽是精力的货币，内耗在悄悄透支它",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《把时间当作朋友》",
+   "cross": false
+  },
+  {
+   "a": 7,
+   "b": 8,
+   "why": "番茄与心流之争，解在主动停顿的节奏",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《把时间当作朋友》",
+   "cross": false
+  },
+  {
+   "a": 6,
+   "b": 10,
+   "why": "系统优于目标，结果只是习惯的滞后读数",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《只管去做》",
+   "cross": false
+  },
+  {
+   "a": 6,
+   "b": 11,
+   "why": "体重是饮食习惯的滞后读数",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《微习惯·瘦身篇》",
+   "cross": false
+  },
+  {
+   "a": 7,
+   "b": 11,
+   "why": "精力不足先查饮食与炎症，而非加咖啡因",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《你是你吃出来的》",
+   "cross": false
+  },
+  {
+   "a": 12,
+   "b": 13,
+   "why": "能力绑在组织上，本质仍是提桶",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《这世界既残酷也温柔》",
+   "cross": false
+  },
+  {
+   "a": 15,
+   "b": 16,
+   "why": "知识不稀缺，效果与品牌才稀缺",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《单干》",
+   "cross": false
+  },
+  {
+   "a": 16,
+   "b": 17,
+   "why": "公开表达必招评价，解药是不被评价定义",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《这世界既残酷也温柔》",
+   "cross": false
+  },
+  {
+   "a": 18,
+   "b": 19,
+   "why": "编排层之下是运行时层，合起来才是完整栈",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《云原生Kubernetes全栈架构师实战》",
+   "cross": false
+  },
+  {
+   "a": 18,
+   "b": 22,
+   "why": "清单把最易忽略的步骤变成检查点",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《清单革命》",
+   "cross": false
+  },
+  {
+   "a": 28,
+   "b": 29,
+   "why": "藏富与拒绝符号消费，都让财富隐形",
+   "kind": "concept",
+   "shared": 1,
+   "sharedBooks": "《强者思维》",
+   "cross": false
+  },
+  {
+   "a": 6,
+   "b": 7,
+   "why": "精力靠节律而非总量，节律靠习惯固化",
+   "kind": "concept",
+   "cross": false,
+   "shared": 0
+  },
+  {
+   "a": 19,
+   "b": 20,
+   "why": "底层正确性是上层一切迭代的前提",
+   "kind": "concept",
+   "cross": false,
+   "shared": 0
+  },
+  {
+   "a": 18,
+   "b": 21,
+   "why": "先懂下层原理，才读得懂上层框架",
+   "kind": "concept",
+   "cross": false,
+   "shared": 0
+  },
+  {
+   "a": 24,
+   "b": 25,
+   "why": "课题分离：爱是祝福对方，而非控制对方",
+   "kind": "concept",
+   "cross": false,
+   "shared": 0
+  },
+  {
+   "a": 25,
+   "b": 28,
+   "why": "给人两次机会，近似一报还一报的博弈",
+   "kind": "concept",
+   "cross": false,
+   "shared": 0
+  },
+  {
+   "a": 26,
+   "b": 27,
+   "why": "理解替代不了行动，学而不用只是伪进步",
+   "kind": "concept",
+   "cross": false,
+   "shared": 0
+  },
+  {
+   "a": 0,
+   "b": 2,
+   "why": "共读 3 本书：《金钱心理学》、《投资最重要的事》等",
+   "kind": "books",
+   "shared": 3,
+   "sharedBooks": "《金钱心理学》、《投资最重要的事》等",
+   "cross": false
+  },
+  {
+   "a": 4,
+   "b": 5,
+   "why": "共读 3 本书：《富爸爸穷爸爸》、《斯坦福极简经济学2》等",
+   "kind": "books",
+   "shared": 3,
+   "sharedBooks": "《富爸爸穷爸爸》、《斯坦福极简经济学2》等",
+   "cross": false
+  },
+  {
+   "a": 12,
+   "b": 16,
+   "why": "共读 3 本书：《单干》、《这世界既残酷也温柔》等",
+   "kind": "books",
+   "shared": 3,
+   "sharedBooks": "《单干》、《这世界既残酷也温柔》等",
+   "cross": false
+  },
+  {
+   "a": 28,
+   "b": 30,
+   "why": "共读 3 本书：《秦制两千年》、《强者思维》等",
+   "kind": "books",
+   "shared": 3,
+   "sharedBooks": "《秦制两千年》、《强者思维》等",
+   "cross": false
+  },
+  {
+   "a": 2,
+   "b": 5,
+   "why": "共读 2 本书：《富爸爸穷爸爸》、《货币未来》",
+   "kind": "books",
+   "shared": 2,
+   "sharedBooks": "《富爸爸穷爸爸》、《货币未来》",
+   "cross": false
+  },
+  {
+   "a": 7,
+   "b": 10,
+   "why": "共读 2 本书：《把时间当作朋友》、《奇特的一生》",
+   "kind": "books",
+   "shared": 2,
+   "sharedBooks": "《把时间当作朋友》、《奇特的一生》",
+   "cross": false
+  },
+  {
+   "a": 9,
+   "b": 10,
+   "why": "共读 2 本书：《把时间当作朋友》、《最小阻力之路》",
+   "kind": "books",
+   "shared": 2,
+   "sharedBooks": "《把时间当作朋友》、《最小阻力之路》",
+   "cross": false
+  },
+  {
+   "a": 12,
+   "b": 17,
+   "why": "共读 2 本书：《这世界既残酷也温柔》、《毫无意义的工作》",
+   "kind": "books",
+   "shared": 2,
+   "sharedBooks": "《这世界既残酷也温柔》、《毫无意义的工作》",
+   "cross": false
+  },
+  {
+   "a": 13,
+   "b": 16,
+   "why": "共读 2 本书：《这世界既残酷也温柔》、《职场的逻辑》",
+   "kind": "books",
+   "shared": 2,
+   "sharedBooks": "《这世界既残酷也温柔》、《职场的逻辑》",
+   "cross": false
+  },
+  {
+   "a": 22,
+   "b": 23,
+   "why": "共读 2 本书：《AI未来已来》、《清单革命》",
+   "kind": "books",
+   "shared": 2,
+   "sharedBooks": "《AI未来已来》、《清单革命》",
+   "cross": false
+  },
+  {
+   "a": 25,
+   "b": 29,
+   "why": "共读 2 本书：《人生总会有答案》、《幸福的方法》",
+   "kind": "books",
+   "shared": 2,
+   "sharedBooks": "《人生总会有答案》、《幸福的方法》",
+   "cross": false
+  },
+  {
+   "a": 27,
+   "b": 29,
+   "why": "共读 2 本书：《幸福的方法》、《安全感》",
+   "kind": "books",
+   "shared": 2,
+   "sharedBooks": "《幸福的方法》、《安全感》",
+   "cross": false
+  },
+  {
+   "a": 27,
+   "b": 30,
+   "why": "共读 2 本书：《幸福的方法》、《一个人可以废物到什么程度？》",
+   "kind": "books",
+   "shared": 2,
+   "sharedBooks": "《幸福的方法》、《一个人可以废物到什么程度？》",
+   "cross": false
+  }
  ]
 } as const;
