@@ -6,7 +6,7 @@ import { site } from "../data/site";
 const data = bookshelf;
 // Book details (thoughts, highlights) load from /books/data.json when a dialog opens, keeping this page light.
 const pageDescription =
-  "Charles Cheng 的书房：微信读书阅读时长、阅读习惯，以及读过的书里划下的句子和当时写下的想法。";
+  "Charles Cheng 的书脉：读过的书按主题连成一张知识地图，附微信读书阅读时长、划下的句子和当时写下的想法。";
 
 const maxYear = Math.max(...data.years.map((y) => y.hours));
 const maxMonth = Math.max(...data.months.map((m) => m.hours));
@@ -107,7 +107,7 @@ const stats = [
 ---
 
 <Layout
-  title="书房 — Charles Cheng"
+  title="书脉 — Charles Cheng"
   description={pageDescription}
   canonicalPath="/books"
   lang="zh-CN"
@@ -115,7 +115,7 @@ const stats = [
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Charles Cheng 的书房",
+    name: "Charles Cheng 的书脉",
     url: new URL("/books", site.url).toString(),
     description: pageDescription,
   }}
@@ -127,7 +127,7 @@ const stats = [
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Noto+Serif+SC:wght@400;600&display=swap" />
   <div class="bk-page">
     <header class="bk-hero">
-      <h1>书房</h1>
+      <h1>书脉</h1>
       <dl class="bk-ledger" aria-label="阅读总览">
         {stats.map((s) => (
           <div class="bk-stat">
