@@ -36,191 +36,74 @@ const radarLabels = radarCats.map((c, i) => {
   return { ...c, x: p.x, y: p.y, anchor };
 });
 
-// Knowledge map painted as a blue-green landscape handscroll (青绿山水长卷): each domain is a mountain range,
-// each topic a peak whose height follows reading hours, with a pavilion and a hanging label on it.
-// Trails join topics that share books; trails across ranges are the links between domains.
-// Everything is deterministic so the painting never reshuffles between builds.
+// Knowledge map drawn as an old-style map: each domain is a landmass, each topic a city,
+// and topics that share books are joined by roads (same domain) or sea routes (across domains).
+// Layout is deterministic so the map never reshuffles between builds.
 const seeded = (seed: number) => () => {
   seed = (seed + 0x6d2b79f5) | 0;
   let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
   t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
   return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
 };
-type Pt = { x: number; y: number };
-const f1 = (n: number) => n.toFixed(1);
-// Smooth path through points (Catmull-Rom as cubic Béziers); open unless `closed`.
-const spline = (pts: Pt[], closed = false) => {
-  const n = pts.length;
-  const p = (k: number) => (closed ? pts[(k + n) % n] : pts[Math.max(0, Math.min(n - 1, k))]);
-  let d = `M${f1(pts[0].x)},${f1(pts[0].y)}`;
-  for (let k = 0; k < (closed ? n : n - 1); k++) {
-    const [p0, p1, p2, p3] = [p(k - 1), p(k), p(k + 1), p(k + 2)];
-    d += `C${f1(p1.x + (p2.x - p0.x) / 6)},${f1(p1.y + (p2.y - p0.y) / 6)} ${f1(p2.x - (p3.x - p1.x) / 6)},${f1(p2.y - (p3.y - p1.y) / 6)} ${f1(p2.x)},${f1(p2.y)}`;
-  }
-  return closed ? `${d}Z` : d;
-};
-const SCROLL = { w: 1240, h: 640, water: 572 };
+const MAP = { w: 1000, h: 800, colGap: 150, rowGap: 58 };
 const mapDomains = data.domains.filter((d) => d.topics > 0);
-const maxTopicHours = Math.max(...data.topics.map((t) => t.hours), 1);
-const cities = data.topics.map((t, i) => ({ ...t, i, x: 0, y: 0, top: 0, base: 0, far: false }));
-type Peak = { id: string; body: string; ridge: string; strokes: string[]; moss: Pt[]; far: boolean };
-const peaks: Peak[] = [];
-// Each range gets a stretch of the scroll proportional to how many topics it holds.
-const totalTopics = cities.length;
-let cursor = 64;
-const usable = SCROLL.w - 128;
-const ranges = mapDomains.map((d, di) => {
-  const rand = seeded(97 + di * 13);
-  const far = di % 2 === 1;
-  const base = far ? 500 : 540;
-  const reach = far ? 290 : 310;
-  const members = cities.filter((t) => t.domain === d.name).sort((a, b) => b.hours - a.hours);
-  // Tallest peak in the middle of the range, the rest alternating outward like a painted massif.
-  const ordered: typeof members = [];
-  members.forEach((t, k) => (k % 2 ? ordered.push(t) : ordered.unshift(t)));
-  const width = (usable * members.length) / totalTopics;
-  const x0 = cursor;
-  cursor += width;
-  const step = width / ordered.length;
-  ordered.forEach((t, k) => {
-    const h = 64 + (reach - 64) * Math.sqrt(t.hours / maxTopicHours);
-    t.x = x0 + step * (k + 0.5) + (rand() - 0.5) * 6;
-    t.base = base;
-    t.top = base - h;
-    t.far = far;
-    t.y = t.top + 12;
-    // Silhouette: concave slopes with a little jitter and a rounded, slightly lopsided summit.
-    const bw = 30 + h * 0.36;
-    const lean = (rand() - 0.5) * h * 0.14;
-    // Shoulder peak (陪峰) behind the taller ones, so a range reads as layered rather than a row of teeth.
-    if (h > 130) {
-      const dir = rand() > 0.5 ? 1 : -1;
-      const sh = h * (0.5 + rand() * 0.15);
-      const sx = t.x + dir * bw * 0.55;
-      const sbw = 22 + sh * 0.4;
-      const pts: Pt[] = [
-        { x: sx - sbw, y: base },
-        { x: sx - sbw * 0.45, y: base - sh * 0.62 },
-        { x: sx - sbw * 0.12, y: base - sh * 0.97 },
-        { x: sx + sbw * 0.1, y: base - sh },
-        { x: sx + sbw * 0.42, y: base - sh * 0.66 },
-        { x: sx + sbw, y: base },
-      ];
-      const sridge = spline(pts);
-      peaks.push({ id: `ss-s${t.i}`, body: `${sridge}L${f1(sx + sbw)},${base + 40}L${f1(sx - sbw)},${base + 40}Z`, ridge: sridge, strokes: [], moss: [], far: true });
-    }
-    // Rounded, slightly convex flanks and a broad crown: the blue-green peaks of a 青绿 handscroll.
-    const side = (dir: number) =>
-      Array.from({ length: 7 }, (_, s) => {
-        const u = s / 6;
-        const jit = s === 0 || s === 6 ? 0 : (rand() - 0.5) * h * 0.04;
-        return { x: t.x + dir * bw * Math.pow(1 - u, 0.8) * (s === 5 ? 1.25 : 1) + lean * u, y: base - h * Math.pow(u, 1.2) + jit };
-      });
-    const left = side(-1);
-    const right = side(1);
-    const summit = { x: t.x + lean, y: t.top - 4 };
-    const outline = [...left.slice(0, 6), summit, ...right.slice(0, 6).reverse()];
-    const ridge = spline(outline);
-    const body = `${ridge}L${f1(t.x + bw)},${base + 40}L${f1(t.x - bw)},${base + 40}Z`;
-    // Hemp-fibre texture strokes (披麻皴) running down from below the summit, clipped to the body.
-    const strokes = Array.from({ length: 3 + Math.round(h / 60) }, (_, s) => {
-      const dir = s % 2 ? 1 : -1;
-      const sx = summit.x + dir * (4 + rand() * bw * 0.3);
-      const sy = t.top + 14 + rand() * h * 0.3;
-      const len = h * (0.22 + rand() * 0.3);
-      return spline([
-        { x: sx, y: sy },
-        { x: sx + dir * len * 0.2, y: sy + len * 0.45 },
-        { x: sx + dir * len * 0.34 + (rand() - 0.5) * 5, y: sy + len },
-      ]);
-    });
-    // Moss dots (点苔) along the upper ridge.
-    const moss = Array.from({ length: 4 + Math.round(h / 45) }, () => {
-      const p = (rand() > 0.5 ? right : left)[2 + Math.floor(rand() * 4)];
-      return { x: p.x + (rand() - 0.5) * 5, y: p.y + 1 + rand() * 4 };
-    });
-    peaks.push({ id: `ss-p${t.i}`, body, ridge, strokes, moss, far });
-  });
-  // Broad foothills in front of the range tie the peak bases together.
-  const fh: Pt[] = [];
-  const fx0 = x0 - 26;
-  const fx1 = x0 + width + 26;
-  for (let k = 0; k <= 8; k++) {
-    const u = k / 8;
-    fh.push({ x: fx0 + (fx1 - fx0) * u, y: SCROLL.water - 18 - Math.sin(u * Math.PI) * (34 + rand() * 18) + (rand() - 0.5) * 8 });
-  }
-  const foothillRidge = spline(fh);
-  const foothill = `${foothillRidge}L${f1(fx1)},${SCROLL.water + 4}L${f1(fx0)},${SCROLL.water + 4}Z`;
-  const footMoss = Array.from({ length: 10 }, () => {
-    const p = fh[1 + Math.floor(rand() * 7)];
-    return { x: p.x + (rand() - 0.5) * 30, y: p.y + 2 + rand() * 6 };
-  });
-  return { ...d, far, cx: x0 + width / 2, foothill, foothillRidge, footMoss };
-});
-// Far ranges paint first so near ranges overlap them.
-const paintOrder = [...peaks.keys()].sort((a, b) => Number(peaks[b].far) - Number(peaks[a].far));
-// Vertical hanging labels (题签) in the sky above each pavilion, the way inscriptions sit in a painting's blank space.
-const labels = cities.map((t) => {
-  const len = [...t.name].length * 14.5 + 12;
-  return { i: t.i, x: t.x + 1, y: Math.max(t.y - 20 - len, 24), len };
-});
-// Distant hills in a pale wash behind everything.
-const farHills = [0, 1].map((layer) => {
-  const rand = seeded(500 + layer);
-  const pts: Pt[] = [];
-  for (let x = -20; x <= SCROLL.w + 20; x += 70) pts.push({ x, y: (layer ? 360 : 320) + (rand() - 0.5) * 60 });
-  return `${spline(pts)}L${SCROLL.w + 20},${SCROLL.water}L-20,${SCROLL.water}Z`;
-});
-// Auspicious clouds (祥云) drifting across the valleys between ranges and in the sky.
-const cloud = (x: number, y: number, s: number) => {
-  const lobes = [
-    [-34, 0, 12],
-    [-14, -9, 15],
-    [10, -6, 13],
-    [30, 1, 10],
-  ];
-  let d = `M${f1(x - 46 * s)},${f1(y + 8 * s)}`;
-  lobes.forEach(([dx, dy, r]) => {
-    d += `A${f1(r * s)},${f1(r * s)} 0 0 1 ${f1(x + (dx + r) * s)},${f1(y + (dy + 2) * s)}`;
-  });
-  d += `Q${f1(x + 50 * s)},${f1(y + 8 * s)} ${f1(x + 38 * s)},${f1(y + 12 * s)}L${f1(x - 40 * s)},${f1(y + 12 * s)}Q${f1(x - 54 * s)},${f1(y + 10 * s)} ${f1(x - 46 * s)},${f1(y + 8 * s)}Z`;
-  // Inner spirals and two long trailing ribbons give the 祥云 its curl and drift.
-  const curl =
-    `M${f1(x - 30 * s)},${f1(y + 4 * s)}q${f1(4 * s)},${f1(-9 * s)} ${f1(11 * s)},${f1(-4 * s)}q${f1(3 * s)},${f1(4 * s)} ${f1(-3 * s)},${f1(5 * s)}` +
-    `M${f1(x + 4 * s)},${f1(y + 1 * s)}q${f1(5 * s)},${f1(-10 * s)} ${f1(13 * s)},${f1(-4 * s)}q${f1(3 * s)},${f1(5 * s)} ${f1(-4 * s)},${f1(5 * s)}`;
-  const tail =
-    `M${f1(x - 40 * s)},${f1(y + 12 * s)}C${f1(x - 80 * s)},${f1(y + 14 * s)} ${f1(x - 110 * s)},${f1(y + 4 * s)} ${f1(x - 150 * s)},${f1(y + 10 * s)}` +
-    `M${f1(x - 44 * s)},${f1(y + 16 * s)}C${f1(x - 74 * s)},${f1(y + 20 * s)} ${f1(x - 96 * s)},${f1(y + 15 * s)} ${f1(x - 124 * s)},${f1(y + 19 * s)}`;
-  return { d, curl, tail };
+// Two staggered rows of landmasses: the top row takes the extra one when the count is odd.
+const topRow = Math.ceil(mapDomains.length / 2);
+const regionCenter = (di: number) => {
+  const inTop = di < topRow;
+  const n = inTop ? topRow : mapDomains.length - topRow;
+  const k = inTop ? di : di - topRow;
+  const span = MAP.w - 200;
+  return { x: 100 + (span * (k + 0.5)) / n + (inTop ? 0 : (k % 2 ? 12 : -12)), y: inTop ? 228 + (k % 2 ? -18 : 0) : 600 };
 };
-const clouds = [
-  ...ranges.slice(1).map((r, k) => cloud((ranges[k].cx + r.cx) / 2, k % 2 ? 470 : 448, 0.9)),
-  cloud(560, 60, 0.7),
-];
-// Trails between pavilions that share books: within a range they wind along the slopes,
-// across ranges they dip into the valley. Only the stronger links are drawn.
+const cities = data.topics.map((t, i) => ({ ...t, i, x: 0, y: 0, r: Math.min(3.6 + 1.5 * Math.sqrt(t.books.length), 9.5) }));
+const regions = mapDomains.map((d, di) => {
+  const c = regionCenter(di);
+  const members = cities.filter((t) => t.domain === d.name);
+  const rows = Math.ceil(members.length / 2);
+  const rand = seeded(di + 7);
+  members.forEach((t, k) => {
+    const col = k % 2;
+    const row = Math.floor(k / 2);
+    const lone = k === members.length - 1 && members.length % 2 === 1;
+    t.x = c.x + (lone ? 0 : (col - 0.5) * MAP.colGap) + (row % 2 ? 14 : -14) + (rand() - 0.5) * 16;
+    t.y = c.y + (row - (rows - 1) / 2) * MAP.rowGap + (rand() - 0.5) * 12;
+  });
+  const rx = MAP.colGap / 2 + 72;
+  const ry = ((rows - 1) * MAP.rowGap) / 2 + 60;
+  const phase = [rand() * 6.28, rand() * 6.28, rand() * 6.28];
+  const shape = (scale: number) => {
+    const pts = Array.from({ length: 40 }, (_, k) => {
+      const a = (k / 40) * Math.PI * 2;
+      const wobble = 1 + 0.07 * Math.sin(3 * a + phase[0]) + 0.05 * Math.sin(5 * a + phase[1]) + 0.025 * Math.sin(9 * a + phase[2]);
+      return { x: c.x + Math.cos(a) * rx * wobble * scale, y: c.y + 6 + Math.sin(a) * ry * wobble * scale };
+    });
+    // Closed Catmull-Rom spline through the wobbly ellipse points, written as cubic Béziers.
+    const p = (k: number) => pts[(k + pts.length) % pts.length];
+    let dPath = `M${pts[0].x.toFixed(1)},${pts[0].y.toFixed(1)}`;
+    for (let k = 0; k < pts.length; k++) {
+      const [p0, p1, p2, p3] = [p(k - 1), p(k), p(k + 1), p(k + 2)];
+      dPath += `C${(p1.x + (p2.x - p0.x) / 6).toFixed(1)},${(p1.y + (p2.y - p0.y) / 6).toFixed(1)} ${(p2.x - (p3.x - p1.x) / 6).toFixed(1)},${(p2.y - (p3.y - p1.y) / 6).toFixed(1)} ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
+    }
+    return `${dPath}Z`;
+  };
+  return { ...d, land: shape(1), coast: shape(1.07), coast2: shape(1.15), labelX: c.x, labelY: c.y + 6 - ry * 1.1 - 12 };
+});
 const roads = cities.flatMap((a) =>
   cities
     .filter((b) => b.i > a.i)
     .map((b) => ({ a, b, w: a.books.filter((x) => b.books.includes(x)).length }))
-    .filter((e) => (e.a.domain === e.b.domain ? e.w >= 3 : e.w >= 2))
+    .filter((e) => e.w >= 2 || (e.w === 1 && e.a.domain === e.b.domain))
     .map((e) => {
       const sea = e.a.domain !== e.b.domain;
       const mx = (e.a.x + e.b.x) / 2;
-      const low = Math.min(Math.max(e.a.y, e.b.y) + 40 + Math.abs(e.a.x - e.b.x) * 0.12, SCROLL.water - 40);
-      return {
-        ...e,
-        sea,
-        d: `M${f1(e.a.x)},${f1(e.a.y + 6)}C${f1(e.a.x + (mx - e.a.x) * 0.4)},${f1(low)} ${f1(e.b.x - (e.b.x - mx) * 0.4)},${f1(low)} ${f1(e.b.x)},${f1(e.b.y + 6)}`,
-      };
+      const my = (e.a.y + e.b.y) / 2;
+      const bend = sea ? 0.18 : 0.08;
+      const cx = mx - (e.b.y - e.a.y) * bend;
+      const cy = my + (e.b.x - e.a.x) * bend;
+      return { ...e, sea, d: `M${e.a.x.toFixed(1)},${e.a.y.toFixed(1)}Q${cx.toFixed(1)},${cy.toFixed(1)} ${e.b.x.toFixed(1)},${e.b.y.toFixed(1)}` };
     }),
 );
-const waves = Array.from({ length: 9 }, (_, r) => {
-  const y = SCROLL.water + 10 + r * 8;
-  let d = "";
-  for (let x = (r % 2) * 14; x < SCROLL.w; x += 28) d += `M${x},${y}q7,-5 14,0`;
-  return d;
-}).join("");
 
 const cardText = (b: (typeof data.books)[number]): string | undefined =>
   b.verdict ?? b.myThoughts[0]?.text ?? b.highlights[0];
@@ -384,131 +267,71 @@ const stats = [
 
     <section class="bk-atlas" aria-label="知识地图">
       <div class="bk-map-scroll">
-        <svg class="bk-map" viewBox={`0 0 ${SCROLL.w} ${SCROLL.h}`} role="group" aria-label={`知识地图：${mapDomains.map((d) => `${d.name} ${d.topics} 个主题`).join("，")}`}>
+        <svg class="bk-map" viewBox={`0 0 ${MAP.w} ${MAP.h}`} role="group" aria-label={`知识地图：${mapDomains.map((d) => `${d.name} ${d.topics} 个主题`).join("，")}`}>
           <defs>
-            <linearGradient id="ss-peak" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" class="ss-stop-top" />
-              <stop offset="0.45" class="ss-stop-mid" />
-              <stop offset="0.82" class="ss-stop-foot" />
-              <stop offset="1" class="ss-stop-base" />
-            </linearGradient>
-            <linearGradient id="ss-peak-far" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" class="ss-stop-top is-far" />
-              <stop offset="0.6" class="ss-stop-mid is-far" />
-              <stop offset="1" class="ss-stop-base" />
-            </linearGradient>
-            <linearGradient id="ss-mist" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" class="ss-stop-silk" stop-opacity="0" />
-              <stop offset="1" class="ss-stop-silk" stop-opacity="1" />
-            </linearGradient>
-            <filter id="ss-brush" x="-5%" y="-5%" width="110%" height="110%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" />
-              <feDisplacementMap in="SourceGraphic" scale="3.2" />
-            </filter>
-            <filter id="ss-grain" x="0" y="0" width="100%" height="100%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="n" />
-              <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 0.09 0" />
-              <feComposite in2="SourceGraphic" operator="in" />
-            </filter>
-            {peaks.map((pk) => (
-              <clipPath id={pk.id}>
-                <path d={pk.body} />
-              </clipPath>
-            ))}
-            <linearGradient id="ss-foot" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" class="ss-stop-mid" />
-              <stop offset="0.55" class="ss-stop-foot" />
-              <stop offset="1" class="ss-stop-silk" />
-            </linearGradient>
-            <clipPath id="ss-clip">
-              <rect x="16" y="16" width={SCROLL.w - 32} height={SCROLL.h - 32} />
+            <pattern id="bk-sea" width="46" height="22" patternUnits="userSpaceOnUse">
+              <path d="M4 13q5-5 10 0t10 0" class="bk-wave" />
+            </pattern>
+          </defs>
+          <defs>
+            <clipPath id="bk-map-clip">
+              <rect x="18" y="18" width={MAP.w - 36} height={MAP.h - 36} />
             </clipPath>
           </defs>
-
-          <rect class="ss-mount" x="0" y="0" width={SCROLL.w} height={SCROLL.h} rx="6" />
-          <rect class="ss-silk" x="16" y="16" width={SCROLL.w - 32} height={SCROLL.h - 32} />
-          <g clip-path="url(#ss-clip)">
-            {farHills.map((d, k) => <path class:list={["ss-far-hill", { "is-near": k === 1 }]} d={d} />)}
-            <rect x="16" y="300" width={SCROLL.w - 32} height="160" fill="url(#ss-mist)" opacity="0.7" />
-            <g filter="url(#ss-brush)">
-              {paintOrder.map((k) => (
-                <g class:list={["ss-peak", { "is-far": peaks[k].far }]}>
-                  <path class="ss-body" d={peaks[k].body} fill={peaks[k].far ? "url(#ss-peak-far)" : "url(#ss-peak)"} />
-                  <g clip-path={`url(#${peaks[k].id})`}>
-                    {peaks[k].strokes.map((d) => <path class="ss-cun" d={d} />)}
-                  </g>
-                  <path class="ss-ridge" d={peaks[k].ridge} />
-                  {peaks[k].moss.map((m) => <circle class="ss-moss" cx={f1(m.x)} cy={f1(m.y)} r="1.6" />)}
-                </g>
-              ))}
+          <rect class="bk-map-sea" x="10" y="10" width={MAP.w - 20} height={MAP.h - 20} />
+          <rect class="bk-map-frame" x="10" y="10" width={MAP.w - 20} height={MAP.h - 20} />
+          <rect class="bk-map-frame is-inner" x="17" y="17" width={MAP.w - 34} height={MAP.h - 34} />
+          {regions.map((r) => (
+            <g class="bk-region" clip-path="url(#bk-map-clip)">
+              <path class="bk-coast is-far" d={r.coast2} />
+              <path class="bk-coast" d={r.coast} />
+              <path class="bk-land" d={r.land} />
             </g>
-            <rect x="16" y={SCROLL.water - 70} width={SCROLL.w - 32} height="74" fill="url(#ss-mist)" />
-            <g filter="url(#ss-brush)">
-              {ranges.map((r) => (
-                <g class="ss-foothill">
-                  <path class="ss-body" d={r.foothill} fill="url(#ss-foot)" />
-                  <path class="ss-ridge" d={r.foothillRidge} />
-                  {r.footMoss.map((m) => <circle class="ss-moss" cx={f1(m.x)} cy={f1(m.y)} r="1.4" />)}
-                </g>
-              ))}
+          ))}
+          {roads.map((e) => (
+            <path
+              class:list={["bk-road", { "is-sea": e.sea }]}
+              d={e.d}
+              data-a={e.a.i}
+              data-b={e.b.i}
+              style={`stroke-width:${Math.min(0.8 + 0.55 * e.w, 3.4).toFixed(2)}`}
+            />
+          ))}
+          {regions.map((r) => (
+            <text class="bk-region-label" x={r.labelX} y={r.labelY} text-anchor="middle">
+              {r.name}
+              <tspan class="bk-region-count" dx="8">{r.books} 本</tspan>
+            </text>
+          ))}
+          {cities.map((t) => (
+            <g
+              class="bk-city"
+              data-topic={t.i}
+              data-name={t.name}
+              tabindex="0"
+              role="button"
+              aria-label={`${t.name}，${t.books.length} 本书`}
+              data-tip={`${t.name}｜${t.books.length} 本书｜≥ ${t.hours} 小时`}
+            >
+              <circle class="bk-city-hit" cx={t.x} cy={t.y} r="20" />
+              <circle class="bk-city-ring" cx={t.x} cy={t.y} r={t.r} />
+              <circle class="bk-city-dot" cx={t.x} cy={t.y} r="1.9" />
+              <text class="bk-city-label" x={t.x} y={t.y + t.r + 15} text-anchor="middle">{t.name}</text>
             </g>
-            {clouds.map((c) => (
-              <g class="ss-cloud">
-                <path class="ss-cloud-tail" d={c.tail} />
-                <path d={c.d} />
-                <path class="ss-cloud-curl" d={c.curl} />
-              </g>
-            ))}
-            <rect class="ss-water" x="16" y={SCROLL.water} width={SCROLL.w - 32} height={SCROLL.h - SCROLL.water} />
-            <path class="ss-wave" d={waves} />
-            {roads.map((e) => (
-              <path
-                class:list={["bk-road", { "is-sea": e.sea }]}
-                d={e.d}
-                data-a={e.a.i}
-                data-b={e.b.i}
-                style={`stroke-width:${Math.min(0.9 + 0.45 * e.w, 3).toFixed(2)}`}
-              />
-            ))}
-            {ranges.map((r) => (
-              <text class="ss-range-label" x={f1(r.cx)} y={SCROLL.water + 38} text-anchor="middle">{r.name}</text>
-            ))}
-            {cities.map((t) => {
-              const l = labels[t.i];
-              return (
-                <g
-                  class="bk-city"
-                  data-topic={t.i}
-                  data-name={t.name}
-                  tabindex="0"
-                  role="button"
-                  aria-label={`${t.name}，${t.books.length} 本书，至少 ${t.hours} 小时`}
-                  data-tip={`${t.name}｜${t.books.length} 本书｜≥ ${t.hours} 小时`}
-                >
-                  <rect class="bk-city-hit" x={f1(t.x - 13)} y={f1(l.y - 4)} width="26" height={f1(t.y + 12 - l.y)} />
-                  <path class="ss-tag-line" d={`M${f1(t.x)},${f1(l.y + l.len + 2)}V${f1(t.y - 10)}`} />
-                  <g class="ss-pavilion" transform={`translate(${f1(t.x)} ${f1(t.y)})`}>
-                    <path class="ss-roof" d="M-11 -1Q-6 -2 -3 -7L0 -9L3 -7Q6 -2 11 -1Q4 -3 0 -3Q-4 -3 -11 -1Z" />
-                    <rect class="ss-pillar" x="-6" y="-3" width="1.6" height="8" />
-                    <rect class="ss-pillar" x="4.4" y="-3" width="1.6" height="8" />
-                    <path class="ss-floor" d="M-8 5H8" />
-                  </g>
-                  <text class="ss-tag-text" x={f1(l.x)} y={f1(l.y + 4)}>{t.name}</text>
-                </g>
-              );
-            })}
-            <g class="ss-inscription" transform={`translate(${SCROLL.w - 60} 44)`}>
-              <text class="ss-ins-title" x="0" y="0">书脉</text>
-              <text class="ss-ins-line" x="-34" y="4">读万卷书</text>
-              <text class="ss-ins-line" x="-60" y="4">行万里路</text>
-              <g transform="translate(-102 4)">
-                <rect class="ss-seal" width="26" height="46" rx="2" />
-                <text class="ss-seal-text" x="13.5" y="7">书脉</text>
-              </g>
-            </g>
+          ))}
+          <g class="bk-compass" transform={`translate(78 ${MAP.h - 82})`}>
+            <circle r="30" class="bk-compass-ring" />
+            <circle r="24" class="bk-compass-ring is-thin" />
+            <path d="M0 -40 L6 0 L0 40 L-6 0 Z" class="bk-compass-needle" />
+            <path d="M-40 0 L0 5 L40 0 L0 -5 Z" class="bk-compass-needle is-light" />
+            <text y="-46" text-anchor="middle" class="bk-compass-n">北</text>
           </g>
-          <rect class="ss-silk-grain" x="16" y="16" width={SCROLL.w - 32} height={SCROLL.h - 32} filter="url(#ss-grain)" />
-          <rect class="ss-mount-line" x="16" y="16" width={SCROLL.w - 32} height={SCROLL.h - 32} />
+          <g class="bk-legend" transform={`translate(${MAP.w - 200} ${MAP.h - 62})`}>
+            <path d="M0 0h34" class="bk-road" style="stroke-width:2" />
+            <text x="44" y="4">同领域共读的书</text>
+            <path d="M0 22h34" class="bk-road is-sea" style="stroke-width:2" />
+            <text x="44" y="26">跨领域共读的书</text>
+          </g>
         </svg>
       </div>
     </section>
@@ -1446,45 +1269,14 @@ const stats = [
     font-variant-numeric: tabular-nums lining-nums;
   }
 
-  /* Knowledge map: a blue-green landscape handscroll (青绿山水) mounted on the parchment page. */
-  .bk-page {
-    --ss-mount: #d6c7a4;
-    --ss-silk: #efe6d1;
-    --ss-ink: #2f2b25;
-    --ss-top: #3c7180;
-    --ss-mid: #7da38b;
-    --ss-foot: #c39a63;
-    --ss-far-top: #93b2b1;
-    --ss-far-mid: #bccab3;
-    --ss-cloud: #f8f3e6;
-    --ss-water: #e2e3d3;
-    --ss-wave: #5e8d92;
-    --ss-trail: #8a6942;
-    --ss-cinnabar: #a63f2c;
-    --ss-tag: #f6efdf;
-  }
-  .dark .bk-page {
-    --ss-mount: #1d1b17;
-    --ss-silk: #2a2721;
-    --ss-ink: #ddd4c2;
-    --ss-top: #4e828a;
-    --ss-mid: #59775f;
-    --ss-foot: #7b603e;
-    --ss-far-top: #3e5655;
-    --ss-far-mid: #44503f;
-    --ss-cloud: #4d4941;
-    --ss-water: #25292a;
-    --ss-wave: #6f9ca0;
-    --ss-trail: #c3a273;
-    --ss-cinnabar: #b9523c;
-    --ss-tag: #312e27;
-  }
+  /* Knowledge map: old-map styling in the page's single ink hue. */
   .bk-atlas {
     margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--k-border);
   }
   .bk-map-scroll {
-    border-radius: 8px;
-    box-shadow: 0 1px 2px rgba(40, 32, 20, 0.12), 0 12px 30px rgba(40, 32, 20, 0.1);
+    border-radius: 14px;
   }
   .bk-map {
     display: block;
@@ -1492,122 +1284,70 @@ const stats = [
     height: auto;
     font-family: var(--k-serif);
   }
-  .ss-mount {
-    fill: var(--ss-mount);
+  .bk-map-sea {
+    fill: url(#bk-sea);
   }
-  .ss-silk {
-    fill: var(--ss-silk);
-  }
-  .ss-silk-grain {
-    fill: var(--ss-silk);
-    pointer-events: none;
-    mix-blend-mode: multiply;
-  }
-  .ss-mount-line {
+  .bk-wave {
     fill: none;
-    stroke: var(--ss-ink);
-    stroke-opacity: 0.35;
-    stroke-width: 0.8;
-    pointer-events: none;
+    stroke: var(--k-ink);
+    stroke-opacity: 0.1;
+    stroke-width: 1;
+    stroke-linecap: round;
   }
-  .ss-stop-top {
-    stop-color: var(--ss-top);
-  }
-  .ss-stop-mid {
-    stop-color: var(--ss-mid);
-  }
-  .ss-stop-top.is-far {
-    stop-color: var(--ss-far-top);
-  }
-  .ss-stop-mid.is-far {
-    stop-color: var(--ss-far-mid);
-  }
-  .ss-stop-foot {
-    stop-color: var(--ss-foot);
-  }
-  .ss-stop-base,
-  .ss-stop-silk {
-    stop-color: var(--ss-silk);
-  }
-  .ss-far-hill {
-    fill: var(--ss-far-top);
-    opacity: 0.18;
-  }
-  .ss-far-hill.is-near {
-    opacity: 0.22;
-    fill: var(--ss-far-mid);
-  }
-  .ss-ridge {
+  .bk-map-frame {
     fill: none;
-    stroke: var(--ss-ink);
+    stroke: var(--k-ink);
+    stroke-opacity: 0.55;
+    stroke-width: 1.6;
+  }
+  .bk-map-frame.is-inner {
+    stroke-width: 0.6;
+    stroke-opacity: 0.4;
+  }
+  .bk-land {
+    fill: var(--k-ivory);
+    stroke: var(--k-ink);
+    stroke-opacity: 0.55;
     stroke-width: 1.3;
-    stroke-opacity: 0.78;
-    stroke-linecap: round;
   }
-  .ss-peak.is-far .ss-ridge {
-    stroke-opacity: 0.45;
+  .bk-coast {
+    fill: var(--k-canvas);
+    stroke: var(--k-ink);
+    stroke-opacity: 0.22;
+    stroke-width: 1;
+    stroke-dasharray: 2 4;
   }
-  .ss-cun {
+  .bk-coast.is-far {
     fill: none;
-    stroke: var(--ss-ink);
-    stroke-width: 0.9;
-    stroke-opacity: 0.28;
-    stroke-linecap: round;
-  }
-  .ss-moss {
-    fill: var(--ss-ink);
-    opacity: 0.55;
-  }
-  .ss-peak.is-far .ss-moss,
-  .ss-peak.is-far .ss-cun {
-    opacity: 0.4;
-  }
-  .ss-cloud path {
-    fill: var(--ss-cloud);
-    stroke: var(--ss-ink);
-    stroke-opacity: 0.35;
-    stroke-width: 0.9;
-  }
-  .ss-cloud .ss-cloud-curl,
-  .ss-cloud .ss-cloud-tail {
-    fill: none;
-  }
-  .ss-cloud .ss-cloud-tail {
-    stroke-opacity: 0.3;
-    stroke-linecap: round;
-  }
-  .ss-water {
-    fill: var(--ss-water);
-  }
-  .ss-wave {
-    fill: none;
-    stroke: var(--ss-wave);
-    stroke-opacity: 0.45;
-    stroke-width: 0.8;
+    stroke-opacity: 0.13;
   }
   .bk-road {
     fill: none;
-    stroke: var(--ss-trail);
-    stroke-opacity: 0.55;
-    stroke-dasharray: 3 3;
+    stroke: var(--k-ink);
+    stroke-opacity: 0.3;
     stroke-linecap: round;
     transition: stroke-opacity 0.2s;
   }
   .bk-road.is-sea {
-    stroke-dasharray: 1 5;
-    stroke-opacity: 0.7;
+    stroke-dasharray: 1 6;
+    stroke-opacity: 0.38;
   }
   .bk-map.is-focus .bk-road[data-a] {
-    stroke-opacity: 0.08;
+    stroke-opacity: 0.06;
   }
   .bk-map.is-focus .bk-road.is-on {
-    stroke-opacity: 0.95;
+    stroke-opacity: 0.85;
   }
-  .ss-range-label {
+  .bk-region-label {
     font-size: 19px;
-    letter-spacing: 0.4em;
-    fill: var(--ss-ink);
+    letter-spacing: 0.32em;
+    fill: var(--k-ink);
     font-weight: 500;
+  }
+  .bk-region-count {
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    fill: var(--k-stone);
   }
   .bk-city {
     cursor: pointer;
@@ -1617,73 +1357,62 @@ const stats = [
   .bk-city-hit {
     fill: transparent;
   }
-  .ss-roof {
-    fill: var(--ss-ink);
-  }
-  .ss-pillar {
-    fill: var(--ss-cinnabar);
-  }
-  .ss-floor {
-    stroke: var(--ss-ink);
-    stroke-width: 1.2;
-  }
-  .ss-pavilion {
-    transition: transform 0.2s;
-  }
-  .ss-tag-line {
-    stroke: var(--ss-ink);
-    stroke-opacity: 0.25;
-    stroke-width: 0.8;
-    stroke-dasharray: 1 2;
-  }
-  .ss-tag-text {
-    writing-mode: vertical-rl;
-    font-size: 13.5px;
-    letter-spacing: 0.06em;
-    fill: var(--ss-ink);
-    paint-order: stroke;
-    stroke: var(--ss-silk);
-    stroke-width: 3.5px;
-    stroke-linejoin: round;
+  .bk-city-ring {
+    fill: var(--k-canvas);
+    stroke: var(--k-ink);
+    stroke-width: 1.6;
     transition: fill 0.2s;
   }
-  .bk-city:hover .ss-tag-text,
-  .bk-city:focus-visible .ss-tag-text {
-    fill: var(--ss-cinnabar);
+  .bk-city-dot {
+    fill: var(--k-ink);
   }
-  .bk-city:hover .ss-pavilion,
-  .bk-city:focus-visible .ss-pavilion {
-    transform-box: fill-box;
+  .bk-city-label {
+    font-size: 13px;
+    fill: var(--k-warm);
+    paint-order: stroke;
+    stroke: var(--k-ivory);
+    stroke-width: 4px;
+    stroke-linejoin: round;
   }
   .bk-map.is-focus .bk-city {
-    opacity: 0.4;
+    opacity: 0.35;
   }
   .bk-map.is-focus .bk-city.is-on {
     opacity: 1;
   }
-  .ss-ins-title,
-  .ss-ins-line,
-  .ss-seal-text {
-    writing-mode: vertical-rl;
+  .bk-city:hover .bk-city-dot,
+  .bk-city:focus-visible .bk-city-dot {
+    fill: var(--k-canvas);
   }
-  .ss-ins-title {
-    font-size: 30px;
-    letter-spacing: 0.25em;
-    fill: var(--ss-ink);
+  .bk-city:hover .bk-city-ring,
+  .bk-city:focus-visible .bk-city-ring {
+    fill: var(--k-ink);
   }
-  .ss-ins-line {
-    font-size: 16px;
-    letter-spacing: 0.3em;
-    fill: var(--ss-ink);
-    opacity: 0.8;
+  .bk-city:focus-visible .bk-city-label {
+    text-decoration: underline;
   }
-  .ss-seal {
-    fill: var(--ss-cinnabar);
+  .bk-compass-ring {
+    fill: none;
+    stroke: var(--k-ink);
+    stroke-opacity: 0.45;
   }
-  .ss-seal-text {
-    font-size: 15px;
-    letter-spacing: 0.1em;
-    fill: #fbf3e4;
+  .bk-compass-ring.is-thin {
+    stroke-dasharray: 1 3;
+  }
+  .bk-compass-needle {
+    fill: var(--k-ink);
+    fill-opacity: 0.7;
+  }
+  .bk-compass-needle.is-light {
+    fill-opacity: 0.25;
+  }
+  .bk-compass-n,
+  .bk-legend text {
+    font-size: 12px;
+    fill: var(--k-stone);
+  }
+  .bk-compass-n {
+    fill: var(--k-ink);
   }
 
   .bk-topic-head h3 {
@@ -1997,9 +1726,10 @@ const stats = [
     .bk-map-scroll {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--k-border);
     }
     .bk-map {
-      width: 860px;
+      width: 720px;
       max-width: none;
     }
     .bk-hero h1 {
