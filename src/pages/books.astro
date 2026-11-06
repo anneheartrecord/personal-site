@@ -36,6 +36,75 @@ const radarLabels = radarCats.map((c, i) => {
   return { ...c, x: p.x, y: p.y, anchor };
 });
 
+// Knowledge map drawn as an old-style map: each domain is a landmass, each topic a city,
+// and topics that share books are joined by roads (same domain) or sea routes (across domains).
+// Layout is deterministic so the map never reshuffles between builds.
+const seeded = (seed: number) => () => {
+  seed = (seed + 0x6d2b79f5) | 0;
+  let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+  t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+  return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+};
+const MAP = { w: 1000, h: 800, colGap: 150, rowGap: 58 };
+const mapDomains = data.domains.filter((d) => d.topics > 0);
+// Two staggered rows of landmasses: the top row takes the extra one when the count is odd.
+const topRow = Math.ceil(mapDomains.length / 2);
+const regionCenter = (di: number) => {
+  const inTop = di < topRow;
+  const n = inTop ? topRow : mapDomains.length - topRow;
+  const k = inTop ? di : di - topRow;
+  const span = MAP.w - 200;
+  return { x: 100 + (span * (k + 0.5)) / n + (inTop ? 0 : (k % 2 ? 12 : -12)), y: inTop ? 228 + (k % 2 ? -18 : 0) : 600 };
+};
+const cities = data.topics.map((t, i) => ({ ...t, i, x: 0, y: 0, r: Math.min(3.6 + 1.5 * Math.sqrt(t.books.length), 9.5) }));
+const regions = mapDomains.map((d, di) => {
+  const c = regionCenter(di);
+  const members = cities.filter((t) => t.domain === d.name);
+  const rows = Math.ceil(members.length / 2);
+  const rand = seeded(di + 7);
+  members.forEach((t, k) => {
+    const col = k % 2;
+    const row = Math.floor(k / 2);
+    const lone = k === members.length - 1 && members.length % 2 === 1;
+    t.x = c.x + (lone ? 0 : (col - 0.5) * MAP.colGap) + (row % 2 ? 14 : -14) + (rand() - 0.5) * 16;
+    t.y = c.y + (row - (rows - 1) / 2) * MAP.rowGap + (rand() - 0.5) * 12;
+  });
+  const rx = MAP.colGap / 2 + 72;
+  const ry = ((rows - 1) * MAP.rowGap) / 2 + 60;
+  const phase = [rand() * 6.28, rand() * 6.28, rand() * 6.28];
+  const shape = (scale: number) => {
+    const pts = Array.from({ length: 40 }, (_, k) => {
+      const a = (k / 40) * Math.PI * 2;
+      const wobble = 1 + 0.07 * Math.sin(3 * a + phase[0]) + 0.05 * Math.sin(5 * a + phase[1]) + 0.025 * Math.sin(9 * a + phase[2]);
+      return { x: c.x + Math.cos(a) * rx * wobble * scale, y: c.y + 6 + Math.sin(a) * ry * wobble * scale };
+    });
+    // Closed Catmull-Rom spline through the wobbly ellipse points, written as cubic Béziers.
+    const p = (k: number) => pts[(k + pts.length) % pts.length];
+    let dPath = `M${pts[0].x.toFixed(1)},${pts[0].y.toFixed(1)}`;
+    for (let k = 0; k < pts.length; k++) {
+      const [p0, p1, p2, p3] = [p(k - 1), p(k), p(k + 1), p(k + 2)];
+      dPath += `C${(p1.x + (p2.x - p0.x) / 6).toFixed(1)},${(p1.y + (p2.y - p0.y) / 6).toFixed(1)} ${(p2.x - (p3.x - p1.x) / 6).toFixed(1)},${(p2.y - (p3.y - p1.y) / 6).toFixed(1)} ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
+    }
+    return `${dPath}Z`;
+  };
+  return { ...d, land: shape(1), coast: shape(1.07), coast2: shape(1.15), labelX: c.x, labelY: c.y + 6 - ry * 1.1 - 12 };
+});
+const roads = cities.flatMap((a) =>
+  cities
+    .filter((b) => b.i > a.i)
+    .map((b) => ({ a, b, w: a.books.filter((x) => b.books.includes(x)).length }))
+    .filter((e) => e.w >= 2 || (e.w === 1 && e.a.domain === e.b.domain))
+    .map((e) => {
+      const sea = e.a.domain !== e.b.domain;
+      const mx = (e.a.x + e.b.x) / 2;
+      const my = (e.a.y + e.b.y) / 2;
+      const bend = sea ? 0.18 : 0.08;
+      const cx = mx - (e.b.y - e.a.y) * bend;
+      const cy = my + (e.b.x - e.a.x) * bend;
+      return { ...e, sea, d: `M${e.a.x.toFixed(1)},${e.a.y.toFixed(1)}Q${cx.toFixed(1)},${cy.toFixed(1)} ${e.b.x.toFixed(1)},${e.b.y.toFixed(1)}` };
+    }),
+);
+
 const cardText = (b: (typeof data.books)[number]): string | undefined =>
   b.verdict ?? b.myThoughts[0]?.text ?? b.highlights[0];
 
@@ -196,6 +265,92 @@ const stats = [
       </section>
     </div>
 
+    <section class="bk-atlas" aria-label="知识地图">
+      <div class="bk-map-scroll">
+        <svg class="bk-map" viewBox={`0 0 ${MAP.w} ${MAP.h}`} role="group" aria-label={`知识地图：${mapDomains.map((d) => `${d.name} ${d.topics} 个主题`).join("，")}`}>
+          <defs>
+            <pattern id="bk-sea" width="46" height="22" patternUnits="userSpaceOnUse">
+              <path d="M4 13q5-5 10 0t10 0" class="bk-wave" />
+            </pattern>
+          </defs>
+          <defs>
+            <clipPath id="bk-map-clip">
+              <rect x="18" y="18" width={MAP.w - 36} height={MAP.h - 36} />
+            </clipPath>
+          </defs>
+          <rect class="bk-map-sea" x="10" y="10" width={MAP.w - 20} height={MAP.h - 20} />
+          <rect class="bk-map-frame" x="10" y="10" width={MAP.w - 20} height={MAP.h - 20} />
+          <rect class="bk-map-frame is-inner" x="17" y="17" width={MAP.w - 34} height={MAP.h - 34} />
+          {regions.map((r) => (
+            <g class="bk-region" clip-path="url(#bk-map-clip)">
+              <path class="bk-coast is-far" d={r.coast2} />
+              <path class="bk-coast" d={r.coast} />
+              <path class="bk-land" d={r.land} />
+            </g>
+          ))}
+          {roads.map((e) => (
+            <path
+              class:list={["bk-road", { "is-sea": e.sea }]}
+              d={e.d}
+              data-a={e.a.i}
+              data-b={e.b.i}
+              style={`stroke-width:${Math.min(0.8 + 0.55 * e.w, 3.4).toFixed(2)}`}
+            />
+          ))}
+          {regions.map((r) => (
+            <text class="bk-region-label" x={r.labelX} y={r.labelY} text-anchor="middle">
+              {r.name}
+              <tspan class="bk-region-count" dx="8">{r.books} 本</tspan>
+            </text>
+          ))}
+          {cities.map((t) => (
+            <g
+              class="bk-city"
+              data-topic={t.i}
+              tabindex="0"
+              role="button"
+              aria-label={`${t.name}，${t.books.length} 本书`}
+              data-tip={`${t.name}｜${t.books.length} 本书｜≥ ${t.hours} 小时`}
+            >
+              <circle class="bk-city-hit" cx={t.x} cy={t.y} r="20" />
+              <circle class="bk-city-ring" cx={t.x} cy={t.y} r={t.r} />
+              <circle class="bk-city-dot" cx={t.x} cy={t.y} r="1.9" />
+              <text class="bk-city-label" x={t.x} y={t.y + t.r + 15} text-anchor="middle">{t.name}</text>
+            </g>
+          ))}
+          <g class="bk-compass" transform={`translate(78 ${MAP.h - 82})`}>
+            <circle r="30" class="bk-compass-ring" />
+            <circle r="24" class="bk-compass-ring is-thin" />
+            <path d="M0 -40 L6 0 L0 40 L-6 0 Z" class="bk-compass-needle" />
+            <path d="M-40 0 L0 5 L40 0 L0 -5 Z" class="bk-compass-needle is-light" />
+            <text y="-46" text-anchor="middle" class="bk-compass-n">北</text>
+          </g>
+          <g class="bk-legend" transform={`translate(${MAP.w - 200} ${MAP.h - 62})`}>
+            <path d="M0 0h34" class="bk-road" style="stroke-width:2" />
+            <text x="44" y="4">同领域共读的书</text>
+            <path d="M0 22h34" class="bk-road is-sea" style="stroke-width:2" />
+            <text x="44" y="26">跨领域共读的书</text>
+          </g>
+        </svg>
+      </div>
+
+      <ol class="bk-topics">
+        {cities.map((t) => (
+          <li>
+            <button class="bk-topic" type="button" data-topic={t.i} aria-haspopup="dialog">
+              <span class="bk-topic-domain">{t.domain}</span>
+              <span class="bk-topic-name">{t.name}</span>
+              {t.oneLiner && <span class="bk-topic-line">{t.oneLiner}</span>}
+              <span class="bk-book-meta">
+                <span>{t.books.length} 本书</span>
+                <span>≥ {t.hours} h</span>
+              </span>
+            </button>
+          </li>
+        ))}
+      </ol>
+    </section>
+
     <section class="bk-picks">
       <div class="bk-tools">
         <div class="bk-sort" role="group" aria-label="排序方式">
@@ -206,18 +361,18 @@ const stats = [
           只看推荐<span>{data.books.filter((b) => b.recommended).length}</span>
         </button>
       </div>
-      <div class="bk-filter" role="tablist" aria-label="按分类筛选">
+      <div class="bk-filter" role="tablist" aria-label="按领域筛选">
         <button type="button" class="bk-chip-btn is-active" data-cat="all" role="tab" aria-selected="true">全部<span>{data.books.length}</span></button>
-        {data.bookCategories.map((c) => (
-          <button type="button" class="bk-chip-btn" data-cat={c} role="tab" aria-selected="false">
-            {c}<span>{data.books.filter((b) => b.category === c).length}</span>
+        {data.domains.map((d) => (
+          <button type="button" class="bk-chip-btn" data-cat={d.name} role="tab" aria-selected="false">
+            {d.name}<span>{d.books}</span>
           </button>
         ))}
       </div>
 
       <ol class="bk-grid">
         {data.books.map((b, i) => (
-          <li data-cat={b.category} data-order={i} data-read={b.readAt ?? ""} data-reco={b.recommended ? "1" : undefined}>
+          <li data-cat={b.domains.join("|")} data-order={i} data-read={b.readAt ?? ""} data-reco={b.recommended ? "1" : undefined}>
             <button class="bk-book" type="button" data-idx={i} aria-haspopup="dialog">
               <span class="bk-shelf">
                 {b.recommended && <span class="bk-reco">推荐</span>}
@@ -242,7 +397,7 @@ const stats = [
                 <span class="bk-book-meta">
                   <span>{b.finished ? `${b.finished.slice(0, 7).replace("-", ".")} 读完` : `读到 ${b.progress}%`}</span>
                   {b.hours > 0 && <span>≥ {b.hours} h</span>}
-                  <span>{b.category}</span>
+                  <span>{b.domains[0]}</span>
                 </span>
               </span>
             </button>
@@ -251,7 +406,7 @@ const stats = [
       </ol>
     </section>
 
-    <dialog class="bk-dialog" id="bk-dialog" aria-labelledby="bk-dialog-title">
+    <dialog class="bk-dialog" id="bk-dialog" aria-labelledby="bk-dialog-title" data-version={data.generatedAt}>
       <div class="bk-dialog-inner">
         <button class="bk-close" type="button" data-close aria-label="关闭">×</button>
         <div class="bk-dialog-body" id="bk-dialog-body"></div>
@@ -316,7 +471,8 @@ const stats = [
   let recoOnly = false;
   const applyFilter = () => {
     document.querySelectorAll<HTMLElement>(".bk-grid li").forEach((li) => {
-      li.hidden = (activeCat !== "all" && li.dataset.cat !== activeCat) || (recoOnly && !li.dataset.reco);
+      const inDomain = activeCat === "all" || (li.dataset.cat ?? "").split("|").includes(activeCat);
+      li.hidden = !inDomain || (recoOnly && !li.dataset.reco);
     });
   };
 
@@ -342,33 +498,156 @@ const stats = [
   });
 
   type Book = {
-    title: string; author: string; cover: string; category: string; rating: number; progress: number;
+    title: string; author: string; cover: string; rating: number; progress: number;
     finished: string | null; hours: number; marks: number; recommended: boolean; verdict: string | null;
     myThoughts: { text: string; quote: string }[]; quotes: string[]; highlights: string[]; cards: string[]; link: string | null;
+    domains: string[]; topics: number[];
   };
+  type Topic = {
+    name: string; domain: string; oneLiner: string; hours: number; books: number[];
+    viewpoints: { claim: string; text: string; books: { title: string; idx: number | null }[] }[];
+    thoughts: { text: string; quote: string; idx: number }[];
+    highlights: { text: string; idx: number }[];
+  };
+  type Detail = { books: Book[] };
   const dlg = document.getElementById("bk-dialog") as HTMLDialogElement | null;
   const body = document.getElementById("bk-dialog-body");
-  let books: Book[] | null = null;
+  // Details load on first open. A failed request is forgotten so the next click retries.
+  const version = dlg?.dataset.version ?? "";
+  const cache = new Map<string, Promise<unknown>>();
+  const load = <T,>(path: string): Promise<T> => {
+    if (!cache.has(path)) {
+      const req = fetch(`${path}?v=${version}`).then((r) => {
+        if (!r.ok) throw new Error(`${path} ${r.status}`);
+        return r.json();
+      });
+      req.catch(() => cache.delete(path));
+      cache.set(path, req);
+    }
+    return cache.get(path) as Promise<T>;
+  };
+  const loadDetail = async (): Promise<Detail> => ({ books: await load<Book[]>("/books/data.json") });
+  const loadTopics = () => load<Topic[]>("/books/topics.json");
+  const topicNames = new Map(
+    [...document.querySelectorAll<HTMLElement>(".bk-topic")].map((n) => [Number(n.dataset.topic), n.querySelector(".bk-topic-name")?.textContent ?? ""]),
+  );
   const el = (tag: string, cls?: string, text?: string) => {
     const n = document.createElement(tag);
     if (cls) n.className = cls;
     if (text !== undefined) n.textContent = text;
     return n;
   };
-  const render = (b: Book) => {
+  // Small inline button that swaps the dialog to another book or topic.
+  const jump = (label: string, kind: "book" | "topic", idx: number, cls = "bk-jump") => {
+    const btn = el("button", cls, label) as HTMLButtonElement;
+    btn.type = "button";
+    btn.addEventListener("click", () => (kind === "book" ? openBook(idx) : openTopic(idx)));
+    return btn;
+  };
+  const source = (d: Detail, idx: number) => {
+    const cap = el("span", "bk-src");
+    cap.append(jump(`《${d.books[idx].title}》`, "book", idx));
+    return cap;
+  };
+  const show = () => {
+    if (!dlg) return;
+    if (!dlg.open) dlg.showModal();
+    dlg.scrollTop = 0;
+    // Content was just replaced, so put focus on the new heading instead of losing it.
+    const title = document.getElementById("bk-dialog-title");
+    if (title) {
+      title.tabIndex = -1;
+      title.focus({ preventScroll: true });
+    }
+  };
+  const renderTopic = (d: Detail, t: Topic) => {
+    if (!body) return;
+    body.replaceChildren();
+    const head = el("div", "bk-topic-head");
+    head.append(el("p", "bk-dialog-score", `${t.domain} · ${t.books.length} 本书 · 至少 ${t.hours} 小时`));
+    const h3 = el("h3", undefined, t.name); h3.id = "bk-dialog-title"; head.append(h3);
+    body.append(head);
+    if (t.oneLiner) body.append(el("p", "bk-dialog-verdict", t.oneLiner));
+    if (t.viewpoints.length) {
+      const ol = el("ol", "bk-views");
+      t.viewpoints.forEach((v) => {
+        const li = el("li");
+        li.append(el("strong", undefined, v.claim));
+        if (v.text) li.append(el("p", undefined, v.text));
+        if (v.books.length) {
+          const from = el("span", "bk-src");
+          v.books.forEach((b) => from.append(b.idx === null ? el("span", "bk-src-plain", `《${b.title}》`) : jump(`《${b.title}》`, "book", b.idx)));
+          li.append(from);
+        }
+        ol.append(li);
+      });
+      body.append(ol);
+    }
+    if (t.thoughts.length) {
+      const notes = el("div", "bk-notes");
+      t.thoughts.forEach((x) => {
+        const fig = el("figure", "bk-note");
+        fig.append(el("blockquote", undefined, x.quote));
+        const cap = el("figcaption"); cap.append(el("span", undefined, "我"), document.createTextNode(x.text), source(d, x.idx));
+        fig.append(cap); notes.append(fig);
+      });
+      body.append(notes);
+    }
+    if (t.highlights.length) {
+      const ol = el("ol", "bk-marks");
+      t.highlights.forEach((h) => {
+        const li = el("li", undefined, h.text);
+        li.append(source(d, h.idx));
+        ol.append(li);
+      });
+      body.append(ol);
+    }
+    const shelf = el("div", "bk-topic-books");
+    t.books.forEach((i) => {
+      const b = d.books[i];
+      const btn = jump("", "book", i, "bk-mini") as HTMLButtonElement;
+      btn.setAttribute("aria-label", `《${b.title}》`);
+      btn.title = b.title;
+      const img = el("img") as HTMLImageElement;
+      img.src = b.cover; img.alt = ""; img.width = 52; img.height = 74; img.loading = "lazy"; img.referrerPolicy = "no-referrer";
+      btn.append(img); shelf.append(btn);
+    });
+    body.append(shelf);
+  };
+  const openBook = async (i: number) => {
+    const d = await loadDetail();
+    const b = d.books[i];
+    if (!b) return;
+    render(d, b);
+    show();
+  };
+  const openTopic = async (i: number) => {
+    const [d, topics] = await Promise.all([loadDetail(), loadTopics()]);
+    const t = topics[i];
+    if (!t) return;
+    renderTopic(d, t);
+    show();
+  };
+  const render = (d: Detail, b: Book) => {
     if (!body) return;
     body.replaceChildren();
     const head = el("div", "bk-dialog-head");
     const img = el("img") as HTMLImageElement;
     img.src = b.cover; img.alt = ""; img.width = 84; img.height = 120; img.referrerPolicy = "no-referrer";
     const info = el("div");
-    info.append(el("p", "bk-dialog-score", b.recommended ? `推荐 · ${b.category}` : b.category));
+    info.append(el("p", "bk-dialog-score", b.recommended ? `推荐 · ${b.domains.join(" · ")}` : b.domains.join(" · ")));
     const h3 = el("h3", undefined, `《${b.title}》`); h3.id = "bk-dialog-title"; info.append(h3);
     info.append(el("p", "bk-book-author", b.author));
     const pills = el("ul", "bk-pills");
     [b.finished ? `读完于 ${b.finished}` : `读到 ${b.progress}%`, b.hours > 0 ? `至少读了 ${b.hours} 小时` : "", `划线 ${b.marks}`, b.rating ? `微信读书 ${b.rating}%` : ""]
       .filter(Boolean).forEach((p) => pills.append(el("li", undefined, p)));
     info.append(pills); head.append(img, info); body.append(head);
+    if (b.topics.length) {
+      const row = el("div", "bk-topic-row");
+      row.append(el("span", undefined, "归入的主题"));
+      b.topics.forEach((ti) => row.append(jump(topicNames.get(ti) ?? "", "topic", ti, "bk-jump is-topic")));
+      body.append(row);
+    }
     if (b.verdict) body.append(el("p", "bk-dialog-verdict", b.verdict));
     if (b.myThoughts.length) {
       const notes = el("div", "bk-notes");
@@ -399,16 +678,43 @@ const stats = [
     }
   };
   document.querySelectorAll<HTMLButtonElement>(".bk-book").forEach((btn) => {
-    btn.addEventListener("click", async () => {
-      if (!dlg) return;
-      if (!books) books = await fetch("/books/data.json").then((r) => r.json());
-      const b = books?.[Number(btn.dataset.idx)];
-      if (!b) return;
-      render(b);
-      dlg.showModal();
-      dlg.scrollTop = 0;
+    btn.addEventListener("click", () => openBook(Number(btn.dataset.idx)));
+  });
+  document.querySelectorAll<HTMLElement | SVGElement>("[data-topic]").forEach((node) => {
+    node.addEventListener("click", () => openTopic(Number(node.dataset.topic)));
+    node.addEventListener("keydown", (e) => {
+      if (node instanceof SVGElement && ((e as KeyboardEvent).key === "Enter" || (e as KeyboardEvent).key === " ")) {
+        e.preventDefault();
+        openTopic(Number(node.dataset.topic));
+      }
     });
   });
+
+  // Hovering a city lights up its roads and the cities they reach; everything else fades.
+  const map = document.querySelector<SVGSVGElement>(".bk-map");
+  if (map) {
+    const roads = [...map.querySelectorAll<SVGPathElement>(".bk-road[data-a]")];
+    const cities = [...map.querySelectorAll<SVGGElement>(".bk-city")];
+    let hovered: string | null = null;
+    let focused: string | null = null;
+    const focus = (i: string | null) => {
+      map.classList.toggle("is-focus", i !== null);
+      const linked = new Set(i === null ? [] : [i]);
+      roads.forEach((r) => {
+        const on = i !== null && (r.dataset.a === i || r.dataset.b === i);
+        r.classList.toggle("is-on", on);
+        if (on) linked.add(r.dataset.a === i ? r.dataset.b! : r.dataset.a!);
+      });
+      cities.forEach((c) => c.classList.toggle("is-on", linked.has(c.dataset.topic!)));
+    };
+    cities.forEach((c) => {
+      const sync = () => focus(hovered ?? focused);
+      c.addEventListener("pointerenter", () => ((hovered = c.dataset.topic!), sync()));
+      c.addEventListener("pointerleave", () => ((hovered = null), sync()));
+      c.addEventListener("focus", () => ((focused = c.dataset.topic!), sync()));
+      c.addEventListener("blur", () => ((focused = null), sync()));
+    });
+  }
   if (dlg) {
     dlg.addEventListener("click", (e) => {
       if (e.target === dlg) dlg.close();
@@ -978,6 +1284,318 @@ const stats = [
     font-variant-numeric: tabular-nums lining-nums;
   }
 
+  /* Knowledge map: old-map styling in the page's single ink hue. */
+  .bk-atlas {
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--k-border);
+  }
+  .bk-map-scroll {
+    border-radius: 14px;
+  }
+  .bk-map {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--k-serif);
+  }
+  .bk-map-sea {
+    fill: url(#bk-sea);
+  }
+  .bk-wave {
+    fill: none;
+    stroke: var(--k-ink);
+    stroke-opacity: 0.1;
+    stroke-width: 1;
+    stroke-linecap: round;
+  }
+  .bk-map-frame {
+    fill: none;
+    stroke: var(--k-ink);
+    stroke-opacity: 0.55;
+    stroke-width: 1.6;
+  }
+  .bk-map-frame.is-inner {
+    stroke-width: 0.6;
+    stroke-opacity: 0.4;
+  }
+  .bk-land {
+    fill: var(--k-ivory);
+    stroke: var(--k-ink);
+    stroke-opacity: 0.55;
+    stroke-width: 1.3;
+  }
+  .bk-coast {
+    fill: var(--k-canvas);
+    stroke: var(--k-ink);
+    stroke-opacity: 0.22;
+    stroke-width: 1;
+    stroke-dasharray: 2 4;
+  }
+  .bk-coast.is-far {
+    fill: none;
+    stroke-opacity: 0.13;
+  }
+  .bk-road {
+    fill: none;
+    stroke: var(--k-ink);
+    stroke-opacity: 0.3;
+    stroke-linecap: round;
+    transition: stroke-opacity 0.2s;
+  }
+  .bk-road.is-sea {
+    stroke-dasharray: 1 6;
+    stroke-opacity: 0.38;
+  }
+  .bk-map.is-focus .bk-road[data-a] {
+    stroke-opacity: 0.06;
+  }
+  .bk-map.is-focus .bk-road.is-on {
+    stroke-opacity: 0.85;
+  }
+  .bk-region-label {
+    font-size: 19px;
+    letter-spacing: 0.32em;
+    fill: var(--k-ink);
+    font-weight: 500;
+  }
+  .bk-region-count {
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    fill: var(--k-stone);
+  }
+  .bk-city {
+    cursor: pointer;
+    outline: none;
+    transition: opacity 0.2s;
+  }
+  .bk-city-hit {
+    fill: transparent;
+  }
+  .bk-city-ring {
+    fill: var(--k-canvas);
+    stroke: var(--k-ink);
+    stroke-width: 1.6;
+    transition: fill 0.2s;
+  }
+  .bk-city-dot {
+    fill: var(--k-ink);
+  }
+  .bk-city-label {
+    font-size: 13px;
+    fill: var(--k-warm);
+    paint-order: stroke;
+    stroke: var(--k-ivory);
+    stroke-width: 4px;
+    stroke-linejoin: round;
+  }
+  .bk-map.is-focus .bk-city {
+    opacity: 0.35;
+  }
+  .bk-map.is-focus .bk-city.is-on {
+    opacity: 1;
+  }
+  .bk-city:hover .bk-city-dot,
+  .bk-city:focus-visible .bk-city-dot {
+    fill: var(--k-canvas);
+  }
+  .bk-city:hover .bk-city-ring,
+  .bk-city:focus-visible .bk-city-ring {
+    fill: var(--k-ink);
+  }
+  .bk-city:focus-visible .bk-city-label {
+    text-decoration: underline;
+  }
+  .bk-compass-ring {
+    fill: none;
+    stroke: var(--k-ink);
+    stroke-opacity: 0.45;
+  }
+  .bk-compass-ring.is-thin {
+    stroke-dasharray: 1 3;
+  }
+  .bk-compass-needle {
+    fill: var(--k-ink);
+    fill-opacity: 0.7;
+  }
+  .bk-compass-needle.is-light {
+    fill-opacity: 0.25;
+  }
+  .bk-compass-n,
+  .bk-legend text {
+    font-size: 12px;
+    fill: var(--k-stone);
+  }
+  .bk-compass-n {
+    fill: var(--k-ink);
+  }
+
+  .bk-topics {
+    list-style: none;
+    padding: 0;
+    margin: 1.75rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+  .bk-topics li {
+    display: flex;
+  }
+  .bk-topic {
+    all: unset;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 1rem 0.95rem;
+    background: var(--k-ivory);
+    border: 1px solid var(--k-border);
+    border-top: 3px solid var(--k-ink);
+    border-radius: 10px;
+    font-family: var(--k-serif);
+    color: var(--k-text);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .bk-topic:hover {
+    box-shadow: 0 0 0 1px var(--k-border), 0 10px 28px rgba(60, 50, 30, 0.08);
+    transform: translateY(-2px);
+  }
+  .bk-topic:focus-visible {
+    box-shadow: 0 0 0 2px var(--k-ink);
+  }
+  .bk-topic-domain {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--k-ink);
+  }
+  .bk-topic-name {
+    font-size: 1.02rem;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: 0.3rem;
+  }
+  .bk-topic-line {
+    font-size: 0.84rem;
+    line-height: 1.7;
+    color: var(--k-warm);
+    margin-top: 0.55rem;
+  }
+
+  .bk-topic-head h3 {
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-top: 0.15rem;
+  }
+  .bk-views {
+    list-style: none;
+    padding: 0;
+    margin: 1.4rem 0 0;
+    counter-reset: view;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .bk-views li {
+    position: relative;
+    padding-left: 2rem;
+    counter-increment: view;
+  }
+  .bk-views li::before {
+    content: counter(view);
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    width: 1.35rem;
+    height: 1.35rem;
+    display: grid;
+    place-items: center;
+    font-size: 0.72rem;
+    color: var(--k-ink);
+    border: 1px solid var(--k-ink);
+    border-radius: 50%;
+    font-variant-numeric: lining-nums;
+  }
+  .bk-views strong {
+    font-weight: 500;
+    font-size: 0.98rem;
+  }
+  .bk-views p {
+    margin-top: 0.25rem;
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--k-warm);
+  }
+  .bk-src {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0 0.15rem;
+    margin-left: 0.35rem;
+    font-size: 0.76rem;
+    color: var(--k-stone);
+  }
+  .bk-views .bk-src {
+    display: flex;
+    margin: 0.2rem 0 0;
+  }
+  .bk-jump {
+    all: unset;
+    cursor: pointer;
+    color: var(--k-ink);
+    border-radius: 3px;
+  }
+  .bk-jump:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .bk-jump:focus-visible {
+    box-shadow: 0 0 0 2px var(--k-ink);
+  }
+  .bk-topic-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.1rem;
+    font-size: 0.75rem;
+    color: var(--k-stone);
+  }
+  .bk-jump.is-topic {
+    font-size: 0.75rem;
+    background: var(--k-ink-tint);
+    padding: 0.12rem 0.55rem;
+    border-radius: 4px;
+  }
+  .bk-topic-books {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--k-border);
+  }
+  .bk-mini {
+    all: unset;
+    cursor: pointer;
+    border-radius: 2px 4px 4px 2px;
+    transition: transform 0.2s;
+  }
+  .bk-mini:hover {
+    transform: translateY(-2px);
+  }
+  .bk-mini:focus-visible {
+    box-shadow: 0 0 0 2px var(--k-ink);
+  }
+  .bk-mini img {
+    display: block;
+    width: 52px;
+    height: 74px;
+    object-fit: cover;
+    border-radius: 2px 4px 4px 2px;
+    box-shadow: 0 3px 8px rgba(40, 32, 20, 0.18);
+    background: var(--k-border);
+  }
+
   .bk-dialog {
     position: fixed;
     inset: 0;
@@ -1166,11 +1784,26 @@ const stats = [
   }
 
   @media (max-width: 900px) {
-    .bk-grid {
+    .bk-grid,
+    .bk-topics {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
   @media (max-width: 720px) {
+    /* The map keeps its labels readable by scrolling sideways inside its own frame. */
+    .bk-map-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--k-border);
+    }
+    .bk-map {
+      width: 720px;
+      max-width: none;
+    }
+    .bk-topics {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
     .bk-hero h1 {
       font-size: 2.1rem;
     }

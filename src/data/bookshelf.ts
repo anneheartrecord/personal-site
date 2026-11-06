@@ -460,7 +460,13 @@ export const bookshelf = {
     "刘阳只有12岁，没有任何从政经历，却能一眼洞穿本质，这不是当皇帝的料是什么？"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/df232e40813ab8717g01816e"
+   "link": "https://weread.qq.com/web/reader/df232e40813ab8717g01816e",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "23601930",
@@ -509,7 +515,15 @@ export const bookshelf = {
     "行为偏差清单",
     "指数化与资产配置"
    ],
-   "link": "https://weread.qq.com/web/reader/ada325807168230aada7458"
+   "link": "https://weread.qq.com/web/reader/ada325807168230aada7458",
+   "topics": [
+    2,
+    4,
+    5
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "34156605",
@@ -554,7 +568,13 @@ export const bookshelf = {
     "合伙如同婚姻。当爱情和激情消退，他们必须依靠人格、协同和互补因素得以继续下去。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/718323107209303d7180890"
+   "link": "https://weread.qq.com/web/reader/718323107209303d7180890",
+   "topics": [
+    12
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "40055543",
@@ -599,7 +619,15 @@ export const bookshelf = {
     "中央财政预算收入占全国财政预算总收入的比重越来越低，而全国财政预算总收入占GDP的比重也越来越低（图2-2）。不仅中央变得越来越穷，财政整体也越来越穷。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/2a332d10726332f72a34943"
+   "link": "https://weread.qq.com/web/reader/2a332d10726332f72a34943",
+   "topics": [
+    14,
+    28
+   ],
+   "domains": [
+    "职业路径",
+    "人生与心理"
+   ]
   },
   {
    "bid": "674073",
@@ -644,7 +672,13 @@ export const bookshelf = {
     "人格正常的人不那么顾及等级的界线，不做出相应的姿态，总会让人感到别扭。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/7c632ef05a49197c62b53f0"
+   "link": "https://weread.qq.com/web/reader/7c632ef05a49197c62b53f0",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "39304284",
@@ -676,7 +710,14 @@ export const bookshelf = {
     "奏请不用秘密的折本，而非要用公开的题本，也是想让所有人都知道，以博取美誉。再者，这样的好事不留给后任去做，无非沽名钓誉。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e31323507257bc5ce312cfc"
+   "link": "https://weread.qq.com/web/reader/e31323507257bc5ce312cfc",
+   "topics": [
+    28,
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "855812",
@@ -721,7 +762,13 @@ export const bookshelf = {
     "相比之下，如果把所有还幸存的大型野生动物（包括豪猪、企鹅、大象和鲸鱼等等）也拿来称，总重量已经不到1亿吨。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d4a322a05d0f04d4a01f0d6"
+   "link": "https://weread.qq.com/web/reader/d4a322a05d0f04d4a01f0d6",
+   "topics": [
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "44026191",
@@ -769,7 +816,14 @@ export const bookshelf = {
     "稀缺与个人价值",
     "提桶与管道"
    ],
-   "link": "https://weread.qq.com/web/reader/e1e32b00729fc94fe1e824d"
+   "link": "https://weread.qq.com/web/reader/e1e32b00729fc94fe1e824d",
+   "topics": [
+    12,
+    15
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "33810600",
@@ -814,7 +868,15 @@ export const bookshelf = {
     "锻炼的所有好处几乎都产生于最后阶段。我想增强力量，就必须等到肌肉纤维断裂，神经纤维感到疼痛才行，因为这时候自然机制才会予以过度补偿，纤维在48小时后会变得更加坚韧。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/56d325907203e8a856def7f"
+   "link": "https://weread.qq.com/web/reader/56d325907203e8a856def7f",
+   "topics": [
+    10,
+    13
+   ],
+   "domains": [
+    "精力与习惯",
+    "职业路径"
+   ]
   },
   {
    "bid": "33628204",
@@ -859,7 +921,15 @@ export const bookshelf = {
     "所以，一个人想要真正成长，一定要学会写作，因为“只读不写”的学习是不完整的，是低效的。而写作时如果不学会用自己的语言转述，则是无用的。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/6a732ce07201202c6a7b30a"
+   "link": "https://weread.qq.com/web/reader/6a732ce07201202c6a7b30a",
+   "topics": [
+    6,
+    26
+   ],
+   "domains": [
+    "精力与习惯",
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300090202",
@@ -900,7 +970,14 @@ export const bookshelf = {
     "在女权的话题架构当中，女性永远是受害者，而男性则是父权体制背后的最大受益者。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e1c32810813ab89bcg0125fc"
+   "link": "https://weread.qq.com/web/reader/e1c32810813ab89bcg0125fc",
+   "topics": [
+    25,
+    29
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "33902518",
@@ -945,7 +1022,14 @@ export const bookshelf = {
     "在相信他人的时候不附加任何条件。即使没有值得信任的依据也相信，不考虑什么担保，无条件地相信，这就是“信赖”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ec73249072054fb6ec77894"
+   "link": "https://weread.qq.com/web/reader/ec73249072054fb6ec77894",
+   "topics": [
+    24,
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300159706",
@@ -977,7 +1061,13 @@ export const bookshelf = {
     "提出医保报销按住院时长分段支付，简而言之就是住院时间越长，医院所获得的医保支付越少，倒逼患者提前出院，或者说DPC改革宣传的是效率至上，医院治愈患者的速度决定了能拿到多少奖励。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/77d32440813aba4e2g01644a"
+   "link": "https://weread.qq.com/web/reader/77d32440813aba4e2g01644a",
+   "topics": [
+    29
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300070510",
@@ -1022,7 +1112,14 @@ export const bookshelf = {
     "如果只吃晚饭的话，这一顿饭我可以毫无顾忌地享受夏威夷的美味佳肴，因为在一顿饭里我需要摄入供一整天消耗的热量。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d7432d00813ab820bg010313"
+   "link": "https://weread.qq.com/web/reader/d7432d00813ab820bg010313",
+   "topics": [
+    20,
+    22
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300099925",
@@ -1054,7 +1151,11 @@ export const bookshelf = {
     "改变行为可以改变情绪。你不需要等到情绪好转才去改变行为。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/12f326c0813ab8d88g015fdf"
+   "link": "https://weread.qq.com/web/reader/12f326c0813ab8d88g015fdf",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300085869",
@@ -1099,7 +1200,13 @@ export const bookshelf = {
     "尽管稀释后醋的酸性不足以损坏牙齿的牙釉质，但为了安全，我还是建议大家用吸管来喝"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/819321e0813ab880ag01960c"
+   "link": "https://weread.qq.com/web/reader/819321e0813ab880ag01960c",
+   "topics": [
+    11
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "26934843",
@@ -1131,7 +1238,14 @@ export const bookshelf = {
     "这位教练说真正的成功人士也会和其他人一样感到激情消退。唯一不同的是，尽管感到枯燥乏味，他们仍然想办法坚持下去。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bcb32150719afe3bbcbad52"
+   "link": "https://weread.qq.com/web/reader/bcb32150719afe3bbcbad52",
+   "topics": [
+    6,
+    8
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300094743",
@@ -1163,7 +1277,11 @@ export const bookshelf = {
     "行走江湖的人都有慕强心理，跟着强者混就有好处、就能保命，这是颠扑不破的道理，从这一刻开始，宋江已经彻底压过了晁盖。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/58732f20813ab8b82g01305f"
+   "link": "https://weread.qq.com/web/reader/58732f20813ab8b82g01305f",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300071803",
@@ -1195,7 +1313,13 @@ export const bookshelf = {
     "这就是甘卓的性格悲剧，见风使舵，还有沉重的道德包袱，不敢承认自己的欲望。每到关键时刻，他总也改不掉这个毛病。一个看不到自己本性的人，最终只能任人宰割。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/fd3324d0813ab828cg013d16"
+   "link": "https://weread.qq.com/web/reader/fd3324d0813ab828cg013d16",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300024910",
@@ -1236,7 +1360,13 @@ export const bookshelf = {
     "把自己的承诺越当回事、越守得住的人，便越信赖自己；反之，越不当回事、越是守不住的人，便越不相信自己。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/37032210813ab703bg010022"
+   "link": "https://weread.qq.com/web/reader/37032210813ab703bg010022",
+   "topics": [
+    29
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "33298119",
@@ -1281,7 +1411,13 @@ export const bookshelf = {
     "无论是农耕时代还是工业生产时代，社会阶层都在不断固化；财富总值虽然在增加，但是基尼系数在变大，贫富悬殊也在加剧。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/0a43248071fc16c70a4bfba"
+   "link": "https://weread.qq.com/web/reader/0a43248071fc16c70a4bfba",
+   "topics": [
+    27
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "837932",
@@ -1326,7 +1462,13 @@ export const bookshelf = {
     "“我们都认为悲观是智力超群的标志。”“美当然没有绝对的标准。所以追求美才会如此有趣。”“如果你什么都不想做，那么你就去开会吧。”“经济预测的唯一功能是让占星学变得令人尊敬。”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/2e0320e05cc92c2e0796c5a"
+   "link": "https://weread.qq.com/web/reader/2e0320e05cc92c2e0796c5a",
+   "topics": [
+    0
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300129526",
@@ -1374,7 +1516,13 @@ export const bookshelf = {
     "指数化与资产配置",
     "提桶与管道"
    ],
-   "link": "https://weread.qq.com/web/reader/c3f32970813ab9918g01643e"
+   "link": "https://weread.qq.com/web/reader/c3f32970813ab9918g01643e",
+   "topics": [
+    5
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "739613",
@@ -1419,7 +1567,16 @@ export const bookshelf = {
     "反思：是否发生过一些事使你改变了你的生活？你是否按照自己的洞察力或是知识来应对的呢？"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e52321a05b491de52ec3a43"
+   "link": "https://weread.qq.com/web/reader/e52321a05b491de52ec3a43",
+   "topics": [
+    25,
+    27,
+    29,
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "39429976",
@@ -1451,7 +1608,15 @@ export const bookshelf = {
     "“我这全是为了普发那个标，老这么僵着得拖到什么时候？我看这下应该能定了。”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/2e6320207259a7582e675d9"
+   "link": "https://weread.qq.com/web/reader/2e6320207259a7582e675d9",
+   "topics": [
+    14,
+    28
+   ],
+   "domains": [
+    "职业路径",
+    "人生与心理"
+   ]
   },
   {
    "bid": "843464",
@@ -1492,7 +1657,13 @@ export const bookshelf = {
     "第二件是将练习课的时间限制在1小时左右。如果比那个时间长得多，你将无法保持高度的专注。而且，你刚开始练习的时候，可能还要将时间压缩一些。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/2e932c005cdec82e9a0e3e8"
+   "link": "https://weread.qq.com/web/reader/2e932c005cdec82e9a0e3e8",
+   "topics": [
+    26
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300192100",
@@ -1537,7 +1708,16 @@ export const bookshelf = {
     "必须把以前认为的这个世界上最丢人的事情——借钱，反复干上很多遍。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c7f32200813abb18ag0101be"
+   "link": "https://weread.qq.com/web/reader/c7f32200813abb18ag0101be",
+   "topics": [
+    12,
+    13,
+    16,
+    17
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "909893",
@@ -1574,7 +1754,13 @@ export const bookshelf = {
     "遏制住弗里曼所说的自主权的侵蚀。抵抗不是徒劳的：你对电子通讯的控制力比最初想象的要强。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/0e5327005de2450e58c115d"
+   "link": "https://weread.qq.com/web/reader/0e5327005de2450e58c115d",
+   "topics": [
+    8
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300076915",
@@ -1611,7 +1797,13 @@ export const bookshelf = {
    "cards": [
     "指数化与资产配置"
    ],
-   "link": "https://weread.qq.com/web/reader/b5632530813ab848bg0159bc"
+   "link": "https://weread.qq.com/web/reader/b5632530813ab848bg0159bc",
+   "topics": [
+    5
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "41439374",
@@ -1648,7 +1840,13 @@ export const bookshelf = {
     "等待最好的道歉时机，让你失去过朋友；等待最好的表白机会，让你失去过爱情；等待最好的状态，让你连尝试的机会都没有——我们的一部分生命，就是在这样的等待中死去的。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/950325507278508e950fc8d"
+   "link": "https://weread.qq.com/web/reader/950325507278508e950fc8d",
+   "topics": [
+    17
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "827167",
@@ -1693,7 +1891,11 @@ export const bookshelf = {
     "女性拥有两条——一条是作为备份用的，X染色体是认知的“热点”，它携带了与大脑构造有关的众多基因。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f27320705c9f1ff27ab5f2f"
+   "link": "https://weread.qq.com/web/reader/f27320705c9f1ff27ab5f2f",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300064234",
@@ -1735,7 +1937,16 @@ export const bookshelf = {
     "指数化与资产配置",
     "提桶与管道"
    ],
-   "link": "https://weread.qq.com/web/reader/6ab326d0813ab7f97g014662"
+   "link": "https://weread.qq.com/web/reader/6ab326d0813ab7f97g014662",
+   "topics": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300113465",
@@ -1767,7 +1978,11 @@ export const bookshelf = {
     "家庭的父兄，国家的君长，以及一切年事高、德行高、识见高的人，我们都应该恭敬对待。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/b6832d40813ab92d2g015378"
+   "link": "https://weread.qq.com/web/reader/b6832d40813ab92d2g015378",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300129525",
@@ -1807,7 +2022,14 @@ export const bookshelf = {
     "指数化与资产配置",
     "周期与估值钟摆"
    ],
-   "link": "https://weread.qq.com/web/reader/474328c0813ab9918g0157ba"
+   "link": "https://weread.qq.com/web/reader/474328c0813ab9918g0157ba",
+   "topics": [
+    3,
+    5
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "33091654",
@@ -1852,7 +2074,13 @@ export const bookshelf = {
     "有一位客户把他的生活理想和职业目标印在卡片的两面，夹在车里的遮阳板上面。每天早晨上班途中，他会拿出几分钟温习自己的职业目标；晚上下班途中，他把卡片翻到背面，阅读自己的人生理想。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/4263296071f8f0464264d41"
+   "link": "https://weread.qq.com/web/reader/4263296071f8f0464264d41",
+   "topics": [
+    7
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "41355404",
@@ -1884,7 +2112,13 @@ export const bookshelf = {
     "通过“尊重生命能量”，她认识到自己是在碌碌无为中浪费才华。“他们付的钱不值得我留下来承受这么大的痛苦。”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/50932c207277088c5095c38"
+   "link": "https://weread.qq.com/web/reader/50932c207277088c5095c38",
+   "topics": [
+    2
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "32886540",
@@ -1916,7 +2150,14 @@ export const bookshelf = {
     "冥想是间接瘦身的最佳方法之一。冥想能改善和瘦身相关的许多方面，降低皮质醇水平，增强意志力，提升意识和专注力，改善睡眠，这些方面都有助于体重管理。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/3f632cd071f5cf0c3f6df73"
+   "link": "https://weread.qq.com/web/reader/3f632cd071f5cf0c3f6df73",
+   "topics": [
+    6,
+    11
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300206286",
@@ -1953,7 +2194,11 @@ export const bookshelf = {
     "两条路线，两种代价。美国保了创新，失去了公平；日本保了稳定，失去了活力。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/18632990813abb714g016bba"
+   "link": "https://weread.qq.com/web/reader/18632990813abb714g016bba",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "855556",
@@ -1998,7 +2243,15 @@ export const bookshelf = {
     "争强好胜，但气场强、气量弱，脾气大、境界小，手段多、原则少；是非观模糊，好以成败论英雄，生活观低俗，以外在物质填补内在空虚。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e7b322705d0e04e7b85e068"
+   "link": "https://weread.qq.com/web/reader/e7b322705d0e04e7b85e068",
+   "topics": [
+    14,
+    28
+   ],
+   "domains": [
+    "职业路径",
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300069022",
@@ -2030,7 +2283,16 @@ export const bookshelf = {
     "事关安全的钱不能省家里的电源插座之类的东西，绝对不能图便宜，因为这涉及安全。在这样的事情上，没有“万一”，因为天天都在用，所以最终结果是“一定会出事”。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bc632200813ab8176g012c38"
+   "link": "https://weread.qq.com/web/reader/bc632200813ab8176g012c38",
+   "topics": [
+    7,
+    8,
+    9,
+    10
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "27423355",
@@ -2062,7 +2324,11 @@ export const bookshelf = {
     "这个大统一模型只是这个宇宙的，当你们得到它后就会知道，还存在着无数其它的宇宙，你们接着又会渴求得到制约所有宇宙的超统一模型。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ac132cd071a2727bac1b359"
+   "link": "https://weread.qq.com/web/reader/ac132cd071a2727bac1b359",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300200542",
@@ -2107,7 +2373,14 @@ export const bookshelf = {
     "创造价值已经做到了，但兑现价值没实现。而这两步需要的是两种不同的能力：擅长做事，并不意味着擅长为自己争取回报。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/33c32d30813abb4d6g0122ff"
+   "link": "https://weread.qq.com/web/reader/33c32d30813abb4d6g0122ff",
+   "topics": [
+    15,
+    17
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "924592",
@@ -2148,7 +2421,13 @@ export const bookshelf = {
     "行为经济学的真正目标就是：努力了解我们到底如何运作，更充分地观察我们的偏见，这些偏见如何影响我们，然后才有希望帮助人们更好地做决策。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/84e325e05e1bb084e73d5ae"
+   "link": "https://weread.qq.com/web/reader/84e325e05e1bb084e73d5ae",
+   "topics": [
+    4
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "820821",
@@ -2193,7 +2472,13 @@ export const bookshelf = {
     "每个人都必须从两种痛苦中二择其一：自我约束，或者追悔莫及"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/96d32d705c865596d27aca2"
+   "link": "https://weread.qq.com/web/reader/96d32d705c865596d27aca2",
+   "topics": [
+    25
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "907771",
@@ -2238,7 +2523,14 @@ export const bookshelf = {
     "那些内核最小、最干净的编程语言才会存在于进化的主干上。一种语言的内核设计得越小、越干净，它的生命力就越顽强。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/5b9328f05dd9fb5b922d1eb"
+   "link": "https://weread.qq.com/web/reader/5b9328f05dd9fb5b922d1eb",
+   "topics": [
+    20,
+    23
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300063608",
@@ -2283,7 +2575,13 @@ export const bookshelf = {
     "假如一项活动预估超过7个番茄钟，那就说明它太复杂了。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/359321f0813ab7f58g018a39"
+   "link": "https://weread.qq.com/web/reader/359321f0813ab7f58g018a39",
+   "topics": [
+    8
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "22720170",
@@ -2317,7 +2615,13 @@ export const bookshelf = {
    "quotes": [],
    "highlights": [],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/cf132190715aaeaacf12d9b"
+   "link": "https://weread.qq.com/web/reader/cf132190715aaeaacf12d9b",
+   "topics": [
+    25
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "852290",
@@ -2354,7 +2658,13 @@ export const bookshelf = {
     "儿童都会认为自己是世界的中心，对其他人的处境和感受兴味索然。正因为如此，父母离婚对儿童会造成莫大的创伤。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/cf3326205d0142cf3606771"
+   "link": "https://weread.qq.com/web/reader/cf3326205d0142cf3606771",
+   "topics": [
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "25375806",
@@ -2391,7 +2701,14 @@ export const bookshelf = {
     "培养习惯的燃料有两个，一个是热情，一个是痛苦。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ef632a407183343eef6fe6e"
+   "link": "https://weread.qq.com/web/reader/ef632a407183343eef6fe6e",
+   "topics": [
+    6,
+    10
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300075417",
@@ -2428,7 +2745,13 @@ export const bookshelf = {
     "正是因为身材的变化慢到几乎让我们感觉不到，所以减肥时也不能太着急，给自己3个月的时间，制订能够坚持下去的计划，这一点非常有必要。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/266327a0813ab83f5g017f5b"
+   "link": "https://weread.qq.com/web/reader/266327a0813ab83f5g017f5b",
+   "topics": [
+    11
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "750578",
@@ -2473,7 +2796,11 @@ export const bookshelf = {
     "训练日记的内容不外乎锻炼日期、所做的练习以及相应的组数与次数等细节，必要时也可以附上一些相关的评注——当然，这不是必需的。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/a8a323405b73f2a8aeea63c"
+   "link": "https://weread.qq.com/web/reader/a8a323405b73f2a8aeea63c",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300131812",
@@ -2505,7 +2832,13 @@ export const bookshelf = {
     "自由不是一种状态，甚至不是一种结果，而是一种能力，一种深度自知、无畏向前，与自己坦然共处的能力。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d2d322f0813ab99fdg012f73"
+   "link": "https://weread.qq.com/web/reader/d2d322f0813ab99fdg012f73",
+   "topics": [
+    17
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300198826",
@@ -2542,7 +2875,11 @@ export const bookshelf = {
     "●因为简单致富之路很简单，所以我们更不易偏离它，更可能坚持到底。●简单致富之路的确简单，但即使如此，始终在这条路上前行也需要毅力。你需要屏蔽噪声，迷途知返，并持之以恒。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d1432d60813abb42ag016594"
+   "link": "https://weread.qq.com/web/reader/d1432d60813abb42ag016594",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "641029",
@@ -2583,7 +2920,13 @@ export const bookshelf = {
     "无论是猪还是狗，都没有亲自生产过一粒粮食，而他们的数目却又总是那么多，胃口也一直都很好。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/dc432dd059c805dc4045f8a"
+   "link": "https://weread.qq.com/web/reader/dc432dd059c805dc4045f8a",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "32368658",
@@ -2618,7 +2961,13 @@ export const bookshelf = {
     "成功人士总是先把钱付给自己。在支付任何账单之前，他们会从中拨出10%，存入自己的储蓄、投资或退休账户中。他们谨慎地进行投资，定期查看存款额，为投资回报设置现实可行的目标。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/839322a071ede812839f792"
+   "link": "https://weread.qq.com/web/reader/839322a071ede812839f792",
+   "topics": [
+    2
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300177660",
@@ -2663,7 +3012,13 @@ export const bookshelf = {
     "弹唱、朗读、跑步等活动，只要真心喜欢，做久了都容易进入大师冥想一般的状态，最近流行的心流(Flow)指的也是这种状态。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/59b324d0813ababe6g010489"
+   "link": "https://weread.qq.com/web/reader/59b324d0813ababe6g010489",
+   "topics": [
+    8
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "42766048",
@@ -2700,7 +3055,13 @@ export const bookshelf = {
     "食物可以储存后，政治精英即可掌控他人生产的食物，强行征税，自己无须从事农牧，能够把全副心神放在政治活动上。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/843329f0728c8ee08434fb1"
+   "link": "https://weread.qq.com/web/reader/843329f0728c8ee08434fb1",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "912417",
@@ -2732,7 +3093,11 @@ export const bookshelf = {
     "他们手里已经有很多钞票了。如果他们不接受，那些钞票只会更加贬值。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/a38326805dec21a389a21c8"
+   "link": "https://weread.qq.com/web/reader/a38326805dec21a389a21c8",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "44678189",
@@ -2764,7 +3129,13 @@ export const bookshelf = {
     "少数为他人着想并努力服务他人的人就占据巨大的优势，这样的人几乎不会遇到竞争。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/16632a4072a9bc2d1669697"
+   "link": "https://weread.qq.com/web/reader/16632a4072a9bc2d1669697",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "41147996",
@@ -2801,7 +3172,13 @@ export const bookshelf = {
     "动机(motivation)、能力(ability)和提示(prompt)同时出现的时候，行为就会发生。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/614325a07273de5c614b852"
+   "link": "https://weread.qq.com/web/reader/614325a07273de5c614b852",
+   "topics": [
+    6
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "855327",
@@ -2833,7 +3210,13 @@ export const bookshelf = {
     "他乃少数擅长倾听之人。即便默不作声，讲述者也能感知他在安静、坦诚、满怀期待地倾听"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/3a832f705d0d1f3a8ec72ff"
+   "link": "https://weread.qq.com/web/reader/3a832f705d0d1f3a8ec72ff",
+   "topics": [
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "33810356",
@@ -2870,7 +3253,13 @@ export const bookshelf = {
     "就要通过你的观察和手册当中所提供的结构，不断交替运用归纳法和演绎法，如此才能找到解决之道。对这个交织过程的正确运用，正式地说就是科学方法。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/3a332f307203e7b43a34b29"
+   "link": "https://weread.qq.com/web/reader/3a332f307203e7b43a34b29",
+   "topics": [
+    26
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "26797118",
@@ -2902,7 +3291,13 @@ export const bookshelf = {
     "赶快奔向目标，并且如果你珍惜你自己，赶快放弃一切妄念，趁着尚可为力的时候救救自己吧！"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/5ce32e707198e43e5ce7fe4"
+   "link": "https://weread.qq.com/web/reader/5ce32e707198e43e5ce7fe4",
+   "topics": [
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300138255",
@@ -2931,7 +3326,13 @@ export const bookshelf = {
     "如果每个人都是一颗小星球，逝去的亲友就是身边的暗物质。我愿能再见你，我知我再见不到你。但你的引力仍在。我感激我们的光锥曾彼此重叠，而你永远改变了我的星轨。纵使再不能相见，你仍是我所在的星系未曾分崩离析的原因，是我宇宙之网的永恒组成。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/b7232cf0813ab9c81g015f81"
+   "link": "https://weread.qq.com/web/reader/b7232cf0813ab9c81g015f81",
+   "topics": [
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300014694",
@@ -2957,7 +3358,11 @@ export const bookshelf = {
     "虽然理论上可能很明显，有限游戏的参与者都是自愿参与的，但通常，有限游戏参与者意识不到这种绝对自由，并且会认为无论自己做什么都是必须做的。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f1832760813ab6c3dg014eff"
+   "link": "https://weread.qq.com/web/reader/f1832760813ab6c3dg014eff",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "37730897",
@@ -3002,7 +3407,13 @@ export const bookshelf = {
     "我们每次打开一个页面时，浏览器都会自动为这个页面创建一个window对象。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/a3f32360723fba51a3f53c4"
+   "link": "https://weread.qq.com/web/reader/a3f32360723fba51a3f53c4",
+   "topics": [
+    21
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300025230",
@@ -3034,7 +3445,13 @@ export const bookshelf = {
     "究其根本原因，还是手中的流动资金和金融资产太低了，所有资产都被套在一套不能动的房子里。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/79232860813ab705bg010e68"
+   "link": "https://weread.qq.com/web/reader/79232860813ab705bg010e68",
+   "topics": [
+    29
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300063617",
@@ -3079,7 +3496,15 @@ export const bookshelf = {
     "如果你希望在这个行业出类拔萃，那你必须走进这一阶段，真正喜欢、享受学习。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/98932f30813ab7f59g017f05"
+   "link": "https://weread.qq.com/web/reader/98932f30813ab7f59g017f05",
+   "topics": [
+    12,
+    15,
+    16
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "47117469",
@@ -3102,7 +3527,11 @@ export const bookshelf = {
     "这个年代，即使在八大员中驾驶员的含金量也是数一数二的，是给个县令都不换的黄金职业。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/5ff32cf072cef49d5ff0215"
+   "link": "https://weread.qq.com/web/reader/5ff32cf072cef49d5ff0215",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "25623499",
@@ -3147,7 +3576,11 @@ export const bookshelf = {
     "在长期价值投资者眼里，它根本就不是风险，哪怕是30%、50%以上的波动也不是风险"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/861320907186fbcb861428a"
+   "link": "https://weread.qq.com/web/reader/861320907186fbcb861428a",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "26843113",
@@ -3190,7 +3623,16 @@ export const bookshelf = {
     "运气与风险的一体两面",
     "行为偏差清单"
    ],
-   "link": "https://weread.qq.com/web/reader/49d32d20719997e949dba3b"
+   "link": "https://weread.qq.com/web/reader/49d32d20719997e949dba3b",
+   "topics": [
+    0,
+    1,
+    3,
+    5
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300103484",
@@ -3238,7 +3680,14 @@ export const bookshelf = {
     "周期与估值钟摆",
     "指数化与资产配置"
    ],
-   "link": "https://weread.qq.com/web/reader/a0832000813ab8eecg0148d4"
+   "link": "https://weread.qq.com/web/reader/a0832000813ab8eecg0148d4",
+   "topics": [
+    3,
+    5
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "33063911",
@@ -3261,7 +3710,11 @@ export const bookshelf = {
     "盖天下之事，不难于立法，而难于法之必行；不难于听言，而难于言之必效"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/cf33246071f883e7cf3d64d"
+   "link": "https://weread.qq.com/web/reader/cf33246071f883e7cf3d64d",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300014094",
@@ -3293,7 +3746,11 @@ export const bookshelf = {
     "什么是保全服务？保全服务是指保单生效后一系列后续服务，例如投保人信息变更、受益人变更、缴费银行卡变更、退保等。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/17532bb0813ab6c01g014a7f"
+   "link": "https://weread.qq.com/web/reader/17532bb0813ab6c01g014a7f",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "933334",
@@ -3320,7 +3777,11 @@ export const bookshelf = {
     "女孩生日总需要礼物的，这样会有被人重视的感觉"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/05e329405e3dd605ee04cec"
+   "link": "https://weread.qq.com/web/reader/05e329405e3dd605ee04cec",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300052405",
@@ -3357,7 +3818,13 @@ export const bookshelf = {
     "无论是对老板、伴侣、室友、同事的承诺，还是对合同、事业、社会的承诺。这些承诺决定了我们如何在社会上安身立命，以及如何在心中认知自己。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/23132c00813ab7af8g015e43"
+   "link": "https://weread.qq.com/web/reader/23132c00813ab7af8g015e43",
+   "topics": [
+    13
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300004358",
@@ -3398,7 +3865,13 @@ export const bookshelf = {
     "长远来看，你还需要让恒脂系统适应你的目标体重。至于如何才能让恒脂系统满意，我们所知尚少，还需更多研究，但已有证据暗示，多吃蛋白质、少吃高奖赏食物会有所帮助。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/15532430813ab6833g018271"
+   "link": "https://weread.qq.com/web/reader/15532430813ab6833g018271",
+   "topics": [
+    11
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300024931",
@@ -3430,7 +3903,11 @@ export const bookshelf = {
     "流量的背后是企业可以影响的潜在用户。之所以用“潜在”，是因为企业需要付出各种成本才能最终将这些用户转化成购买用户。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/43832a10813ab703dg011c78"
+   "link": "https://weread.qq.com/web/reader/43832a10813ab703dg011c78",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300073011",
@@ -3475,7 +3952,15 @@ export const bookshelf = {
     "因为人类最大的满足感来源并不是物质水平绝对值的提升，而是自己在全人口序列中相对位置的提升。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/6fc32eb0813ab8305g011b01"
+   "link": "https://weread.qq.com/web/reader/6fc32eb0813ab8305g011b01",
+   "topics": [
+    28,
+    29,
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "23562424",
@@ -3512,7 +3997,13 @@ export const bookshelf = {
     "他会在哪个位置？他是什么样子？什么神情？看着他，他会和你构建一个什么样的关系？"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/438329e0716788b84381873"
+   "link": "https://weread.qq.com/web/reader/438329e0716788b84381873",
+   "topics": [
+    25
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "33091838",
@@ -3549,7 +4040,11 @@ export const bookshelf = {
     "我犯了一个经典错误，用相对标准给它估值。我当时应该问自己一句：“从绝对标准来看，它便宜吗？”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e183280071f8f0fee18f4cc"
+   "link": "https://weread.qq.com/web/reader/e183280071f8f0fee18f4cc",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "32886497",
@@ -3567,10 +4062,6 @@ export const bookshelf = {
    "recommended": false,
    "readAt": "2025-08-24",
    "myThoughts": [
-    {
-     "text": "难说，需要居住在一个开明的 法治的社会",
-     "quote": "不依赖于任何地方的任何实体，因此永远不会被任何实体力量完全阻碍、摧毁或没收"
-    },
     {
      "text": "usdt等稳定币",
      "quote": "比特币本身无法扩展到让世界上的每一笔金融交易都向所有人广播，并纳入区块链，它需要有一种更轻便、更有效的二级支付系统。"
@@ -3590,7 +4081,14 @@ export const bookshelf = {
     "将比特币的匿名性与互联网的匿名性做一下比较是很有趣的：它们都取决于你藏的有多好，以及找的人有多认真。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/722328e071f5cee17229964"
+   "link": "https://weread.qq.com/web/reader/722328e071f5cee17229964",
+   "topics": [
+    2,
+    5
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300033700",
@@ -3635,7 +4133,11 @@ export const bookshelf = {
     "注意力容易涣散是人类的本能。手机简直是人类这个弱点的“天敌”。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/73032d20813ab73aag0107dc"
+   "link": "https://weread.qq.com/web/reader/73032d20813ab73aag0107dc",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "24282918",
@@ -3680,7 +4182,15 @@ export const bookshelf = {
     "就像下棋一样，你旁边站着一个世界冠军，他不断地指挥你下棋，他的指挥绝大多数都比你高明，但是，你如果都听了他的，那你不过是他的傀儡罢了，下棋还有什么意思？所以别理他，听自己的，是输是赢不重要，重要的是，这是你自己在下棋！"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/b8432d2071728726b84a74f"
+   "link": "https://weread.qq.com/web/reader/b8432d2071728726b84a74f",
+   "topics": [
+    9,
+    25
+   ],
+   "domains": [
+    "精力与习惯",
+    "人生与心理"
+   ]
   },
   {
    "bid": "34061471",
@@ -3717,7 +4227,13 @@ export const bookshelf = {
     "钱包是比特币的重要组成部分，与大部分人理解不同的是，钱包里没有比特币，只有比特币私钥。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/a0532bc07207bc9fa0540e0"
+   "link": "https://weread.qq.com/web/reader/a0532bc07207bc9fa0540e0",
+   "topics": [
+    19
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300197381",
@@ -3762,7 +4278,13 @@ export const bookshelf = {
     "选择一项核心技能，设计孤训单元：______次／周的频次，专注于当前最大的弱点_______。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/32732670813abb39ag011d6c"
+   "link": "https://weread.qq.com/web/reader/32732670813abb39ag011d6c",
+   "topics": [
+    17
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300132831",
@@ -3807,7 +4329,13 @@ export const bookshelf = {
     "在一个孤立系统中，如果没有外力做功，那么环境中的运动都会因为摩擦力，在有限时间里停下，各种势能也会消失，温度也会趋同。最终，整个系统会退化为死气沉沉、毫无生气的一团物质。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/9e632410813ab9a63g0113ee"
+   "link": "https://weread.qq.com/web/reader/9e632410813ab9a63g0113ee",
+   "topics": [
+    6
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300140844",
@@ -3844,7 +4372,15 @@ export const bookshelf = {
     "我们如何感知和解读他人的观点也完全取决于自己的信念和偏见。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/13832dc0813ab9d84g014a4c"
+   "link": "https://weread.qq.com/web/reader/13832dc0813ab9d84g014a4c",
+   "topics": [
+    9,
+    27
+   ],
+   "domains": [
+    "精力与习惯",
+    "人生与心理"
+   ]
   },
   {
    "bid": "843465",
@@ -3889,7 +4425,13 @@ export const bookshelf = {
     "努力学习数学和科学的时候，我们能做的最重要的一件事，就是给脑中的抽象概念赋予生命。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/7e7321805cdec97e71b496e"
+   "link": "https://weread.qq.com/web/reader/7e7321805cdec97e71b496e",
+   "topics": [
+    26
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300151985",
@@ -3934,7 +4476,11 @@ export const bookshelf = {
     "不管你的产出内容多么分散，最好能围绕着一个大方向稳定、核心能力统一的主线去做。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/826324b0813aba1deg01589c"
+   "link": "https://weread.qq.com/web/reader/826324b0813aba1deg01589c",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "922382",
@@ -3979,7 +4525,13 @@ export const bookshelf = {
     "起那些一直都喜欢我们的人，我们会喜欢逐渐喜欢上我们的人；比起逐渐喜欢上我们的人，我们会觉得那些起初不喜欢我们，但后来逐渐喜欢我们的人更有价值。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bf132d405e130ebf124a2cd"
+   "link": "https://weread.qq.com/web/reader/bf132d405e130ebf124a2cd",
+   "topics": [
+    27
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "31515008",
@@ -4016,7 +4568,11 @@ export const bookshelf = {
     "“我和你都是无期徒刑，”南乡看完纯一的来信，小声嘟囔着，“永远没有假释。”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/8033247071e0e1808035ab9"
+   "link": "https://weread.qq.com/web/reader/8033247071e0e1808035ab9",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300225519",
@@ -4061,7 +4617,14 @@ export const bookshelf = {
     "你以前会和朋友结伴去户外跑步，现在在健身房跑跑步机，想见朋友只能约他们出来喝咖啡，还得靠应酬才能结交新朋友。这些活动看上去健康有益，实际上非常不自然，更谈不上有趣。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/18c32a70813abbe97g0190de"
+   "link": "https://weread.qq.com/web/reader/18c32a70813abbe97g0190de",
+   "topics": [
+    29,
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300029892",
@@ -4098,7 +4661,13 @@ export const bookshelf = {
     "不断地感受并记录自己疲惫、沮丧时的状态比如，说负面语言会让我很沮丧；跟男朋友吵架会很消耗我的精力；胖了会让我很沮丧；蓬头垢面会让我很沮丧"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/8f4323a0813ab722dg012d92"
+   "link": "https://weread.qq.com/web/reader/8f4323a0813ab722dg012d92",
+   "topics": [
+    29
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "921080",
@@ -4135,7 +4704,16 @@ export const bookshelf = {
     "但这与人生设计有什么关系呢？你要记住自己一直在进行一场无限的游戏，游戏中，你会越来越接近真实的自己，并通过不停地设计来展现自己令人惊叹的一面，这样你就不会失败了。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/684328c05e0df8684f6d7bb"
+   "link": "https://weread.qq.com/web/reader/684328c05e0df8684f6d7bb",
+   "topics": [
+    10,
+    13,
+    17
+   ],
+   "domains": [
+    "精力与习惯",
+    "职业路径"
+   ]
   },
   {
    "bid": "3300117257",
@@ -4167,7 +4745,13 @@ export const bookshelf = {
     "“你没有必要等做到‘专家’才开始做自由职业，从‘探索家’就可以开始了。”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e23322d0813ab944dg017b71"
+   "link": "https://weread.qq.com/web/reader/e23322d0813ab944dg017b71",
+   "topics": [
+    13
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300044800",
@@ -4212,7 +4796,11 @@ export const bookshelf = {
     "代理商最喜欢的产品就是边际成本为零的产品。代理这种产品时，他们不需要仓库，产品不会过期，也没有物流的支出和麻烦，要做的唯一一件事，就是想办法把它卖出去。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e9e32dc0813ab7800g0106b6"
+   "link": "https://weread.qq.com/web/reader/e9e32dc0813ab7800g0106b6",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300019336",
@@ -4253,7 +4841,13 @@ export const bookshelf = {
     "在这种模式下，消费者不仅与农业脱离了，与食物的实际生产疏远了，甚至可能根本就不知道自己吃的这顿饭里都有些什么。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bc732ce0813ab6e0dg01666c"
+   "link": "https://weread.qq.com/web/reader/bc732ce0813ab6e0dg01666c",
+   "topics": [
+    29
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300028184",
@@ -4298,7 +4892,14 @@ export const bookshelf = {
     "Service通过Endpoint记录了后端Pod的IP和端口，当Pod被重建后，该Endpoint会被更新，而我们使用Service名称链接后端Pod时，并不会感知到这些变化"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/29232250813ab7182g014cb5"
+   "link": "https://weread.qq.com/web/reader/29232250813ab7182g014cb5",
+   "topics": [
+    18,
+    19
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "621670",
@@ -4343,7 +4944,13 @@ export const bookshelf = {
     "她只能放弃每天晚上和周末的娱乐，放弃与朋友在一起—这些都是她原先生活圈子的基本要素—回到KIPP加课。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/4c332a50597c664c3f9f45e"
+   "link": "https://weread.qq.com/web/reader/4c332a50597c664c3f9f45e",
+   "topics": [
+    26
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300146906",
@@ -4375,7 +4982,13 @@ export const bookshelf = {
     "小良和许多小门小户出来的女孩子一样，她的父母总是喜欢提些不切实际的要求。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/2d832460813ab9fe2g01637a"
+   "link": "https://weread.qq.com/web/reader/2d832460813ab9fe2g01637a",
+   "topics": [
+    25
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300072295",
@@ -4407,7 +5020,13 @@ export const bookshelf = {
     "那一场震惊三界的天宫大乱，恐怕不是孙悟空干的，至少前一半不是。他是替另外一人背了锅，而且那一人的身份——几乎可以肯定是二郎神。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/23e32130813ab82bdg015cd2"
+   "link": "https://weread.qq.com/web/reader/23e32130813ab82bdg015cd2",
+   "topics": [
+    25
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "34157014",
@@ -4439,7 +5058,14 @@ export const bookshelf = {
     "有四种尺度可以测量人，那便是金钱、醇酒、女人以及对时间的态度。这四种尺度有共同之处——它们都有吸引人的地方，但是却不可以沉迷其中。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d6232560720931d6d622af4"
+   "link": "https://weread.qq.com/web/reader/d6232560720931d6d622af4",
+   "topics": [
+    1,
+    2
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300064298",
@@ -4484,7 +5110,15 @@ export const bookshelf = {
     "这种突破常规又坚持不懈努力的精神，应该贯穿你的一生。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/21232b80813ab7f9dg018749"
+   "link": "https://weread.qq.com/web/reader/21232b80813ab7f9dg018749",
+   "topics": [
+    13,
+    14,
+    16
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300100063",
@@ -4529,7 +5163,13 @@ export const bookshelf = {
     "manifests中内容是一个JSON结构的结构体，其中，无论是config还是layer，都有3个属性。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/725324d0813ab8d96g0131dc"
+   "link": "https://weread.qq.com/web/reader/725324d0813ab8d96g0131dc",
+   "topics": [
+    19
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "25546236",
@@ -4561,7 +5201,13 @@ export const bookshelf = {
     "各种学习、成长、写作社群数量繁多，很多都可以满足你的写作展示需求，这就相当于你花几百元钱给自己买了一个现成的写作分享平台，并且直接拥有了五六千名高质量的读者。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/efd323c07185cdfcefd2f03"
+   "link": "https://weread.qq.com/web/reader/efd323c07185cdfcefd2f03",
+   "topics": [
+    16
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300069204",
@@ -4606,7 +5252,13 @@ export const bookshelf = {
     "当监听的数据是一个数组或者对象时，回调函数中的新值和旧值是相等的，因为这两个形参指向的是同一个数据对象"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d6732a20813ab8188g014c63"
+   "link": "https://weread.qq.com/web/reader/d6732a20813ab8188g014c63",
+   "topics": [
+    21
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300025934",
@@ -4651,7 +5303,11 @@ export const bookshelf = {
     "你可以运用以下的基本方法增加日照：· 一觉醒来后，立即拉开窗帘或百叶窗；· 靠近有阳光的窗户吃早餐；· 早上不要戴墨镜；· 清晨出去散散步。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c2532dd0813ab70a1g014314"
+   "link": "https://weread.qq.com/web/reader/c2532dd0813ab70a1g014314",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300057126",
@@ -4696,7 +5352,11 @@ export const bookshelf = {
     "古希腊有一个怪物叫普洛克路斯忒斯，他有一张铁床，经常邀请人们在家里过夜，但是只有身高跟床一样的人才可以睡觉。比床长的人要砍掉腿，比床短的人要强制拉得跟床一样长。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/573322f0813ab7cd0g01654a"
+   "link": "https://weread.qq.com/web/reader/573322f0813ab7cd0g01654a",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300176681",
@@ -4741,7 +5401,14 @@ export const bookshelf = {
     "如果你为了开店能做的事仅限于“在租赁平台上找个铺面”和“去商店里买套设备”的话，那么我劝你还是先打住。正如前文提到的那样：都在江湖飘了，手里没有点绝活儿怎么行？"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/82232c80813abab84g011905"
+   "link": "https://weread.qq.com/web/reader/82232c80813abab84g011905",
+   "topics": [
+    13,
+    15
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300100329",
@@ -4778,7 +5445,11 @@ export const bookshelf = {
     "有哪些事情我原以为只发生在其他的国家、行业或职业，但最终会影响到我？∞ 有哪些事情我信以为真，而实际只是营销包装出来的？"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f8e322b0813ab8db0g01952e"
+   "link": "https://weread.qq.com/web/reader/f8e322b0813ab8db0g01952e",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300072387",
@@ -4810,7 +5481,14 @@ export const bookshelf = {
     "种因为和所爱的人分开而感到痛苦的“分离焦虑”以及对陌生人充满戒心的“陌生人焦虑”却恰恰说明宝宝和你建立起了安全的依恋关系。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/63832ca0813ab82c6g017a48"
+   "link": "https://weread.qq.com/web/reader/63832ca0813ab82c6g017a48",
+   "topics": [
+    24,
+    27
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "277542",
@@ -4851,7 +5529,13 @@ export const bookshelf = {
     "中国显然已经在同其邻国的关系中确立了经济主导地位，并利用中国市场准入权以及大规模海外投资实现自身利益。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bd732e20543c26bd747b0c7"
+   "link": "https://weread.qq.com/web/reader/bd732e20543c26bd747b0c7",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "858305",
@@ -4896,7 +5580,13 @@ export const bookshelf = {
     "履行承诺要早于承诺的最后期限：当你向别人承诺一件事情时，一定要在承诺的截止时间之前履行，绝不能比自己承诺的截止时间更晚。每一次晚于承诺的履行都会减少对方对你的信任。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/3ad32b605d18c13ad3c25fa"
+   "link": "https://weread.qq.com/web/reader/3ad32b605d18c13ad3c25fa",
+   "topics": [
+    14
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300083150",
@@ -4933,7 +5623,13 @@ export const bookshelf = {
     "◆ 您低估了什么事情的重要性？◆ 您高估了什么事情的重要性？"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/22a327a0813ab86fbg010c7d"
+   "link": "https://weread.qq.com/web/reader/22a327a0813ab86fbg010c7d",
+   "topics": [
+    8
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300152505",
@@ -4978,7 +5674,13 @@ export const bookshelf = {
     "要说这场徒步，沿途的风景也并没有美丽惊人，不知道人为什么要吃那么多苦，坚持着，走向终点。包括我自己，也不清楚为什么。难道是因为人喜欢追求苦难吗？"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/4a132d50813aba212g015722"
+   "link": "https://weread.qq.com/web/reader/4a132d50813aba212g015722",
+   "topics": [
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300060316",
@@ -5010,7 +5712,11 @@ export const bookshelf = {
     "人体生长激素是身体精湛的工匠大师，它燃烧腹部脂肪，让肌肉纤维有序层叠，同时增加大脑容量。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/1f4326e0813ab7e0fg0167ca"
+   "link": "https://weread.qq.com/web/reader/1f4326e0813ab7e0fg0167ca",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "43697544",
@@ -5055,7 +5761,13 @@ export const bookshelf = {
     "激励是超级学习过程中必不可少的起点。一定要有一些让人欲罢不能的东西，能让一个人唤起学习所需的能量和自律。有时，这是一丝希望，期待一项新技能给自己带来职业机会。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/7ab32de0729ac5887ab2ca7"
+   "link": "https://weread.qq.com/web/reader/7ab32de0729ac5887ab2ca7",
+   "topics": [
+    26
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "22671808",
@@ -5096,7 +5808,13 @@ export const bookshelf = {
     "不要想你能存多少钱，要想你需要存多少钱才能实现你的人生目标。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/69a322207159f1c069a3e2d"
+   "link": "https://weread.qq.com/web/reader/69a322207159f1c069a3e2d",
+   "topics": [
+    25
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "37477467",
@@ -5141,7 +5859,11 @@ export const bookshelf = {
     "由于许多具有强劲动力的股票在大行情结束后会下跌70%或更多，这类股票往往会在一个较低的价位得到支撑，从而形成另一个长期的底部区间。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/8db32910723bdc5b8dbdb7d"
+   "link": "https://weread.qq.com/web/reader/8db32910723bdc5b8dbdb7d",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300044063",
@@ -5182,7 +5904,14 @@ export const bookshelf = {
     "当他们逐渐发现自己的工作其实就是拿钱但不做事的时候，心里会有极大的沮丧感。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f7b32c90813ab77b6g013094"
+   "link": "https://weread.qq.com/web/reader/f7b32c90813ab77b6g013094",
+   "topics": [
+    12,
+    17
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "34979276",
@@ -5214,7 +5943,11 @@ export const bookshelf = {
     "持续读书的人不见得更容易持续锻炼，但，反过来，持续锻炼的人更容易持续读书——事实上，持续锻炼的人更容易持续干任何事情！"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/41b323507215bdcc41b7ce8"
+   "link": "https://weread.qq.com/web/reader/41b323507215bdcc41b7ce8",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300070714",
@@ -5255,7 +5988,13 @@ export const bookshelf = {
     "商家们利用人们求“快”的心理，推出了诸如“速成班”“极速学习方法”等，都希望能在最短时间里，帮你获得更多。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/2fe326f0813ab821fg0146df"
+   "link": "https://weread.qq.com/web/reader/2fe326f0813ab821fg0146df",
+   "topics": [
+    15
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "33846528",
@@ -5287,7 +6026,11 @@ export const bookshelf = {
     "如果你想跑步减肥，那么在减肥期间尽量少吃或者不吃水果，但要吃足够的蔬菜。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/a87328f072047500a87ee64"
+   "link": "https://weread.qq.com/web/reader/a87328f072047500a87ee64",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300202632",
@@ -5332,7 +6075,11 @@ export const bookshelf = {
     "所谓茶会，实为“一期一会”，应当高度重视。尽管主人和客人可能经常在社交场合见面，但任何一次茶会都不可能完全相同。从这个角度看，每次茶会都只有一次。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/5f032370813abb5a7g01233e"
+   "link": "https://weread.qq.com/web/reader/5f032370813abb5a7g01233e",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "837618",
@@ -5373,7 +6120,11 @@ export const bookshelf = {
     "知道我们的意志力比想象中多得多，这确实是件令人开心的事。或许我们也可以像运动员一样，挺过意志力消耗殆尽的感觉，冲过意志力挑战的终点。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d2f32b705cc7f2d2ff135f6"
+   "link": "https://weread.qq.com/web/reader/d2f32b705cc7f2d2ff135f6",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "929776",
@@ -5410,7 +6161,11 @@ export const bookshelf = {
     "传统的大额存单根本跑不赢通货膨胀，这样它们得到了一个“死单”的绰号，因为通货膨胀慢慢地侵蚀掉了你的购买力"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/de832f205e2ff0de8860f85"
+   "link": "https://weread.qq.com/web/reader/de832f205e2ff0de8860f85",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "35551088",
@@ -5444,7 +6199,13 @@ export const bookshelf = {
     "小动物通常不会提前做计划，对他们来说，在四季更迭中按部就班，才能过得舒服，把忧虑都抛在脑后。改变会带来风险，风险会导致危险处境，危险意味着死亡的威胁。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/66832530721e777066806c9"
+   "link": "https://weread.qq.com/web/reader/66832530721e777066806c9",
+   "topics": [
+    27
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "26261790",
@@ -5481,7 +6242,13 @@ export const bookshelf = {
     "思考题1：你现在附着在哪些线、面、体上呢？它们是在上升还是在沉沦？思考题2：你可以通过什么方式，找到适合的线、面、体为自己赋能？它们又为什么愿意给你赋能呢？"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/58632d307190b91e5869c4b"
+   "link": "https://weread.qq.com/web/reader/58632d307190b91e5869c4b",
+   "topics": [
+    26
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "833599",
@@ -5526,7 +6293,11 @@ export const bookshelf = {
     "卓越的成就可能会到来，只要你对终极目标多说“是”，而且不要惧怕说“不”。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/0fb32ca05cb83f0fbb5b9d2"
+   "link": "https://weread.qq.com/web/reader/0fb32ca05cb83f0fbb5b9d2",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "39280063",
@@ -5563,7 +6334,13 @@ export const bookshelf = {
     "宁波有句老话“天下中秋皆十五，唯独宁波在十六”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/5d332c2072575dbf5d33fe2"
+   "link": "https://weread.qq.com/web/reader/5d332c2072575dbf5d33fe2",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "33483909",
@@ -5602,7 +6379,11 @@ export const bookshelf = {
     "凡人就是这么一回事。经历着酸甜苦辣，年复一年过着安稳的生活。反正，这就是人生嘛。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/28b3290071feec8528bfcfe"
+   "link": "https://weread.qq.com/web/reader/28b3290071feec8528bfcfe",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300199271",
@@ -5647,7 +6428,15 @@ export const bookshelf = {
     "你的过去只是一个故事。一旦你意识到这一点，它就不会影响你的未来。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/3bf32430813abb457g011c12"
+   "link": "https://weread.qq.com/web/reader/3bf32430813abb457g011c12",
+   "topics": [
+    17,
+    29
+   ],
+   "domains": [
+    "职业路径",
+    "人生与心理"
+   ]
   },
   {
    "bid": "40223839",
@@ -5679,7 +6468,11 @@ export const bookshelf = {
     "最后将以上内容给大家总结成一句话：蓝色是冷色，但是色温高；红色是暖色，但是色温低。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/3d4322207265c45f3d40a55"
+   "link": "https://weread.qq.com/web/reader/3d4322207265c45f3d40a55",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "22674023",
@@ -5716,7 +6509,13 @@ export const bookshelf = {
     "在“公平”的赌博中，任一个拥有有限赌本的赌徒，只要长期赌下去，必然有一天会输光。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/9a3328a07159fa679a39710"
+   "link": "https://weread.qq.com/web/reader/9a3328a07159fa679a39710",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "908156",
@@ -5748,7 +6547,13 @@ export const bookshelf = {
     "激情源于兴趣，也源于目标——造福他人的意图。对于坚毅的人来说，成熟的激情同时取决于这两者。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/143325005ddb7c1437e9c8d"
+   "link": "https://weread.qq.com/web/reader/143325005ddb7c1437e9c8d",
+   "topics": [
+    26
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300219422",
@@ -5789,7 +6594,13 @@ export const bookshelf = {
     "在我看来，幸福感的定义真的非常简单，没有那么多歧义，它只需要满足两个条件：物质基础和精神境界。从某种程度上来说，它们分别对应着人的基因诉求和自我意识诉求。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/31c32eb0813abbc36g012b58"
+   "link": "https://weread.qq.com/web/reader/31c32eb0813abbc36g012b58",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300202166",
@@ -5821,7 +6632,13 @@ export const bookshelf = {
     "近年来，许多企业已经意识到员工健康和公司利润之间的关系，纷纷推出专用的午睡室或午睡椅。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/00432f50813abb578g016a85"
+   "link": "https://weread.qq.com/web/reader/00432f50813abb578g016a85",
+   "topics": [
+    8
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300075105",
@@ -5853,7 +6670,11 @@ export const bookshelf = {
     "不让你们做决定，是因为你们的决策能力非常糟糕。你们就是因为不会决策所以才被套上绳子，否则，你们肯定早就把能做的错误决定全都做完了"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bab32f70813ab83d6g015cfb"
+   "link": "https://weread.qq.com/web/reader/bab32f70813ab83d6g015cfb",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300015059",
@@ -5894,7 +6715,14 @@ export const bookshelf = {
     "因为如果杀了使者，以后就得不到真实的消息了。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/804326b0813ab6c61g019ede"
+   "link": "https://weread.qq.com/web/reader/804326b0813ab6c61g019ede",
+   "topics": [
+    4,
+    5
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "934469",
@@ -5944,7 +6772,16 @@ export const bookshelf = {
     "运气与风险的一体两面",
     "致富与守富的不对称"
    ],
-   "link": "https://weread.qq.com/web/reader/e59329905e4245e59ebd7e1"
+   "link": "https://weread.qq.com/web/reader/e59329905e4245e59ebd7e1",
+   "topics": [
+    0,
+    2,
+    3,
+    4
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "23723810",
@@ -5989,7 +6826,13 @@ export const bookshelf = {
     "第一，当你成功地阅读了一本难读的好书之后，你的阅读技巧必然增进了。第二——长期来说这一点更重要——一本好书能教你了解这个世界以及你自己。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/272326407169ff22272934f"
+   "link": "https://weread.qq.com/web/reader/272326407169ff22272934f",
+   "topics": [
+    26
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300014116",
@@ -6026,7 +6869,15 @@ export const bookshelf = {
     "衡量你是否投资成功的尺度，并不是你挣了多少，而是在扣除通货膨胀的影响后，你还剩下多少。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/08d329d0813ab6c03g016242"
+   "link": "https://weread.qq.com/web/reader/08d329d0813ab6c03g016242",
+   "topics": [
+    3,
+    4,
+    5
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "340761",
@@ -6058,7 +6909,13 @@ export const bookshelf = {
     "音标→入门→初级→中级→高级→经典语法。音标和语法必买，至于从哪个级别开始，我们建议你去官网试听下录音，然后再决定购买。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/6c632d105533196c66000c4"
+   "link": "https://weread.qq.com/web/reader/6c632d105533196c66000c4",
+   "topics": [
+    26
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "23665547",
@@ -6099,7 +6956,15 @@ export const bookshelf = {
     "“强调努力是在给予孩子一种他们能控制的变量，对于孩子来说，这样的变量很稀有。”德韦克说，“强调天生的智力则是将它置于孩子的控制之外，对于应对失败来说没有好处。”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/8a23249071691b8b8a28da3"
+   "link": "https://weread.qq.com/web/reader/8a23249071691b8b8a28da3",
+   "topics": [
+    23,
+    26
+   ],
+   "domains": [
+    "工程思维",
+    "人生与心理"
+   ]
   },
   {
    "bid": "41414688",
@@ -6140,7 +7005,11 @@ export const bookshelf = {
     "一个反馈环包括四个环节：证据(evidence)、关联(relevance)、后果(consequence)、行动(action)"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/26c32c507277f02026ccc7f"
+   "link": "https://weread.qq.com/web/reader/26c32c507277f02026ccc7f",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "681628",
@@ -6172,7 +7041,11 @@ export const bookshelf = {
     "2007年，乔布斯说iPhone将重新定义手机时，他可能没想到，iPhone也重新定义了人们的注意力。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/db332ed05a669cdb3b8ffcd"
+   "link": "https://weread.qq.com/web/reader/db332ed05a669cdb3b8ffcd",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "32284729",
@@ -6204,7 +7077,11 @@ export const bookshelf = {
     "当我们被困难的任务难住时，很容易向大脑发出休息的指令，转而去做一些轻松愉悦的事情。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c7632e4071eca039c76f63a"
+   "link": "https://weread.qq.com/web/reader/c7632e4071eca039c76f63a",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300218477",
@@ -6236,7 +7113,15 @@ export const bookshelf = {
     "海尔成为全球大型家电的支柱企业之一。“人单合一”模式被哈佛商学院收录为教学案例，是首个获得全球管理学界广泛认可的中国原创管理模式。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/9dc32090813abbbd7g0178b5"
+   "link": "https://weread.qq.com/web/reader/9dc32090813abbbd7g0178b5",
+   "topics": [
+    20,
+    22,
+    23
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "43806817",
@@ -6277,7 +7162,13 @@ export const bookshelf = {
     "种倒推法有个问题，就是需要很多常识作基础，离开这些常识，算出来的数字会相差很远。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/baf32110729c7061bafd96c"
+   "link": "https://weread.qq.com/web/reader/baf32110729c7061bafd96c",
+   "topics": [
+    15
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300202199",
@@ -6309,7 +7200,14 @@ export const bookshelf = {
     "PUA发生的那个契机，让我发现了PUA世界的最大漏洞——成为一个“失控”的人。发短视频成为我撕裂PUA监狱的利器。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/86d32e00813abb57bg019168"
+   "link": "https://weread.qq.com/web/reader/86d32e00813abb57bg019168",
+   "topics": [
+    13,
+    14
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "921568",
@@ -6346,7 +7244,13 @@ export const bookshelf = {
     "可信度加权的投票，所选取的素质特征是专业技能和综合能力。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/848324405e0fe08483ab6a4"
+   "link": "https://weread.qq.com/web/reader/848324405e0fe08483ab6a4",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300014290",
@@ -6381,7 +7285,13 @@ export const bookshelf = {
     "股市的价格增长将与股票所代表企业的盈利增长直接相"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/511325e0813ab6c15g010668"
+   "link": "https://weread.qq.com/web/reader/511325e0813ab6c15g010668",
+   "topics": [
+    2
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "22694354",
@@ -6413,7 +7323,13 @@ export const bookshelf = {
     "1）根本目标——你想过什么样的生活。（2）最高准则——你想成为什么样的人"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f4832080715a49d2f48e842"
+   "link": "https://weread.qq.com/web/reader/f4832080715a49d2f48e842",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "920661",
@@ -6445,7 +7361,14 @@ export const bookshelf = {
     "大家还要注意奶茶和咖啡中的配料，上面清清楚楚写着“植脂末”，这也是反式脂肪酸。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/7bb32c305e0c557bbdeab81"
+   "link": "https://weread.qq.com/web/reader/7bb32c305e0c557bbdeab81",
+   "topics": [
+    7,
+    11
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "817732",
@@ -6490,7 +7413,13 @@ export const bookshelf = {
     "精要主义者都是出色的观察家和优秀的听众。他们深知，取舍的现实意味着自己不可能关注一切，因此他们会特别留意倾听话外之音，领悟言外之意"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/8f932fd05c7a448f917d2c4"
+   "link": "https://weread.qq.com/web/reader/8f932fd05c7a448f917d2c4",
+   "topics": [
+    10
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300083598",
@@ -6535,7 +7464,14 @@ export const bookshelf = {
     "柳比歇夫的时间酷似物质，从不会了无痕迹地消失，不会平白无故地蒸发，而总能够查明它们变成了什么。借助时间核算，柳比歇夫不断地开采着新的时间。而时间，才是真正的矿藏。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/81032f50813ab8727g018948"
+   "link": "https://weread.qq.com/web/reader/81032f50813ab8727g018948",
+   "topics": [
+    7,
+    10
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "41176028",
@@ -6580,7 +7516,13 @@ export const bookshelf = {
     "这种想法是优绩至上思维的起源，反映了这样一种信念，即道德世界的法则是“美德带来成功，恶行必致苦难”。这与人们熟悉的当代观点相差不远，即财富标示着天分和勤劳，而贫穷意味着懒惰。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/5d1320e072744bdc5d154db"
+   "link": "https://weread.qq.com/web/reader/5d1320e072744bdc5d154db",
+   "topics": [
+    29
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "33357226",
@@ -6623,7 +7565,13 @@ export const bookshelf = {
     "报酬可以作为一种表达感激的方式，然而，越是把它们作为激励手段（比如出版社的奖金计划），它们就越有可能产生负面影响。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f4832b8071fcfdaaf48e585"
+   "link": "https://weread.qq.com/web/reader/f4832b8071fcfdaaf48e585",
+   "topics": [
+    9
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "815728",
@@ -6655,7 +7603,11 @@ export const bookshelf = {
     "他最初打算在斯坦福大学攻读材料科学和物理学博士学"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bc8328d05c7270bc82b6cb2"
+   "link": "https://weread.qq.com/web/reader/bc8328d05c7270bc82b6cb2",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "848673",
@@ -6700,7 +7652,15 @@ export const bookshelf = {
     "努力改善你的生活状况并没有错。你可以改善你的生活状况，但是你不能改善你的生命。生命是最主要的。生命是你内心最深刻的存在，它是圆满而"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/5b932bd05cf3215b92b7cd5"
+   "link": "https://weread.qq.com/web/reader/5b932bd05cf3215b92b7cd5",
+   "topics": [
+    9,
+    27
+   ],
+   "domains": [
+    "精力与习惯",
+    "人生与心理"
+   ]
   },
   {
    "bid": "35449597",
@@ -6732,7 +7692,13 @@ export const bookshelf = {
     "“15%时间规则”的神奇之处就在于，它鼓励每个技术人员每周拿出15%的工作时间“干私活”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/19b32d00721ceafd19b2536"
+   "link": "https://weread.qq.com/web/reader/19b32d00721ceafd19b2536",
+   "topics": [
+    7
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "26846821",
@@ -6764,7 +7730,13 @@ export const bookshelf = {
     "v-show判定为假的元素的display属性被赋值为none，不过仍保留在DOM中，而v-if判定为假的元素则根本没有在DOM中出现。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/3b0328907199a6653b0dd86"
+   "link": "https://weread.qq.com/web/reader/3b0328907199a6653b0dd86",
+   "topics": [
+    21
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "837008",
@@ -6796,7 +7768,13 @@ export const bookshelf = {
     "数千年之后，当未来的有学识的人面对这些矛盾的论述，他们或许会质疑这位英雄是否存在，就如同现在有些人质疑释迦牟尼一样。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/fbf32b105cc590fbfdc7ea2"
+   "link": "https://weread.qq.com/web/reader/fbf32b105cc590fbfdc7ea2",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300148226",
@@ -6824,7 +7802,11 @@ export const bookshelf = {
     "99%的世界财富掌握在一个人的手中！这个人被称做终产者"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/719321d0813aba066g016eeb"
+   "link": "https://weread.qq.com/web/reader/719321d0813aba066g016eeb",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "909886",
@@ -6861,7 +7843,15 @@ export const bookshelf = {
     "其实这是因为你已经开始要适应“新习惯”了，习惯引力为了维持现状而设法抵制你所做的一切，做出最后的反抗。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/4f7321b05de23e4f7c6861c"
+   "link": "https://weread.qq.com/web/reader/4f7321b05de23e4f7c6861c",
+   "topics": [
+    1,
+    6
+   ],
+   "domains": [
+    "投资与周期",
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300177664",
@@ -6902,7 +7892,13 @@ export const bookshelf = {
     "。真正有意义的学习（无论好书、好课还是好的讨论），一切有意义的思考和实践（无论是行动、经历意外还是解决问题），都会引发这三张表的变化、积累或者更新。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/58932930813ababe6g01418f"
+   "link": "https://weread.qq.com/web/reader/58932930813ababe6g01418f",
+   "topics": [
+    4
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "34560817",
@@ -6934,7 +7930,11 @@ export const bookshelf = {
     "马化腾人不错，而且年轻，微信及微信支付的影响非常大且深远。我们确实买了一点腾讯，但比例"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/6a632b90720f5b316a67279"
+   "link": "https://weread.qq.com/web/reader/6a632b90720f5b316a67279",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "30070660",
@@ -6974,7 +7974,13 @@ export const bookshelf = {
     "do...while语句首先会无条件执行循环体一次，然后再判断是否符合条件"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/1fb32f0071cad7841fb22d7"
+   "link": "https://weread.qq.com/web/reader/1fb32f0071cad7841fb22d7",
+   "topics": [
+    21
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300065840",
@@ -7006,7 +8012,13 @@ export const bookshelf = {
     "承担更多的技术债会加速交付。长期来看，情况正好相反：偿还技术债会加快交付的速度，而承担更多的债务则会减缓交付。产品经理会得到鼓励去推动实现更多的特性"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/10a328d0813ab8038g010b94"
+   "link": "https://weread.qq.com/web/reader/10a328d0813ab8038g010b94",
+   "topics": [
+    20
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "701342",
@@ -7038,7 +8050,11 @@ export const bookshelf = {
     "各种艺人对音乐共享软件的态度，从经济上来看是合理的。已成名艺人会因为它蒙受损失，而独立音乐人——尤其是最出色的那些却能得到好处。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/b5e32e005ab39eb5e5240d7"
+   "link": "https://weread.qq.com/web/reader/b5e32e005ab39eb5e5240d7",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300155405",
@@ -7070,7 +8086,13 @@ export const bookshelf = {
     "试图在几乎没什么支持或保障措施的情况下，竭力同时做到所有这一切——这就是千禧一代成为倦怠一代的原因"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/3e132c00813aba334g015d9d"
+   "link": "https://weread.qq.com/web/reader/3e132c00813aba334g015d9d",
+   "topics": [
+    29
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "737527",
@@ -7098,7 +8120,11 @@ export const bookshelf = {
     "虽然是一句玩笑话，也多少表达了中国人的些许传统价值逻辑。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/286329405b40f728668c477"
+   "link": "https://weread.qq.com/web/reader/286329405b40f728668c477",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "855722",
@@ -7125,7 +8151,11 @@ export const bookshelf = {
     "人们预计到2050年为止，将有2/3的世界人口居住在城市。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/044324f05d0eaa04421f3d9"
+   "link": "https://weread.qq.com/web/reader/044324f05d0eaa04421f3d9",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300054221",
@@ -7150,7 +8180,11 @@ export const bookshelf = {
     "每个Vue.js应用都是通过Vue.js函数创建一个新的Vue.js实例开始的，而且每个Vue.js应用都是由通过Vue.js函数创建的一个根Vue.js实例，以及多个可选的、嵌套的、可复用的组件树组成"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/1bb325d0813ab7baeg0114c6"
+   "link": "https://weread.qq.com/web/reader/1bb325d0813ab7baeg0114c6",
+   "topics": [],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300081773",
@@ -7177,7 +8211,11 @@ export const bookshelf = {
     "双相情感障碍是一种既有躁狂症发作，又有抑郁症发作的常见精神疾病"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/7c5323a0813ab8671g013d42"
+   "link": "https://weread.qq.com/web/reader/7c5323a0813ab8671g013d42",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "915642",
@@ -7202,7 +8240,11 @@ export const bookshelf = {
     "有许多在我们的时代被称为天才的人，都曾经被权威人士判定为没有未来"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/b0e327605df8bab0e873984"
+   "link": "https://weread.qq.com/web/reader/b0e327605df8bab0e873984",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300098321",
@@ -7227,7 +8269,11 @@ export const bookshelf = {
     "“上帝在你们的眼中已经变成了一群老可怜虫，你们可怜我们了，你们竟然可怜我们了。”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/9f6327c0813ab8ce8g0112d0"
+   "link": "https://weread.qq.com/web/reader/9f6327c0813ab8ce8g0112d0",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "912831",
@@ -7248,7 +8294,11 @@ export const bookshelf = {
    "quotes": [],
    "highlights": [],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/b13328205dedbfb138932e1"
+   "link": "https://weread.qq.com/web/reader/b13328205dedbfb138932e1",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300062573",
@@ -7271,7 +8321,11 @@ export const bookshelf = {
     "共包括三大项目，一曰“求官六字真言”，二曰“做官六字真言”，三曰“办事二妙法”。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f5632760813ab7ef1g0139fe"
+   "link": "https://weread.qq.com/web/reader/f5632760813ab7ef1g0139fe",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "26793754",
@@ -7312,7 +8366,13 @@ export const bookshelf = {
     "“子对象的名字=父对象名字+随机字符串或数字”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/4e7320a07198d71a4e7b700"
+   "link": "https://weread.qq.com/web/reader/4e7320a07198d71a4e7b700",
+   "topics": [
+    18
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300212603",
@@ -7351,7 +8411,13 @@ export const bookshelf = {
     "人生并不会因为你走出家门就自动变好；但是，它也不会因为你继续待在房间里就自动修复。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ed1326b0813abb98cg013568"
+   "link": "https://weread.qq.com/web/reader/ed1326b0813abb98cg013568",
+   "topics": [
+    27
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300059465",
@@ -7382,7 +8448,13 @@ export const bookshelf = {
     "第一步，将要定义的术语放入最相近的类别当中；第二步，确定其与同类中其他事物的不同特性。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/7d532990813ab7dbag015cf5"
+   "link": "https://weread.qq.com/web/reader/7d532990813ab7dbag015cf5",
+   "topics": [
+    26
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300149579",
@@ -7420,7 +8492,13 @@ export const bookshelf = {
     "我想告诉大家的是，大部分人终其一生都无法找到所谓的最适合自己的职业发展方向，更无法找到那个能和自己的兴趣高度重合的职业"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/eba32660813aba0edg0190fb"
+   "link": "https://weread.qq.com/web/reader/eba32660813aba0edg0190fb",
+   "topics": [
+    24
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "459561",
@@ -7448,7 +8526,11 @@ export const bookshelf = {
     "你的头发是你所有修饰中最重要的部分，因为不管你的外套如何变换，头发始终跟着你。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f91325d0570329f91acddc3"
+   "link": "https://weread.qq.com/web/reader/f91325d0570329f91acddc3",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300030576",
@@ -7472,7 +8554,11 @@ export const bookshelf = {
     "所谓“人民”，除了原来所列工人阶级、农民阶级、城市小资产阶级外，加入了民族资产阶级，即所谓“四个朋友”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/55032c80813ab7271g01603a"
+   "link": "https://weread.qq.com/web/reader/55032c80813ab7271g01603a",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "34627727",
@@ -7497,7 +8583,11 @@ export const bookshelf = {
     "我们是会争夺权力、地位和爱情的竞争性社会动物，有时为了向上爬，甚至会撒谎欺骗他人。我们会隐藏部分动机——目的是误导他人"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/a54327607210608fa54abb8"
+   "link": "https://weread.qq.com/web/reader/a54327607210608fa54abb8",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "25066071",
@@ -7527,7 +8617,11 @@ export const bookshelf = {
    "quotes": [],
    "highlights": [],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f9932900717e7a57f99c027"
+   "link": "https://weread.qq.com/web/reader/f9932900717e7a57f99c027",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300143434",
@@ -7550,7 +8644,11 @@ export const bookshelf = {
     "“前两个秘密——先投资自己和让账户自动运转，都是关于如何做到的。而第三个秘密则是关于为什么要去做。首先确定对你来说什么是重要的，然后照着去做。“从现在起，富有地生活吧。不是在遥远的未来，就从今天开始。””"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/a1a32200813ab9e87g014bf7"
+   "link": "https://weread.qq.com/web/reader/a1a32200813ab9e87g014bf7",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "853426",
@@ -7582,7 +8680,13 @@ export const bookshelf = {
     "带宽(bandwidth) 就是心智的容量，包括两种能力，分别为认知能力和执行控制力。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/36b321405d05b236bb0ce7d"
+   "link": "https://weread.qq.com/web/reader/36b321405d05b236bb0ce7d",
+   "topics": [
+    9
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300107527",
@@ -7620,7 +8724,14 @@ export const bookshelf = {
     "其实世上99%的人，并不会真正关心我的纠结或悲伤。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/6ec323a0813ab9080g0178b8"
+   "link": "https://weread.qq.com/web/reader/6ec323a0813ab9080g0178b8",
+   "topics": [
+    27,
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300149008",
@@ -7651,7 +8762,11 @@ export const bookshelf = {
     "日常生活中，我们可以多多调动感官，练习有意识地品味（savoring）和享受积极经历和快乐时刻"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ea532d80813aba0b4g018563"
+   "link": "https://weread.qq.com/web/reader/ea532d80813aba0b4g018563",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "842698",
@@ -7679,7 +8794,11 @@ export const bookshelf = {
     "气场就好像一种高深莫测的魅力，时时刻刻影响着我们的形象，时刻影响着周围人对我们的看法，并且给予我们一种神奇的力量。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/03a326105cdbca03a5d9a0d"
+   "link": "https://weread.qq.com/web/reader/03a326105cdbca03a5d9a0d",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "40736388",
@@ -7704,7 +8823,11 @@ export const bookshelf = {
     "复合效应的规则是指从一连串微小而聪明的选择中获得丰厚回报"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/870321f0726d9684870dddb"
+   "link": "https://weread.qq.com/web/reader/870321f0726d9684870dddb",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300082646",
@@ -7730,7 +8853,11 @@ export const bookshelf = {
     "每天以7分钟的高强度锻炼开始，是培养更多体能精力的方法之一"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/73932e10813ab86c8g0167ba"
+   "link": "https://weread.qq.com/web/reader/73932e10813ab86c8g0167ba",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300175639",
@@ -7753,7 +8880,11 @@ export const bookshelf = {
     "企业家们太苦了！企业家们时常感到孤独和不开心。不仅如此，他们的配偶、家人，尤其是孩子，也同样感到不开心。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c6432720813abab1bg019293"
+   "link": "https://weread.qq.com/web/reader/c6432720813abab1bg019293",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300199458",
@@ -7776,7 +8907,11 @@ export const bookshelf = {
     "这种劳动不同于以往经典作家所描绘的劳动的常规形态，故不能再将之简单地归结为体力、脑力和情感的支出和使用。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/40532c90813abb469g0182e6"
+   "link": "https://weread.qq.com/web/reader/40532c90813abb469g0182e6",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "40457732",
@@ -7808,7 +8943,14 @@ export const bookshelf = {
     "现代社会是一个崇尚个体自由的时代。每个人都希望自己的自由，但我们的自由经常让我们不自由，一如卢梭所说“人生而自由，却无往不在枷锁之中”。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/739322a07269560473951d3"
+   "link": "https://weread.qq.com/web/reader/739322a07269560473951d3",
+   "topics": [
+    28,
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300128060",
@@ -7853,7 +8995,13 @@ export const bookshelf = {
     "投资者认为过去的收益代表了未来可期的结果。投资者喜欢追逐赢家，买入价格具有上升趋势的股票。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ae632870813ab9886g010537"
+   "link": "https://weread.qq.com/web/reader/ae632870813ab9886g010537",
+   "topics": [
+    4
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "27256052",
@@ -7890,7 +9038,13 @@ export const bookshelf = {
     "在所有事情上都成为赢家或许意味着你并没有展开任何新的挑战。你也许是在赢，却没有成长，而成长是赢最重要的前提。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/74732e20719fe4f4747f8f4"
+   "link": "https://weread.qq.com/web/reader/74732e20719fe4f4747f8f4",
+   "topics": [
+    24
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "635942",
@@ -7922,7 +9076,11 @@ export const bookshelf = {
     "你们中的大多数人将遭受失败、轻慢和贫困，但是我们非常感谢你们为了全球经济的增长与他人脱贫而承担的风险和做出的牺牲。你们正是反脆弱性的来源。美国感谢你。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/0633241059b4260632af2bf"
+   "link": "https://weread.qq.com/web/reader/0633241059b4260632af2bf",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300042249",
@@ -7959,7 +9117,15 @@ export const bookshelf = {
     "不管是在宿舍还是在出租屋，一眼就能看到床，总想躺着玩会儿手机，不知不觉一天就过去了。最好去图书馆、自习室、书房等地方学习，远离让你想要放松的床和沙发。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/1db32430813ab7700g019539"
+   "link": "https://weread.qq.com/web/reader/1db32430813ab7700g019539",
+   "topics": [
+    14,
+    28
+   ],
+   "domains": [
+    "职业路径",
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300151174",
@@ -7991,7 +9157,11 @@ export const bookshelf = {
     "中美最大的互补性恰恰体现在高科技领域。简言之，美国将始终是主要的突破式创新者，而中国则已经是重要的规模化应用创新者。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bdd325d0813aba18dg0142a8"
+   "link": "https://weread.qq.com/web/reader/bdd325d0813aba18dg0142a8",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300116689",
@@ -8036,7 +9206,13 @@ export const bookshelf = {
     "当一个人的边界被打破，心理甚至生理上都会不适。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/8d032e20813ab9414g019f62"
+   "link": "https://weread.qq.com/web/reader/8d032e20813ab9414g019f62",
+   "topics": [
+    9
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300087531",
@@ -8068,7 +9244,15 @@ export const bookshelf = {
     "请将未来的自己设想成一位极度挑剔、忙碌而又缺乏耐心的客户，“他”根本没有时间从浩瀚的文字海洋中仔细翻找一颗颗遗珠，而你的任务则是向其兜售自己的笔记并尽可能卖出好价钱。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f3032e10813ab88b1g011a36"
+   "link": "https://weread.qq.com/web/reader/f3032e10813ab88b1g011a36",
+   "topics": [
+    22,
+    26
+   ],
+   "domains": [
+    "工程思维",
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300057049",
@@ -8100,7 +9284,11 @@ export const bookshelf = {
     "当小猫咪精力旺盛、过于兴奋时，就会通过突然的疯跑行为来释放多余的能量。疯跑多见于小猫咪长时间睡眠或进食后，尤其是它们白天睡一整天，晚上到铲屎官休息时就开始活跃"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/947326c0813ab7cc8g0195fe"
+   "link": "https://weread.qq.com/web/reader/947326c0813ab7cc8g0195fe",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "32490792",
@@ -8132,7 +9320,13 @@ export const bookshelf = {
     "这说明我们生活的时代一直都在变化，我们自己一直都在变化，未来唯一可以确定的也一定是变化。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/08d32f6071efc52808de2e4"
+   "link": "https://weread.qq.com/web/reader/08d32f6071efc52808de2e4",
+   "topics": [
+    27
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "726811",
@@ -8164,7 +9358,15 @@ export const bookshelf = {
     "造成这些情况的原因就是刺激太多、太强、太久，超过了合理的限度，从而引起了人们极不耐烦或反抗的情绪，让事情朝相反的方向发展。心理学上把这种行为称作“超限效应”。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/4a232b605b171b4a29bcf26"
+   "link": "https://weread.qq.com/web/reader/4a232b605b171b4a29bcf26",
+   "topics": [
+    14,
+    28
+   ],
+   "domains": [
+    "职业路径",
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300018232",
@@ -8196,7 +9398,15 @@ export const bookshelf = {
     "当我们不敢说出自己的秘密、否认自己的经历、不肯承认自己的遭遇或者假装没事来保守秘密的时候，我们就不可能疗愈自己，也无法从遭遇中真正走出来。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ad3326c0813ab6d9fg012c85"
+   "link": "https://weread.qq.com/web/reader/ad3326c0813ab6d9fg012c85",
+   "topics": [
+    9,
+    27
+   ],
+   "domains": [
+    "精力与习惯",
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300124390",
@@ -8237,7 +9447,14 @@ export const bookshelf = {
     "微信私域的好处之一就是，如果你用心经营你的朋友圈，对方就会对你产生信任，当信任达到一定程度时，之后当你推出任何新产品的时候，对方都会选择下单，那就产生了复购率。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ea432780813ab9717g010b08"
+   "link": "https://weread.qq.com/web/reader/ea432780813ab9717g010b08",
+   "topics": [
+    12,
+    16
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "843544",
@@ -8274,7 +9491,13 @@ export const bookshelf = {
     "你生活的目标越明确，建立助你实现目标的社交圈也越容易。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/a0a32a905cdf18a0a225ee6"
+   "link": "https://weread.qq.com/web/reader/a0a32a905cdf18a0a225ee6",
+   "topics": [
+    15
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "25410985",
@@ -8306,7 +9529,11 @@ export const bookshelf = {
     "从任务A转换到任务B后，执行任务B的绩效要明显比非任务转换条件下执行B的绩效差，这个差异称为“转换损耗”（"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/70032c707183bda97009bba"
+   "link": "https://weread.qq.com/web/reader/70032c707183bda97009bba",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "920548",
@@ -8338,7 +9565,15 @@ export const bookshelf = {
     "两位飞行员中的一个负责操控飞机，而另一个则主要负责操控各种飞行仪表和执行清单，他们往往会在返程时交换彼此的职责。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/250321505e0be425019aa06"
+   "link": "https://weread.qq.com/web/reader/250321505e0be425019aa06",
+   "topics": [
+    18,
+    22,
+    23
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "43685146",
@@ -8379,7 +9614,13 @@ export const bookshelf = {
     "相比“简化步骤”，“删减步骤”能使过程变得更容易。2．几乎在每一个领域，“完成”都要远远好过“画蛇添足”。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/56132d80729a951a561ae48"
+   "link": "https://weread.qq.com/web/reader/56132d80729a951a561ae48",
+   "topics": [
+    17
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300153786",
@@ -8411,7 +9652,13 @@ export const bookshelf = {
     "夏言渐将主要精力用于军国，严嵩则集中注意力以赞玄固宠，故夏、严的斗争，终以夏败严胜为结局"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bae32f90813aba292g0163a9"
+   "link": "https://weread.qq.com/web/reader/bae32f90813aba292g0163a9",
+   "topics": [
+    28
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300111091",
@@ -8443,7 +9690,13 @@ export const bookshelf = {
     "消极的知识就是“记得曾有过了解”的知识，聊胜于无罢了。甚至可以说，“知道却无法运用的知识”没有任何意义。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/0aa32050813ab91e5g0118a5"
+   "link": "https://weread.qq.com/web/reader/0aa32050813ab91e5g0118a5",
+   "topics": [
+    16
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300100445",
@@ -8475,7 +9728,13 @@ export const bookshelf = {
     "如果笔记在初级推荐曝光中能够获得较好的互动反馈，那么这篇笔记会被推荐给稍大的人群曝光池，在更大的曝光池获得优秀互动则会继续被推荐给更大的曝光池。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/cb232040813ab8dbcg015a7c"
+   "link": "https://weread.qq.com/web/reader/cb232040813ab8dbcg015a7c",
+   "topics": [
+    16
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300116836",
@@ -8512,7 +9771,14 @@ export const bookshelf = {
     "芒格的观点告诉我们，最有可能带来指数级增长成效的方法是：大部分时间专注于某个领域，同时花点时间去理解更广阔的世界"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f7d32730813ab9423g0162bb"
+   "link": "https://weread.qq.com/web/reader/f7d32730813ab9423g0162bb",
+   "topics": [
+    0,
+    1
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "26793621",
@@ -8544,7 +9810,13 @@ export const bookshelf = {
     "要么直接提高某一种写作技巧；要么从写作方法上提高写作能力；要么从整体上提升写作素养。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ea3321a07198d695ea314d3"
+   "link": "https://weread.qq.com/web/reader/ea3321a07198d695ea314d3",
+   "topics": [
+    16
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300103310",
@@ -8576,7 +9848,14 @@ export const bookshelf = {
     "人们在退休后将无法享受完全积极的生活方式，因为平均而言，他们已经抵达健康寿命的终点。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ad332430813ab8edbg0104aa"
+   "link": "https://weread.qq.com/web/reader/ad332430813ab8edbg0104aa",
+   "topics": [
+    24,
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300207146",
@@ -8608,7 +9887,13 @@ export const bookshelf = {
     "人类肌肉的发育可以一直持续到90岁。以前的科学家认为肌肉细胞的数量不会发生变化，肌肉发达只是肌肉细胞的体积增大而已"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d82322c0813abb76ag01646b"
+   "link": "https://weread.qq.com/web/reader/d82322c0813abb76ag01646b",
+   "topics": [
+    11
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300143312",
@@ -8649,7 +9934,13 @@ export const bookshelf = {
     "如果你觉得休息就是躺着或静坐时身体获得了舒适感，那么，难怪你的休息不奏效。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/cf932c50813ab9e7bg0127a0"
+   "link": "https://weread.qq.com/web/reader/cf932c50813ab9e7bg0127a0",
+   "topics": [
+    7
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "36164605",
@@ -8694,7 +9985,15 @@ export const bookshelf = {
     "大部分人今天就想享受管道的利润，而不想等待20年、30年、40年甚至50年。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/aa0327f07227d3fdaa060bc"
+   "link": "https://weread.qq.com/web/reader/aa0327f07227d3fdaa060bc",
+   "topics": [
+    1,
+    12
+   ],
+   "domains": [
+    "投资与周期",
+    "职业路径"
+   ]
   },
   {
    "bid": "3300022953",
@@ -8726,7 +10025,13 @@ export const bookshelf = {
     "慢性疲劳综合征并不是持续性疲劳的唯一常见误诊，因为“疲劳”的症状很模糊，许多临床医生经常做出误诊"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/32932550813ab6f77g01358d"
+   "link": "https://weread.qq.com/web/reader/32932550813ab6f77g01358d",
+   "topics": [
+    7
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300060301",
@@ -8758,7 +10063,14 @@ export const bookshelf = {
     "如果我们鼓励不会弹琴的人坐在钢琴前面，按一按黑白琴键，好像他们就能变成钢琴家。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/6aa32c50813ab7e0eg011b5e"
+   "link": "https://weread.qq.com/web/reader/6aa32c50813ab7e0eg011b5e",
+   "topics": [
+    9,
+    10
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "25982908",
@@ -8790,7 +10102,13 @@ export const bookshelf = {
     "所谓思考，很大程度上，就是在建立那些概念与概念之间的关联。概念是必要、清晰且准确的，它们之间的关联也应该是准确的。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f8532b30718c77bcf857af1"
+   "link": "https://weread.qq.com/web/reader/f8532b30718c77bcf857af1",
+   "topics": [
+    15
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "34618597",
@@ -8822,7 +10140,13 @@ export const bookshelf = {
     "策略5：给对方时间和台阶，让对方在不失面子的情况下调整其报价"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bf032c7072103ce5bf0568a"
+   "link": "https://weread.qq.com/web/reader/bf032c7072103ce5bf0568a",
+   "topics": [
+    14
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "41598972",
@@ -8866,7 +10190,13 @@ export const bookshelf = {
     "在现代性的工业阶段，一个事实不容置疑，那就是每个人在拥有其他身份之前，首先必须是一个生产者。在现代性的第二阶段，即消费者的时代，这个不容置疑的事实变成了：人首先要成为消费者，才能再拥有其他特别的身份。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c9d327e0727abffcc9d74ab"
+   "link": "https://weread.qq.com/web/reader/c9d327e0727abffcc9d74ab",
+   "topics": [
+    29
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300111153",
@@ -8906,7 +10236,11 @@ export const bookshelf = {
     "在上面标清年份，把自己每次就医后的医嘱、每年体检的异常项目都记录在这个笔记本上，再把体检明细、检查报告装在袋子里放好"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c7132470813ab91ebg013e73"
+   "link": "https://weread.qq.com/web/reader/c7132470813ab91ebg013e73",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300070814",
@@ -8938,7 +10272,13 @@ export const bookshelf = {
     "一个是固定部分的票息收益，不违约就会支付；还有一个是浮动部分的资本利得，可高可低。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/94732180813ab8229g0141af"
+   "link": "https://weread.qq.com/web/reader/94732180813ab8229g0141af",
+   "topics": [
+    4
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300084611",
@@ -8970,7 +10310,13 @@ export const bookshelf = {
     "面对哪个体量的企业，飞书宣传的能够实现的协同似乎都没有如约而至。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f3432a00813ab878dg011d92"
+   "link": "https://weread.qq.com/web/reader/f3432a00813ab878dg011d92",
+   "topics": [
+    14
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "600268",
@@ -9005,7 +10351,13 @@ export const bookshelf = {
     "一心忏悔，昼夜不懈，经一七，二七，以至一月，二月，三月，必有效验。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/a4a32b805928cca4a1dccc1"
+   "link": "https://weread.qq.com/web/reader/a4a32b805928cca4a1dccc1",
+   "topics": [
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "848152",
@@ -9037,7 +10389,11 @@ export const bookshelf = {
     "·需要在指定时间执行的行动。·需要在指定日期执行的行动。·需要在指定日期获取的信息。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c0e328b05cf118c0e998aee"
+   "link": "https://weread.qq.com/web/reader/c0e328b05cf118c0e998aee",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300134468",
@@ -9081,7 +10437,14 @@ export const bookshelf = {
     "我就想像狗皮膏药一样贴在这个世界上，或者说像厕所里的喷漆广告一样，长久地留存在网络上，想留下怎么擦也擦不掉的印记"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/783324e0813ab9b06g018543"
+   "link": "https://weread.qq.com/web/reader/783324e0813ab9b06g018543",
+   "topics": [
+    27,
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300031340",
@@ -9113,7 +10476,13 @@ export const bookshelf = {
     "觉察、选择和信任。无论做什么工作，这三大要素都能帮我们专注。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/cef32d50813ab72beg010798"
+   "link": "https://weread.qq.com/web/reader/cef32d50813ab72beg010798",
+   "topics": [
+    17
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300144908",
@@ -9145,7 +10514,11 @@ export const bookshelf = {
     "但尽管存在着种种质疑和解释，虚数很快就像分数或根式一样，成为数学中不可缺失的一部分。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ccd32570813ab9f1ag018737"
+   "link": "https://weread.qq.com/web/reader/ccd32570813ab9f1ag018737",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "26011106",
@@ -9177,7 +10550,14 @@ export const bookshelf = {
     "如果你在意自由，这就是你想要的自由！人在职场上，应该是腰杆越来越硬，而不是越来越没有原则。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/acd32c00718ce5e2acd780f"
+   "link": "https://weread.qq.com/web/reader/acd32c00718ce5e2acd780f",
+   "topics": [
+    12,
+    14
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "919922",
@@ -9206,7 +10586,11 @@ export const bookshelf = {
     "明是非，通情理，晓大义，是每个真正有修养的人拥有的品质。有了这样的品质，处理事情时必然刚毅果决，"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/7dc32c705e09727dc97a669"
+   "link": "https://weread.qq.com/web/reader/7dc32c705e09727dc97a669",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300023343",
@@ -9238,7 +10622,13 @@ export const bookshelf = {
     "直播，要巧妙地植入自己的联系方式，并且要暗示别人联系你有哪些福利"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/50a323b0813ab6f9eg013e17"
+   "link": "https://weread.qq.com/web/reader/50a323b0813ab6f9eg013e17",
+   "topics": [
+    16
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300062502",
@@ -9270,7 +10660,14 @@ export const bookshelf = {
     "给别人提建议时，以为是在为别人考虑，其实是从自己的利益出发。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/88132470813ab7eeag012b8d"
+   "link": "https://weread.qq.com/web/reader/88132470813ab7eeag012b8d",
+   "topics": [
+    0,
+    2
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300109200",
@@ -9301,7 +10698,13 @@ export const bookshelf = {
     "“总有一天会用到的”，规定“总有一天”的期限为“×个月，之后就扔掉”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/66a32190813ab9128g010e77"
+   "link": "https://weread.qq.com/web/reader/66a32190813ab9128g010e77",
+   "topics": [
+    2
+   ],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "928460",
@@ -9333,7 +10736,11 @@ export const bookshelf = {
     "我们必须认识到美国主导的全球金融黑洞事实上是一种没有信用尺度的货币狂飙，它的本质就是一种欺诈，或者是击鼓传花式的传销。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/024327905e2acc02480425d"
+   "link": "https://weread.qq.com/web/reader/024327905e2acc02480425d",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "36687601",
@@ -9364,7 +10771,13 @@ export const bookshelf = {
     "放松地彻底沉浸在目标之中，能发挥出惊人集中力的状态。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/a0532580722fcef1a0518a1"
+   "link": "https://weread.qq.com/web/reader/a0532580722fcef1a0518a1",
+   "topics": [
+    7
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300113748",
@@ -9396,7 +10809,13 @@ export const bookshelf = {
     "人才稀缺性从我们人力资源工作者角度看来并不一定是能力稀缺，有的时候是地域上稀缺"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ad532230813ab92eeg0186d7"
+   "link": "https://weread.qq.com/web/reader/ad532230813ab92eeg0186d7",
+   "topics": [
+    14
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300166004",
@@ -9431,7 +10850,13 @@ export const bookshelf = {
     "大学生就好像伊卡洛斯，不能飞得太高——追求纯粹的读书交友的生活，翅膀会被太阳融化；也不能飞得太低——从一开始就陷入升学和就业的压力里，翅膀便会被海水打湿。所以大学生们只能在空中悬着。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f8232890813aba758g014981"
+   "link": "https://weread.qq.com/web/reader/f8232890813aba758g014981",
+   "topics": [
+    27
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "661145",
@@ -9460,7 +10885,11 @@ export const bookshelf = {
     "加重刑罚，建立连坐制度，那些气量小、性格暴躁的人就不再敢打架，凶狠强悍的人便不敢争辩，懒惰的人不敢到处游荡，挥霍的人不会再产生，"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/45f32c205a169945fda42bb"
+   "link": "https://weread.qq.com/web/reader/45f32c205a169945fda42bb",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300108668",
@@ -9492,7 +10921,13 @@ export const bookshelf = {
     "其中45%的人说他们一生中冒的风险不够多，而是过于谨慎，视冒险为洪水猛兽。我们的社会不鼓励冒险，所以我们习惯于退缩和规避风险。这是一个恶性循环。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e7b32fe0813ab90f2g018e20"
+   "link": "https://weread.qq.com/web/reader/e7b32fe0813ab90f2g018e20",
+   "topics": [
+    24
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300094883",
@@ -9526,7 +10961,14 @@ export const bookshelf = {
     "讨好型人格的形成与成长经历有关，如果个体在早年时期没有被给予足够的自主选择权，或者养育者给予的爱经常是有条件的，那么个体成年后可能会缺少自信，没有安全感，习惯性地把决定权交给他人，且很难相信别人会无条件地爱自己。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c75321b0813ab8b90g013de3"
+   "link": "https://weread.qq.com/web/reader/c75321b0813ab8b90g013de3",
+   "topics": [
+    27,
+    29
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300121604",
@@ -9555,7 +10997,11 @@ export const bookshelf = {
     "关于劳动合同，需要多说一句的是，只有“非全日制用工”这种劳动关系可以不签署劳动合同，而订立口头协议，也就是俗称的“小时工”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d0b32590813ab9600g014ac7"
+   "link": "https://weread.qq.com/web/reader/d0b32590813ab9600g014ac7",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300084206",
@@ -9590,7 +11036,13 @@ export const bookshelf = {
     "我们最开始的目的是让第一批人关注我们，这可能只需要一个很小的点，足够小、足够垂直，但是有穿透力。当IP慢慢做起来，你会想要做得更大、更好。比如你既要有行动力又要有知识，还要有正确的三观，甚至要附加一些出彩的人格特质。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/59632900813ab8764g016e55"
+   "link": "https://weread.qq.com/web/reader/59632900813ab8764g016e55",
+   "topics": [
+    16
+   ],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300127607",
@@ -9615,7 +11067,11 @@ export const bookshelf = {
     "你需要做的就是多认可自己的成果，少关注别人的看法"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/3c732810813ab9858g017de3"
+   "link": "https://weread.qq.com/web/reader/3c732810813ab9858g017de3",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300069215",
@@ -9642,7 +11098,13 @@ export const bookshelf = {
     "生活游戏、婚姻游戏、聚会游戏、性游戏、地下游戏，接着是专业人士的诊疗室游戏，最后是一些好游戏"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e5932650813ab8189g015838"
+   "link": "https://weread.qq.com/web/reader/e5932650813ab8189g015838",
+   "topics": [
+    27
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300185658",
@@ -9677,7 +11139,13 @@ export const bookshelf = {
     "大量用脑之后，我们的脑袋确实是真的晕晕的，因为专注使用脑力，大脑里会产生各式各样的废物，来不及被胶质淋巴系统排除出去"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/97432990813abaf05g0185e1"
+   "link": "https://weread.qq.com/web/reader/97432990813abaf05g0185e1",
+   "topics": [
+    7
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300072535",
@@ -9704,7 +11172,13 @@ export const bookshelf = {
     "突然失去希望和勇气会导致死亡。我朋友最终的死因是预言没有如期兑现，他绝望了"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f9b32d30813ab82d5g015c99"
+   "link": "https://weread.qq.com/web/reader/f9b32d30813ab82d5g015c99",
+   "topics": [
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "25184495",
@@ -9736,7 +11210,13 @@ export const bookshelf = {
     "在寒冷的日子，我可能思考一下寒冷；在炎热的日子，则思考一下炎热；悲哀的时候，思考一下悲哀；快乐的时候，则思考一下快乐。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/5aa32dc0718048ef5aab966"
+   "link": "https://weread.qq.com/web/reader/5aa32dc0718048ef5aab966",
+   "topics": [
+    6
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300049940",
@@ -9769,7 +11249,13 @@ export const bookshelf = {
     "可能是由于局部肌肉紧张短缩，导致肌肉起止点附近关节结构产生位移摩擦引起的"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/7e432620813ab7a02g010361"
+   "link": "https://weread.qq.com/web/reader/7e432620813ab7a02g010361",
+   "topics": [
+    11
+   ],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "39980443",
@@ -9799,7 +11285,13 @@ export const bookshelf = {
     "好奇心。要想充分利用淘金式思维来立身处世，你就需要多听、多看，真正用心去听、用心去看"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e6832d3072620d9be68aabf"
+   "link": "https://weread.qq.com/web/reader/e6832d3072620d9be68aabf",
+   "topics": [
+    26
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "39980417",
@@ -9824,7 +11316,13 @@ export const bookshelf = {
     "要把Unicode数据转换成二进制数据，必须调用str的encode方法。要把二进制数据转换成Unicode数据，必须调用bytes的decode方法"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c2932f9072620d81c29c1ed"
+   "link": "https://weread.qq.com/web/reader/c2932f9072620d81c29c1ed",
+   "topics": [
+    20
+   ],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300116389",
@@ -9857,7 +11355,11 @@ export const bookshelf = {
     "使得他们很难肯定自己和他人取得的积极成果。他们的大脑和身体处在高水平的压力激素中，会导致炎症加重、血管受损、动脉粥样硬化，并增加患抑郁症、脑卒中、心脏病、血管性痴呆等各类疾病的风险。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f1732660813ab93f6g019d53"
+   "link": "https://weread.qq.com/web/reader/f1732660813ab93f6g019d53",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300143931",
@@ -9888,7 +11390,13 @@ export const bookshelf = {
     "一个人待着很安全，很自由，很放松，让我没有压力。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/726320f0813ab9eb9g0110df"
+   "link": "https://weread.qq.com/web/reader/726320f0813ab9eb9g0110df",
+   "topics": [
+    30
+   ],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300020372",
@@ -9918,7 +11426,11 @@ export const bookshelf = {
     "关于后天培养对运动能力的影响，流传最为广泛、给人的直觉感受也颇为合理的一种说法来自“自然人”（"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f2432ab0813ab6e75g012b2d"
+   "link": "https://weread.qq.com/web/reader/f2432ab0813ab6e75g012b2d",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300130748",
@@ -9947,7 +11459,11 @@ export const bookshelf = {
     "他们是朋友们都会打电话咨询意见的人，是被大家推选担任领导的同事，是每个人都欢迎他们加入聊天的朋友"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/65632ab0813ab9992g0180d2"
+   "link": "https://weread.qq.com/web/reader/65632ab0813ab9992g0180d2",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300058246",
@@ -9981,7 +11497,11 @@ export const bookshelf = {
    "quotes": [],
    "highlights": [],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d3732c70813ab7d40g016625"
+   "link": "https://weread.qq.com/web/reader/d3732c70813ab7d40g016625",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300094193",
@@ -10007,7 +11527,11 @@ export const bookshelf = {
     "如果让一个机器人代替大脑，完成大脑在休息时执行的所有任务，那么这个机器人需要10兆瓦的电力，相当于一个普通小水坝的发电量。而大脑执行这些任务，只用了12瓦特的电力，这些电力大约只够点亮一个小灯泡。难怪大脑这一器官对能量供给如此斤斤计较"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/57432c70813ab8b4bg013d9f"
+   "link": "https://weread.qq.com/web/reader/57432c70813ab8b4bg013d9f",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "40381455",
@@ -10035,7 +11559,11 @@ export const bookshelf = {
     "如果脑海中的声音大多是无意义且不必要的，那么它为什么会存在"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/69b32bb072682c0f69bc9fe"
+   "link": "https://weread.qq.com/web/reader/69b32bb072682c0f69bc9fe",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "26713355",
@@ -10062,7 +11590,11 @@ export const bookshelf = {
     "托尼和肖恩走了，他们属于这座山，而泰勒从不属于这里。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/8b832b5071979d0b8b86c0d"
+   "link": "https://weread.qq.com/web/reader/8b832b5071979d0b8b86c0d",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300189383",
@@ -10090,7 +11622,11 @@ export const bookshelf = {
     "在锻炼与休息交替之间，大脑会自然释放脑源性神经营养因子（BDNF），这是促进神经可塑性最关键的因子之一。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/17f32970813abb07ag013841"
+   "link": "https://weread.qq.com/web/reader/17f32970813abb07ag013841",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300060305",
@@ -10117,7 +11653,11 @@ export const bookshelf = {
     "非暴力沟通意在提醒我们早已知道的：人与人之间相互连结是人类的天性。非暴力沟通以一种具体的方式帮助我们活出天性。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/b7d32470813ab7e0eg015e3f"
+   "link": "https://weread.qq.com/web/reader/b7d32470813ab7e0eg015e3f",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300148831",
@@ -10143,7 +11683,11 @@ export const bookshelf = {
     "支持系统就像一个充电站，它不会让我们时刻活力满满，但在我们有需要的时候，会知道永远都有个地方可以进行快充。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/45332120813aba0a3g011529"
+   "link": "https://weread.qq.com/web/reader/45332120813aba0a3g011529",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300131382",
@@ -10169,7 +11713,11 @@ export const bookshelf = {
     "城市摊贩主要由四类群体构成，分别是农民、下岗失业人员、小商贩、其他低"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d1f32840813ab99d2g012788"
+   "link": "https://weread.qq.com/web/reader/d1f32840813ab99d2g012788",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "927587",
@@ -10197,7 +11745,11 @@ export const bookshelf = {
     "只要遵循投资于业务简单易懂的公司股票这一原则"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e7e320c05e2763e7e2297e5"
+   "link": "https://weread.qq.com/web/reader/e7e320c05e2763e7e2297e5",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300053062",
@@ -10225,7 +11777,11 @@ export const bookshelf = {
     "这样的斟酌是有意义的，因为明晰关键概念是我们设计中的重要工作。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/dac32720813ab7b3ag012a22"
+   "link": "https://weread.qq.com/web/reader/dac32720813ab7b3ag012a22",
+   "topics": [],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300108178",
@@ -10252,7 +11808,11 @@ export const bookshelf = {
     "如果你感觉自己正在被剥削，或者有人阻挡你发光发热，你不能沉浸在怨恨中等待被别人认可，或者更糟糕的是，沉溺在自怜中无法自拔。复利法则不仅适用于金钱，而且适用于思想和成就"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c4e326e0813ab90c1g01879b"
+   "link": "https://weread.qq.com/web/reader/c4e326e0813ab90c1g01879b",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300031519",
@@ -10280,7 +11840,11 @@ export const bookshelf = {
     "每年世界上制造出的打印材料足以充满100 000个国会图书馆。•表面网站，也就是每个人可以随时看见的那种，数量正在以每天730万的速度增加。•世界上共有3万多个电视台，平均每个制作出4 800小时的节目，那么每年一共制作出超过1.5亿小"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ae332ec0813ab72cfg019666"
+   "link": "https://weread.qq.com/web/reader/ae332ec0813ab72cfg019666",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300014115",
@@ -10308,7 +11872,11 @@ export const bookshelf = {
     "第一，心理学中关于行为的结论来源于科学证据；第二，心理学的应用都源于科学方法，并经过了科学方法的检验。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/be232300813ab6c03g015645"
+   "link": "https://weread.qq.com/web/reader/be232300813ab6c03g015645",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300071208",
@@ -10336,7 +11904,11 @@ export const bookshelf = {
     "就是“首先意识到父母是普通人，接着意识到自己是普通人，再意识到孩子是普通人”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c8c32310813ab8250g018eec"
+   "link": "https://weread.qq.com/web/reader/c8c32310813ab8250g018eec",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "23911461",
@@ -10364,7 +11936,11 @@ export const bookshelf = {
     "对于许多饭店，尽管酒水只占其销售额的20%～30%，但常常要贡献50%～60%的毛利；而从消费者的角度看，这其实是在让喝酒客户补贴不喝酒或少喝酒的客户"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c8732ab0716cdc25c872c87"
+   "link": "https://weread.qq.com/web/reader/c8732ab0716cdc25c872c87",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300014124",
@@ -10392,7 +11968,11 @@ export const bookshelf = {
     "归属需要也和我们伴侣是谁并无太大的关系，只要他们能给予我们持续的关爱和包容，我们的归属需要就能得到满足"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/515320a0813ab6c04g014eb6"
+   "link": "https://weread.qq.com/web/reader/515320a0813ab6c04g014eb6",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "33396343",
@@ -10420,7 +12000,11 @@ export const bookshelf = {
     "今天引领世界格局变动的无非是两股力量，金融和科技。伦敦和纽约凭借单一的金融属性晋升为全球城市，而上海与东京却两手抓，都是综合性城市"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/2f532de071fd96772f58025"
+   "link": "https://weread.qq.com/web/reader/2f532de071fd96772f58025",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "25623475",
@@ -10447,7 +12031,11 @@ export const bookshelf = {
     "这个问题产生于我们的思维结构：我们不学习规律，而是学习事实，而且只学习事实。我们似乎不太善于认识到我们的超规律（我们倾向于不学习规律的规律）。我们蔑视抽象的东西——疯狂地蔑视。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/32e32c707186fbb332e15c0"
+   "link": "https://weread.qq.com/web/reader/32e32c707186fbb332e15c0",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "32908875",
@@ -10473,7 +12061,11 @@ export const bookshelf = {
     "至少很多还扑朔迷离。但是有一点是肯定的，降低人口密度并不能保证安全、消32除犯罪和对犯罪的恐惧。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/a8d328b071f6264ba8df4e1"
+   "link": "https://weread.qq.com/web/reader/a8d328b071f6264ba8df4e1",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "820719",
@@ -10503,7 +12095,11 @@ export const bookshelf = {
     "迪安无法理解他的朋友怎么会认为自己看得起那场球赛，而他的朋友则无法理解为什么迪安意识不到那两张票是免费的。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/31d328205c85ef31dc0f5b3"
+   "link": "https://weread.qq.com/web/reader/31d328205c85ef31dc0f5b3",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300161157",
@@ -10528,7 +12124,11 @@ export const bookshelf = {
     "而是上来就告诉你，什么时候不该打。这也是孙子最基本的军事思想之一：慎战。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/72732e40813aba573g017bb7"
+   "link": "https://weread.qq.com/web/reader/72732e40813aba573g017bb7",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "758867",
@@ -10554,7 +12154,11 @@ export const bookshelf = {
     "我们谈论自由世界的时候，我们实际上就认为只要反对苏联的就是自由国家，而并非如“自由世界”这几个字所指明的一样，指那些已经实行政治自由的国家。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/4be320905b94534becfd24b"
+   "link": "https://weread.qq.com/web/reader/4be320905b94534becfd24b",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "29348579",
@@ -10580,7 +12184,11 @@ export const bookshelf = {
     "市场不是经济学家的发明，而是普通人的创造，是芸芸众生自发行为的结果。但创造市场和在市场中生活的普通人常常是只见树木不见森林，很容易受到反市场言论的蛊惑。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/08432be071bfd2e3084060c"
+   "link": "https://weread.qq.com/web/reader/08432be071bfd2e3084060c",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300100889",
@@ -10606,7 +12214,11 @@ export const bookshelf = {
     "找到“想做的事”就把它作为“一生的事业”是不可能的。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/71a32fb0813ab8de8g019cc9"
+   "link": "https://weread.qq.com/web/reader/71a32fb0813ab8de8g019cc9",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "38209695",
@@ -10631,7 +12243,11 @@ export const bookshelf = {
     "自己都曾经因为某一个原因而下定决心改变人生，从此走向了人生转折点的另外一个方向，比如，面临失业、生病、住院时，这个共同点就是在那一刻突然有强烈的想法，觉得现在的自己不行，必须彻底改变现阶段的人生"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bae322c07247089fbae5716"
+   "link": "https://weread.qq.com/web/reader/bae322c07247089fbae5716",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300024059",
@@ -10658,7 +12274,11 @@ export const bookshelf = {
     "所谓机会成本，是当你面临多个方案选其一时，被舍弃的最高价值选项。譬如阅读这本书的时间，有些人拿来吃饭睡觉，有些人拿来玩王者荣耀，有些人却能挣许多钱。选项不同，机会成本不同，时间价值自然也不同。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/73e32fc0813ab6fe5g01948c"
+   "link": "https://weread.qq.com/web/reader/73e32fc0813ab6fe5g01948c",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300014122",
@@ -10685,7 +12305,11 @@ export const bookshelf = {
     "大脑左半球控制语言能力，而右半球则更多地涉及空间关系，如艺术活动所需要的相关能力。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/fe3325b0813ab6c04g012a12"
+   "link": "https://weread.qq.com/web/reader/fe3325b0813ab6c04g012a12",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300144644",
@@ -10711,7 +12335,11 @@ export const bookshelf = {
     "人可能只记得对自己有利的事或为了迎合自己而篡改记忆。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/dc732740813ab9f00g0145b0"
+   "link": "https://weread.qq.com/web/reader/dc732740813ab9f00g0145b0",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300160661",
@@ -10737,7 +12365,11 @@ export const bookshelf = {
     "在人均工资两三千元的小城，保姆算是难得的高薪职业"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c1532290813aba542g011aa5"
+   "link": "https://weread.qq.com/web/reader/c1532290813aba542g011aa5",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "41176010",
@@ -10762,7 +12394,11 @@ export const bookshelf = {
     "我们所知道的“中产阶级社会”（生活水平属于中等程度的国民占人口的绝大多数）崩溃了。年收入在600万日元以下的中低阶层，已经占了日本总人口的八成。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/f313231072744bcaf3154c2"
+   "link": "https://weread.qq.com/web/reader/f313231072744bcaf3154c2",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "822995",
@@ -10787,7 +12423,11 @@ export const bookshelf = {
     "由于和尚多，往往对化缘地有界定，哪些地方富点，就指派领导的亲戚去，哪些地方穷，就安排朱重八同志去。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/a57325c05c8ed3a57224187"
+   "link": "https://weread.qq.com/web/reader/a57325c05c8ed3a57224187",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "635672",
@@ -10810,7 +12450,11 @@ export const bookshelf = {
     "历史50大畅销唱片大多是在20世纪七八十年代录制"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/0af329e059b3180af9d489c"
+   "link": "https://weread.qq.com/web/reader/0af329e059b3180af9d489c",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "922228",
@@ -10835,7 +12479,11 @@ export const bookshelf = {
     "If you are not growing ,then you are dying！"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/0c8326e05e12740c876a134"
+   "link": "https://weread.qq.com/web/reader/0c8326e05e12740c876a134",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "23914703",
@@ -10860,7 +12508,11 @@ export const bookshelf = {
     "时间就是金钱，一寸光阴一寸金。从现在开始，多存钱、多学习，提高投资收益率，并一直坚持下去"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d54329d0716ce8cfd543896"
+   "link": "https://weread.qq.com/web/reader/d54329d0716ce8cfd543896",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "30182760",
@@ -10883,7 +12535,11 @@ export const bookshelf = {
     "（一）付出不亚于任何人的努力（二）要谦虚，不要骄傲（三）要每天反省（四）活着，就要感谢（五）积善行、思利他（六）不要有感性的烦恼"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/0bf3260071cc8d680bfcdc0"
+   "link": "https://weread.qq.com/web/reader/0bf3260071cc8d680bfcdc0",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300201209",
@@ -10907,7 +12563,11 @@ export const bookshelf = {
     "结合主动和被动休息可以提供最佳的恢复效果。主动休息能够激发灵感和创造性思维，而被动休息则能为身体和大脑提供必要的恢复时间。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/35d32ee0813abb518g019c8f"
+   "link": "https://weread.qq.com/web/reader/35d32ee0813abb518g019c8f",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300096610",
@@ -10932,7 +12592,11 @@ export const bookshelf = {
     "一个人的边界感越强，心理也就越健康；他或她就能向别人表示自己能够接受什么、不能接受什么"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/5f9326e0813ab8c3dg010320"
+   "link": "https://weread.qq.com/web/reader/5f9326e0813ab8c3dg010320",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300164998",
@@ -10956,7 +12620,11 @@ export const bookshelf = {
     "把想吃的餐厅、想点的奶茶安排在最难熬的周一周二；把上班当成带薪养生，每天煮不重样的花茶、养生茶；小件快递寄到公司，工作累了就享受一下拆包裹的快乐；"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e9e32050813aba6f3g018ab8"
+   "link": "https://weread.qq.com/web/reader/e9e32050813aba6f3g018ab8",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "22691030",
@@ -10980,7 +12648,11 @@ export const bookshelf = {
     "播下一个行动，收获一种习惯；播下一种习惯，收获一种性格；播下一种性格，收获一种命"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ce232540715a3cd6ce219b0"
+   "link": "https://weread.qq.com/web/reader/ce232540715a3cd6ce219b0",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300117458",
@@ -11001,7 +12673,11 @@ export const bookshelf = {
    "quotes": [],
    "highlights": [],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/aa032fb0813ab9461g018406"
+   "link": "https://weread.qq.com/web/reader/aa032fb0813ab9461g018406",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300028831",
@@ -11024,7 +12700,11 @@ export const bookshelf = {
     "践行斯多葛哲学，最重要的是区分我们可改变的和无法改变的：对什么有影响，对什么没影响。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/56d32570813ab71c3g011e0c"
+   "link": "https://weread.qq.com/web/reader/56d32570813ab71c3g011e0c",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300139973",
@@ -11049,7 +12729,11 @@ export const bookshelf = {
     "除了稻草人以外，没有一个人为稻子发愁。他恨不得一下子跳过去，把那灾害的根苗扑灭了；又恨不得托风带个信，叫主人快快来铲除灾害。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/92132d00813ab9d2dg013b8d"
+   "link": "https://weread.qq.com/web/reader/92132d00813ab9d2dg013b8d",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "650985",
@@ -11074,7 +12758,11 @@ export const bookshelf = {
     "凡是能分工的工艺，分了工就可以相应地增强劳动生产"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/6c4324d059eee96c43a4b3e"
+   "link": "https://weread.qq.com/web/reader/6c4324d059eee96c43a4b3e",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300076204",
@@ -11099,7 +12787,11 @@ export const bookshelf = {
     "自恋维度，也可以称为“力量维度”“权力维度”；关系维度，也可以称为“情感维度”“道德维度”。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bb432f60813ab8444g014d61"
+   "link": "https://weread.qq.com/web/reader/bb432f60813ab8444g014d61",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300085176",
@@ -11122,7 +12814,11 @@ export const bookshelf = {
     "“煤矿中的金丝雀”，认为他们预示着白领在日益不稳定的工作环境中的未来。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e3e32be0813ab87c5g016c8e"
+   "link": "https://weread.qq.com/web/reader/e3e32be0813ab87c5g016c8e",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300072049",
@@ -11147,7 +12843,11 @@ export const bookshelf = {
     "这是我人生中为数不多的几次感觉尴尬和撒谎之一。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ce732070813ab82a4g019a36"
+   "link": "https://weread.qq.com/web/reader/ce732070813ab82a4g019a36",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300027206",
@@ -11172,7 +12872,11 @@ export const bookshelf = {
     "请当事人尝试的变化一定要小之又小，近乎不变。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/39e32100813ab7120g01631e"
+   "link": "https://weread.qq.com/web/reader/39e32100813ab7120g01631e",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "25123238",
@@ -11196,7 +12900,11 @@ export const bookshelf = {
     "“所有数字的数量更大还是一条线上点的数量更大？”这"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/61232470717f59a66124747"
+   "link": "https://weread.qq.com/web/reader/61232470717f59a66124747",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "37335989",
@@ -11221,7 +12929,11 @@ export const bookshelf = {
     "“战争到来，首先要淘汰一批和平时期的将帅。”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c64321307239b3b5c648b2a"
+   "link": "https://weread.qq.com/web/reader/c64321307239b3b5c648b2a",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "31515586",
@@ -11246,7 +12958,11 @@ export const bookshelf = {
     "购物也变得理性和谨慎，人们更愿意把钱消费在旅行上，认为花钱买体验才是永远不会贬值的投资。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e713224071e0e3c2e7100ff"
+   "link": "https://weread.qq.com/web/reader/e713224071e0e3c2e7100ff",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300084779",
@@ -11270,7 +12986,11 @@ export const bookshelf = {
     "我觉得之前的自己被泡泡罩起来了，它可能是好的工作、还不错的生活、国际大都市、规律的生活节律，我感觉一切都是美好的。后来我发现自己要去戳破这个泡泡，让自己看看世界的真实样子，看看那些跟我非常不一样的人，他们是怎样生活的。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/3ad321c0813ab879dg019a5c"
+   "link": "https://weread.qq.com/web/reader/3ad321c0813ab879dg019a5c",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300063612",
@@ -11298,7 +13018,11 @@ export const bookshelf = {
     "程序员既要用抽象的方式解决问题，又要编写代码，因此必须具备大多数人天生不具备的注意力水平。缺少空格？报错。误判数组索引的起始位置？报错。曲解现有代码的确切作用？报错。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bc732f30813ab7f59g012d31"
+   "link": "https://weread.qq.com/web/reader/bc732f30813ab7f59g012d31",
+   "topics": [],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300201028",
@@ -11324,7 +13048,11 @@ export const bookshelf = {
    "quotes": [],
    "highlights": [],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/70032060813abb506g0188f4"
+   "link": "https://weread.qq.com/web/reader/70032060813abb506g0188f4",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "23789204",
@@ -11347,7 +13075,11 @@ export const bookshelf = {
     "世界上所有的成功，都离不开传播。极端地说，要成功就必须得到人们的认可，即使众人皆醉我独醒，独醒也需要被认可，而认可的获得，就需要传播。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/bbe32fe0716afe94bbe5336"
+   "link": "https://weread.qq.com/web/reader/bbe32fe0716afe94bbe5336",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300176902",
@@ -11371,7 +13103,11 @@ export const bookshelf = {
     "「先交钱定下来」这个动作很重要，相当于是人为设定了锚点。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ad132a30813abab9ag0129ff"
+   "link": "https://weread.qq.com/web/reader/ad132a30813abab9ag0129ff",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300175019",
@@ -11394,7 +13130,11 @@ export const bookshelf = {
     "他认为，我们感觉自己没有活力，不是能量真的用光了，而是源于大脑的「守能动机"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/3db32480813abaaddg019c3a"
+   "link": "https://weread.qq.com/web/reader/3db32480813abaaddg019c3a",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300181077",
@@ -11418,7 +13158,11 @@ export const bookshelf = {
     "财富或许是样极好的东西，因为它意味着权力、闲暇与自由"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/fd6324f0813abad3bg017c18"
+   "link": "https://weread.qq.com/web/reader/fd6324f0813abad3bg017c18",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "26454157",
@@ -11442,7 +13186,11 @@ export const bookshelf = {
     "由于沃顿商学院名声太大，很多中国人只知道沃顿商学院而不太熟悉其所在的大学“宾夕法尼亚大学”"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/25332a607193a88d2533d34"
+   "link": "https://weread.qq.com/web/reader/25332a607193a88d2533d34",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "24953405",
@@ -11466,7 +13214,11 @@ export const bookshelf = {
     "你以为自己在享受整个阿纳斯塔西亚，其实你只不过是她的奴隶。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/946321a0717cc23d946b482"
+   "link": "https://weread.qq.com/web/reader/946321a0717cc23d946b482",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "25802407",
@@ -11490,7 +13242,11 @@ export const bookshelf = {
     "确定一个类似的数值，即一个小小的、对你来说无关紧要的额度，这笔钱对你来说根本不算是钱，而更像是能促进睡眠的白噪声。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/832322d07189b6a783291eb"
+   "link": "https://weread.qq.com/web/reader/832322d07189b6a783291eb",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "695233",
@@ -11511,7 +13267,11 @@ export const bookshelf = {
    "quotes": [],
    "highlights": [],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/ce032b305a9bc1ce0b0dd2a"
+   "link": "https://weread.qq.com/web/reader/ce032b305a9bc1ce0b0dd2a",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "44678192",
@@ -11535,7 +13295,11 @@ export const bookshelf = {
     "一个发自内心深处的，具有强烈驱动性的学习欲望，一个停止担忧并要扬起生活风帆的坚强决心。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/dfd3297072a9bc30dfdc7d6"
+   "link": "https://weread.qq.com/web/reader/dfd3297072a9bc30dfdc7d6",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "25916160",
@@ -11559,7 +13323,11 @@ export const bookshelf = {
     "就是无穷的开始，The Beginning of Infinity。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/61932a00718b73006196a3b"
+   "link": "https://weread.qq.com/web/reader/61932a00718b73006196a3b",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300036999",
@@ -11583,7 +13351,11 @@ export const bookshelf = {
     "但对多数低级官员来说，被罚俸两月，就会感到拮据，甚至付不出必要的家庭开支了。按照传统观念，皇帝"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/af732390813ab74f3g019ddd"
+   "link": "https://weread.qq.com/web/reader/af732390813ab74f3g019ddd",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "30179194",
@@ -11606,7 +13378,11 @@ export const bookshelf = {
     "软件是具有天然的复杂性的，而且不可能彻底地消除这种复杂性。不甘于向复杂度屈服的我们，花了很多时间研究复杂性的根源，随着对复杂性理解的不断深入，我们发现造成软件复杂性的主要因素如下。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/81132f5071cc7f7a81151c9"
+   "link": "https://weread.qq.com/web/reader/81132f5071cc7f7a81151c9",
+   "topics": [],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "24275985",
@@ -11629,7 +13405,11 @@ export const bookshelf = {
     "穷人的出场通常只是作为某种励志剧或悲剧的主人公，或令人钦佩，或惹人怜悯，而不是某种知识的传播者，人们不会向他们咨询想法或计划。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/9b932ce071726c119b94961"
+   "link": "https://weread.qq.com/web/reader/9b932ce071726c119b94961",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300020681",
@@ -11653,7 +13433,11 @@ export const bookshelf = {
     "比如对方最初给我们留下了好的印象，我们认为对方不错，后来即使对方犯了错误，我们也倾向于认为这只是偶"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/47432da0813ab6e94g0110d3"
+   "link": "https://weread.qq.com/web/reader/47432da0813ab6e94g0110d3",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "920691",
@@ -11677,7 +13461,11 @@ export const bookshelf = {
     "但当你发现所在的环境和周围的人已经无法让你获得提升时，不妨学一下我提到的那位设计师，选择一个更好的环境，尽可能与那些优秀的人一起工作。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/cf6329205e0c73cf6c83a88"
+   "link": "https://weread.qq.com/web/reader/cf6329205e0c73cf6c83a88",
+   "topics": [],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300021701",
@@ -11701,7 +13489,11 @@ export const bookshelf = {
     "如果取消漫游费，那么运营商们就处于全国统一的竞争性市场中，它们之间就会打起价格战，导致大多数运营商退出，而留下极少数幸存者垄断市场。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/e3f32610813ab6efag011851"
+   "link": "https://weread.qq.com/web/reader/e3f32610813ab6efag011851",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300109178",
@@ -11724,7 +13516,11 @@ export const bookshelf = {
     "从与父母身体上的分离开始，直到心理上的分离。在这件事上，男孩们从未有过选择权。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d7032000813ab9125g018923"
+   "link": "https://weread.qq.com/web/reader/d7032000813ab9125g018923",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "30243961",
@@ -11745,7 +13541,11 @@ export const bookshelf = {
    "quotes": [],
    "highlights": [],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/4e732b3071cd7c794e71c25"
+   "link": "https://weread.qq.com/web/reader/4e732b3071cd7c794e71c25",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300047207",
@@ -11769,7 +13569,11 @@ export const bookshelf = {
     "使得前端从单一的基于PC浏览器展示的Web应用向手机、平板电脑覆盖"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d1f32910813ab78f0g017bdc"
+   "link": "https://weread.qq.com/web/reader/d1f32910813ab78f0g017bdc",
+   "topics": [],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "846170",
@@ -11793,7 +13597,11 @@ export const bookshelf = {
     "外在瑜伽是瑜伽练习者可以练习的部分；而内在瑜伽，则是学习者练习瑜伽后产生的结果。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/445321305ce95a445011c90"
+   "link": "https://weread.qq.com/web/reader/445321305ce95a445011c90",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300138061",
@@ -11814,7 +13622,11 @@ export const bookshelf = {
    "quotes": [],
    "highlights": [],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/08e32650813ab9c6eg011c29"
+   "link": "https://weread.qq.com/web/reader/08e32650813ab9c6eg011c29",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300106560",
@@ -11837,7 +13649,11 @@ export const bookshelf = {
     "创业持续3年以上，公司依然在存续期，有稳定的现金流；从样本范围上，尽量覆盖到来自中国各个地区，拥有不同成长背景、学历背景、处于不同年龄阶段、从事不同行业的创业者"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c7b32120813ab9020g0104d8"
+   "link": "https://weread.qq.com/web/reader/c7b32120813ab9020g0104d8",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300092143",
@@ -11860,7 +13676,11 @@ export const bookshelf = {
     "结果意外发现，死者洪梅左侧嘴角上方的一颗痣不是天生的，而是用刺青刺出来的"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/83232120813ab8a7eg0136fe"
+   "link": "https://weread.qq.com/web/reader/83232120813ab8a7eg0136fe",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300197591",
@@ -11883,7 +13703,11 @@ export const bookshelf = {
     "无论何时，我都喜欢早起，但出于对温迪的尊重，我可能不会定闹钟。不过，如果周六或周日我要写作，就会像工作日一样定闹钟。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/fb932e60813abb3afg011fd0"
+   "link": "https://weread.qq.com/web/reader/fb932e60813abb3afg011fd0",
+   "topics": [],
+   "domains": [
+    "精力与习惯"
+   ]
   },
   {
    "bid": "3300152197",
@@ -11906,7 +13730,11 @@ export const bookshelf = {
     "我相信每个人都有独一无二的人生，而创业者这个群体，他们的人生浓度、密度、厚度、高度尤为出众"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/c7332210813aba1f3g017987"
+   "link": "https://weread.qq.com/web/reader/c7332210813aba1f3g017987",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300082672",
@@ -11929,7 +13757,11 @@ export const bookshelf = {
     "只要具备人人自私和资源稀缺这样两个条件，世界就是个坏的世界。很不幸，人类世界所具备的缺点远不止这两点"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d8432fb0813ab86cbg012712"
+   "link": "https://weread.qq.com/web/reader/d8432fb0813ab86cbg012712",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300139390",
@@ -11952,7 +13784,11 @@ export const bookshelf = {
     "：当你选择一样东西的时候，你根本不知道这意味着什么。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/39332f50813ab9cf3g010df3"
+   "link": "https://weread.qq.com/web/reader/39332f50813ab9cf3g010df3",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300139386",
@@ -11975,7 +13811,11 @@ export const bookshelf = {
     "老年应当在日暮时燃烧咆哮；怒斥，怒斥光明的消逝"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/df032fd0813ab9cf2g016664"
+   "link": "https://weread.qq.com/web/reader/df032fd0813ab9cf2g016664",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300122248",
@@ -11998,7 +13838,11 @@ export const bookshelf = {
     "我过去相信，至今仍然相信，年轻人省下的每一元钱，如果能适当地投资，都会在他的一生中给予其20倍的回报。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/5eb32e60813ab9640g018aa1"
+   "link": "https://weread.qq.com/web/reader/5eb32e60813ab9640g018aa1",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "3300124016",
@@ -12021,7 +13865,11 @@ export const bookshelf = {
     "难以忍受的无聊是：做同一种人，待在同一个地方，过一样的人生"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/d2132ce0813ab96f1g0161a3"
+   "link": "https://weread.qq.com/web/reader/d2132ce0813ab96f1g0161a3",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300131186",
@@ -12044,7 +13892,11 @@ export const bookshelf = {
     "帕特尔人在美国人口占比不到千分之二，却拥有整个美国半数以上的汽车旅馆。他们真了不起！"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/60632b50813ab99beg0168e6"
+   "link": "https://weread.qq.com/web/reader/60632b50813ab99beg0168e6",
+   "topics": [],
+   "domains": [
+    "投资与周期"
+   ]
   },
   {
    "bid": "42682684",
@@ -12067,7 +13919,11 @@ export const bookshelf = {
     "工人、干部、知识分子三大重要社会阶层，每有明显的互相嫌恶甚至敌视现象，而且每一方都同时反感另外两方"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/085326e0728b493c085ade1"
+   "link": "https://weread.qq.com/web/reader/085326e0728b493c085ade1",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "27281778",
@@ -12090,7 +13946,11 @@ export const bookshelf = {
     "内部局势越复杂的时候，君主、将领地位最不稳固的时候，往往会使用外籍部队来做自己的近卫"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/fad3207071a04972fadd9a5"
+   "link": "https://weread.qq.com/web/reader/fad3207071a04972fadd9a5",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   },
   {
    "bid": "3300132463",
@@ -12113,7 +13973,11 @@ export const bookshelf = {
     "AI自媒体写作的应用主要体现在以下4个方面。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/89132350813ab9a3eg01368a"
+   "link": "https://weread.qq.com/web/reader/89132350813ab9a3eg01368a",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "40905588",
@@ -12136,7 +14000,11 @@ export const bookshelf = {
     "“昔之善战者，先为不可胜，以待敌之可胜。”1 若欲立于不败之地，明确的战略部署是至关重要的前提"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/eea327d072702b74eea9ad7"
+   "link": "https://weread.qq.com/web/reader/eea327d072702b74eea9ad7",
+   "topics": [],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300113470",
@@ -12159,7 +14027,11 @@ export const bookshelf = {
     "从性教育开始，揭示影响人类健康长寿的根本原因在哪里，告诉我们从出生开始如何做到强身健体，到了中老年又如何做到健康长寿。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/491326f0813ab92d3g01033c"
+   "link": "https://weread.qq.com/web/reader/491326f0813ab92d3g01033c",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "615794",
@@ -12182,7 +14054,11 @@ export const bookshelf = {
     "建立起个人的自信之后，就是传达自信了。在跟别人讲话的时候，尤其是讲到自己擅长的领域时，口吻要坚决些，语气要坚定些，多说些有力量的话"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/431325d0596572431e92f69"
+   "link": "https://weread.qq.com/web/reader/431325d0596572431e92f69",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "3300123767",
@@ -12205,7 +14081,11 @@ export const bookshelf = {
     "我生来一无所知，只有一点儿时间四处奔波试图改变这一点。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/a1c32030813ab96d8g0171b2"
+   "link": "https://weread.qq.com/web/reader/a1c32030813ab96d8g0171b2",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3300069919",
@@ -12228,7 +14108,11 @@ export const bookshelf = {
     "因为我们需要招聘的不是“经历丰富”的人，而是“有职业素养”的人"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/9b6327d0813ab81cfg0194d5"
+   "link": "https://weread.qq.com/web/reader/9b6327d0813ab81cfg0194d5",
+   "topics": [],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "3300060593",
@@ -12251,7 +14135,11 @@ export const bookshelf = {
     "他们的自我价值感源于证明“我是对的，你是错的”，而不是说明问题的实质。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/27732180813ab7e2bg013f60"
+   "link": "https://weread.qq.com/web/reader/27732180813ab7e2bg013f60",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "43631660",
@@ -12274,7 +14162,11 @@ export const bookshelf = {
     "如今，商业和政治谈判变得越来越复杂，谈判双方都是由许多存在利益关系的参与者组成。谈判的问题是多种多样的，许多问题需要渊博的专业知识才能解决。它们都在一个动态环境中随着条件的变化而变化，这就对我们提出了很高的要求，对我们的对手也是。"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/b7e32b007299c42cb7e5985"
+   "link": "https://weread.qq.com/web/reader/b7e32b007299c42cb7e5985",
+   "topics": [],
+   "domains": [
+    "职业路径"
+   ]
   },
   {
    "bid": "22806930",
@@ -12297,7 +14189,11 @@ export const bookshelf = {
     "只要代码清单中包含三个尖括号（如❶所示），就意味着输出来自终端会话"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/19532980715c01921954a54"
+   "link": "https://weread.qq.com/web/reader/19532980715c01921954a54",
+   "topics": [],
+   "domains": [
+    "工程思维"
+   ]
   },
   {
    "bid": "934369",
@@ -12320,7 +14216,11 @@ export const bookshelf = {
     "但凡男人写女人的东西都是值得怀疑的，因为男人既是法官又是当事人"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/808323705e41e180800ee85"
+   "link": "https://weread.qq.com/web/reader/808323705e41e180800ee85",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "3003371339",
@@ -12341,7 +14241,11 @@ export const bookshelf = {
    "quotes": [],
    "highlights": [],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/7b532f60811e6c7edg019823"
+   "link": "https://weread.qq.com/web/reader/7b532f60811e6c7edg019823",
+   "topics": [],
+   "domains": [
+    "人生与心理"
+   ]
   },
   {
    "bid": "30766471",
@@ -12364,7 +14268,11 @@ export const bookshelf = {
     "我活在世上，无非想要明白些道理，遇见些有趣的事。倘能如我所愿，我的一生就算成功"
    ],
    "cards": [],
-   "link": "https://weread.qq.com/web/reader/84632ce071d57587846de1c"
+   "link": "https://weread.qq.com/web/reader/84632ce071d57587846de1c",
+   "topics": [],
+   "domains": [
+    "小说与闲书"
+   ]
   }
  ],
  "bookCategories": [
@@ -12382,5 +14290,4201 @@ export const bookshelf = {
   "医学健康",
   "漫画",
   "其他"
+ ],
+ "domains": [
+  {
+   "name": "投资与周期",
+   "topics": 6,
+   "books": 58,
+   "hours": 67.8
+  },
+  {
+   "name": "精力与习惯",
+   "topics": 6,
+   "books": 68,
+   "hours": 77.5
+  },
+  {
+   "name": "职业路径",
+   "topics": 6,
+   "books": 61,
+   "hours": 80.2
+  },
+  {
+   "name": "工程思维",
+   "topics": 6,
+   "books": 25,
+   "hours": 23.7
+  },
+  {
+   "name": "人生与心理",
+   "topics": 7,
+   "books": 132,
+   "hours": 156.6
+  },
+  {
+   "name": "小说与闲书",
+   "topics": 0,
+   "books": 33,
+   "hours": 24.8
+  }
+ ],
+ "topics": [
+  {
+   "name": "运气与风险的一体两面",
+   "domain": "投资与周期",
+   "oneLiner": "成败里运气的分量远超直觉，准备比预测可靠",
+   "books": [
+    70,
+    21,
+    31,
+    140,
+    217,
+    239
+   ],
+   "hours": 10.6,
+   "viewpoints": [
+    {
+     "claim": "运气与风险是同一枚硬币",
+     "text": "比尔·盖茨与同校的肯特·埃文斯同样聪明，一个赶上中学就有计算机终端的良机，一个死于登山事故。不是所有成功都源自努力，也不是所有贫困都因懒惰。",
+     "books": [
+      {
+       "title": "金钱心理学",
+       "idx": 31
+      }
+     ]
+    },
+    {
+     "claim": "个人经验只是极小的样本",
+     "text": "个人亲历的金钱经验只占世界的极小部分，却主导了大部分判断；出生年代不同的投资者，对股票的终身态度截然不同。",
+     "books": [
+      {
+       "title": "金钱心理学",
+       "idx": 31
+      }
+     ]
+    },
+    {
+     "claim": "极端结果主导整体",
+     "text": "罗素 3000 的回报几乎全部来自 7% 的企业，巴菲特一生持有数百只股票，收益大部分来自约 10 只。单次结果说明不了能力。",
+     "books": [
+      {
+       "title": "金钱心理学",
+       "idx": 31
+      }
+     ]
+    },
+    {
+     "claim": "准备优于预测",
+     "text": "预测被高估，准备被低估；信心被高估，谦逊被低估。与其猜结果，不如为各种结果都做好准备。",
+     "books": [
+      {
+       "title": "复利",
+       "idx": 217
+      }
+     ]
+    },
+    {
+     "claim": "用排除法应对不可知",
+     "text": "很难判断管理层是否对，但相对容易判断是否不对。不对的就不碰，犯错的概率就会大幅下降。",
+     "books": [
+      {
+       "title": "段永平投资问答录",
+       "idx": null
+      }
+     ]
+    },
+    {
+     "claim": "准确知道自己能力的边界",
+     "text": "芒格认为成就不来自能力比别人高，而来自更清楚自己能力有多大；宁与智商 130 自认 128 的人为伍，远离智商 190 自认 250 的人。",
+     "books": [
+      {
+       "title": "芒格之道——查理·芒格股东会讲话1987-2022",
+       "idx": 239
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "守住自己的能力边界，也是对自己的一种保护",
+     "quote": "你们每个人都必须搞清楚你们有哪方面的才能。你们必须发挥自己的优势。但如果你们想在较不擅长的领域取得成功，那你们的生活可能会过得一团糟",
+     "idx": 21
+    },
+    {
+     "text": "场内基金本质上和股票没有区别，也会有价格的波动",
+     "quote": "场内买卖是投资者与其他基金持有者互相买卖来交易基金。也就是，散户与散户之间进行的交易",
+     "idx": 70
+    },
+    {
+     "text": "并不是要刻意的与众不同，只是大众聚合在一起时通常是乌合之众",
+     "quote": "突破常规本身不是目的，但它是一种不错的思维方式",
+     "idx": 140
+    }
+   ],
+   "highlights": [
+    {
+     "text": "预测被高估了，准备被低估了。信心被高估了，谦逊被低估了。信念被高估了，实践被低估了",
+     "idx": 217
+    },
+    {
+     "text": "用“谦卑”这个词也许不太恰当，可能用“务实”这个词更合适。我们能取得今时今日的成就，不是因为我们的能力比别人高出多少，而是我们比别人更清楚自己能力的大小。清楚自己能力的大小，这个品质应该不能说是“谦卑”。",
+     "idx": 239
+    },
+    {
+     "text": "优秀的管理层是资产中的一部分，沃伦并不因为管理层优秀，而支付高出价值的价格。",
+     "idx": 239
+    },
+    {
+     "text": "守富需要做的却与冒险完全相反。守富需要谦逊和敬畏之心，需要清楚财富来得有多快，去得就有多容易。",
+     "idx": 31
+    },
+    {
+     "text": "我们都觉得自己明白这个世界是如何运作的，但其实我们只经历过其中很小的一部分。",
+     "idx": 31
+    },
+    {
+     "text": "通过大量的阅读发展成为一个终身的自学者：培养好奇心，每天努力变得更聪明一点。",
+     "idx": 217
+    },
+    {
+     "text": "一来标普500指数是美元资产，二来标普500指数自身的波动性比A股低很多，相关性也不大。所以持有一部分标普500指数基金，可以分散风险。",
+     "idx": 70
+    },
+    {
+     "text": "危险的事：最大的风险并不是来自于低质量或高波动性，而是来自于买价过高。",
+     "idx": 140
+    },
+    {
+     "text": "无论多好的资产，如果买进价格过高，那么都会变成失败的投资。同时，很少有资产会差到以足够低的价格买进都不能转化为成功投资的地步",
+     "idx": 140
+    },
+    {
+     "text": "“七亏二平一赚”，意思是10个投资股票基金的人，有7个是亏损的，2个是不赔不赚的，1个是有盈利的。",
+     "idx": 70
+    }
+   ]
+  },
+  {
+   "name": "复利与时间的形状",
+   "domain": "投资与周期",
+   "oneLiner": "复利的关键不是单年高回报，而是长期不中断",
+   "books": [
+    70,
+    31,
+    102,
+    165,
+    222,
+    217
+   ],
+   "hours": 8.5,
+   "viewpoints": [
+    {
+     "claim": "复利靠的是不起眼的持续",
+     "text": "巴菲特 845 亿净资产中有 815 亿是 65 岁后赚到的。冰期形成靠凉爽的夏季而非极寒的冬季，好投资靠长期不中断，而非单年高回报。",
+     "books": [
+      {
+       "title": "金钱心理学",
+       "idx": 31
+      }
+     ]
+    },
+    {
+     "claim": "除非万不得已，不要打断复利",
+     "text": "这是芒格的复利第一规则；落到个人执行上，就是一次没做到可以，绝不连续错过两次。",
+     "books": [
+      {
+       "title": "芒格之道——查理·芒格股东会讲话1987-2022",
+       "idx": 239
+      },
+      {
+       "title": "掌控习惯",
+       "idx": 16
+      }
+     ]
+    },
+    {
+     "claim": "人力是年轻人最大的资产",
+     "text": "资产是能持续产生正向现金流的东西，年轻时最大的资产是自己的人力；理财要跑赢的不只是 CPI，还有与货币增速挂钩的可选消费通胀。",
+     "books": [
+      {
+       "title": "定投十年财务自由",
+       "idx": 70
+      }
+     ]
+    },
+    {
+     "claim": "知识也有临界质量",
+     "text": "知识基础越强，获取新知识越快；多股力量同向作用才会越过临界点，这解释了为何多数人在爆发前就放弃了。",
+     "books": [
+      {
+       "title": "复利",
+       "idx": 217
+      }
+     ]
+    },
+    {
+     "claim": "长长的坡，厚厚的雪",
+     "text": "复利需要载体，坡不只是行业，还有企业自身能否长跑；企业文化是复利的底座，伟大企业的标准是 25 到 30 年后仍然伟大。",
+     "books": [
+      {
+       "title": "段永平投资问答录",
+       "idx": null
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "场内基金本质上和股票没有区别，也会有价格的波动",
+     "quote": "场内买卖是投资者与其他基金持有者互相买卖来交易基金。也就是，散户与散户之间进行的交易",
+     "idx": 70
+    },
+    {
+     "text": "工业时代大部分人都活在动物园里",
+     "quote": "他们的确生活在一个提桶的世界里，只有一小部分人才敢做建造管道的梦。",
+     "idx": 222
+    }
+   ],
+   "highlights": [
+    {
+     "text": "你不是一份电子表格，而是一个人，一个有着七情六欲，经常头脑发昏的人",
+     "idx": 31
+    },
+    {
+     "text": "不要鄙视任何人——任何人都有自己的位置，都可以在有钱和有时间的条件下创造奇迹。",
+     "idx": 102
+    },
+    {
+     "text": "“七亏二平一赚”，意思是10个投资股票基金的人，有7个是亏损的，2个是不赔不赚的，1个是有盈利的。",
+     "idx": 70
+    },
+    {
+     "text": "金钱最大的内在价值是它能赋予你掌控自己时间的能力——这句话没有任何夸张的成分",
+     "idx": 31
+    },
+    {
+     "text": "比如健康和健身、个人理财、投资、商业、经济、决策、人类行为、历史、哲学、自我意识，当然还有生活。",
+     "idx": 217
+    },
+    {
+     "text": "在犹太人看来，真正能决定每个人能否成功的关键是那些大人物，所以在交往中一定要优先处理好与这些大人物的关系，这样你的人生才能不断获得成功。",
+     "idx": 102
+    },
+    {
+     "text": "一个好的学历、一份好的工作，会大大提升人力资产的长期价值。",
+     "idx": 70
+    },
+    {
+     "text": "降低行动的门槛很重要。把门槛设定到就算是加班、聚餐也一样能够做到的状态，以无论什么样的状况都能够执行为前提，彻底降低行动标准吧。",
+     "idx": 165
+    },
+    {
+     "text": "“我没有时间。”“我的朋友告诉我，他认识的一个朋友的朋友试图建造管道，但失败了。”“只有那些动手很早的人才可能从管道中赚到钱，现在已经太晚了。”“我这辈子一直在提水桶，我只想维持现状。”“我知道有些人在管道的骗局中亏了钱，我可不干这个。”",
+     "idx": 222
+    },
+    {
+     "text": "芒格的观点告诉我们，最有可能带来指数级增长成效的方法是：大部分时间专注于某个领域，同时花点时间去理解更广阔的世界",
+     "idx": 217
+    }
+   ]
+  },
+  {
+   "name": "致富与守富的不对称",
+   "domain": "投资与周期",
+   "oneLiner": "致富靠冒险与乐观，守富只能靠节俭与谨慎",
+   "books": [
+    1,
+    31,
+    81,
+    35,
+    102,
+    54,
+    140,
+    152,
+    239,
+    240
+   ],
+   "hours": 24.2,
+   "viewpoints": [
+    {
+     "claim": "致富靠乐观，守富靠恐惧",
+     "text": "致富需要冒险和乐观，守富只有节俭加谨慎一条路。巴菲特最可复制的是他没做过的事：不举债、不恐慌抛售、不损害声誉。",
+     "books": [
+      {
+       "title": "金钱心理学",
+       "idx": 31
+      }
+     ]
+    },
+    {
+     "claim": "麦道夫悖论",
+     "text": "坐拥每年数千万美元的合法生意仍去欺诈，是拿已有且需要的东西去冒险，换并不需要的钱。守富的头号敌人是贪婪的自我升级。",
+     "books": [
+      {
+       "title": "金钱心理学",
+       "idx": 31
+      }
+     ]
+    },
+    {
+     "claim": "财富是看不见的东西",
+     "text": "有钱和富有是两回事，没花出去的钱才是财富；炫富是财富流失最快的途径。",
+     "books": [
+      {
+       "title": "金钱心理学",
+       "idx": 31
+      }
+     ]
+    },
+    {
+     "claim": "别营造看上去有钱的幻觉",
+     "text": "净资产 100 万美元的美国人九成住在不到 100 万美元的房子里。买房先做压力测试，利率翻倍还能还得起再买。",
+     "books": [
+      {
+       "title": "拿工薪，三十几岁你也能赚到600万",
+       "idx": 152
+      }
+     ]
+    },
+    {
+     "claim": "把钱换算成生命时间",
+     "text": "金钱与幸福的相关性很快封顶；把钱换算成付出的生命时间，优化的就是每小时的含金量，而不是绝对收入。",
+     "books": [
+      {
+       "title": "拆掉思维里的墙",
+       "idx": 29
+      },
+      {
+       "title": "要钱还是要生活",
+       "idx": 35
+      }
+     ]
+    },
+    {
+     "claim": "收入形态决定税序",
+     "text": "雇员先纳税再花剩下的钱，企业先花钱再为剩下的部分缴税。变富的关键是尽快把劳动收入转为被动收入和投资收入。",
+     "books": [
+      {
+       "title": "富爸爸穷爸爸",
+       "idx": 1
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "量入为出，理性消费，投资资产",
+     "quote": "· 首先要学会量入为出，就是少花多赚，而且花的要比赚的少得多，将省下来的钱用于理性有效的投资。· 攒钱买东西，而不是以信用卡购买。· 投资房产和股票等可以随着时间增值的资产，而不是投资负债，任何会贬值的东西，比如汽车。",
+     "idx": 152
+    },
+    {
+     "text": "现金 各类股票 基金 还有我自己",
+     "quote": "你会把哪些东西计算到你的净资产里面去？现在你如何看待它们？",
+     "idx": 1
+    },
+    {
+     "text": "每年、每月的目标都算是长期目标，需要拆解成小步骤、小目标",
+     "quote": "今年和来年的目标指的是我们有一定把握做到的、而且是自己想做的事，并把每个目标拆分成许多需要完成的任务。比如：今年的第一个目标：今年我要通过注册会计师考试。为了达到这个目标，我需要学习，所以我要拟定学习方案：每个工作日学习1小时，每个周末学习6小时。我会复习学习资料，并且完成练习试…",
+     "idx": 54
+    }
+   ],
+   "highlights": [
+    {
+     "text": "那些符合百万富翁基本标准，即拥有的净资产价值达到100万美元的美国人，90%居住在价值不到100万美元的住宅里",
+     "idx": 152
+    },
+    {
+     "text": "在追求财富和实现财务独立的道路上，很多人都会犯一个愚蠢的错误：喜欢营造让自己看上去有钱的幻觉，而不是做一个真正的有钱人。",
+     "idx": 152
+    },
+    {
+     "text": "虚荣越少，财富越多。你能存下多少钱，要看你彰显自我的需求与你的收入之间的差距，而财富恰恰存在于看不到的地方",
+     "idx": 31
+    },
+    {
+     "text": "投资需要的是更加敏锐的思维，我称之为“第二层次思维”。",
+     "idx": 140
+    },
+    {
+     "text": "守富需要做的却与冒险完全相反。守富需要谦逊和敬畏之心，需要清楚财富来得有多快，去得就有多容易。",
+     "idx": 31
+    },
+    {
+     "text": "在犹太人看来，真正能决定每个人能否成功的关键是那些大人物，所以在交往中一定要优先处理好与这些大人物的关系，这样你的人生才能不断获得成功。",
+     "idx": 102
+    },
+    {
+     "text": "唯一没有出现过投资亏损的人，是那些未做过任何投资的人。",
+     "idx": 1
+    },
+    {
+     "text": "1. 确定维持你的职业实际需要花费的时间和金钱，计算你的实际时薪。2. 追踪记录你生活中进进出出的每一分钱。",
+     "idx": 35
+    },
+    {
+     "text": "成功的男人似乎更容易获得幸福的家庭。但我们应该知道，如果他的家庭幸福，那一定是他用心经营的产物，而不是事业成功的结果。",
+     "idx": 102
+    },
+    {
+     "text": "选择一段不被打扰的时间进行自我提升的学习。比如，可以在工作日的早上，正式开始一天工作之前。学习的时间至少要保证不少于30分钟。每天30分钟看上去并不多，但是日久天长就能帮助我们实现长足的进步。",
+     "idx": 54
+    }
+   ]
+  },
+  {
+   "name": "周期与估值钟摆",
+   "domain": "投资与周期",
+   "oneLiner": "人性不变周期就不会消失，买入价格决定风险",
+   "books": [
+    70,
+    71,
+    33,
+    140,
+    142
+   ],
+   "hours": 11.8,
+   "viewpoints": [
+    {
+     "claim": "钟摆理论",
+     "text": "市场在贪婪与恐惧两极间摆动，极少停在中点；人性不变周期就不会消失，这次不一样了是投资史上最昂贵的一句话。",
+     "books": [
+      {
+       "title": "投资最重要的事",
+       "idx": 140
+      }
+     ]
+    },
+    {
+     "claim": "向乐观者卖，从悲观者买",
+     "text": "股价在短命的乐观与不合理的悲观之间摆动；价格越高风险越大，所以聪明的投资者在牛市里反而忧心忡忡，永远不为资产付过高的价格。",
+     "books": [
+      {
+       "title": "聪明的投资者",
+       "idx": 142
+      }
+     ]
+    },
+    {
+     "claim": "估值是艺术不是科学",
+     "text": "书中给出盈利收益率、博格公式、PEG 三种估值法，例如盈利收益率高于 10% 且为国债收益率两倍时偏低估，但都要配合安全边际使用。",
+     "books": [
+      {
+       "title": "定投十年财务自由",
+       "idx": 70
+      }
+     ]
+    },
+    {
+     "claim": "定投会逐渐钝化",
+     "text": "定投的价值是纪律化建仓而非收益最大化；累计份额越多，新投入的摊平作用越小，后期要靠估值和止盈规则接手。",
+     "books": [
+      {
+       "title": "定投十年财务自由",
+       "idx": 70
+      }
+     ]
+    },
+    {
+     "claim": "按资金期限做配置",
+     "text": "股债比例不该只套一个公式，而要按这笔钱的使用期限来定；再平衡的本质是纪律化的低买高卖。",
+     "books": [
+      {
+       "title": "资产配置攻略",
+       "idx": 71
+      }
+     ]
+    },
+    {
+     "claim": "债基也要看利率位置",
+     "text": "债券价格与利率反向变动；利率处在历史底部时下降空间小、上升空间大，判断债基和判断股票一样，先看所处位置。",
+     "books": [
+      {
+       "title": "定投十年财务自由",
+       "idx": 70
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "场内基金本质上和股票没有区别，也会有价格的波动",
+     "quote": "场内买卖是投资者与其他基金持有者互相买卖来交易基金。也就是，散户与散户之间进行的交易",
+     "idx": 70
+    },
+    {
+     "text": "出很少的力，赚取七八分的收益",
+     "quote": "投资并不是你付出的时间和精力越多，就越容易赚到钱的。“低频交易”本就为你赢得了更多的时间，而时间本身就是一种财富。",
+     "idx": 71
+    },
+    {
+     "text": "开一个平常的储蓄账户",
+     "quote": "如果我想买一双400美元的皮鞋，我就必须买价值400美元的股票（或其他创收资产）。",
+     "idx": 33
+    }
+   ],
+   "highlights": [
+    {
+     "text": "无论一笔投资看起来多么令人神往，永远都不要支付过高的价格——你才能使犯错误的几率最小化。",
+     "idx": 142
+    },
+    {
+     "text": "其实价值投资就是逆向投资，在股市过于低估时买入，而在股市过于高估、安全边际太小甚至消失时卖出。这正符合格雷厄姆所说的，做些与众不同有新意的趣",
+     "idx": 142
+    },
+    {
+     "text": "因为如果可以指望通过高风险投资来实现高收益的话，那些投资也就算不上是高风险了",
+     "idx": 140
+    },
+    {
+     "text": "无论多好的资产，如果买进价格过高，那么都会变成失败的投资。同时，很少有资产会差到以足够低的价格买进都不能转化为成功投资的地步",
+     "idx": 140
+    },
+    {
+     "text": "格雷厄姆就提出了一个理论：安全边际。简单理解，我们可以给计算出来的估值，保留足够的安全边际。这样，即使估算有偏差，保留了安全边际之后也可以使用了。",
+     "idx": 70
+    },
+    {
+     "text": "投入的资金（本金）​、投资回报率（复利）和长长的坡（时间）​，缺一不可！这也是构成“成功的投资”的三个关键要素。",
+     "idx": 71
+    },
+    {
+     "text": "年轻时努力兑现尽量多的人力资本，并通过不懈的积累和合理的投资，逐步蜕变成一位持有实业资本的投资者",
+     "idx": 71
+    },
+    {
+     "text": "“七亏二平一赚”，意思是10个投资股票基金的人，有7个是亏损的，2个是不赔不赚的，1个是有盈利的。",
+     "idx": 70
+    },
+    {
+     "text": "如果你看看美国自1963年以来的个股，年化收益率（含股息）中位数仅为6.6％。这意味着，如果你自1963年以来在任何时间点随机买入一只股票，你在接下来的一年里将获得大约6.6％的收益。然而，你如果买的是标准普尔500指数，就会获得9.9％的收益。",
+     "idx": 33
+    },
+    {
+     "text": "当美国股市被腰斩时，未来的年收益率通常会超过25％。这意味着，当市场下跌50％时，是时候满仓、尽可能多地投资了",
+     "idx": 33
+    }
+   ]
+  },
+  {
+   "name": "行为偏差清单",
+   "domain": "投资与周期",
+   "oneLiner": "投资最大的风险不在市场，而在自己的情绪",
+   "books": [
+    1,
+    31,
+    42,
+    139,
+    140,
+    142,
+    166,
+    198,
+    229
+   ],
+   "hours": 20.1,
+   "viewpoints": [
+    {
+     "claim": "七种力量扭曲决策",
+     "text": "过度自信、锚定、羊群、损失厌恶、处置效应、确认偏差、心理账户。男性股民交易多 45%，收益反而少 2.3%；亏损的痛感约是同等收益快感的两倍。",
+     "books": [
+      {
+       "title": "行为金融与投资心理学",
+       "idx": 198
+      }
+     ]
+    },
+    {
+     "claim": "看账户越勤，回报越差",
+     "text": "赛勒与贝纳茨 1995 年发现，评估越频繁，短期浮亏越会压倒长期收益，还多交手续费；亏钱后脑岛的活跃度是赚钱时的三倍。",
+     "books": [
+      {
+       "title": "管好你的钱",
+       "idx": 229
+      }
+     ]
+    },
+    {
+     "claim": "第二层思维",
+     "text": "大家都知道的不是洞察，好机会藏在共识的反面和细节里。",
+     "books": [
+      {
+       "title": "投资最重要的事",
+       "idx": 140
+      }
+     ]
+    },
+    {
+     "claim": "因果四问",
+     "text": "A 真是 B 的原因吗？是唯一原因吗？还有哪些原因？哪个最重要？时间先后不保证因果，这是破解叙事陷阱的工具。",
+     "books": [
+      {
+       "title": "思考的真相",
+       "idx": 166
+      }
+     ]
+    },
+    {
+     "claim": "博彩与投资的分界",
+     "text": "博彩平均输钱、追求风险、期限短；投资很可能赚钱、规避风险、期限长。指望更大的傻瓜接盘的买入，本质上是博彩。",
+     "books": [
+      {
+       "title": "斯坦福极简经济学2",
+       "idx": 139
+      }
+     ]
+    },
+    {
+     "claim": "最大的敌人是自己",
+     "text": "投资成功不靠顶级智商或内幕消息，而靠稳妥的体系和不让情绪侵蚀体系的能力；投机账户不超过总资产 10%，且永不与投资账户混用。",
+     "books": [
+      {
+       "title": "聪明的投资者",
+       "idx": 142
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "因果关系的四个问题",
+     "quote": "A真的是B的原因吗？如果A是B的原因，那么，A是B的唯一原因吗？如果A不是B的唯一原因，那么还有哪些原因？如果A不是B的最重要原因，那么最重要的原因到底是什么？",
+     "idx": 166
+    },
+    {
+     "text": "就整个投资来说 持仓和心态是两个最重要的因素，以及最该培养的修养。 就做交易或者具体操作而言 选行业、看估值、买入卖出是必须学会的技能",
+     "quote": "投资若想取得切实的成功，对内在价值的准确估计是根本出发点。",
+     "idx": 140
+    },
+    {
+     "text": "会，风险和收益是两个不同的思考面",
+     "quote": "投资者在判断一项投资的好坏时，从风险收益的角度会得出什么样的不同结论？是否会对投资者的投资组合产生影响？",
+     "idx": 198
+    }
+   ],
+   "highlights": [
+    {
+     "text": "要想在一生中获得投资成功，并不需要顶级的智商、超凡的商业头脑或内幕消息，而是需要一个稳妥的知识体系作为决策基础，并且有能力控制自己的情绪，使其不会对这种体系造成侵蚀。",
+     "idx": 142
+    },
+    {
+     "text": "一、平均来看，博彩是输钱的，而投资很可能是赚钱的。二、博彩是追求风险的，而投资通常是为了规避风险。三、博彩产生结果的期限很短，而金融投资通常是长期的。",
+     "idx": 139
+    },
+    {
+     "text": "“自我归因”的心理偏差让人们认为成功源于自己能力超群，而将失败归咎于运气不佳。投资者在市场上取得一定的成功之后，可能做出过度自信的行为。",
+     "idx": 198
+    },
+    {
+     "text": "唯一没有出现过投资亏损的人，是那些未做过任何投资的人。",
+     "idx": 1
+    },
+    {
+     "text": "散户投资者显然很不善于把握市场时机。在市场大幅波动的时候，由于情绪效应被放大，心理偏差就产生了特别大的破坏力。",
+     "idx": 198
+    },
+    {
+     "text": "要想在证券市场上取得投资成功，第一要正确思考，第二要独立思考",
+     "idx": 140
+    },
+    {
+     "text": "如果我花大量的钱购买比特币、黄金或股票，我就是一个“傻瓜”。但我不介意做一个“傻瓜”，因为还会有更大的“傻瓜”接盘。",
+     "idx": 139
+    },
+    {
+     "text": "因为如果可以指望通过高风险投资来实现高收益的话，那些投资也就算不上是高风险了",
+     "idx": 140
+    },
+    {
+     "text": "金钱最大的内在价值是它能赋予你掌控自己时间的能力——这句话没有任何夸张的成分",
+     "idx": 31
+    },
+    {
+     "text": "一位聪明的投资者知道，看似最糟糕的时代实际上却是赚钱的最佳时代",
+     "idx": 1
+    }
+   ]
+  },
+  {
+   "name": "指数化与资产配置",
+   "domain": "投资与周期",
+   "oneLiner": "普通人跑赢多数人的办法是买指数、压成本、做配置",
+   "books": [
+    1,
+    70,
+    71,
+    22,
+    28,
+    81,
+    33,
+    139,
+    142
+   ],
+   "hours": 33.3,
+   "viewpoints": [
+    {
+     "claim": "指数基金的三个优势",
+     "text": "成分股新陈代谢所以长生不老，跟随经济长期上涨，费用低廉；能规避个股黑天鹅和本金永久损失。",
+     "books": [
+      {
+       "title": "定投十年财务自由",
+       "idx": 70
+      }
+     ]
+    },
+    {
+     "claim": "费率是复利的反面",
+     "text": "2% 的年费率 30 年能吃掉近一半终值；成本是投资者唯一能确定的变量。",
+     "books": [
+      {
+       "title": "简单致富",
+       "idx": 22
+      }
+     ]
+    },
+    {
+     "claim": "配置比选股选时重要",
+     "text": "选股和选时加起来不及资产配置的十分之一重要，96% 的主动基金没能战胜市场。用水桶分层：安全的钱守，成长的钱攻，梦想只动小部分。",
+     "books": [
+      {
+       "title": "钱",
+       "idx": 126
+      }
+     ]
+    },
+    {
+     "claim": "按期限和承受力定比例",
+     "text": "股票、债券、现金、另类资产的比例由目标期限与风险承受力决定，再平衡是唯一可执行的纪律化高卖低买。",
+     "books": [
+      {
+       "title": "资产配置攻略",
+       "idx": 71
+      }
+     ]
+    },
+    {
+     "claim": "防御型投资者先求不犯大错",
+     "text": "首要目标是避免重大错误，其次是省心，现代版做法是买低费率指数基金。股债默认各半，市场过热时股票降到 25%，低迷时最多提到 75%。",
+     "books": [
+      {
+       "title": "聪明的投资者",
+       "idx": 142
+      }
+     ]
+    },
+    {
+     "claim": "工作也是一种资产",
+     "text": "收入波动大的股性工作适合多配债性资产，收入稳定的债性工作可以多配股性资产。",
+     "books": [
+      {
+       "title": "定投十年财务自由",
+       "idx": 70
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "防御型投资 宽基基金",
+     "quote": "建议投资者学习格雷厄姆，做好三件事： 第一，做些傻事——防御型做分散投资，定期定额投资指数基金",
+     "idx": 142
+    },
+    {
+     "text": "确实，所以这个时候就又要考验仓位管理的能力了，手里的子弹永远不要打光",
+     "quote": "当价值平均策略应用在高贝塔（高波动率）的资产时，弱市中恐怕需要追加非常大额的现金",
+     "idx": 71
+    },
+    {
+     "text": "场内基金本质上和股票没有区别，也会有价格的波动",
+     "quote": "场内买卖是投资者与其他基金持有者互相买卖来交易基金。也就是，散户与散户之间进行的交易",
+     "idx": 70
+    }
+   ],
+   "highlights": [
+    {
+     "text": "投入的资金（本金）​、投资回报率（复利）和长长的坡（时间）​，缺一不可！这也是构成“成功的投资”的三个关键要素。",
+     "idx": 71
+    },
+    {
+     "text": "一来标普500指数是美元资产，二来标普500指数自身的波动性比A股低很多，相关性也不大。所以持有一部分标普500指数基金，可以分散风险。",
+     "idx": 70
+    },
+    {
+     "text": "一个好的学历、一份好的工作，会大大提升人力资产的长期价值。",
+     "idx": 70
+    },
+    {
+     "text": "格雷厄姆建议防御型投资者要遵循四大选股原则：适当分散投资10到30只股票；选股要选大型企业、杰出企业、融资保守的企业；股息持续发放20年以上；市盈率不超过25倍。",
+     "idx": 142
+    },
+    {
+     "text": "债券本质上是一种不可取的投资形式；(2)因此，就其性质而言，股票是一种比债券更可取的投资。",
+     "idx": 142
+    },
+    {
+     "text": "实生活中越是贫困家庭出身的孩子，由于积攒初始本金的过程愈发艰辛，自然很容易把短期的波动看得更重，导致能够坚持长期投资的比例非常低。",
+     "idx": 71
+    },
+    {
+     "text": "一、平均来看，博彩是输钱的，而投资很可能是赚钱的。二、博彩是追求风险的，而投资通常是为了规避风险。三、博彩产生结果的期限很短，而金融投资通常是长期的。",
+     "idx": 139
+    },
+    {
+     "text": "个人投资者最大的优势就是长钱优势。这里的“长钱”，指的是可以长期不被挪动，只用于投资的资金。机构投资者使用的资金都是代理人的，而代理人在遇到较大的回撤时，对机构投资者的信任就会崩塌，产生大量的赎回行为。",
+     "idx": 28
+    },
+    {
+     "text": "在积累财富阶段，每次股票市场下跌你就欢呼庆祝吧。这些股市下跌都是上天赐给你的买入良机，因为股市越跌，指数基金越跌，你买的价格就越便宜，同样的钱能买到手的份额就越多",
+     "idx": 22
+    },
+    {
+     "text": "由于大多数人（甚至是专业人士）的业绩无法跑赢宽基指数，你不应该费心去尝试。",
+     "idx": 33
+    }
+   ]
+  },
+  {
+   "name": "习惯三部曲",
+   "domain": "精力与习惯",
+   "oneLiner": "习惯养不成是设计问题，不是意志力问题",
+   "books": [
+    9,
+    16,
+    36,
+    86,
+    48,
+    165,
+    59,
+    254
+   ],
+   "hours": 17.4,
+   "viewpoints": [
+    {
+     "claim": "每个行动都是身份投票",
+     "text": "每次行动都是投给想成为的那种人的一票；习惯是滞后指标，四定律是显而易见、有吸引力、简便易行、令人愉悦。",
+     "books": [
+      {
+       "title": "掌控习惯",
+       "idx": 16
+      }
+     ]
+    },
+    {
+     "claim": "小到不可能失败",
+     "text": "动力靠不住，意志力会损耗；把目标定小到状态最差时也能完成，状态好时自然会超额。",
+     "books": [
+      {
+       "title": "微习惯",
+       "idx": null
+      }
+     ]
+    },
+    {
+     "claim": "改变失败是设计问题",
+     "text": "动机、能力、提示同时出现行为才会发生；用锚点加微行为加即时庆祝来设计习惯，停止自我批评，知道不等于做到。",
+     "books": [
+      {
+       "title": "福格行为模型",
+       "idx": 59
+      }
+     ]
+    },
+    {
+     "claim": "习惯只能替代不能消除",
+     "text": "习惯回路是暗示、行为、奖赏，由渴求驱动；保留暗示和奖赏，只替换中间的行为，比硬戒更容易成功。",
+     "books": [
+      {
+       "title": "只管去做",
+       "idx": 48
+      },
+      {
+       "title": "自律上瘾",
+       "idx": 86
+      }
+     ]
+    },
+    {
+     "claim": "养成习惯有三个危险期",
+     "text": "反抗期 1 到 7 天，不稳定期 8 到 21 天，倦怠期 22 到 30 天，失败率依次递减；行为习惯约需 1 个月，身体习惯 3 个月，思考习惯 6 个月。",
+     "books": [
+      {
+       "title": "坚持，一种可以养成的习惯",
+       "idx": 165
+      }
+     ]
+    },
+    {
+     "claim": "痛楚难免，磨难可选",
+     "text": "再微不足道的举动，只要日日坚持，总会沉淀出接近客观的认识；主动选择磨难，就是握住人生的主动权。",
+     "books": [
+      {
+       "title": "当我谈跑步时，我谈些什么",
+       "idx": 254
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "不要逃避运动 徒步 和输出，主动选择磨难，磨砺自己的意志和能力",
+     "quote": "积极地选择磨难，就是将人生的主动权握在自己手中。",
+     "idx": 254
+    },
+    {
+     "text": "idk 但是我觉得写作和徒步可能是能带来收益的事情",
+     "quote": "你要找到4个你特别想成为的人",
+     "idx": 86
+    },
+    {
+     "text": "可以使用任务驱动的方式进行学习，但这只是为了达到目的的术，要想清楚自己想要的是什么，额外做出复习等方式的努力提升效率",
+     "quote": "这就是打卡心态的特性：学不到，假装一下；学到了，立即停止。所以单纯抱着打卡这一任务心态去学习，很少会有强烈的主动性，毕竟在任务心态的驱使下，人们关注的是完成情况，对任务本身没有更大的热情。",
+     "idx": 9
+    }
+   ],
+   "highlights": [
+    {
+     "text": "无论何等微不足道的举动，只要日日坚持，从中总会产生出某些类似客观认知的东西来。",
+     "idx": 254
+    },
+    {
+     "text": "动机(motivation)、能力(ability)和提示(prompt)同时出现的时候，行为就会发生。",
+     "idx": 59
+    },
+    {
+     "text": "培养一项习惯的前提是，在三个阶段中执行的各项对策一定都要持续30天。例如，在反抗期进行的“婴儿学步”或“记录”等，在后面的不稳定期、倦怠期中也要继续执行。",
+     "idx": 165
+    },
+    {
+     "text": "习惯一旦被编码，每当环境提示再次出现时，相关行为的冲动就会随之而来。这是行为改变技巧可能适得其反的原因之一。",
+     "idx": 16
+    },
+    {
+     "text": "培养习惯的过程，一共是四个阶段：带着新鲜感和热情开始，用方法和技巧坚持，吸纳渴求和奖赏的能量来突破，最后是伴随着喜悦的习惯成自然。",
+     "idx": 48
+    },
+    {
+     "text": "当改变习惯意味着挑战群体时，改变是没有吸引力的；当改变你的习惯意味着融入群体时，改变是非常有吸引力的。",
+     "idx": 16
+    },
+    {
+     "text": "要想成功瘦身，你必须把自己从头到脚变成体重轻的那种人。这样做以后，你就能看到结果。",
+     "idx": 36
+    },
+    {
+     "text": "人本来就很容易陷入“完美主义的陷阱”。如果想达到完美境界的想法太过强烈，无法达到目标的话，反而会无法做任何行动，这时完美主义就会成为行为的阻碍。",
+     "idx": 165
+    },
+    {
+     "text": "人们长胖和变瘦的过程是一样的：微小、不起眼的生活方式逐渐累积，最终导致巨大的改变。无论那些“快速瘦身书”上说什么，真实的改变都不可能因为剧烈、突然的行为改变而发生。",
+     "idx": 36
+    },
+    {
+     "text": "完成新的微行为后要立刻庆祝。任何能带来积极情绪的事情都可以，比如说出“我很棒”之类的话。",
+     "idx": 59
+    }
+   ]
+  },
+  {
+   "name": "精力管理的生理学",
+   "domain": "精力与习惯",
+   "oneLiner": "该管理的是精力的节律，而不是时间的总量",
+   "books": [
+    34,
+    39,
+    154,
+    156,
+    161,
+    221,
+    242,
+    223,
+    252
+   ],
+   "hours": 6.2,
+   "viewpoints": [
+    {
+     "claim": "精力是可再生的节律",
+     "text": "精力由体能、情绪、思维、意志四个维度构成，是会波动、可再生的系统；要管理的是波动，而不是总量。",
+     "books": [
+      {
+       "title": "精力管理",
+       "idx": 34
+      }
+     ]
+    },
+    {
+     "claim": "按昼夜节律安排工作",
+     "text": "早起后 3 小时是大脑的黄金时间；注意力被打断后要几分钟到 47 分钟才能接回，切换前先做标记；午睡以 15 到 30 分钟为宜。",
+     "books": [
+      {
+       "title": "掌控24小时",
+       "idx": 161
+      }
+     ]
+    },
+    {
+     "claim": "消耗注意力的都不是休息",
+     "text": "休息是恢复注意力和意志力，凡是消耗二者的活动都不算休息；主动休息优于被动休息，正念是一种可练习的休息。",
+     "books": [
+      {
+       "title": "5分钟高效休息法",
+       "idx": 221
+      },
+      {
+       "title": "高效休息法",
+       "idx": 242
+      }
+     ]
+    },
+    {
+     "claim": "疲劳始于肠道",
+     "text": "现代人摄取的能量空前多，却普遍缺乏能量；七到八成免疫系统位于肠道周围，肠漏引发炎症偷走能量，咖啡因和糖只是临时透支。",
+     "books": [
+      {
+       "title": "疲惫的真相",
+       "idx": 223
+      }
+     ]
+    },
+    {
+     "claim": "饮食结构先于锻炼",
+     "text": "慢性病多是吃出来的，蛋白质摄入与血糖稳定是注意力的物质基础。",
+     "books": [
+      {
+       "title": "你是你吃出来的",
+       "idx": 154
+      }
+     ]
+    },
+    {
+     "claim": "精力等于充电加节能",
+     "text": "精力充沛来自好体能、少内耗、做热爱的事三者叠加，好比电量高、耗电少、能充电。",
+     "books": [
+      {
+       "title": "把自己变成稀缺资产",
+       "idx": 122
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "每周三小时休息是非常重要的",
+     "quote": "第二个小休息是，在一个礼拜内，好比礼拜六、礼拜天或是放假时，保留三个小时给自己，因为时间比第一个小休息长，可以安排的‘转换’活动选择比较多，你可以出门走走、踏青，或者看展览、电影，让脑力好好恢复",
+     "idx": 252
+    },
+    {
+     "text": "管理好自己的时间、体力、注意力，长期来看会爆发无穷的产出和生命力",
+     "quote": "但在漫长的数十年间，它逐渐获得了某种道德力量，几乎变成了柳比歇夫生命的骨架，它保障了最高效的工作力和最旺盛的生命力。",
+     "idx": 156
+    },
+    {
+     "text": "少食多餐在我们的生活中想要达成是有一定难度的，但是这个几乎没有难度。以后的饮食定为早八点一餐，中午十二点一餐，下午三点一餐（少量水果），和下午四点一餐",
+     "quote": "喝水或许是最常被人忽略的体能再生方式。口渴不会像饥饿一样散发出明显的信号，等我们感到口渴的时候，身体或许已经缺水很久了。一家研究机构称，每天至少饮用1.8公斤水对维持体能有诸多好处",
+     "idx": 34
+    }
+   ],
+   "highlights": [
+    {
+     "text": "精力就是做事情的能力。包括体能、情感、思维、意志四个方面",
+     "idx": 34
+    },
+    {
+     "text": "这个悖论是健康、长寿和疾病的核心：尽管我们这个时代比以往任何时代摄取的能量都多，但我们却感到缺乏能量",
+     "idx": 223
+    },
+    {
+     "text": "DMN的能量消耗居然占大脑总能量消耗的60%～80%。也就是说，即使不集中注意于任何事，只是放空的状态，只要DMN仍在过度运作，大脑就永远不会获得休息。",
+     "idx": 242
+    },
+    {
+     "text": "第一个小休息是，每天刻意安排三十分钟，譬如白天中午休息时间，给自己一个活力小睡的时间，或是在晚上安排三十分钟的休息模式，在这段时间内，你可以做一点喜欢做的事情，来转换一下。",
+     "idx": 252
+    },
+    {
+     "text": "农业的发展大大改变了人类的饮食结构，肉类食物比例减少，植物类食物所占比例明显增多，定居生活带来的是人类大脑增容和体质增强的戛然而止。",
+     "idx": 154
+    },
+    {
+     "text": "现代生活方式——从营养、习惯到运动和睡眠模式——使我们消耗的能量比恢复的多。结果就是我们总是感觉精疲力竭。",
+     "idx": 223
+    },
+    {
+     "text": "他们明白让大脑得到休息的重要性，同时，他们已切身体会到正念才是真正的“高效休息法”。",
+     "idx": 242
+    },
+    {
+     "text": "他总在给自己计时。自己的任何举动，包括休息、看报、散步，他都会以小时和分钟为单位记录下来",
+     "idx": 156
+    },
+    {
+     "text": "休息是任何能让我们恢复平衡、和谐或平静状态的行为。",
+     "idx": 221
+    },
+    {
+     "text": "从这一点来说，肉蛋类蛋白质的生物利用率高于植物类蛋白质。",
+     "idx": 154
+    }
+   ]
+  },
+  {
+   "name": "专注力的边界",
+   "domain": "精力与习惯",
+   "oneLiner": "注意力比时间稀缺，深度专注靠固定节奏而非意志",
+   "books": [
+    16,
+    27,
+    39,
+    45,
+    114,
+    137,
+    55
+   ],
+   "hours": 13.9,
+   "viewpoints": [
+    {
+     "claim": "番茄钟是不可分割的时间货币",
+     "text": "一个番茄钟被打断即作废；中断时先接受、再记录、立刻回到任务；预估超过 7 个番茄钟的任务要拆分。",
+     "books": [
+      {
+       "title": "番茄工作法图解",
+       "idx": 45
+      }
+     ]
+    },
+    {
+     "claim": "深度工作是稀缺能力",
+     "text": "深度专注稀缺且会增值，浮浅工作容易被替代；对上班族来说，固定时段的节奏哲学比靠意志硬撑更可行。",
+     "books": [
+      {
+       "title": "深度工作",
+       "idx": 27
+      }
+     ]
+    },
+    {
+     "claim": "注意力比时间和金钱更稀缺",
+     "text": "几本书得出同一结论：注意力是最有限的资源；多巴胺来自期待与实际的差值，期待时分泌得比得到时更多。",
+     "books": [
+      {
+       "title": "超专注",
+       "idx": 137
+      },
+      {
+       "title": "专注的真相",
+       "idx": 55
+      },
+      {
+       "title": "为什么10倍增长比2倍更容易",
+       "idx": 85
+      }
+     ]
+    },
+    {
+     "claim": "时间贫困是注意力被劫持",
+     "text": "时间贫困首先是一种主观感受，注意力被碎片切走后，实际拥有的时间越多，感觉拥有的时间反而越少。",
+     "books": [
+      {
+       "title": "时间贫困",
+       "idx": 114
+      }
+     ]
+    },
+    {
+     "claim": "番茄钟与心流各有适用",
+     "text": "需要长时间心流的编程工作不必用番茄钟打断，可以改用秒表计时，等注意力自然涣散再休息。",
+     "books": [
+      {
+       "title": "把时间当作朋友",
+       "idx": 39
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "人与人之间最大的差异是注意力上的贫富差距",
+     "quote": "人与人之间最大的差异是注意力上的贫富差距。",
+     "idx": 55
+    },
+    {
+     "text": "调节 工作时间 休息时间 干扰源 任务粒度 等等",
+     "quote": "番茄工作法的特性之一是自我调节。每一次失误都可以转化为一次认识。",
+     "idx": 45
+    },
+    {
+     "text": "拥抱无聊，减少高多巴胺事物对现有神经回路的冲击，比如各种内容平台",
+     "quote": "如果你不同时减少对分心事物的依赖，增强专注度的努力可能就会白费。就如同运动员在训练时段之外也要照顾好自己的身体一样，如果在自己其余的时间里有一点无聊，你就打发时间，那么你将很难实现最大程度的专注。",
+     "idx": 27
+    }
+   ],
+   "highlights": [
+    {
+     "text": "假如一项活动预估超过7个番茄钟，那就说明它太复杂了。",
+     "idx": 45
+    },
+    {
+     "text": "第一个方面是，我们越来越深刻地意识到这些工具把我们的时间碎片化，削弱了我们集中注意力的能力。这一点现在几成定论。",
+     "idx": 27
+    },
+    {
+     "text": "培养深度工作的习惯，关键在于越过良好的意图，在工作生活中加入一些特别设计的惯例和固定程序，使得进入并保持高度专注状态消耗的意志力最小化",
+     "idx": 27
+    },
+    {
+     "text": "大量的资讯造成了人们的注意力的贫乏，也因此需要在过量的消耗注意力的资讯来源中高效地分配注意力。",
+     "idx": 55
+    },
+    {
+     "text": "每周尽量匀出至少两个小时的时间，感受沉浸在自然之中的体验。",
+     "idx": 137
+    },
+    {
+     "text": "如果我们能从繁忙的日程中抽出时间来关照我们的身体，就意味着我们创造了一个正向反馈循环，它向大脑传递了一种表达，告诉大脑我们值得被关照。我们值得付出锻炼的时间、心力和注意力。",
+     "idx": 137
+    },
+    {
+     "text": "表格第一列可以是日期，第二列是番茄钟数，每行代表一天，同一张“记录”表格要用很多天。",
+     "idx": 45
+    },
+    {
+     "text": "当我们需要戒掉什么坏习惯时，恐惧是最有效的工具",
+     "idx": 55
+    },
+    {
+     "text": "当我们感到时间不够时，我们的生活圈就会变小。",
+     "idx": 114
+    },
+    {
+     "text": "当有机会学习一项技能的时候，人们常常会问：“学这东西有什么用呢？”其实，在学习之前，对提问者来说，答案只能是“不知道”",
+     "idx": 39
+    }
+   ]
+  },
+  {
+   "name": "内耗与自我损耗",
+   "domain": "精力与习惯",
+   "oneLiner": "内耗多半来自对事件的解释，而不是事件本身",
+   "books": [
+    83,
+    87,
+    39,
+    158,
+    160,
+    189,
+    203,
+    208,
+    224
+   ],
+   "hours": 8.1,
+   "viewpoints": [
+    {
+     "claim": "内耗的三个来源",
+     "text": "把价值建立在他人评价上、同辈压力、牺牲型人格。缺乏责任感的人永远依赖外部动机，既折服于胡萝卜，也屈从于大棒。",
+     "books": [
+      {
+       "title": "轻松上班",
+       "idx": 203
+      }
+     ]
+    },
+    {
+     "claim": "害怕他人看法的循环",
+     "text": "对他人看法的恐惧是预期、检查、反应的循环；最坚固的防线是自我意识，身份应取决于我们是谁，而不是我们做什么。",
+     "books": [
+      {
+       "title": "没关系，别在意",
+       "idx": 87
+      }
+     ]
+    },
+    {
+     "claim": "稀缺会俘获带宽",
+     "text": "稀缺是一种心态，思维会自动转向未满足的需要，只盯眼前而透支未来；它带来短期的专注，也挤占认知能力和自控力。",
+     "books": [
+      {
+       "title": "稀缺",
+       "idx": 189
+      }
+     ]
+    },
+    {
+     "claim": "未完成的事在持续施压",
+     "text": "未处理的承诺留在脑中会持续制造压力，把它们放进一个可信的外部收集系统，压力才会停止。",
+     "books": [
+      {
+       "title": "搞定Ⅰ",
+       "idx": 232
+      }
+     ]
+    },
+    {
+     "claim": "情绪来自解释而非事件",
+     "text": "情绪和行为不由外部刺激直接决定，而由对刺激的认知解释决定；换一件事做是逃避，换一种做法才是迎难而上。",
+     "books": [
+      {
+       "title": "当下的力量",
+       "idx": 160
+      },
+      {
+       "title": "轻松上班",
+       "idx": 203
+      }
+     ]
+    },
+    {
+     "claim": "浮躁的自我循环",
+     "text": "满意度下降带来浮躁，浮躁又加深不满；多数人不知道几乎所有人都如此。能力越弱的人，越容易有不现实又脆弱的完美主义。",
+     "books": [
+      {
+       "title": "把时间当作朋友",
+       "idx": 39
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "换事情是一种逃避 改变方式才是迎难而上",
+     "quote": "如果你正在做的事情无法让你感受到喜悦、自在和轻松，这并不意味着你需要改变你正在做的事情，你需要改变的是你做事的方式",
+     "idx": 160
+    },
+    {
+     "text": "真正有效的驱动力一定来自内部",
+     "quote": "受外部动机驱使的学生成绩往往比受内部动机驱使的学生",
+     "idx": 158
+    },
+    {
+     "text": "自尊来源于我知道我是谁",
+     "quote": "自尊会影响我们每个人生活的方方面面，它不仅意味着喜欢自己、自我感觉良好，还意味着重视自己的想法、感觉、感受、兴趣和目标，相信自己值得爱。",
+     "idx": 203
+    }
+   ],
+   "highlights": [
+    {
+     "text": "唯一能对抗FOPO的坚固堡垒是强大的自我意识。知道自己是谁，不受他人意见所威胁。我们要建立的身份认知应取决于我们是谁，而不是我们做什么，在哪里做，跟谁一起，做得好不好。正如约瑟夫·坎贝尔所说：“人之一生，最难得的特权就是做自己。”",
+     "idx": 87
+    },
+    {
+     "text": "造成精神内耗的一个心理因素是自我认知的扭曲。这里涉及一个心理学概念——价值条件化，即个人价值建立在他人评价的基础上，而不是建立在自己的评价上",
+     "idx": 203
+    },
+    {
+     "text": "我们的思想会自动而强有力地转向未得到满足的需要：对于饥饿的人来说，他们需要食物；对于忙碌的人来说，他们需要亟待完成某项工作的时间；对于缺钱的人来说，他们需要想办法支付每个月的房租；而对于孤独的人来说，他们需要他人的陪伴。",
+     "idx": 189
+    },
+    {
+     "text": "别人对我们的评价，或者说对我们的言行的解读，更多的反映出他们是谁，而非我们是谁。",
+     "idx": 83
+    },
+    {
+     "text": "我们都知道ABC理论，A是引发你情绪的事件，B是你的信念或你对事情的诠释，C就是结果，即你的负面情绪",
+     "idx": 160
+    },
+    {
+     "text": "我们的肉身刚刚步入富足时代，但我们的精神还滞留在稀缺的恐惧之中。穷人思维，植根于人类的基因。率先用理性击碎它的人，也将率先获得身与灵的富足。",
+     "idx": 189
+    },
+    {
+     "text": "我们应该做什么，又有什么不能做。我们从小就知道他人的反应会直接影响我们的幸福。",
+     "idx": 87
+    },
+    {
+     "text": "糟糕的牢笼不是纳粹将我投入的奥斯维辛集中营，而是我为自己建造的精神“牢笼”。",
+     "idx": 208
+    },
+    {
+     "text": "希望每一个人都能实现心灵的自由，幸福最终来自心灵的解放。",
+     "idx": 158
+    },
+    {
+     "text": "在你的思维和情绪之间有一个恶性循环：它们相依为命。思维模式通过情绪创造了一种它自己的被放大了的反应，而情绪的振动频率又一直为原来的思维模式注入活力。",
+     "idx": 160
+    }
+   ]
+  },
+  {
+   "name": "目标系统的时间结构",
+   "domain": "精力与习惯",
+   "oneLiner": "好结构比强意志更能让目标落地",
+   "books": [
+    8,
+    39,
+    94,
+    48,
+    155,
+    156,
+    224
+   ],
+   "hours": 13.6,
+   "viewpoints": [
+    {
+     "claim": "任何事都要创造两次",
+     "text": "先在头脑中构思，再在现实中实践；领导是第一次创造，重于作为第二次创造的管理。个人使命宣言相当于人生的宪法。",
+     "books": [
+      {
+       "title": "高效能人士的七个习惯",
+       "idx": 8
+      }
+     ]
+    },
+    {
+     "claim": "结构决定行为",
+     "text": "牛走出了波士顿的街道，有怎样的结构就有怎样的行为；被问题驱动的行动会在好转与恶化间振荡，只有创造取向能跳出循环。",
+     "books": [
+      {
+       "title": "最小阻力之路",
+       "idx": 224
+      }
+     ]
+    },
+    {
+     "claim": "先接受重力问题",
+     "text": "无法解决的问题不算问题，接受它才是设计的起点；再用当前、备选、极端三条奥德赛路线，打破以为没得选的错觉。",
+     "books": [
+      {
+       "title": "斯坦福大学人生设计课",
+       "idx": 94
+      }
+     ]
+    },
+    {
+     "claim": "焦虑的三种来源",
+     "text": "不知道要什么、知道但不知道怎么做、知道却做不到；习惯型目标看累积进度，项目型目标看完成与否，两者要分开管理。",
+     "books": [
+      {
+       "title": "只管去做",
+       "idx": 48
+      }
+     ]
+    },
+    {
+     "claim": "与时间做朋友",
+     "text": "用正确的方法做正确的事；现实五律是速成不可能、付出才有收获、完美不存在、未知永远存在、现状无法马上摆脱。",
+     "books": [
+      {
+       "title": "把时间当作朋友",
+       "idx": 39
+      }
+     ]
+    },
+    {
+     "claim": "能管的是时间去向和行动",
+     "text": "柳比歇夫逐分钟记录时间去向，让时间变得可见；GTD 则认为 5 分钟变不成 6 分钟，能管理的只有承诺和下一步行动。",
+     "books": [
+      {
+       "title": "奇特的一生",
+       "idx": 156
+      },
+      {
+       "title": "搞定Ⅰ",
+       "idx": 232
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "重力问题是已经无法改变的情况和环境，不要想着对抗重力问题",
+     "quote": "接受现实。我们拼命与现实抗争，利用所拥有的一切去改变现状，但不论你怎样做，现实永远是赢家。你无法打败它，无法欺骗它，也无法让它屈服于你的意志。现在不能，以后也不能。",
+     "idx": 94
+    },
+    {
+     "text": "管理好自己的时间、体力、注意力，长期来看会爆发无穷的产出和生命力",
+     "quote": "但在漫长的数十年间，它逐渐获得了某种道德力量，几乎变成了柳比歇夫生命的骨架，它保障了最高效的工作力和最旺盛的生命力。",
+     "idx": 156
+    },
+    {
+     "text": "使用成长思维、多维思维、取舍思维、主体思维来看待问题，改变你能改变的",
+     "quote": "虽然你无法在相互依赖的交往中和统合综效的过程中控制他人的行为模式，但还是有很多事情都在你的影响圈范围内。你自身的统合综效就完全处于你的影响圈内。你应该尊重自己善于分析的一面和富有创造力的一面，尊重它们的差异会催生你的创造力",
+     "idx": 8
+    }
+   ],
+   "highlights": [
+    {
+     "text": "如果一个问题不能被解决，那么它就不是一个问题。它只是一种情况，一种环境，一种生活现实；它像重力一样，是一个无法解决的问题。",
+     "idx": 94
+    },
+    {
+     "text": "解决问题的最小阻力之路是让问题从恶化变成改善，然后再由改善回归恶化。这是因为，所有的行动都是由问题驱动的。如果问题因为你采取行动而改善了，你采取进一步行动的动机也就没那么强烈了",
+     "idx": 224
+    },
+    {
+     "text": "在现实中，接受任何一个机会都无疑需要你舍弃其他几个机会。",
+     "idx": 155
+    },
+    {
+     "text": "只有店员赚到钱，店长才可能有钱赚。将店长的需求和目标同店员的结合起来以后，人际关系的培训问题不复存在，关键是建立真正双赢的奖励体系。",
+     "idx": 8
+    },
+    {
+     "text": "我对于“焦虑者三问”的回答是：一个走心的计划，加上只管去做的觉悟就可以摆脱焦虑",
+     "idx": 48
+    },
+    {
+     "text": "成功，甚至求生的关键并不在于你流了多少血汗，而在于你努力的方向是否正确，因此无论在哪个行业，领导都重于管理。",
+     "idx": 8
+    },
+    {
+     "text": "柳比歇夫的时间酷似物质，从不会了无痕迹地消失，不会平白无故地蒸发，而总能够查明它们变成了什么。借助时间核算，柳比歇夫不断地开采着新的时间。而时间，才是真正的矿藏。",
+     "idx": 156
+    },
+    {
+     "text": "●为自己创造探索和思考的空间。●适时抽身，退一步看清局势。●用每天的第一个20分钟来阅读经典。",
+     "idx": 155
+    },
+    {
+     "text": "如果你的解决方案很糟糕，而且你还不知变通，不愿放手，那么随着时间的推移，情况只会变得越来越糟糕。",
+     "idx": 94
+    },
+    {
+     "text": "只要做事，就一定会出问题。这是现实——无论何人，无论何事。如果在做事的过程中没有出现任何问题，那肯定不是在做事，而是在做梦。",
+     "idx": 39
+    }
+   ]
+  },
+  {
+   "name": "减脂的内分泌真相",
+   "domain": "精力与习惯",
+   "oneLiner": "减脂是内分泌问题，不是热量加减法",
+   "books": [
+    15,
+    76,
+    36,
+    49,
+    154,
+    220,
+    255
+   ],
+   "hours": 11.7,
+   "viewpoints": [
+    {
+     "claim": "节食会让下一次更难减",
+     "text": "悠悠球节食大鼠实验中，第二轮同等限食的减重耗时翻倍，复胖时间从 29 天缩到 10 天；明尼苏达饥饿实验的受试者在恢复期每天进食近万大卡。",
+     "books": [
+      {
+       "title": "微习惯·瘦身篇",
+       "idx": 36
+      },
+      {
+       "title": "饥饿的大脑",
+       "idx": 76
+      }
+     ]
+    },
+    {
+     "claim": "身体会捍卫脂肪设定点",
+     "text": "身体有稳态防御，吸脂手术一年后脂肪量与对照组无差异；减脂要像从戒备森严的大楼里取钻石，悄悄进行，不触发警报。",
+     "books": [
+      {
+       "title": "微习惯·瘦身篇",
+       "idx": 36
+      }
+     ]
+    },
+    {
+     "claim": "胰岛素是脂肪储存的开关",
+     "text": "决定脂肪囤积的是胰岛素，而非简单的热量缺口；先吃菜后吃饭、餐后散步，让血糖曲线平缓，比算卡路里更有效。",
+     "books": [
+      {
+       "title": "控糖革命",
+       "idx": 15
+      }
+     ]
+    },
+    {
+     "claim": "三分练七分吃",
+     "text": "减脂成效约八成来自饮食、两成来自运动；日常低强度活动的消耗被系统性低估。",
+     "books": [
+      {
+       "title": "运动饮食1：9",
+       "idx": 49
+      }
+     ]
+    },
+    {
+     "claim": "饱腹感有一小时延迟",
+     "text": "能降血糖的激素只有胰岛素一种；饱腹感由血糖驱动，延迟约 1 小时，这是过食的生理漏洞；内脏脂肪囤得快，空腹时也烧得快。",
+     "books": [
+      {
+       "title": "空腹力",
+       "idx": 220
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "减重之后日均消耗热量减少",
+     "quote": "要减去1磅体重，日均卡路里摄入量就必须减少10大卡",
+     "idx": 76
+    },
+    {
+     "text": "改掉饮食习惯是最重要的事情",
+     "quote": "每天毫无节制的饮食习惯造成",
+     "idx": 49
+    },
+    {
+     "text": "本质是因为葡萄糖供应的不稳定，大多数时间过量了，导致产生了很多自由基，自由基会对我们的身体造成破坏",
+     "quote": "在正常情况下，我们的体内会有一定数量的自由基，并且我们可以处理这些自由基。但是，随着葡萄糖峰值的反复出现，产生的自由基的数量变得很难掌控。当有太多的自由基需要中和时，我们的身体就会处于一种氧化应",
+     "idx": 15
+    }
+   ],
+   "highlights": [
+    {
+     "text": "如果你想瘦身，最好悄悄地减。瘦身就像从一座高度警戒的大楼里拿走一颗钻石，你的身体就是这座大楼，肥肉是你想拿走的钻石。",
+     "idx": 36
+    },
+    {
+     "text": "能量以皮下脂肪的形式储存时，其燃烧消耗的过程十分缓慢，而内脏脂肪则具有快速囤积，一旦空腹就能快速燃烧消耗的特点。",
+     "idx": 220
+    },
+    {
+     "text": "节食确实可以有效减少热量摄入，同时再进行运动还能增加热量的消耗，这样一来体脂就会不断消耗，从而让我们实现减轻体重的目标。但我认为这样的减肥方式并非我们生活的常态，而且没有计划性。",
+     "idx": 49
+    },
+    {
+     "text": "只要我们最后吃淀粉和糖类食物，哪怕其间没有时间间隔，都会使我们的血糖曲线更平稳。",
+     "idx": 15
+    },
+    {
+     "text": "低碳水饮食是最受欢迎的减重饮食之一，无数研究表明，尽管低碳水饮食并非减脂的灵丹妙药，但从一年左右的效果来看，它确实比传统的低脂饮食加份量控制的方法更为有效。",
+     "idx": 76
+    },
+    {
+     "text": "我们的身体非常习惯应对空腹的情况，且具备大量在空腹时保持健康、维持生命活动的机能。",
+     "idx": 220
+    },
+    {
+     "text": "从科学的减肥理论来看，控制饮食是最有效的减肥方法。如果能在控制饮食的基础上配以适当运动，就能得到更好的减肥效果。",
+     "idx": 49
+    },
+    {
+     "text": "，减重的难点在于，我们必须与自己根深蒂固的冲动做斗争。长期饮食实验显示，下丘脑惊人地擅长破坏我们的减脂努力。",
+     "idx": 76
+    },
+    {
+     "text": "当你坐下来准备吃饭时，先吃蔬菜和蛋白质，最后吃淀粉。注意自己在这次饭后的感觉和之前有什么不一样。",
+     "idx": 15
+    },
+    {
+     "text": "成功很简单，就是在正确的时间以正确的方式做正确的事。",
+     "idx": 36
+    }
+   ]
+  },
+  {
+   "name": "提桶与管道",
+   "domain": "职业路径",
+   "oneLiner": "只卖时间的收入有天花板，要建能自己运转的管道",
+   "books": [
+    2,
+    7,
+    67,
+    26,
+    120,
+    222,
+    209,
+    236
+   ],
+   "hours": 27.2,
+   "viewpoints": [
+    {
+     "claim": "工资是提桶，资产是管道",
+     "text": "工资停止工作就停止，管道睡觉时也在产出；建管道初期收入会下降，建成后还要持续维护才能保持竞争力。",
+     "books": [
+      {
+       "title": "管道的故事",
+       "idx": 222
+      }
+     ]
+    },
+    {
+     "claim": "专长乘以杠杆",
+     "text": "专长是无法通过培训获得的知识；普通人可及的杠杆是代码和媒体，它们在你睡觉时仍在工作。",
+     "books": [
+      {
+       "title": "纳瓦尔宝典",
+       "idx": 7
+      }
+     ]
+    },
+    {
+     "claim": "五种摇钱树系统",
+     "text": "租赁、软件、内容、分销、人力；内容可以重复销售，每多卖一次，单位时间成本就更低。影响百万人，才可能赚到百万美元。",
+     "books": [
+      {
+       "title": "百万富翁快车道",
+       "idx": 2
+      }
+     ]
+    },
+    {
+     "claim": "按结果定价，不出卖时间",
+     "text": "财富增长靠发现未被定价的价值，按结果打包定价；副业遵循竹子定律，前几年几乎不长，之后突然加速。",
+     "books": [
+      {
+       "title": "新收入",
+       "idx": null
+      }
+     ]
+    },
+    {
+     "claim": "三层收入各管一件事",
+     "text": "本职收入管生活，第二收入管兴趣与长期发展，投资收益管养老；过高的职业收入可能成为快速进步的最大障碍。",
+     "books": [
+      {
+       "title": "人生护城河",
+       "idx": 236
+      }
+     ]
+    },
+    {
+     "claim": "按工时出卖自己是时钟时代的产物",
+     "text": "工作本身才是衡量工作的坐标，时间不是；历史上的常态是猛干与休整交替，而非均匀的八小时。",
+     "books": [
+      {
+       "title": "毫无意义的工作",
+       "idx": 120
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "不用出卖时间而获得的报酬，才是财富/资产。",
+     "quote": "财富就是在你睡觉时也可以帮你赚钱的资产。财富是不分昼夜为客户服务的计算机程序。",
+     "idx": 7
+    },
+    {
+     "text": "可是管道的工作也会随着竞争力的丢失而失去",
+     "quote": "虽然她并没有做错任何事，但是她的理想工作却消失了",
+     "idx": 222
+    },
+    {
+     "text": "拿时间换钱，拿钱换自己喜欢的事物，本质上就是拿工作时间换梦中所求之物",
+     "quote": "我们买的每样东西都不只是一个成本，而是两个：·实际美元成本。·可自由支配的时间变成了受约束的时间。",
+     "idx": 2
+    }
+   ],
+   "highlights": [
+    {
+     "text": "过高的职业收入绝对是影响个人快速进步的最大障碍",
+     "idx": 236
+    },
+    {
+     "text": "本职工作的收入，用来满足基本生活所需；第二收入，用来玩和发展兴趣，扩大第二收入以满足自己的精神需求和长期发展的需求；投资收益，用来使自己免除“老无所养”的烦恼。",
+     "idx": 236
+    },
+    {
+     "text": "商业系统的收入目标和金钱系统的目标。对于商业系统目标，用生活总成本乘以5。",
+     "idx": 2
+    },
+    {
+     "text": "公司从生产到盈利的过程，可以理解成一个商业的闭环。公司可以获得整体项目所带来的高收益是因为公司掌握闭环，个人赚得少是因为个人只掌握节点。只有尽可能掌握更多节点、形成闭环，个人才能创造更大的价值。",
+     "idx": 209
+    },
+    {
+     "text": "努力本身没有任何意义，个人努力的意义最终要呈现为你对他人的价值与结果",
+     "idx": 26
+    },
+    {
+     "text": "一个工作了三五年以上的普通人，除了加入职场内卷，或者破釜沉舟创业，还有没有其他的选择？能否凭借一技之长，过上自己想要的生活？",
+     "idx": 67
+    },
+    {
+     "text": "“我没有时间。”“我的朋友告诉我，他认识的一个朋友的朋友试图建造管道，但失败了。”“只有那些动手很早的人才可能从管道中赚到钱，现在已经太晚了。”“我这辈子一直在提水桶，我只想维持现状。”“我知道有些人在管道的骗局中亏了钱，我可不干这个。”",
+     "idx": 222
+    },
+    {
+     "text": "每一次的泡沫崩溃，都会出现新的百万和亿万富翁。因为他们在每个不合理的大幅上涨中看到了必然会到来的崩溃。",
+     "idx": 2
+    },
+    {
+     "text": "狗屁工作是一份毫无意义且往往有害的定期领薪水的职业，其无意义或有害程度是如此之高，乃至从事这份职业的人都无法为其找出合适的存在理由。虽然要从事这份工作有一个条件，即从事者不得不假装这份工作的存在是完全合理的。",
+     "idx": 120
+    },
+    {
+     "text": "获得财富的一个途径，就是为社会提供其有需求但无从获得的东西，并实现规模化。",
+     "idx": 7
+    }
+   ]
+  },
+  {
+   "name": "职业原型与周期",
+   "domain": "职业路径",
+   "oneLiner": "收入由市场最低出价决定，而不是由能力决定",
+   "books": [
+    8,
+    75,
+    26,
+    94,
+    95,
+    103,
+    109,
+    150
+   ],
+   "hours": 20.5,
+   "viewpoints": [
+    {
+     "claim": "四种职业原型",
+     "text": "臣子融入协作体，离开即归零；兵王有行业通用能力；将军在扩张周期冲一线，是普通人的较优解；诸侯自建协作体，失败代价最大。",
+     "books": [
+      {
+       "title": "重新学会赚钱",
+       "idx": 109
+      }
+     ]
+    },
+    {
+     "claim": "收入由最低出价者决定",
+     "text": "流体智力约 30 岁见顶，晶体智力 75 岁前仍在上升；收入不取决于能力，而取决于愿意以最低价出售同类能力的人。",
+     "books": [
+      {
+       "title": "不上班咖啡馆",
+       "idx": 95
+      },
+      {
+       "title": "人生十年，不可辜负的20岁到30岁",
+       "idx": 75
+      }
+     ]
+    },
+    {
+     "claim": "职场是攀岩不是梯子",
+     "text": "定位等于行业乘企业乘职位，收益看行业，幸福看职位；转行像转密码锁，一次只转一个选项。",
+     "books": [
+      {
+       "title": "不上班咖啡馆",
+       "idx": 95
+      }
+     ]
+    },
+    {
+     "claim": "四个象限的风险曲线",
+     "text": "工薪族和自营业者靠卖时间，风险曲线陡峭且难恢复；企业主和投资者一侧更平滑。先向企业主象限迁移，再晋级投资者。",
+     "books": [
+      {
+       "title": "有钱人和你想的不一样.2",
+       "idx": 19
+      }
+     ]
+    },
+    {
+     "claim": "身份资本",
+     "text": "简历内外的积累是成人世界的虚拟货币，20 多岁的决定影响深远；推迟做一件事，不等于更好地做这件事。",
+     "books": [
+      {
+       "title": "人生十年，不可辜负的20岁到30岁",
+       "idx": 75
+      }
+     ]
+    },
+    {
+     "claim": "从潜力估值到履历估值",
+     "text": "21 岁一无所有，别人看你的潜力；28 岁一无所有，别人只看你这些年干了什么。大公司把人零部件化，要想清楚自己在分工里如何产生价值。",
+     "books": [
+      {
+       "title": "Gap 期生存游戏",
+       "idx": 150
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "大厂员工，副业探索者，户外爱好者，个人开发者，数字游民",
+     "quote": "那些真正决定你未来职业道路的，并不是你在学校学的专业和平均学分绩点(GPA)，而是两三个能让别人对你产生兴趣的身份资本",
+     "idx": 75
+    },
+    {
+     "text": "试错 -> 发力 -> 应付 -> 放弃",
+     "quote": "代人从开始独立生活到失去劳动能力的这段时间，可以看成一个完整的发展周期，这个周期可以分为四个阶段",
+     "idx": 109
+    },
+    {
+     "text": "使用成长思维、多维思维、取舍思维、主体思维来看待问题，改变你能改变的",
+     "quote": "虽然你无法在相互依赖的交往中和统合综效的过程中控制他人的行为模式，但还是有很多事情都在你的影响圈范围内。你自身的统合综效就完全处于你的影响圈内。你应该尊重自己善于分析的一面和富有创造力的一面，尊重它们的差异会催生你的创造力",
+     "idx": 8
+    }
+   ],
+   "highlights": [
+    {
+     "text": "身份资本是我们个人资本的积累。它体现着我们是谁，以及我们的人生是如何度过的。",
+     "idx": 75
+    },
+    {
+     "text": "近年来全球领导人的年龄都有上升的趋势，因为越不稳定，越需要经验和智慧。这段时间他关注的某超级大国大选，就是两个高龄老头儿“吵架”。",
+     "idx": 95
+    },
+    {
+     "text": "每天小心翼翼地活在别人的评价里，一点点消磨自己的价值感的人，就在接受心理上的凌迟",
+     "idx": 95
+    },
+    {
+     "text": "PUA发生的那个契机，让我发现了PUA世界的最大漏洞——成为一个“失控”的人。发短视频成为我撕裂PUA监狱的利器。",
+     "idx": 150
+    },
+    {
+     "text": "列出一项你忽略的第二象限事务，如果它有效达成会在你的生活或工作中产生重要影响吗？写出来并加以实施。",
+     "idx": 8
+    },
+    {
+     "text": "这短短几个字却是一家企业的核心，是一致行动的指南。它就像源代码一样，当企业输入这行指令之时，公司员工便会层层传递、演绎这些代码。所以很多企业会耗时、耗资一次次开展企业价值观培训。",
+     "idx": 150
+    },
+    {
+     "text": "努力本身没有任何意义，个人努力的意义最终要呈现为你对他人的价值与结果",
+     "idx": 26
+    },
+    {
+     "text": "从根本上来说，所有的认知都涉及一个非常底层的问题：这个世界是如何运转的？",
+     "idx": 109
+    },
+    {
+     "text": "所谓的投资，是将时间、金钱和精力投向那些随着时间的推移，能力应该逐渐增值的地方，才可能形成一条别人靠砸钱仍然无法逾越的“护城河”。",
+     "idx": 103
+    },
+    {
+     "text": "一个组织存在的时间越久，臣子之路就越不好走。",
+     "idx": 109
+    }
+   ]
+  },
+  {
+   "name": "向上管理与职场博弈",
+   "domain": "职业路径",
+   "oneLiner": "职场是重复博弈，口碑和靠谱交付胜过单次输赢",
+   "books": [
+    3,
+    24,
+    38,
+    103,
+    113,
+    150,
+    207,
+    201,
+    226,
+    243,
+    230,
+    236
+   ],
+   "hours": 18.7,
+   "viewpoints": [
+    {
+     "claim": "靠谱交付",
+     "text": "先明确目标，再按框架沟通，交付时让结果超出预期、过程有思考；绩效自评不高不低，并定期与上级的核心目标对齐。",
+     "books": [
+      {
+       "title": "老曾职场课",
+       "idx": null
+      }
+     ]
+    },
+    {
+     "claim": "解决老板的问题",
+     "text": "老板看重有主见也能执行、注意力在业务上的人；最有效的做法是解决老板的问题，让他在他的老板面前有成绩可讲。",
+     "books": [
+      {
+       "title": "职场的逻辑",
+       "idx": 103
+      }
+     ]
+    },
+    {
+     "claim": "职场是重复博弈",
+     "text": "混职场就是混口碑；狼吃肉狗吃屎，不代表狼可以不尊重狗，打仗重要，但长久生存必须结盟。",
+     "books": [
+      {
+       "title": "职场的逻辑",
+       "idx": 103
+      }
+     ]
+    },
+    {
+     "claim": "信息纪律",
+     "text": "电梯里不谈项目，有话当面说，邮件发出前必须过目；销售是引导客户的过程，被客户牵着走的合同一定不是你的。",
+     "books": [
+      {
+       "title": "圈子圈套",
+       "idx": 24
+      }
+     ]
+    },
+    {
+     "claim": "谈判先算备选方案",
+     "text": "谈判前摸清双方的最佳备选方案和底线，信息充分才先报价设锚；薪酬谈判讲价值不讲价格，选直属上级时人品优先于能力。",
+     "books": [
+      {
+       "title": "哈佛经典谈判术",
+       "idx": 226
+      },
+      {
+       "title": "求职不求人",
+       "idx": 243
+      }
+     ]
+    },
+    {
+     "claim": "看奖惩而不是标语",
+     "text": "赶走谁、留下谁、给谁发钱、给谁扣钱，这才是一家公司真正的价值观。",
+     "books": [
+      {
+       "title": "大厂人才",
+       "idx": 230
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "但要做有价值的事情，而不是在无价值的重复性劳动上不断出力",
+     "quote": "只要身体能承受，打工一定要all in",
+     "idx": 103
+    },
+    {
+     "text": "上司是最重要的客户，但是也不要丢掉主体思维，不要欺上媚下。注重上司，同时也注重自身的专业价值",
+     "quote": "把你的上司当作你最重要的客户来对待！",
+     "idx": 113
+    },
+    {
+     "text": "其实人对物质生活的追求真的不高，真正难能可贵的是关系、记忆、那些难忘的瞬间，高尚的道德品格",
+     "quote": "人与人之间这种温暖而干净的关系，会进入长久的记忆，会进入血液，会永恒",
+     "idx": 38
+    }
+   ],
+   "highlights": [
+    {
+     "text": "整那些没用的，你赶走谁，留下谁，给谁发钱，给谁扣钱，这就是公司的价值观",
+     "idx": 230
+    },
+    {
+     "text": "销售就是一个引导客户的过程，而如果你被客户引导着，这个合同一定不是你的",
+     "idx": 24
+    },
+    {
+     "text": "评估你的最佳备选方案。2.计算你的底线。3.评估对方的最佳备选方案。4.计算对方的底线。5.评估协议区间。",
+     "idx": 226
+    },
+    {
+     "text": "首先报价最主要的好处是设下一个“锚”，一个能够引导谈判者注意力和预期的数字。",
+     "idx": 226
+    },
+    {
+     "text": "薪酬谈判的自信，突出表现之一是要强调自我价值而不是自我价格",
+     "idx": 243
+    },
+    {
+     "text": "向老板汇报的过程，就是一个引导老板提出问题，好把自己想说的话变成老板想听的话，再通过老板的耳朵放到老板心里的过程。",
+     "idx": 24
+    },
+    {
+     "text": "哪怕公司认可你的专业能力真的值得付出更高的人力成本，但是你情绪化的表现会让他们质疑你的情绪管理能力，最终吃亏的还是你",
+     "idx": 243
+    },
+    {
+     "text": "其实真正的向上管理是用自己的道理、方法论、规划来约束领导，并得到放权。",
+     "idx": 150
+    },
+    {
+     "text": "这短短几个字却是一家企业的核心，是一致行动的指南。它就像源代码一样，当企业输入这行指令之时，公司员工便会层层传递、演绎这些代码。所以很多企业会耗时、耗资一次次开展企业价值观培训。",
+     "idx": 150
+    },
+    {
+     "text": "人际交往是一个互动的过程，一个人的善意一定会引起另一个人的“酬谢”",
+     "idx": 207
+    }
+   ]
+  },
+  {
+   "name": "稀缺与个人价值",
+   "domain": "职业路径",
+   "oneLiner": "稀缺的是效果而不是知识，个人价值由市场定义",
+   "books": [
+    7,
+    67,
+    41,
+    109,
+    122,
+    149,
+    225,
+    210
+   ],
+   "hours": 17.2,
+   "viewpoints": [
+    {
+     "claim": "稀缺的三个要素",
+     "text": "知识不稀缺，效果才稀缺；没有绝对稀缺只有相对稀缺，要进入能让你显得稀缺的圈层；不确定的环境里，确定性本身就是稀缺。",
+     "books": [
+      {
+       "title": "单干",
+       "idx": 67
+      }
+     ]
+    },
+    {
+     "claim": "个人价值由市场定义",
+     "text": "劳动分投入、产出、成果三层，区别在能否走向市场；核心能力是做得出来、卖得出去、不断提高被看到和被选中的概率。",
+     "books": [
+      {
+       "title": "真本事",
+       "idx": 41
+      }
+     ]
+    },
+    {
+     "claim": "市场只告诉你它不要什么",
+     "text": "市场不会说它要什么，所以要拿一个具体的东西去问市场要不要，从自己出发转向从市场出发。",
+     "books": [
+      {
+       "title": "真本事",
+       "idx": 41
+      }
+     ]
+    },
+    {
+     "claim": "麻烦守恒定律",
+     "text": "前面的麻烦少了，后面的麻烦就多；想轻松省事，成长就慢。开店的房租本质上是流量费。",
+     "books": [
+      {
+       "title": "如何开一家小而美的店",
+       "idx": 149
+      }
+     ]
+    },
+    {
+     "claim": "做不可或缺的人",
+     "text": "少数人有完整作品，极少数人有传世作品；创见比创业重要，它来自学值得学的东西、琢磨自身痛点、与高手在一起。",
+     "books": [
+      {
+       "title": "斯坦福大学创业成长课",
+       "idx": 225
+      }
+     ]
+    },
+    {
+     "claim": "圈层也是杠杆",
+     "text": "成功取决于遇到的人与合作的成果；穷不只穷在没钱，也穷在接触不到能帮忙的人。先给予再索取，社交资产越用越增值。",
+     "books": [
+      {
+       "title": "别独自用餐",
+       "idx": 210
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "麻烦守恒定律在生活的方方面面都存在，想轻松偷懒，不和麻烦交手，成长自然就慢；在遇到避无可避的麻烦事时，就只能被迫的以低等级面对大麻烦",
+     "quote": "“麻烦守恒定律”，就是讲一件事情，前面麻烦少了，后面麻烦就会多。",
+     "idx": 149
+    },
+    {
+     "text": "我是否创造出了真实、有意义的成果？ 我是否让成果被目标人群理解并认可，必要时愿意付费？ 我是否在持续提高被看到与被选择的概率？",
+     "quote": "三种能力变成行动检查表",
+     "idx": 41
+    },
+    {
+     "text": "和产品化自己一书中的想法差不多，最重要的就是把自己从上班中那种单一职能（只负责干活）的状态解放出来，去创立自己的品牌，博得流量，不断耕耘",
+     "quote": "销售部，做好变现工作。销售部需要把握用户需求，设计商业模式，把产品销售出去，从而获得收益。站在销售部的视角，个人要先想清楚一个关键问题：如何把自己的一技之长打包成产品售出？品牌部，提升个人影响力。品牌部的核心任务是打造个人品牌，提升影响力，积累用户和潜在合作伙伴。品牌影响力会让销…",
+     "idx": 67
+    }
+   ],
+   "highlights": [
+    {
+     "text": "正是因为对社交资产的运用，才会增加社交资产的价值。这一点很重要，他却没有意识到。",
+     "idx": 210
+    },
+    {
+     "text": "学一点新东西，其实并不只是为了学到那一点什么，更多的是培养自己的学习习惯，提高自己的学习能力。",
+     "idx": 225
+    },
+    {
+     "text": "千万不要直接出售知识，要始终瞄准效果。你不是在写一本书，而是通过文字让别人少走弯路。你不是在讲一堂课，而是用课程的形式提高学员的能力水平。以终为始，方得始终。",
+     "idx": 67
+    },
+    {
+     "text": "欲望就是你跟自己的约定，约定的内容是：不得到我想要的东西，我是不会快乐的。",
+     "idx": 7
+    },
+    {
+     "text": "团队成员与领导一起经历过硬仗，可能带来财务回报；更重要的是，他们的共同经历会形成彼此之间深厚的信任与稳固的连接——而这种高质量的人脉本身，也会成为未来的杠杆。",
+     "idx": 41
+    },
+    {
+     "text": "个人品牌属于需要势能和传播的人。人设是个人品牌的记忆点，人设三要素：真实、聚焦、稳定。",
+     "idx": 67
+    },
+    {
+     "text": "帮助的人越多，你得到的帮助越多，然后你就能帮助更多的人。",
+     "idx": 210
+    },
+    {
+     "text": "如果你想要的东西还不存在，那就亲自动手将它创造出来。",
+     "idx": 225
+    },
+    {
+     "text": "开店的成本在开店后是很难降低的，降低成本应该是开店前要做的事情；",
+     "idx": 149
+    },
+    {
+     "text": "最好的工作与委任或学位无关。最好的工作是终身学习者在自由市场中的创造性表达。",
+     "idx": 7
+    }
+   ]
+  },
+  {
+   "name": "个人品牌与内容系统",
+   "domain": "职业路径",
+   "oneLiner": "流量会过期，持续公开输出沉淀的品牌才是资产",
+   "books": [
+    67,
+    26,
+    103,
+    105,
+    209,
+    218,
+    249,
+    216,
+    215,
+    238
+   ],
+   "hours": 10.9,
+   "viewpoints": [
+    {
+     "claim": "品牌才是持续的流量",
+     "text": "做流量像放牧，追逐红利牧场；做品牌像盖楼，先打地基才会宾客盈门。人设要真实、聚焦、稳定。",
+     "books": [
+      {
+       "title": "单干",
+       "idx": 67
+      }
+     ]
+    },
+    {
+     "claim": "把工作过程公开",
+     "text": "一边提升专业，一边展示工作过程，过程和成果一样重要；1000 个铁杆粉丝比大量泛粉更有价值。",
+     "books": [
+      {
+       "title": "秀出你的工作",
+       "idx": null
+      }
+     ]
+    },
+    {
+     "claim": "写作放大一切能力",
+     "text": "写作与任何身份结合都会产生化学反应；所有初稿都很糟，完成比完美重要；逻辑就是信息的排序，结论先行。",
+     "books": [
+      {
+       "title": "学会写作",
+       "idx": 105
+      }
+     ]
+    },
+    {
+     "claim": "能力乘以出镜率",
+     "text": "上级眼中的你等于能力乘以出镜率，会干还要被看见；要善于借力关键的传播节点。",
+     "books": [
+      {
+       "title": "职场的逻辑",
+       "idx": 103
+      }
+     ]
+    },
+    {
+     "claim": "搜索型与闲逛型平台",
+     "text": "小红书靠搜索，需求明确、导向决策；抖音靠闲逛，偏娱乐、排斥硬广。内容先给算法看，再给人看。",
+     "books": [
+      {
+       "title": "小红书变现7堂课",
+       "idx": 216
+      }
+     ]
+    },
+    {
+     "claim": "输出优先",
+     "text": "输入与输出的比例可以是 1 比 9，次数优先于质量，勇气比质量更重要；知道却用不上的知识没有意义。",
+     "books": [
+      {
+       "title": "输出力",
+       "idx": 215
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "和产品化自己一书中的想法差不多，最重要的就是把自己从上班中那种单一职能（只负责干活）的状态解放出来，去创立自己的品牌，博得流量，不断耕耘",
+     "quote": "销售部，做好变现工作。销售部需要把握用户需求，设计商业模式，把产品销售出去，从而获得收益。站在销售部的视角，个人要先想清楚一个关键问题：如何把自己的一技之长打包成产品售出？品牌部，提升个人影响力。品牌部的核心任务是打造个人品牌，提升影响力，积累用户和潜在合作伙伴。品牌影响力会让销…",
+     "idx": 67
+    },
+    {
+     "text": "但要做有价值的事情，而不是在无价值的重复性劳动上不断出力",
+     "quote": "只要身体能承受，打工一定要all in",
+     "idx": 103
+    },
+    {
+     "text": "前者 自媒体 个人产品 高复制 后者 咨询 高客单价",
+     "quote": "一人公司的产品通常有两个类型：可复制型产品和服务型产品",
+     "idx": 209
+    }
+   ],
+   "highlights": [
+    {
+     "text": "个人品牌属于需要势能和传播的人。人设是个人品牌的记忆点，人设三要素：真实、聚焦、稳定。",
+     "idx": 67
+    },
+    {
+     "text": "消极的知识就是“记得曾有过了解”的知识，聊胜于无罢了。甚至可以说，“知道却无法运用的知识”没有任何意义。",
+     "idx": 215
+    },
+    {
+     "text": "每一种身份与写作能力相加，都能产生很有想象力的反应，这就是写作的魅力。",
+     "idx": 105
+    },
+    {
+     "text": "在小红书获取用户的最好方式就是生产有价值的内容。",
+     "idx": 216
+    },
+    {
+     "text": "这个不同就在于小红书用户获取内容的方式是“搜”，而抖音等视频平台用户获取内容的方式是“逛”",
+     "idx": 216
+    },
+    {
+     "text": "努力本身没有任何意义，个人努力的意义最终要呈现为你对他人的价值与结果",
+     "idx": 26
+    },
+    {
+     "text": "要么直接提高某一种写作技巧；要么从写作方法上提高写作能力；要么从整体上提升写作素养。",
+     "idx": 218
+    },
+    {
+     "text": "不要以为你不是明星，就没有品牌。事实上，我们每一个生活在社会中的人，都会在他人心目中留下一定的印象。他人给出的认知评价就是一种品牌价码。有人预言，21世纪个人职场竞争的核心就是个人品牌的竞争。",
+     "idx": 218
+    },
+    {
+     "text": "内容不算是稀缺资源，流量资源才是更昂贵的资产。学会把公域流量转化成私域流量，可以更好地实现变现。",
+     "idx": 238
+    },
+    {
+     "text": "今日头条是一个非常适合新人的平台，目前用户量基数非常大，大约有五六亿人。头条平台的内容发布类型分为微头条、文章、问答、视频、直播。微头条可以带货，文章和视频按阅读量会有相应的流量收益。优质爆款文章的点击量越高，得到的收益就越多。",
+     "idx": 238
+    }
+   ]
+  },
+  {
+   "name": "心态重构与反脆弱心法",
+   "domain": "职业路径",
+   "oneLiner": "目标定大十倍反而更易成，因为它逼你砍掉蛮力路径",
+   "books": [
+    26,
+    29,
+    85,
+    41,
+    94,
+    51,
+    120,
+    132,
+    213,
+    234
+   ],
+   "hours": 14.9,
+   "viewpoints": [
+    {
+     "claim": "10 倍目标是过滤器",
+     "text": "10 倍目标的作用是堵死蛮力路径，逼人砍掉 80% 的事；信心是承诺、勇气、能力之后的结果，而不是前提。",
+     "books": [
+      {
+       "title": "为什么10倍增长比2倍更容易",
+       "idx": 85
+      }
+     ]
+    },
+    {
+     "claim": "收获思维",
+     "text": "和理想比是差距思维，让人消耗；和起点比是收获思维，给人能量。越衡量收获，看到的收获就越多。",
+     "books": [
+      {
+       "title": "谁在偷走你的进步",
+       "idx": 132
+      }
+     ]
+    },
+    {
+     "claim": "等待比穿越更贵",
+     "text": "有意思比有意义更能持续；停在原地等待的成本，往往远高于直接穿越困难的成本。",
+     "books": [
+      {
+       "title": "拆掉思维里的墙",
+       "idx": 29
+      }
+     ]
+    },
+    {
+     "claim": "别过度努力",
+     "text": "过度努力会降低产出并导致倦怠，目标是停在产出开始小于投入之前的那个点；删掉步骤优于简化步骤。",
+     "books": [
+      {
+       "title": "轻松主义",
+       "idx": 213
+      }
+     ]
+    },
+    {
+     "claim": "用原型代替空想",
+     "text": "用三份奥德赛计划和原型对话去试错，把失败记录下来分类，从中找成长机会；心流是成年人的娱乐。",
+     "books": [
+      {
+       "title": "斯坦福大学人生设计课",
+       "idx": 94
+      }
+     ]
+    },
+    {
+     "claim": "拿回选择权",
+     "text": "觉察、选择、信任构成内在游戏；做真心想做的事注意力自然集中，做应该做的事则容易分散。",
+     "books": [
+      {
+       "title": "如何实现工作自由",
+       "idx": 234
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "我是否创造出了真实、有意义的成果？ 我是否让成果被目标人群理解并认可，必要时愿意付费？ 我是否在持续提高被看到与被选择的概率？",
+     "quote": "三种能力变成行动检查表",
+     "idx": 41
+    },
+    {
+     "text": "差距思维和物化自己、强调幸福 = 物质享受的思想是相辅相成的",
+     "quote": "深陷差距思维，你会对外在的事物产生一种有害健康的依赖。",
+     "idx": 132
+    },
+    {
+     "text": "受到权利压迫 -> 失去自由 -> 意志消沉",
+     "quote": "这类装模作样的游戏终究不是人们自主选择的，而是人们受到权力压迫的表现，因此不可避免地会让人意志消沉。",
+     "idx": 120
+    }
+   ],
+   "highlights": [
+    {
+     "text": "我把终极目标定义为“产出开始小于投入”前面的那个“点”。",
+     "idx": 213
+    },
+    {
+     "text": "如果我做的事是我喜欢的，我的注意力就会更集中；如果我做的事只是我应该去做却并非我真心想做的事，我的注意力就会很容易分散",
+     "idx": 234
+    },
+    {
+     "text": "乐趣源于全情投入，而不是投入后的结果。正是因为这样，乐趣可以是无条件的。",
+     "idx": 29
+    },
+    {
+     "text": "觉察、选择和信任。无论做什么工作，这三大要素都能帮我们专注。",
+     "idx": 234
+    },
+    {
+     "text": "努力本身没有任何意义，个人努力的意义最终要呈现为你对他人的价值与结果",
+     "idx": 26
+    },
+    {
+     "text": "相比“简化步骤”，“删减步骤”能使过程变得更容易。2．几乎在每一个领域，“完成”都要远远好过“画蛇添足”。",
+     "idx": 213
+    },
+    {
+     "text": "● 在什么情况下，你从想要某件东西变成你认为自己需要它，进而陷入差距思维？● 在什么情况下，你将自己和别人做比较导致自己陷入差距思维？● 在什么情况下，你依靠感恩之心改变现状，将体验变成收获，继续前进？",
+     "idx": 132
+    },
+    {
+     "text": "这就是人生的“爬山算法”：全力以赴地爬上你目之所及的一个小山头，你会看到更多的山，看到下一个山头和路。就这样凭着“有意思”一个个地把你关心的事做到极致，你会走到你想象不到的高处。",
+     "idx": 29
+    },
+    {
+     "text": "自由不是一种状态，甚至不是一种结果，而是一种能力，一种深度自知、无畏向前，与自己坦然共处的能力。",
+     "idx": 51
+    },
+    {
+     "text": "属于你的每一天要由你主动规划，而不是被动选择，一旦被动选择，你就会被一些分心的事情干扰。",
+     "idx": 132
+    }
+   ]
+  },
+  {
+   "name": "K8s知识栈",
+   "domain": "工程思维",
+   "oneLiner": "K8s 的难点不在命令，而在网络与状态的秩序",
+   "books": [
+    98,
+    180,
+    212
+   ],
+   "hours": 2.0,
+   "viewpoints": [
+    {
+     "claim": "Pod 共享网络命名空间",
+     "text": "Pod 内容器共享同一 IP 与端口空间，经 localhost 互通；请求依次经 API Server、Scheduler 到达 kubelet。",
+     "books": [
+      {
+       "title": "每天5分钟玩转Kubernetes",
+       "idx": 180
+      }
+     ]
+    },
+    {
+     "claim": "三个网段不能交叉",
+     "text": "宿主机、Service、Pod 三个网段互不重叠；port 是入口，targetPort 是 Pod 的真实端口；Endpoint 记录后端，Pod 重建对调用方无感。",
+     "books": [
+      {
+       "title": "云原生Kubernetes全栈架构师实战",
+       "idx": 98
+      }
+     ]
+    },
+    {
+     "claim": "StatefulSet 的秩序",
+     "text": "按 0 到 N-1 顺序创建、逆序终止，前一个 Pod 完全启动后才调度下一个；固定的标识符可用于判定角色。",
+     "books": [
+      {
+       "title": "云原生Kubernetes全栈架构师实战",
+       "idx": 98
+      }
+     ]
+    },
+    {
+     "claim": "配置与密钥分离",
+     "text": "非敏感配置放 ConfigMap，敏感信息放 Secret，二者都按 Namespace 隔离，不能跨命名空间访问。",
+     "books": [
+      {
+       "title": "云原生Kubernetes全栈架构师实战",
+       "idx": 98
+      }
+     ]
+    },
+    {
+     "claim": "变更要有检查清单",
+     "text": "发布和变更都应设检查点；50 次检查可能 49 次一无所获，但一次发现就能避免重大损失。",
+     "books": [
+      {
+       "title": "清单革命",
+       "idx": 212
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "kubectl get 获取粗略信息 kubectl describe 获取详细信息",
+     "quote": "kubectl describe deployment",
+     "idx": 180
+    },
+    {
+     "text": "kubectl label node nodename key=value，标签本质上是一个Key:value的键值对",
+     "quote": "节点添加标签",
+     "idx": 98
+    }
+   ],
+   "highlights": [
+    {
+     "text": "不同的controller管理不同的资源。例如，replication controller管理Deployment、StatefulSet、DaemonSet的生命周期，namespace controller管理Namespace资源。",
+     "idx": 180
+    },
+    {
+     "text": "每个Pod都有一个持久的标识符，在重新调度时也会保留，一般格式为StatefulSetName-Numbe",
+     "idx": 98
+    },
+    {
+     "text": "Service通过Endpoint记录了后端Pod的IP和端口，当Pod被重建后，该Endpoint会被更新，而我们使用Service名称链接后端Pod时，并不会感知到这些变化",
+     "idx": 98
+    },
+    {
+     "text": "kube-system：Kubernetes自己创建的系统资源将放到这个Namespace中。",
+     "idx": 180
+    },
+    {
+     "text": "设定清晰的检查点，使用者在这些节点根据清单列出的项目执行检查程序。",
+     "idx": 212
+    },
+    {
+     "text": "如果在后台放置巧克力的碗里发现了棕色巧克力豆，我们就会对各项装配工作逐一进行检查。我保证会发现技术错误，会碰到各种各样的问题。",
+     "idx": 212
+    }
+   ]
+  },
+  {
+   "name": "容器运行时与底层原理",
+   "domain": "工程思维",
+   "oneLiner": "容器不是虚拟机，只是内核隔离机制的组装",
+   "books": [
+    84,
+    98,
+    104
+   ],
+   "hours": 5.9,
+   "viewpoints": [
+    {
+     "claim": "容器是 Cgroups 与 namespace 的组装",
+     "text": "Cgroups 管资源配额，namespace 管视图隔离；宿主机能看到容器内的进程，反过来则不行。",
+     "books": [
+      {
+       "title": "containerd原理剖析与实战",
+       "idx": 104
+      }
+     ]
+    },
+    {
+     "claim": "运行时分高低两层",
+     "text": "低级运行时如 runc 直接与操作系统打交道，高级运行时如 containerd 负责镜像管理和对接编排；exec 新开进程，attach 连接 1 号进程。",
+     "books": [
+      {
+       "title": "containerd原理剖析与实战",
+       "idx": 104
+      }
+     ]
+    },
+    {
+     "claim": "镜像按层存储",
+     "text": "拉取顺序是 index、manifests、config、layers；压缩层不能直接挂载，要经 snapshotter 借助 overlayfs 写时复制呈现。",
+     "books": [
+      {
+       "title": "containerd原理剖析与实战",
+       "idx": 104
+      }
+     ]
+    },
+    {
+     "claim": "CRI 先建 Pause 容器",
+     "text": "创建 Pod 沙箱时先启动 Pause 容器占住网络命名空间，业务容器再加入；kubectl exec 和 logs 经流式转发通道实现。",
+     "books": [
+      {
+       "title": "containerd原理剖析与实战",
+       "idx": 104
+      }
+     ]
+    },
+    {
+     "claim": "区块链用技术解决共识",
+     "text": "信息传递可以复制，价值传递必须唯一；区块链组合了密码学、P2P、分布式与博弈论，数据只能增查不能改删。",
+     "books": [
+      {
+       "title": "大话区块链",
+       "idx": 84
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "kubectl本身也是一个pod 也是运行在容器运行时基础上的",
+     "quote": "使用kubectl exec、logs、attach、portforward命令时需要kubelet在apiserver和容器运行时之间建立流量转发通道",
+     "idx": 104
+    },
+    {
+     "text": "docker logs -f containerID，日志尽量输出到控制台，因为docker logs只能看到控制台的日志",
+     "quote": "可以使用docker logs查看容器输出到控制台的日志（程序日志输出到控制台是容器化的最佳实践",
+     "idx": 98
+    },
+    {
+     "text": "这里说错了，是Github，Git是代码管理工具",
+     "quote": "以及全球最大的程序员网站Git",
+     "idx": 84
+    }
+   ],
+   "highlights": [
+    {
+     "text": "cri-o和containerd并列作为Kubernetes官方推荐的两个容器运行时之一",
+     "idx": 104
+    },
+    {
+     "text": "可以通过/proc/<pid>/cgroup查看进程所在的Cgroup namespace内的cgroup信息。",
+     "idx": 104
+    },
+    {
+     "text": "只不过Master节点加入集群时需要指定--control-plane和--certificate-key参数",
+     "idx": 98
+    },
+    {
+     "text": "区块链第一次创造性地将密码学、分布式、博弈论、P2P协议等技术有机地组合在一起，使其具备去中心化、账务公开、不可篡改、可追溯等特点。区块链最大的创新是第一次用技术解决了人类的共识问题，用理性的技术为人类建立信任提供了方法。",
+     "idx": 84
+    },
+    {
+     "text": "Kubernetes一共涉及三个网段，一个是宿主机的网段，也就是上述的10.0.0.x，同时需要Pod和Service的网段，三者的网段不可交叉。",
+     "idx": 98
+    },
+    {
+     "text": "信息传递可以重复流通，但价值传递却要保持唯一性。",
+     "idx": 84
+    }
+   ]
+  },
+  {
+   "name": "工程师的职业哲学",
+   "domain": "工程思维",
+   "oneLiner": "AI 时代工程师的价值从写代码转向判断与担责",
+   "books": [
+    13,
+    44,
+    148,
+    169,
+    257
+   ],
+   "hours": 7.3,
+   "viewpoints": [
+    {
+     "claim": "程序首先写给人读",
+     "text": "黑客是创造性解决问题的人，不是破坏者；程序要写得供人阅读，偶尔供机器执行；少数顶尖程序员写出了大部分优秀软件。",
+     "books": [
+      {
+       "title": "黑客与画家",
+       "idx": 44
+      }
+     ]
+    },
+    {
+     "claim": "想法便宜，基础设施贵",
+     "text": "工程能力排第一，谁修的基础设施 bug 越多，模型就训练得越好；教研究员做工程远比教工程师做研究难。",
+     "books": [
+      {
+       "title": "翁佳怡访谈",
+       "idx": null
+      }
+     ]
+    },
+    {
+     "claim": "AI 时代架构师的新价值",
+     "text": "AI 的能力从应届生水平逐层上移；人的价值转向需求翻译、任务拆解和质量把关，用对系统上层的理解去检验 AI 的产出。",
+     "books": [
+      {
+       "title": "未来 99.9 % 的代码都会是AI写的",
+       "idx": null
+      }
+     ]
+    },
+    {
+     "claim": "把职业当企业经营",
+     "text": "工作属于公司，职业生涯属于自己；用番茄钟而非工时计量投入；成功的反义词不是失败，而是什么都不做。",
+     "books": [
+      {
+       "title": "软技能",
+       "idx": 13
+      }
+     ]
+    },
+    {
+     "claim": "判断与担责不可替代",
+     "text": "封闭的执行者和只搬运信息的管理者最容易被替代；AI 时代人被看重的是判断、协作和担责。",
+     "books": [
+      {
+       "title": "AI未来已来",
+       "idx": 148
+      }
+     ]
+    },
+    {
+     "claim": "技术债的时间反转",
+     "text": "短期多欠技术债能加速交付，长期正好相反，偿还技术债才会加快交付；而产品侧天然倾向推动更多特性。",
+     "books": [
+      {
+       "title": "程序员的README",
+       "idx": 169
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "只要在做事就一定会出错",
+     "quote": "错误是不可避免的。成为一名软件工程师的路途艰辛，我们有时会失败。这几乎是所有人都知道的事情",
+     "idx": 169
+    },
+    {
+     "text": "设置一个大目标，大目标不一定得是一个具体的目标，而可以是一个清晰的方向，大目标是你内心真实的渴求，比如我的就是从坐班中解放出来，拥有足够的时间、空间上的自由度，同时金钱上也比较宽裕",
+     "quote": "切都取决于你确定的大目标是什么。你希望从职业生涯中收获什么？你希望自己5年或10年后在哪里？",
+     "idx": 13
+    },
+    {
+     "text": "时代是会进步的，主流价值观也会进步 中国封建时期的君君臣臣父父子子那一套早已不再被认可，拥有成群的美姬也不再是什么风流韵事。 现在人们过于追求物质生活和优绩制度下的“成功”，相信这也是会被后世唾弃的，他们估计也很诧异为什么我们要这么努力获取世俗意义上的成功，而不是把重心放在生活，放在对幸福的不懈追求上",
+     "quote": "它不仅不对，而且会让历史倒退。如果你真的相信了它，凡是不认同社会之处，你连想都不敢想，马上就放弃自己的观点，那才会真正出问题",
+     "idx": 44
+    }
+   ],
+   "highlights": [
+    {
+     "text": "承担更多的技术债会加速交付。长期来看，情况正好相反：偿还技术债会加快交付的速度，而承担更多的债务则会减缓交付。产品经理会得到鼓励去推动实现更多的特性",
+     "idx": 169
+    },
+    {
+     "text": "请每周都花一部分时间去阅读。可供阅读的内容有很多：团队文档、设计文档、代码、积压的任务票、书籍、论文和技术网站",
+     "idx": 169
+    },
+    {
+     "text": "人类负责判断、品味、责任与方向，AI负责近乎无限的执行，两者相乘，产生的价值是巨大的，未来的饼是巨大的。",
+     "idx": 148
+    },
+    {
+     "text": "即使没有很多在算法和模型架构上的重大突破，只要持续投入更多算力、更多数据并扩大参数规模，更强的能力就会稳定地涌现出来。",
+     "idx": 148
+    },
+    {
+     "text": "我锻炼得越多就越健康，我在工作中的表现也越好。我注意到，当我体能最好的时候，我的注意力最集中，效率也最高。",
+     "idx": 13
+    },
+    {
+     "text": "保罗·格雷厄姆有一套完整的创业哲学，他的创业公式是：(1)搭建原型；(2)上线运营（别管bug）；(3)收集反馈；(4)调整产品；(5)成长壮大。",
+     "idx": 44
+    },
+    {
+     "text": "首先，管理企业其实很简单，只要记住两点就可以了：做出用户喜欢的产品，保证开支小于收入。只要做到这两点，你就会超过大多数创业公司。随着事业的发展，你自己就能琢磨出来其他的诀窍。",
+     "idx": 44
+    },
+    {
+     "text": "不要让“不是专家”成为放弃自我营销的借口。无论你身处自己职业生涯的哪个阶段，你都可以从营造和传播自己的品牌中获益匪浅。",
+     "idx": 13
+    },
+    {
+     "text": "https://www.python.org/dev/peps/pep-0008",
+     "idx": 257
+    },
+    {
+     "text": "作PEP 8，它是一份针对Python代码格式而编订的风格指",
+     "idx": 257
+    }
+   ]
+  },
+  {
+   "name": "前端知识链",
+   "domain": "工程思维",
+   "oneLiner": "前端的坑多在语义误用和生命周期，而不在语法",
+   "books": [
+    65,
+    106,
+    162,
+    168
+   ],
+   "hours": 9.2,
+   "viewpoints": [
+    {
+     "claim": "语义化优先",
+     "text": "用一个标签替代另一个是 HTML 学习的最大误区，strong 比 b 更有语义；块元素可包含块和行内元素，行内元素只能包含行内元素。",
+     "books": [
+      {
+       "title": "Web前端开发精品课 HTML CSS JavaScript基础教程",
+       "idx": 65
+      }
+     ]
+    },
+    {
+     "claim": "CSS 的三种引入",
+     "text": "外部链接、内部 style 和行内样式三种方式；id 唯一，class 用于复用；边框由宽度、样式、颜色三要素构成。",
+     "books": [
+      {
+       "title": "Web前端开发精品课 HTML CSS JavaScript基础教程",
+       "idx": 65
+      }
+     ]
+    },
+    {
+     "claim": "Vue 的响应式取舍",
+     "text": "频繁切换用 v-show，很少切换用 v-if；计算属性在依赖不变时返回缓存；v-for 必须给唯一 key，否则就地更新会错乱。",
+     "books": [
+      {
+       "title": "Vue.js从入门到精通",
+       "idx": 106
+      }
+     ]
+    },
+    {
+     "claim": "ES6 的关键语法",
+     "text": "let 与 const 带来块级作用域；rest 参数必须放在最后；箭头函数的 this 指向外层最近的普通函数；Promise 用 then 和 catch 处理结果。",
+     "books": [
+      {
+       "title": "从0到1",
+       "idx": 168
+      }
+     ]
+    },
+    {
+     "claim": "v-if 的生命周期陷阱",
+     "text": "v-if 为假时元素根本不在 DOM 中，切换会销毁并重建子组件，拿不到组件对象时先查 v-if；组件的 data 必须是函数。",
+     "books": [
+      {
+       "title": "Vue.js从入门到项目实战",
+       "idx": 162
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "外部：在html head中通过link的方式进行引入 内部：在html head中直接<style text/css>这种方式确定 行内：每个元素自己设置css样式",
+     "quote": "外部样式表内部样式表行内样式表",
+     "idx": 65
+    },
+    {
+     "text": "promise:异步执行的代码",
+     "quote": "resolve()函数用于在异步操作执行成功时调用，reject()函数用于在异步操作执行失败时调用",
+     "idx": 106
+    },
+    {
+     "text": "jQuery就是一个最常用也最强大的js库",
+     "quote": "学完JavaScript入门（也就是本书内容）后，不要急于去学习JavaScript进阶的内容而应该先去学习jQuery。经过jQuery的学习，可以让我们对JavaScript的基础知识有更深一层的理解。学完了jQuery，再去学习JavaScript进阶的内容会更好。",
+     "idx": 168
+    }
+   ],
+   "highlights": [
+    {
+     "text": "v-show判定为假的元素的display属性被赋值为none，不过仍保留在DOM中，而v-if判定为假的元素则根本没有在DOM中出现。",
+     "idx": 162
+    },
+    {
+     "text": "在Vue模板的style标签上标注scoped属性可划分作用域，使CSS样式表只作用于当前组件",
+     "idx": 162
+    },
+    {
+     "text": "const的作用域和let的相同，使用const声明的常量只在const所在的块级作用域内有效。",
+     "idx": 106
+    },
+    {
+     "text": "在HTML中，我们使用s元素实现中划线，用u元素实现下划线。但是有了CSS之后，我们都是用text-decoration属性来实现。",
+     "idx": 65
+    },
+    {
+     "text": "每个类中包含了一个特殊的方法constructor()，它是类的构造函数，其作用是对类进行初始化。",
+     "idx": 106
+    },
+    {
+     "text": "在HTML中，锚点链接其实是内部链接的一种，它链接地址（也就是href）指向的是当前页面的某个部分。所谓的锚点链接，简单来说，就是点击某一个超链接，然后它就会跳到“当前页面”的某一部分。",
+     "idx": 65
+    },
+    {
+     "text": "a．toString（ ）表示将a转换为字符串",
+     "idx": 168
+    },
+    {
+     "text": "break语句用于结束switch语句，从而使JavaScript仅仅执行对应的一个分支",
+     "idx": 168
+    }
+   ]
+  },
+  {
+   "name": "工程效率与AI编程",
+   "domain": "工程思维",
+   "oneLiner": "和 AI 协作的瓶颈在规格与验证，不在写代码",
+   "books": [
+    13,
+    148,
+    212,
+    204
+   ],
+   "hours": 5.0,
+   "viewpoints": [
+    {
+     "claim": "先写规格，再让 AI 写码",
+     "text": "把自己当作不懂业务的空降者，让 AI 反过来访谈你；规格写清目标、功能、约束和验收标准，分阶段推进，开头慢后面快。",
+     "books": [
+      {
+       "title": "未来 99.9 % 的代码都会是AI写的",
+       "idx": null
+      }
+     ]
+    },
+    {
+     "claim": "长任务 agent 的四个坑",
+     "text": "过早宣布完成、犯错不自知、测试不足、重启丢状态；对策是测试没全过就不许停，出错回滚到上个可用版本，以通过测试衡量进度。",
+     "books": [
+      {
+       "title": "未来 99.9 % 的代码都会是AI写的",
+       "idx": null
+      }
+     ]
+    },
+    {
+     "claim": "用番茄钟计量投入",
+     "text": "以完成的番茄钟数而非工时衡量投入，一天 16 个已超过绝大多数人；每周设定固定配额，按配额推进。",
+     "books": [
+      {
+       "title": "软技能",
+       "idx": 13
+      }
+     ]
+    },
+    {
+     "claim": "第二大脑按行动组织",
+     "text": "PARA 按项目和行动组织信息；渐进式摘要每层只保留上一层的一小部分；把未来的自己当成挑剔又忙碌的客户。",
+     "books": [
+      {
+       "title": "打造第二大脑",
+       "idx": 204
+      }
+     ]
+    },
+    {
+     "claim": "代码先被 AI 改变有结构原因",
+     "text": "代码能否编译、测试是否通过有唯一确定的答案，这种可验证性让编程先于其他领域被 AI 改变；人的位置转向判断、品味和责任。",
+     "books": [
+      {
+       "title": "AI未来已来",
+       "idx": 148
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "每个人在专注期间都会有做各种各样小事来打断专注的想法，而这种想法是必须要克服的，一旦设置了番茄钟，就应该雷打不动的执行完这个番茄钟，哪怕中间因为客观原因被打断了，主观上也不能中止专注",
+     "quote": "我时不时有种冲动去检查电子邮件、上个卫生间、喝点咖啡——其实我本不喝咖啡的。我的大脑竭尽所能阻止我保持专注。",
+     "idx": 13
+    }
+   ],
+   "highlights": [
+    {
+     "text": "人类负责判断、品味、责任与方向，AI负责近乎无限的执行，两者相乘，产生的价值是巨大的，未来的饼是巨大的。",
+     "idx": 148
+    },
+    {
+     "text": "请将未来的自己设想成一位极度挑剔、忙碌而又缺乏耐心的客户，“他”根本没有时间从浩瀚的文字海洋中仔细翻找一颗颗遗珠，而你的任务则是向其兜售自己的笔记并尽可能卖出好价钱。",
+     "idx": 204
+    },
+    {
+     "text": "公司总部那些成本“最贵”的智力劳动领域——法律、工程、金融分析、战略咨询，以及高管每天开会时所做的事——分析、综合、评估、推理，都正在被AI冲击。",
+     "idx": 148
+    },
+    {
+     "text": "在大多数技术含量很高的专业领域，对于失败的正确处理方法不是惩罚，而是鼓励从业",
+     "idx": 212
+    },
+    {
+     "text": "设定清晰的检查点，使用者在这些节点根据清单列出的项目执行检查程序。",
+     "idx": 212
+    },
+    {
+     "text": "我锻炼得越多就越健康，我在工作中的表现也越好。我注意到，当我体能最好的时候，我的注意力最集中，效率也最高。",
+     "idx": 13
+    },
+    {
+     "text": "我向你推荐另一种做法，也即根据信息的实用性进行保存。只须稍花些工夫，将信息存放在某个特定项目的文件夹中",
+     "idx": 204
+    },
+    {
+     "text": "如果缺乏对自己的责任感，你将永远依赖外部动机来驱使你努力工作。你容易折服于一根胡萝卜的诱惑，也容易屈从于一根大棒的威胁（如果你胆敢越轨）。",
+     "idx": 13
+    }
+   ]
+  },
+  {
+   "name": "技术人的学习经济学",
+   "domain": "工程思维",
+   "oneLiner": "输入决定产出，没有方法的重复只会把人练废",
+   "books": [
+    44,
+    144,
+    148,
+    212
+   ],
+   "hours": 3.4,
+   "viewpoints": [
+    {
+     "claim": "检索胜过重读",
+     "text": "反复阅读浪费时间、记不持久，还制造已经掌握的错觉；主动检索和间隔练习才高效。记忆是创造力的基础。",
+     "books": [
+      {
+       "title": "认知天性",
+       "idx": 144
+      }
+     ]
+    },
+    {
+     "claim": "输入决定产出",
+     "text": "同一数据集训练足够久，几乎所有模型会收敛到相同输出，架构只决定效率；放到人身上，输入决定观点，观点决定产出。",
+     "books": [
+      {
+       "title": "AI未来已来",
+       "idx": 148
+      },
+      {
+       "title": "认知红利",
+       "idx": 128
+      }
+     ]
+    },
+    {
+     "claim": "又薄又深的 T 型结构",
+     "text": "横向的全栈视野让人能检验 AI 的产出，纵向的深度来自同一赛道上长周期的重复。",
+     "books": [
+      {
+       "title": "黑客与画家",
+       "idx": 44
+      },
+      {
+       "title": "翁佳怡访谈",
+       "idx": null
+      }
+     ]
+    },
+    {
+     "claim": "一万小时的真相",
+     "text": "关键不在练了多久，而在是否掌握背后的套路；没有方法的重复练习会把人练废。",
+     "books": [
+      {
+       "title": "刻意练习",
+       "idx": 25
+      },
+      {
+       "title": "异类",
+       "idx": 99
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "记忆是学习的基础",
+     "quote": "很多评论者建议忘掉记忆，教育应当关乎高层次的技能",
+     "idx": 144
+    }
+   ],
+   "highlights": [
+    {
+     "text": "信奉专注的力量，在一段时间里反复练习一件事情，直到真正掌握",
+     "idx": 144
+    },
+    {
+     "text": "一个人对已知掌握得越好，他就越能用有创造力的方法解决新问题。不练习独创性与想象力，就没法积累知识。同样地，没有扎实的知识基础，创新也只是空中楼阁。",
+     "idx": 144
+    },
+    {
+     "text": "数据的规模与质量直接决定一个模型能达到的天花板。",
+     "idx": 148
+    },
+    {
+     "text": "利用当前的模型开发下一代模型，在AI行业已经是公开的秘密。现在的AI模型正在为下一代模型的训练生成数据、充当奖励函数，并进行蒸馏开发",
+     "idx": 148
+    },
+    {
+     "text": "在大多数技术含量很高的专业领域，对于失败的正确处理方法不是惩罚，而是鼓励从业",
+     "idx": 212
+    },
+    {
+     "text": "首先，他们接受的训练要求他们这么做。他们刚进入飞行学校就会学到，人类的记忆和判断是有缺陷的。为了保障乘客的生命安全，他们必须认清真实情况。其次，清单被证明是有效的。",
+     "idx": 212
+    },
+    {
+     "text": "触怒他人的言论是那些可能会有人相信的言论。我猜想，最令人暴跳如雷的言论，就是被认为说出了真相的言论。",
+     "idx": 44
+    },
+    {
+     "text": "科学界的每一个人，暗地里都相信数学家比自己聪明。我觉得，数学家自己也相信这一点。最后的结果就是科学家往往会把自己的工作尽可能弄得看上去像数学。",
+     "idx": 44
+    }
+   ]
+  },
+  {
+   "name": "主体性与自我叙事",
+   "domain": "人生与心理",
+   "oneLiner": "人生的默认脚本是制度造出来的，可以重新审视",
+   "books": [
+    11,
+    111,
+    183,
+    199,
+    219,
+    246
+   ],
+   "hours": 6.5,
+   "viewpoints": [
+    {
+     "claim": "课题分离",
+     "text": "一切人际矛盾都源于对他人课题的干涉；自由的代价是被人讨厌，自我接纳不等于自我肯定。",
+     "books": [
+      {
+       "title": "被讨厌的勇气",
+       "idx": null
+      },
+      {
+       "title": "勇气两部曲",
+       "idx": 11
+      }
+     ]
+    },
+    {
+     "claim": "龙虾法则",
+     "text": "支配等级已存在数亿年，胜者的神经化学状态与体态相连；挺胸直视前方，身体的挺立会带动精神的挺立。",
+     "books": [
+      {
+       "title": "人生十二法则",
+       "idx": 199
+      }
+     ]
+    },
+    {
+     "claim": "没有最优人格",
+     "text": "大五人格没有最优解，关键是找到与自身惯常方式匹配的环境；在强情境下，人格特质只能解释不到 10% 的行为差异。",
+     "books": [
+      {
+       "title": "我们何以不同",
+       "idx": 111
+      }
+     ]
+    },
+    {
+     "claim": "人生四站是制度产物",
+     "text": "玩乐、学习、工作、退休的顺序由义务教育、工资就业和养老金共同塑造，并非天然；寿命越长，保持选择的开放性越重要。",
+     "books": [
+      {
+       "title": "多代社会",
+       "idx": 219
+      }
+     ]
+    },
+    {
+     "claim": "成功的定义权",
+     "text": "拥有一切是无稽之谈，不可能样样都要；逆势者把自己的需求放在首位，45% 的人认为自己一生冒险太少。",
+     "books": [
+      {
+       "title": "务必尽兴",
+       "idx": 246
+      }
+     ]
+    },
+    {
+     "claim": "热爱常在擅长之后",
+     "text": "很多热爱并非天生，而是先擅长、再得到正反馈之后才出现的。",
+     "books": [
+      {
+       "title": "那些我希望自己二十出头就能明白的事",
+       "idx": 183
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "等我xxxx 就xxxx 我完成了xxxx 我就会开心/成功/幸福 两种观念都是生活中的陷阱",
+     "quote": "一直想着“真正想做的是这样的事情，等时机到了就去做”，是一种拖延人生的生活方式。只要在拖延人生，我们就会无所进展，只能每天过着枯燥乏味的单调生活。因为在这种情况下，人就会认为“此时此刻”只是准备阶段和忍耐阶段。",
+     "idx": 11
+    }
+   ],
+   "highlights": [
+    {
+     "text": "义务教育、基于工资的就业和养老金计划三位一体，共同为“人生四站”的顺序模式奠定基础。",
+     "idx": 219
+    },
+    {
+     "text": "人类的预期寿命越长，保持选择的开放性就越重要，相应地，做“重大决定”的意义就越小。",
+     "idx": 219
+    },
+    {
+     "text": "如果想要行使自由，那就需要付出代价。而在人际关系中，自由的代价就是被别人讨厌。",
+     "idx": 11
+    },
+    {
+     "text": "把你的需求放在首位；不去理会“应该做什么”的世俗看法。即使我们没有打算取得令人瞩目的辉煌成就，或者不愿意每天都这么逆势而为，我们仍然可以从逆势者身上汲取宝贵的经验。我们所有人都可以审视自己的生活，尝试改变一些小事情。",
+     "idx": 246
+    },
+    {
+     "text": "当一个人自我价值感很低或者拒绝为自己的人生负责时，便会选择与那些生活已经一团糟的人",
+     "idx": 199
+    },
+    {
+     "text": "无论你过着怎样的刹那，即使有人讨厌你，只要没有迷失“他者贡献”这颗引导之星，那么你就不会迷失，而且做什么都可以。即使被讨厌自己的人讨厌着也可以自由地生活。",
+     "idx": 11
+    },
+    {
+     "text": "笔挺站立、昂首挺胸的不光是身体。因为你不单只是一具肉体，你也有思想，物理层面的挺立也可以激发精神层面的挺拔。",
+     "idx": 199
+    },
+    {
+     "text": "大五人格模型不仅适用于描述人类的基本人格特征，也可以在一定程度上用于描述其他物种，如“狗格”“猫格”“兔格”等。",
+     "idx": 111
+    },
+    {
+     "text": "其中45%的人说他们一生中冒的风险不够多，而是过于谨慎，视冒险为洪水猛兽。我们的社会不鼓励冒险，所以我们习惯于退缩和规避风险。这是一个恶性循环。",
+     "idx": 246
+    },
+    {
+     "text": "你解决问题的底层模式其实一直都没有变，仍然是先审清楚问题，然后找到真正的答案。",
+     "idx": 183
+    }
+   ]
+  },
+  {
+   "name": "亲密关系与家庭系统",
+   "domain": "人生与心理",
+   "oneLiner": "长久的关系靠尊重差异和公平感，而不是激情",
+   "books": [
+    10,
+    23,
+    79,
+    83,
+    43,
+    46,
+    100,
+    101,
+    118
+   ],
+   "hours": 22.3,
+   "viewpoints": [
+    {
+     "claim": "能无拘无束才是爱",
+     "text": "两个人在一起若感到苦闷或紧张，即使是恋爱也算不上爱；既不自卑也不必炫耀，能感到无拘无束时，才体会得到爱。",
+     "books": [
+      {
+       "title": "被讨厌的勇气",
+       "idx": null
+      }
+     ]
+    },
+    {
+     "claim": "控制比打骂伤人更深",
+     "text": "家庭里常见的深层伤害是以为你好为名的控制，背后是父母自己的焦虑；把孩子当作父母理想中自己的延伸，会打断孩子自己的心流体验。",
+     "books": [
+      {
+       "title": "为何家会伤人",
+       "idx": 79
+      }
+     ]
+    },
+    {
+     "claim": "长久的关系多是友伴型",
+     "text": "健康稳定的关系大多是友伴型而非激情型；夫妻之间只有约三成能基本一致，其余七成分歧难以改变，要学会让差异被尊重。",
+     "books": [
+      {
+       "title": "反脆弱",
+       "idx": 83
+      }
+     ]
+    },
+    {
+     "claim": "关系靠公平感维持",
+     "text": "人在关系里既不喜欢占便宜，也不喜欢吃亏；双方都觉得公平，关系才满足、才稳定。",
+     "books": [
+      {
+       "title": "幸福的方法",
+       "idx": 23
+      }
+     ]
+    },
+    {
+     "claim": "吸引力有五个维度",
+     "text": "舒适、安全、欢乐、亲昵、尊重缺一不可；工作、财务、情感、健康、使命构成的生命轮不圆，人生就滚不平。",
+     "books": [
+      {
+       "title": "美好人生运营指南",
+       "idx": 118
+      }
+     ]
+    },
+    {
+     "claim": "父母先活出好样子",
+     "text": "为人父母前先与过去和解，自己的梦想自己完成，备好身体和财务；最重要的不是给孩子什么，而是自己活出好样子。",
+     "books": [
+      {
+       "title": "人生总会有答案",
+       "idx": 10
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "警醒！ 双方在家庭中是完全平等的，家务平摊，每个人的时间 情绪都同样重要",
+     "quote": "如果不明白工作与家的分野，而将权力规则带回家，那就形成一种“权力的污染”，",
+     "idx": 79
+    },
+    {
+     "text": "太绝对了吧...我并没有感觉自己会这样啊，这里作者是不是漏了一个前提：想和该异性建立亲密关系之前",
+     "quote": "我们每个人在遇到一个异性时，都会出于本能，开始判断对方的价值",
+     "idx": 83
+    },
+    {
+     "text": "记得心理学上也有一个效应，你想拉近别人和你的距离，最好是先让他帮你一个小忙，这样会让他心里觉得满足，和这里类似",
+     "quote": "回想一下你帮助人的时刻，再体会一下那种感觉",
+     "idx": 23
+    }
+   ],
+   "highlights": [
+    {
+     "text": "第二次是恋爱。我们一生中会与许许多多人建立许许多多种关系，但恋爱是我们生命中能自主建立的最亲密的关系。",
+     "idx": 79
+    },
+    {
+     "text": "时间不是用来完成事的，也不是用来凑热闹的，而是用来经历、体验的。",
+     "idx": 10
+    },
+    {
+     "text": "真正快乐的人，能够在自己觉得有意义的生活方式里享受它的点点滴滴。这种解释绝不仅限于生命里的某些时刻，而是人生的全过程。即使有时经历痛苦，人在总体上仍然可以是幸福的。",
+     "idx": 23
+    },
+    {
+     "text": "高强度社交综合征的另一个特征是与家庭或者配偶的关系不佳",
+     "idx": 43
+    },
+    {
+     "text": "他会在哪个位置？他是什么样子？什么神情？看着他，他会和你构建一个什么样的关系？",
+     "idx": 79
+    },
+    {
+     "text": "人结婚生子以后常常会觉得日子变得无趣。每天要照顾孩子，均衡老人之间的关系，人也变得肥沃，穿什么都谈不上好看，所以买衣服的欲望都没有了。还要面对同一个屋檐下那个可有可无的伴侣。",
+     "idx": 100
+    },
+    {
+     "text": "一个人在实现目标之后会感到满足，无法实现时则容易失望，而这些感觉其实都很短暂。",
+     "idx": 23
+    },
+    {
+     "text": "要想拥有不平庸的活法，就要学会做一个会折腾的人",
+     "idx": 83
+    },
+    {
+     "text": "因为在某种意义上，越专业就越窄，我可不想自己的人生这么窄。孔老夫子说“君子不器”，应该也就是这个意思。",
+     "idx": 10
+    },
+    {
+     "text": "一旦发现自己有付出感，就提醒自己，醒一醒：我真正想要创造什么样的生命体验？做这件事情，是我自己想要的吗？",
+     "idx": 83
+    }
+   ]
+  },
+  {
+   "name": "学习方法论",
+   "domain": "人生与心理",
+   "oneLiner": "检索和刻意练习有效，重读多半只是熟悉感",
+   "books": [
+    9,
+    25,
+    88,
+    99,
+    117,
+    128,
+    135,
+    144,
+    141,
+    143,
+    182,
+    204,
+    61,
+    256
+   ],
+   "hours": 19.2,
+   "viewpoints": [
+    {
+     "claim": "检索胜过重读",
+     "text": "重读只制造熟悉感，熟悉不等于掌握；自我检测和间隔练习更有效。专注模式与发散模式交替，顿悟常在专注之后的放松中出现。",
+     "books": [
+      {
+       "title": "认知天性",
+       "idx": 144
+      },
+      {
+       "title": "学习之道",
+       "idx": 88
+      }
+     ]
+    },
+    {
+     "claim": "元学习与直接学习",
+     "text": "花预期学习时间的 10% 做调研和规划；学什么就直接在应用场景里练什么，用测试推动学习。",
+     "books": [
+      {
+       "title": "超级学习者",
+       "idx": 117
+      }
+     ]
+    },
+    {
+     "claim": "刻意练习的四个特征",
+     "text": "明确的目标、极度的专注、有效的反馈、待在拉伸区；新手期需要鼓励和自由，催促会挫伤兴趣。",
+     "books": [
+      {
+       "title": "刻意练习",
+       "idx": 25
+      }
+     ]
+    },
+    {
+     "claim": "多数人在看书而不是读书",
+     "text": "就像看游泳图片学游泳；真阅读要带着问题、快速筛选、分析提问、留下痕迹、主题交叉，最后落到行动。",
+     "books": [
+      {
+       "title": "如何阅读一本书",
+       "idx": 141
+      }
+     ]
+    },
+    {
+     "claim": "只记让你眼前一亮的东西",
+     "text": "知识管理分识记、联结、创新三步；如果一条信息没让你眼前一亮，说明你已经知道，不必再记。",
+     "books": [
+      {
+       "title": "打造第二大脑",
+       "idx": 204
+      }
+     ]
+    },
+    {
+     "claim": "像淘金一样阅读",
+     "text": "海绵式思维全盘吸收，淘金式思维边读边筛；定义术语先归入最近的类别，再找出与同类的差异；专家说得再动听也不一定可靠。",
+     "books": [
+      {
+       "title": "简单的逻辑学",
+       "idx": 182
+      },
+      {
+       "title": "学会提问",
+       "idx": 256
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "比如限制学习主题 学习时间 以及设置项目作为学习成果考核",
+     "quote": "学习的最初挑战在于你不知道该做什么，学习的最终挑战在于你认为自己已经知道该做什么。",
+     "idx": 117
+    },
+    {
+     "text": "只有对生活造成影响的阅读、学习才是有效的",
+     "quote": "读者一定要照着这样的建议行事",
+     "idx": 141
+    },
+    {
+     "text": "发懵是知道 暂时想不起来 知识坍塌是完全不知道 多回想而不是回看",
+     "quote": "怎样区分发懵和知识坍塌？ 7.学生常常会用重读材料的方法自欺欺人，而不是通过回想来进行自我测试。你觉得怎样才能避免掉入这个常见的陷阱呢？",
+     "idx": 88
+    }
+   ],
+   "highlights": [
+    {
+     "text": "第一步，将要定义的术语放入最相近的类别当中；第二步，确定其与同类中其他事物的不同特性。",
+     "idx": 182
+    },
+    {
+     "text": "在逻辑论述中，避免语义不清和模棱两可最有效的方法就是定义术语",
+     "idx": 182
+    },
+    {
+     "text": "第二件是将练习课的时间限制在1小时左右。如果比那个时间长得多，你将无法保持高度的专注。而且，你刚开始练习的时候，可能还要将时间压缩一些。",
+     "idx": 25
+    },
+    {
+     "text": "初次阅读过后，隔一段时间再阅读是有意义的；但是连续多次阅读只是空耗时间，好处少得可以忽略不计，而且浪费了时间，错过了耗时更少且更有效的方法。",
+     "idx": 144
+    },
+    {
+     "text": "刚开始学会专注于练习的那些人，也无法做到几个小时持续专注。相反，他们需要把每次的练习时间缩得更短，并逐渐延长。",
+     "idx": 25
+    },
+    {
+     "text": "有种常见的思维方式因为类似于海绵放到水中的反应——充分吸收水分，而被称为“海绵式思维”",
+     "idx": 256
+    },
+    {
+     "text": "一个人对已知掌握得越好，他就越能用有创造力的方法解决新问题。不练习独创性与想象力，就没法积累知识。同样地，没有扎实的知识基础，创新也只是空中楼阁。",
+     "idx": 144
+    },
+    {
+     "text": "札记本的受众仅限于精英群体——作家、政治家、哲学家以及科学家等需要对文字或研究进行归纳的知识阶层。而如今，一套有效的信息管理方法几乎成为每个人的刚需。",
+     "idx": 204
+    },
+    {
+     "text": "好奇心。要想充分利用淘金式思维来立身处世，你就需要多听、多看，真正用心去听、用心去看",
+     "idx": 256
+    },
+    {
+     "text": "并不在于练习的时长，而在于是否掌握了背后的套路，没有套路的练习，非但不能让你成为高手，还会把你练废……",
+     "idx": 128
+    }
+   ]
+  },
+  {
+   "name": "心理机制与情绪",
+   "domain": "人生与心理",
+   "oneLiner": "情绪由比较方向和解释方式决定，不由事件本身决定",
+   "books": [
+    20,
+    23,
+    87,
+    90,
+    111,
+    127,
+    160,
+    181,
+    190,
+    208,
+    206,
+    233,
+    244,
+    247,
+    251
+   ],
+   "hours": 14.5,
+   "viewpoints": [
+    {
+     "claim": "直视兽性才能走向神性",
+     "text": "越否认兽性，越难提升道德；压制必然反扑，可以用升华等方式疏导。时间并不能疗伤，重新评价才能。",
+     "books": [
+      {
+       "title": "心理学通识",
+       "idx": 20
+      }
+     ]
+    },
+    {
+     "claim": "自建的精神牢笼",
+     "text": "最糟糕的牢笼是自己建造的；抑郁的反义词是表达；需要靠表现和成绩赢得的不是爱。",
+     "books": [
+      {
+       "title": "越过内心那座山",
+       "idx": 208
+      }
+     ]
+    },
+    {
+     "claim": "幸福是快乐加意义",
+     "text": "忙碌奔波者是未来的奴隶，享乐主义者是现在的奴隶，虚无主义者是过去的奴隶；压力消除带来的轻松常被误认为幸福。",
+     "books": [
+      {
+       "title": "幸福的方法",
+       "idx": 23
+      }
+     ]
+    },
+    {
+     "claim": "比较方向决定情绪",
+     "text": "铜牌得主的满意度是 7.1 分，银牌只有 4.8 分；渴望不等于喜欢，金钱就是典型的渴望却未必喜欢的东西。",
+     "books": [
+      {
+       "title": "活出心花怒放的人生",
+       "idx": 206
+      }
+     ]
+    },
+    {
+     "claim": "只盯百分百可控的事",
+     "text": "把完全可控的事放进中心圈，其余放在外圈；正念训练能让滋生杂念的默认模式网络安静下来；与其揣测别人的想法，不如直接去验证。",
+     "books": [
+      {
+       "title": "没关系，别在意",
+       "idx": 87
+      }
+     ]
+    },
+    {
+     "claim": "环境就是提示",
+     "text": "不出门会引发封闭式衰退；换地方不会消除问题，但会带来新的提示，出门能把一天切成可完成的段落。",
+     "books": [
+      {
+       "title": "你的房间困住了你",
+       "idx": 181
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "出门的很大一个作用是把一天切割成不同的部分，而不是混沌的一个整天，一整天对于大部分人来说都太长了",
+     "quote": "长期待在家里，上午和下午容易混在一起，工作和休息也容易混在一起。出门后，路程、预约、营业时间、见面时长，都会把一天分成不同部分。时间有了边界，拖延会减少。人不再只面对一整天，而是面对下一段可完成的行动。",
+     "idx": 181
+    },
+    {
+     "text": "换事情是一种逃避 改变方式才是迎难而上",
+     "quote": "如果你正在做的事情无法让你感受到喜悦、自在和轻松，这并不意味着你需要改变你正在做的事情，你需要改变的是你做事的方式",
+     "idx": 160
+    },
+    {
+     "text": "痛苦无处不在 学会和痛苦相处 同样的 痛苦一般是由真实引发的 与其厌恶痛苦 不如从痛苦中学习",
+     "quote": "人生最大的痛苦，就是你认为自己不应该有痛苦的痛苦。",
+     "idx": 90
+    }
+   ],
+   "highlights": [
+    {
+     "text": "糟糕的牢笼不是纳粹将我投入的奥斯维辛集中营，而是我为自己建造的精神“牢笼”。",
+     "idx": 208
+    },
+    {
+     "text": "我们都以为时间是疗伤的圣药，其实时间从来都不是，重新评价才是。",
+     "idx": 20
+    },
+    {
+     "text": "换一个地方，并不能让问题消失，但它会增加新的提示。图书馆要求安静，咖啡馆有人流，公园需要行走，健身房要求身体参与，线下活动要求你开口回应。不同场景会给你不同的行为要求。",
+     "idx": 181
+    },
+    {
+     "text": "我们应该做什么，又有什么不能做。我们从小就知道他人的反应会直接影响我们的幸福。",
+     "idx": 87
+    },
+    {
+     "text": "我们创造的文化不应该是自我扩张或自我贬低，也不应该是预期过高或预期过低，而应该是享受成就带来的快乐、努力工作带来的快乐。",
+     "idx": 208
+    },
+    {
+     "text": "狐狸下意识地接受了自己并不是特别想吃到葡萄的想法，于是它便能够“心安理得”地离开。这就是著名的心理防御机制——“酸葡萄心理”的由来。",
+     "idx": 206
+    },
+    {
+     "text": "可是休息应该让人恢复行动能力。长时间封闭在同一空间里，很多人的行动能力反而下降。",
+     "idx": 181
+    },
+    {
+     "text": "人类有一种社会智力，它与我们如何处理与别人的关系有关。有些人特别善于理解别人的心情，也对自己的情绪有比较敏锐的理解，他们知道如何调动情绪来帮助自己思考问题、做出判断和决策，也能够理解各种情绪的意义，并监控自己的各种情绪。",
+     "idx": 206
+    },
+    {
+     "text": "每晚在入睡前，写下5件让你因感恩而快乐的事情。这些事情可大可小，从一顿美食到与一个好友的畅谈，从日常工作任务到一个有意思的想法，你都可以写下来。",
+     "idx": 23
+    },
+    {
+     "text": "在进化过程中具有这些心理机制的人比没有这些机制的人更容易存活下来，如此逐渐演化为现存稳定的心理机制。",
+     "idx": 111
+    }
+   ]
+  },
+  {
+   "name": "社会化与生存策略",
+   "domain": "人生与心理",
+   "oneLiner": "人情与博弈有章法，善良需要带着边界",
+   "books": [
+    0,
+    3,
+    4,
+    5,
+    18,
+    24,
+    78,
+    38,
+    112,
+    130,
+    53,
+    134,
+    136,
+    56,
+    151,
+    153,
+    163,
+    190,
+    58,
+    201,
+    207,
+    214,
+    197
+   ],
+   "hours": 60.7,
+   "viewpoints": [
+    {
+     "claim": "一报还一报",
+     "text": "善良、可被激怒、宽容的一报还一报是重复囚徒困境的优解；三枪手决斗里最弱者反而存活率最高；局势不利时要敢于认赔，避免协和谬误。",
+     "books": [
+      {
+       "title": "博弈论",
+       "idx": 130
+      },
+      {
+       "title": "博弈心理学",
+       "idx": 134
+      }
+     ]
+    },
+    {
+     "claim": "人情基本功",
+     "text": "不批评、不指责、不抱怨；真诚赞美；像钓鱼一样先想鱼要什么；刺激过度会引发反抗，得理也要饶人。",
+     "books": [
+      {
+       "title": "人性的弱点",
+       "idx": 58
+      },
+      {
+       "title": "年轻人一定要懂得的人情世故",
+       "idx": 207
+      }
+     ]
+    },
+    {
+     "claim": "自身没有硬通货，关系上不去",
+     "text": "靠低成本经营人际去换强者手里的资源行不通；最有价值的榜样是资质相仿、地位高半级的人，而人们最讨厌的恰恰是这种人。",
+     "books": [
+      {
+       "title": "不惑",
+       "idx": 136
+      }
+     ]
+    },
+    {
+     "claim": "极度透明",
+     "text": "不想当面说的话，背后也不说；掩盖分歧换来的和睦终会以大冲突收场；痛苦加反思等于进步，决策按可信度加权。",
+     "books": [
+      {
+       "title": "原则",
+       "idx": 151
+      }
+     ]
+    },
+    {
+     "claim": "群体比个人更易受暗示",
+     "text": "群体的智力低于其中的个人，极易受暗示，谁在讲话就同意谁；间接税再高也容易被接受，因为每次只付一小部分。",
+     "books": [
+      {
+       "title": "乌合之众",
+       "idx": 163
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "对于他人，尤其是陌生人，最看重你三个方面的价值 - 个人价值（社会层面、经济层面） - 外形，感官吸引力 - 情绪价值，积极\\消极 向上\\向下 带动\\消耗",
+     "quote": "第一，感官吸引力。一个人在容貌、身材、气质等方面能有多少吸引力，是很直观的，这无须过多解释。第二，情绪能量。我能提供怎样的积极情绪？开心、欢乐、平和、沉静？当我释放这些积极情绪时，他人更容易被我感染，进而回馈我以积极情绪。第三，个人价值。我有什么价值提供给他人？我说的话里有多少他…",
+     "idx": 190
+    },
+    {
+     "text": "阶级、基因（智力、体力）、继承而来的财富， 这些东西是没办法通过后天努力弥补的",
+     "quote": "接受“后天努力的有限性”，是成年人的必修课",
+     "idx": 136
+    },
+    {
+     "text": "开放、接受移民、语言通用 是最重要的几个发展点",
+     "quote": "日本人和其他东亚国家的人具有种族优越感，其社会内部组织非常严密，不会轻易吸引外国人融入他们。而美国人由于具有不同的历史，能够轻易地吸引不同文化、不同宗教的人才加入他们的企业团队",
+     "idx": 112
+    }
+   ],
+   "highlights": [
+    {
+     "text": "一个普通人想变得更好，对他最有价值的信息，是“社会地位”比他高半级或者一级，资质和他相仿的人的人生体会",
+     "idx": 136
+    },
+    {
+     "text": "人终究是历史的人质，受限于所处时代的资源、契机。人更是自己性格的人质。",
+     "idx": 18
+    },
+    {
+     "text": "一个群体里的一个人，不过是众多沙粒当中的一颗，可以被大风吹到任何地方。",
+     "idx": 163
+    },
+    {
+     "text": "只需要找一个天赋和你差不多，过得比你好一点的人做榜样就行。虽然字面意思很好理解，但是现实生活中，大部分人最讨厌的就是我刚讲的那种你原本应该被当成榜样的人。",
+     "idx": 136
+    },
+    {
+     "text": "可信度加权的投票，所选取的素质特征是专业技能和综合能力。",
+     "idx": 151
+    },
+    {
+     "text": "从智慧的层面上看，群体总是要比被孤立的个人的水平低",
+     "idx": 163
+    },
+    {
+     "text": "人们都喜欢个性相同、对事物的观点、人生价值观等方面相似的人，这种现象在心理学上被称为“相似性原则”。",
+     "idx": 134
+    },
+    {
+     "text": "人际交往是一个互动的过程，一个人的善意一定会引起另一个人的“酬谢”",
+     "idx": 207
+    },
+    {
+     "text": "华为的员工根据其价值观和理念，把全部精力放在完成一件最高优先级的任务上，当完成的一瞬间，能感受到极强的成就感和满足感。",
+     "idx": 201
+    },
+    {
+     "text": "每个博弈的参与者必须考虑到对手的反应，并把这种反应作为决策的依据之一。",
+     "idx": 130
+    }
+   ]
+  },
+  {
+   "name": "财富观与消费批判",
+   "domain": "人生与心理",
+   "oneLiner": "多数消费欲望是被制造的，买来的成功只在别人眼里",
+   "books": [
+    10,
+    66,
+    12,
+    19,
+    23,
+    78,
+    93,
+    92,
+    97,
+    132,
+    157,
+    171,
+    227,
+    247
+   ],
+   "hours": 32.1,
+   "viewpoints": [
+    {
+     "claim": "需求是被制造出来的",
+     "text": "品牌首先贩卖安全感，符号消费让贵族感变得可以购买；当下所谓的成功，常常只是在别人眼中显得成功。",
+     "books": [
+      {
+       "title": "制造消费者",
+       "idx": 97
+      }
+     ]
+    },
+    {
+     "claim": "工作伦理的两个前提",
+     "text": "必须做他人认可的有价值的事，安于现状是可耻的；而现代消费者是在主动寻求被诱惑。",
+     "books": [
+      {
+       "title": "工作、消费主义和新穷人",
+       "idx": 227
+      }
+     ]
+    },
+    {
+     "claim": "物品从被渴望起就开始消耗你",
+     "text": "选购、比价、下单、维护都在消耗时间；每样东西只留一件，并警惕厂商的计划报废。",
+     "books": [
+      {
+       "title": "极简生活",
+       "idx": 93
+      }
+     ]
+    },
+    {
+     "claim": "钱是对他人时间的支配权",
+     "text": "满足感来自相对位置的提升，而非物质的绝对值；新增货币先流向先拿到的人，所以要参与增量，让存量跑赢通胀。",
+     "books": [
+      {
+       "title": "强者思维",
+       "idx": 78
+      },
+      {
+       "title": "长得好看能当饭吃吗",
+       "idx": 66
+      }
+     ]
+    },
+    {
+     "claim": "优于过去的自己",
+     "text": "成功的参照标准往往是被别人创造的；真正的高贵不是优于别人，而是优于过去的自己。",
+     "books": [
+      {
+       "title": "谁在偷走你的进步",
+       "idx": 132
+      }
+     ]
+    },
+    {
+     "claim": "倦怠的一代",
+     "text": "中产在机会多时怕抓不住，在机会少时怕掉下去；家长培养的是简历而不是孩子；倦怠是到了临界点仍逼自己前进。",
+     "books": [
+      {
+       "title": "躺不平的千禧一代",
+       "idx": 171
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "在渴望消费的时候，反思一下自己是不是在主动寻求被诱惑",
+     "quote": "在正常运转的消费者社会中，消费者会主动寻求被诱惑。他们的生活从吸引到吸引，从诱惑到诱惑，从吞下一个诱饵到寻找另一个诱饵，每一个新的吸引、诱惑和诱饵都不尽相同，似乎比之前的更加诱人",
+     "idx": 227
+    },
+    {
+     "text": "成功 -> 自信，成功本质上是自信的原因或者重要因素之一",
+     "quote": "不是自信造就成功，而是过去的成功经验激发自信。5",
+     "idx": 132
+    },
+    {
+     "text": "衣食住行在中国简直便宜的不像话",
+     "quote": "绝大多数的现代人已经可以满足这种需求，并且拥有了那些东西。",
+     "idx": 247
+    }
+   ],
+   "highlights": [
+    {
+     "text": "因为人类最大的满足感来源并不是物质水平绝对值的提升，而是自己在全人口序列中相对位置的提升。",
+     "idx": 78
+    },
+    {
+     "text": "我们有限的一生中，最重要的两个东西，一个是时间，另一个是金钱。",
+     "idx": 93
+    },
+    {
+     "text": "为了解决信任问题，大型公司开始在品牌上做文章。品牌的首要功能就是给消费者安全感，让消费者感到产品不是来自无名的陌生公司，而是来自某个有温度的“家庭”。",
+     "idx": 97
+    },
+    {
+     "text": "上层家庭和底层家庭大抵上都可以停留在原地不动，不论时代如何变化和不确定。只有中产家庭，在充满机会的时代，怕赶不上，抓不住；在看不到机会的时代，又怕往下走，掉下去",
+     "idx": 171
+    },
+    {
+     "text": "极简是一种工具。通过这种工具，你能够剔除生活中不必要的人、事、物，从而发现对自己真正重要的东西，并把时间、精力、金钱投入对你真正重要的东西上",
+     "idx": 93
+    },
+    {
+     "text": "工厂体系的诞生事实上瓦解了工匠和他们的事业之间的亲密关系，这种关系被“工作伦理”视为理所当然的",
+     "idx": 227
+    },
+    {
+     "text": "临终前最后悔的事情是“我希望我有勇气过一种忠于自我的生活，而不是别人期望我过的生活”。不要让自己的生活被别人绑",
+     "idx": 92
+    },
+    {
+     "text": "家长们来说，与其说是培养孩子，不如说是培养简历。只要能有助于在简历上写上一笔，就值得去做；反之则毫无价值。",
+     "idx": 171
+    },
+    {
+     "text": "越来越多的人认为，从工匠变成工人时失去的人的尊严，只有通过赢得更多盈余才能恢复。这种变迁中，努力工作能使人们道德升华的呼声日益衰弱。现在，衡量人们声望和社会地位的是工资的差别，而不是勤于工作的道德或惰于工作的罪恶。",
+     "idx": 227
+    },
+    {
+     "text": "通过制定长远的规划，你设计了自己的人生轨迹。你不再担心别人对你的看法，也不再寻求别人对你的认可，更不会用别人的标准衡量自己。",
+     "idx": 132
+    }
+   ]
+  },
+  {
+   "name": "人生意义与死亡观",
+   "domain": "人生与心理",
+   "oneLiner": "正视死亡是给人生排优先级最有效的办法",
+   "books": [
+    5,
+    6,
+    11,
+    23,
+    78,
+    92,
+    47,
+    115,
+    63,
+    197,
+    231,
+    233,
+    219,
+    62,
+    253,
+    259,
+    60
+   ],
+   "hours": 31.9,
+   "viewpoints": [
+    {
+     "claim": "知道为何而活，就能活下去",
+     "text": "弗兰克尔发现突然失去希望可能致命；人每时每刻都在选择做环境的玩物还是保留内在自由，他只怕配不上自己所受的痛苦。",
+     "books": [
+      {
+       "title": "活出生命的意义",
+       "idx": 253
+      }
+     ]
+    },
+    {
+     "claim": "列一份死亡清单",
+     "text": "超过 14% 的死亡出乎意料；假设只剩一年、一个月、一天，各列要做的事，反复出现的就是该立刻行动的信号；最大的遗憾是没做的事。",
+     "books": [
+      {
+       "title": "体验派人生",
+       "idx": 92
+      }
+     ]
+    },
+    {
+     "claim": "向死而生",
+     "text": "死亡不是遥远的终点，而是此刻正在发生的渐变；幸福的生活，是精心挑选出的一种最称心的奔向死亡的方式。",
+     "books": [
+      {
+       "title": "强者思维",
+       "idx": 78
+      }
+     ]
+    },
+    {
+     "claim": "道德让人配得上幸福",
+     "text": "道德不教人怎样幸福，而教人怎样配得上幸福；要爱具体的人，而不是抽象的人类。从前种种，譬如昨日死。",
+     "books": [
+      {
+       "title": "圆圈正义",
+       "idx": 197
+      },
+      {
+       "title": "了凡四训",
+       "idx": 231
+      }
+     ]
+    },
+    {
+     "claim": "彻悟无法传授",
+     "text": "智慧不可言传，求知欲本身也可能成为障碍；自认超脱的人最终被自己最蔑视的贪欲俘虏，河水只有当下。",
+     "books": [
+      {
+       "title": "悉达多",
+       "idx": 60
+      }
+     ]
+    },
+    {
+     "claim": "我们活在想象的秩序里",
+     "text": "国家、金钱、公司都是想象的秩序；我们生活在别人很久以前发明的思想框架里，却常把它当作自然。",
+     "books": [
+      {
+       "title": "人类简史",
+       "idx": 6
+      }
+     ]
+    }
+   ],
+   "thoughts": [
+    {
+     "text": "等我xxxx 就xxxx 我完成了xxxx 我就会开心/成功/幸福 两种观念都是生活中的陷阱",
+     "quote": "一直想着“真正想做的是这样的事情，等时机到了就去做”，是一种拖延人生的生活方式。只要在拖延人生，我们就会无所进展，只能每天过着枯燥乏味的单调生活。因为在这种情况下，人就会认为“此时此刻”只是准备阶段和忍耐阶段。",
+     "idx": 11
+    },
+    {
+     "text": "算是有吧，亲人、爱人、朋友都有时间相处，这个足不足够可能得分阶段，因为我已经进入了人生的下一阶段，相对来说空闲时间没有那么多",
+     "quote": "反思：想象一下那些和你亲近的人，你和他们是否有足够的时间相处？如果不是，你该如何去改变这个现状？",
+     "idx": 23
+    },
+    {
+     "text": "换个角度看工作其实也是一样的，又有什么必要焦虑呢？",
+     "quote": "当你彻底放下对人生的一些追求，你的心境就慢慢就会变得平静，然后慢慢就会习惯这种生活，就感觉很放松，就不再有那些压力，不再有那种追求，也就不再有那种可望不可及的那些失落",
+     "idx": 233
+    }
+   ],
+   "highlights": [
+    {
+     "text": "真正快乐的人，能够在自己觉得有意义的生活方式里享受它的点点滴滴。这种解释绝不仅限于生命里的某些时刻，而是人生的全过程。即使有时经历痛苦，人在总体上仍然可以是幸福的。",
+     "idx": 23
+    },
+    {
+     "text": "超过14%的死亡完全出乎意料，留下无数未说的话、未完成的事，或从未开始的心愿。",
+     "idx": 92
+    },
+    {
+     "text": "爱不是爱抽象的概念，而是爱具体的人；不是爱“人类”，而是爱“人”。有许多伟大的知识分子都非常爱人类，但他们却很难爱真正具体的人",
+     "idx": 197
+    },
+    {
+     "text": "突然失去希望和勇气会导致死亡。我朋友最终的死因是预言没有如期兑现，他绝望了",
+     "idx": 253
+    },
+    {
+     "text": "每天每时你都需要做出决定，这样的决定将使你要么屈从于致命的暴力，要么保持自我内在的自由，同时也将决定你是否成为环境的玩物，是否抛弃自由和尊严而变成标准的囚徒。",
+     "idx": 253
+    },
+    {
+     "text": "临终前最后悔的事情是“我希望我有勇气过一种忠于自我的生活，而不是别人期望我过的生活”。不要让自己的生活被别人绑",
+     "idx": 92
+    },
+    {
+     "text": "人们在退休后将无法享受完全积极的生活方式，因为平均而言，他们已经抵达健康寿命的终点。",
+     "idx": 219
+    },
+    {
+     "text": "这意味着选择这项的人有更多时间陪伴亲友、承担责任，而不是留给他们没有告别的遗憾和痛苦",
+     "idx": 63
+    },
+    {
+     "text": "人生要依次经历四个不同的阶段——玩乐、学习、工作和退休。这被认为是理所当然的，而以这样的方式来组织我们的生活，似乎是自然的、理想的和不可避免的。",
+     "idx": 219
+    },
+    {
+     "text": "人类赋予人生以更高的精神意义，赋予个体以更理想化的价值，所以人的生命是最美好的礼物。你可以自己定义一生，不遵循残酷的本质，即使最终都会走向死亡，至少胡闹一场，翩然离去。",
+     "idx": 115
+    }
+   ]
+  }
  ]
 } as const;
